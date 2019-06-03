@@ -62,3 +62,12 @@ Fully compatible with **Magento 2.1.x, Magento 2.2.x, Magento 2.3.x**
 - [Twitter Timeline](http://themes.magesolution.com/fbuilder/twitter-timeline/)
 - [Instagram](http://themes.magesolution.com/fbuilder/instagram/)
 - [Instagram Shop](http://themes.magesolution.com/fbuilder/instagram-shop/)
+
+## 4. Compatible with Mageplaza Extensions
+- [Banner Slider](https://www.mageplaza.com/magento-2-banner-slider-extension/)
+- [Blog](https://www.mageplaza.com/magento-2-blog-extension/)
+- [Countdown Timer](https://www.mageplaza.com/magento-2-countdown-timer)
+- [Daily Deal](https://www.mageplaza.com/magento-2-daily-deal-extension)
+- [Shop by Brand](https://www.mageplaza.com/magento-2-shop-by-brand)
+- [Product Slider](https://www.mageplaza.com/magento-2-product-slider-extension)
+
