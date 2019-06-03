@@ -23,7 +23,7 @@ Fully compatible with **Magento 2.1.x, Magento 2.2.x, Magento 2.3.x**
 
 
 ## Builder Elements
-## Static Content
+## 1. Static Content
 - [Heading](http://themes.magesolution.com/fbuilder/headings/)
 - [Images](http://themes.magesolution.com/fbuilder/images/)
 - [OWL Carousel](http://themes.magesolution.com/fbuilder/owl-carousel/)
@@ -32,3 +32,33 @@ Fully compatible with **Magento 2.1.x, Magento 2.2.x, Magento 2.3.x**
 - [Profiles](http://themes.magesolution.com/fbuilder/profiles/)
 - [Accordion (toggle)](http://themes.magesolution.com/fbuilder/accordion/)
 - [Video](http://themes.magesolution.com/fbuilder/videos/)
+- [Google Map](http://themes.magesolution.com/fbuilder/google-map/)
+- [Content Boxes](http://themes.magesolution.com/fbuilder/content-boxes/)
+- [Counter Boxes](http://themes.magesolution.com/fbuilder/counter-boxes/)
+- [Countdown Boxes](http://themes.magesolution.com/fbuilder/countdown-boxes/)
+- [Charts](http://themes.magesolution.com/fbuilder/charts/)
+- [Progress Bars](http://themes.magesolution.com/fbuilder/progress-bars/)
+- [Progress Circles](http://themes.magesolution.com/fbuilder/progress-circles/)
+- [Dividers](http://themes.magesolution.com/fbuilder/dividers/)
+- [Checklist](http://themes.magesolution.com/fbuilder/checklist/)
+- [Button](http://themes.magesolution.com/fbuilder/button/)
+- [Table](http://themes.magesolution.com/fbuilder/table/)
+- [Tabs](http://themes.magesolution.com/fbuilder/tabs/)
+- [Modal Popup](http://themes.magesolution.com/fbuilder/modal-popup/)
+- [Form](http://themes.magesolution.com/fbuilder/form/)
+
+## 2. Catalog
+- [Category List](http://themes.magesolution.com/fbuilder/category-list/)
+- [Category Products](http://themes.magesolution.com/fbuilder/category-products/)
+- [New Products](http://themes.magesolution.com/fbuilder/new-products/)
+- [Product by Attribute](http://themes.magesolution.com/fbuilder/products-by-attribute/)
+- [Sale Products](http://themes.magesolution.com/fbuilder/sale-products/)
+- [Top Rate Products](http://themes.magesolution.com/fbuilder/top-rate-products/)
+- [Deal Products](http://themes.magesolution.com/fbuilder/deal-products/)
+- [Product Tabs](http://themes.magesolution.com/fbuilder/product-tabs/)
+
+## 3. Social
+- [Facebook Fanbox](http://themes.magesolution.com/fbuilder/facebook-fanbox/)
+- [Twitter Timeline](http://themes.magesolution.com/fbuilder/twitter-timeline/)
+- [Instagram](http://themes.magesolution.com/fbuilder/instagram/)
+- [Instagram Shop](http://themes.magesolution.com/fbuilder/instagram-shop/)
