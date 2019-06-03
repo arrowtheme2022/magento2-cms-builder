@@ -1,6 +1,6 @@
 # What Is Magento 2 CMS Builder
 
-[![Watch the video](https://www.magesolution.com/media/wysiwyg/visual-friendly_video.png)](https://www.youtube.com/watch?v=ABDvxVrcyb8)
+[![asciicast](https://www.magesolution.com/media/wysiwyg/visual-friendly_video.png)](https://www.youtube.com/watch?v=ABDvxVrcyb8)
 
 **Magento 2 CMS Builder** is an extension allowing you to edit CMS pages effortlessly and visually at front-end. As a result, you can see what you've performed instantly whether it is a minimal adjustment right on user interface. No coding knowledge requires.
 
