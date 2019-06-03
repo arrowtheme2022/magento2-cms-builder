@@ -17,5 +17,17 @@ Fully compatible with **Magento 2.1.x, Magento 2.2.x, Magento 2.3.x**
 
 - [Installation guide](http://themes.magesolution.com/fbuilder/installation)
 - [Builder Account](http://themes.magesolution.com/fbuilder/builder-account)
-- [Download from our Live site](https://www.magesolution.com/front-end-cms-page-builder.html)
-- [Get Free Support](https://github.com/arrowhitech-gp/fbuilder/issues)
+- [Builder Sections](http://themes.magesolution.com/fbuilder/sections)
+- [Builder Blocks](http://themes.magesolution.com/fbuilder/blocks/)
+
+
+## Builder Elements
+## Static Content
+- [Heading](http://themes.magesolution.com/fbuilder/headings/)
+- [Images](http://themes.magesolution.com/fbuilder/images/)
+- [OWL Carousel](http://themes.magesolution.com/fbuilder/owl-carousel/)
+- [Masonry Gallery](http://themes.magesolution.com/fbuilder/masonry-gallery/)
+- [Promotion Banner](http://themes.magesolution.com/fbuilder/promotion-banners/)
+- [Profiles](http://themes.magesolution.com/fbuilder/profiles/)
+- [Accordion (toggle)](http://themes.magesolution.com/fbuilder/accordion/)
+- [Video](http://themes.magesolution.com/fbuilder/videos/)
