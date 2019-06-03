@@ -1,0 +1,451 @@
+<?php $helper = $this->getHelper() ?>
+<?php $params = $this->getParams() ?>
+<?php $exist = false ?>
+<?php $child = null ?>
+<div class="edit-static-form">
+	<div class="line">
+		<div class="col-des-12 builder-title">
+			<h2><?php echo __('Divider Block') ?></h2>
+		</div>
+	</div>
+	<form id="section-form" enctype="multipart/form-data" method="POST" action="<?php echo $this->getUrl('fbuilder/element/save') ?>" data-hasrequired="<?php echo __('* Required Fields') ?>" data-mage-init='{"validation":{}}'>
+		<input type="hidden" name="page_id" value="<?php echo $this->getRequest()->getParam('page_id') ?>">
+		<input id="block_type" type="hidden" name="type" value="divider">
+		<input id="block_block_name" type="hidden" name="block_name" value="<?php echo $params['block'] ?>">
+		<?php if(isset($params['id'])): ?>
+			<?php 
+				$child =  $this->getModel('MGS\Fbuilder\Model\Child')->load($params['id']);
+				$exist = true;
+				$settings = json_decode($child->getSetting(), true);
+			?>
+			<input type="hidden" name="child_id" value="<?php echo $params['id'] ?>">
+		<?php endif ?>
+		
+		<div class="mgs-tab data items product" data-mage-init='{"tabs":{"openedState":"active"}}'>
+			<?php 
+				echo $this->getLayout()->createBlock('Magento\Framework\View\Element\Template')
+					->setExist($exist)
+					->setDisableContent(1)
+					->setDisableBackground(1)
+					->setBuilderChild($child)
+					->setBuilderHelper($helper)
+					->setTemplate('MGS_Fbuilder::panel/create/element/widgets/general_tab.phtml')->toHtml() ;
+			?>
+			
+			<div class="data item title" aria-labeledby="tab-label-content-title" data-role="collapsible" id="tab-label-content">
+				<a class="data switch" tabindex="-1" data-toggle="switch" href="#content" id="tab-label-content-title">
+					<?php echo __('Content Config') ?>
+				</a>
+			</div>
+			
+			<div class="data item content" id="content" data-role="content" style="display:none">
+				<div class="line form-group">
+					<div class="col">
+						<label class="control-label" for="width"><?php echo __('Width') ?></label><br/>
+						<input type="text" class="input-text validate-number" id="width" name="setting[width]"<?php if($exist && $settings['width']): ?> value="<?php echo $settings['width'] ?>"<?php endif ?> onchange="setPreview()" placeholder="<?php echo __('px. Empty for full') ?>"/>
+					</div>
+					
+					<div class="col">
+						<label class="control-label" for="style"><?php echo __('Style') ?></label><br/>
+						<select name="setting[style]" id="style" onchange="setPreview()">
+							<option value="solid"<?php if($exist && ($settings['style']=='solid')): ?> selected="selected"<?php endif ?>><?php echo __('Solid'); ?></option>
+							<option value="double_solid"<?php if($exist && ($settings['style']=='double_solid')): ?> selected="selected"<?php endif ?>><?php echo __('Double solid'); ?></option>
+							<option value="dotted"<?php if($exist && ($settings['style']=='dotted')): ?> selected="selected"<?php endif ?>><?php echo __('Dotted'); ?></option>
+							<option value="double_dotted"<?php if($exist && ($settings['style']=='double_dotted')): ?> selected="selected"<?php endif ?>><?php echo __('Double dotted'); ?></option>
+							<option value="dashed"<?php if($exist && ($settings['style']=='dashed')): ?> selected="selected"<?php endif ?>><?php echo __('Dashed'); ?></option>
+							<option value="double_dashed"<?php if($exist && ($settings['style']=='double_dashed')): ?> selected="selected"<?php endif ?>><?php echo __('Double dashed'); ?></option>
+							<option value="shadown"<?php if($exist && ($settings['style']=='shadown')): ?> selected="selected"<?php endif ?>><?php echo __('Shadown'); ?></option>
+						</select>
+					</div>
+					
+					<div class="col">
+						<label class="control-label" for="border_align"><?php echo __('Align') ?></label><br/>
+						<select name="setting[border_align]" id="border_align" onchange="setPreview()">
+							<option value="center"<?php if($exist && ($settings['border_align']=='center')): ?> selected="selected"<?php endif ?>><?php echo __('Center'); ?></option>
+							<option value="left"<?php if($exist && ($settings['border_align']=='left')): ?> selected="selected"<?php endif ?>><?php echo __('Left'); ?></option>
+							<option value="right"<?php if($exist && ($settings['border_align']=='right')): ?> selected="selected"<?php endif ?>><?php echo __('Right'); ?></option>
+						</select>
+					</div>
+					
+					<div class="col">
+						<label class="control-label" for="border_width"><?php echo __('Border width') ?></label><br/>
+						<input type="text" class="input-text validate-number" id="border_width" name="setting[border_width]"<?php if($exist && $settings['border_width']): ?> value="<?php echo $settings['border_width'] ?>"<?php endif ?> onchange="changeContentStyle()" placeholder="px"/>
+					</div>
+					
+					<div class="col">
+						<label class="control-label" for="border_color"><?php echo __('Border color') ?></label><br/>
+						<input type="text" class="input-text color-input" id="border_color" name="setting[border_color]"<?php if($exist && $settings['border_color']): ?> value="<?php echo $settings['border_color'] ?>"<?php endif ?> onchange="changeContentStyle()"/>
+					</div>
+				</div>
+				
+				<hr/>
+				
+				<div class="line form-group">
+					<div class="col">
+						<label for="show_text" class="control-label"><?php echo __('Show text') ?></label><br/>
+						<div class="admin__actions-switch" data-role="switcher">
+							<input type="checkbox"<?php if($exist && $settings['show_text']): ?> checked="checked"<?php endif ?> value="1" name="setting[show_text]" id="show_text" class="admin__actions-switch-checkbox" onclick="showText()">
+							<label for="show_text" class="admin__actions-switch-label">
+								<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+							</label>
+						</div>
+					</div>
+					<div class="col text-fields">
+						<label class="control-label" for="subtitle"><?php echo __('Text') ?></label><br/>
+						<input type="text" class="input-text required-entry" id="subtitle" name="setting[subtitle]"<?php if($exist && $settings['subtitle']): ?> value="<?php echo $settings['subtitle'] ?>"<?php endif ?> onchange="setPreview()"/>
+					</div>
+					<div class="col text-fields">
+						<label class="control-label" for="text_font_size"><?php echo __('Font size') ?></label><br/>
+						<input type="text" class="input-text validate-number" id="text_font_size" name="setting[text_font_size]"<?php if($exist && $settings['text_font_size']): ?> value="<?php echo $settings['text_font_size'] ?>"<?php endif ?> onchange="changeContentStyle()" placeholder="px"/>
+					</div>
+					
+					<div class="col text-fields">
+						<label class="control-label" for="text_color"><?php echo __('Color') ?></label><br/>
+						<input type="text" class="input-text color-input" id="text_color" name="setting[text_color]"<?php if($exist && $settings['text_color']): ?> value="<?php echo $settings['text_color'] ?>"<?php endif ?> onchange="changeContentStyle()"/>
+					</div>
+					
+					<div class="col text-fields">
+						<label for="text_fontweight" class="control-label"><?php echo __('Font bold') ?></label><br/>
+						<div class="admin__actions-switch" data-role="switcher">
+							<input type="checkbox"<?php if($exist && $settings['text_fontweight']): ?> checked="checked"<?php endif ?> value="1" name="setting[text_fontweight]" id="text_fontweight" class="admin__actions-switch-checkbox" onclick="changeContentStyle()">
+							<label for="text_fontweight" class="admin__actions-switch-label">
+								<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+							</label>
+						</div>
+					</div>
+					
+					<div class="col text-fields">
+						<label class="control-label" for="text_background"><?php echo __('Background') ?></label><br/>
+						<input type="text" class="input-text color-input" id="text_background" name="setting[text_background]"<?php if($exist && $settings['text_background']): ?> value="<?php echo $settings['text_background'] ?>"<?php endif ?> onchange="changeContentStyle()"/>
+					</div>
+					
+					<div class="col text-fields">
+						<label class="control-label" for="text_padding"><?php echo __('Padding') ?></label><br/>
+						<input type="text" class="input-text validate-number" id="text_padding" name="setting[text_padding]"<?php if($exist && $settings['text_padding']): ?> value="<?php echo $settings['text_padding'] ?>"<?php endif ?> onchange="changeContentStyle()"/>
+					</div>
+				</div>
+				
+				<hr/>
+				
+				<div class="line form-group">
+					<div class="col">
+						<label for="show_icon" class="control-label"><?php echo __('Show Icon') ?></label><br/>
+						<div class="admin__actions-switch" data-role="switcher">
+							<input type="checkbox"<?php if($exist && $settings['show_icon']): ?> checked="checked"<?php endif ?> value="1" name="setting[show_icon]" id="show_icon" class="admin__actions-switch-checkbox" onclick="showIconFields()">
+							<label for="show_icon" class="admin__actions-switch-label">
+								<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+							</label>
+						</div>
+					</div>
+					
+					<div class="col icon-fields">
+						<label class="control-label"><?php echo __('Icon font class') ?></label><br/>
+						<input type="text" class="input-text input-icon-choose required-entry" id="icon" name="setting[icon]"<?php if($exist && $settings['icon']): ?> value="<?php echo $settings['icon'] ?>"<?php endif ?> onchange="setPreview()"/>
+					</div>
+					
+					<div class="col icon-fields">
+						<label class="control-label" for="icon_padding"><?php echo __('Width') ?></label><br/>
+						<input type="text" class="input-text validate-number required-entry" id="icon_padding" name="setting[icon_padding]"<?php if($exist && $settings['icon_padding']): ?> value="<?php echo $settings['icon_padding'] ?>"<?php endif ?> onchange="changeContentStyle()"/>
+					</div>
+					
+					<div class="col icon-fields">
+						<label class="control-label" for="icon_font_size"><?php echo __('Font size') ?></label><br/>
+						<input type="text" class="input-text validate-number" id="icon_font_size" name="setting[icon_font_size]"<?php if($exist && $settings['icon_font_size']): ?> value="<?php echo $settings['icon_font_size'] ?>"<?php endif ?> onchange="changeContentStyle()" placeholder="px"/>
+					</div>
+					
+					<div class="col icon-fields">
+						<label class="control-label" for="icon_color"><?php echo __('Color') ?></label><br/>
+						<input type="text" class="input-text color-input" id="icon_color" name="setting[icon_color]"<?php if($exist && $settings['icon_color']): ?> value="<?php echo $settings['icon_color'] ?>"<?php endif ?> onchange="changeContentStyle()"/>
+					</div>
+					
+					<div class="col icon-fields">
+						<label class="control-label" for="icon_border"><?php echo __('Border') ?></label><br/>
+						<input type="text" class="input-text color-input" id="icon_border" name="setting[icon_border]"<?php if($exist && $settings['icon_border']): ?> value="<?php echo $settings['icon_border'] ?>"<?php endif ?> onchange="changeContentStyle()"/>
+					</div>
+					
+					<div class="col icon-fields">
+						<label class="control-label" for="icon_background"><?php echo __('Background') ?></label><br/>
+						<input type="text" class="input-text color-input" id="icon_background" name="setting[icon_background]"<?php if($exist && $settings['icon_background']): ?> value="<?php echo $settings['icon_background'] ?>"<?php endif ?> onchange="changeContentStyle()"/>
+					</div>
+					
+					
+				</div>
+				<hr/>
+
+				<div class="content-block mgs-divider-block" id="mgs-divider-sample" style="margin-top:50px">
+					<div id="divider-container">
+						<span class="divider-text" id="divider-text" style="display:none">
+							<span class="text"></span>
+						</span>
+						
+						<span class="divider-text double-icon" id="divider-double-icon" style="display:none">
+							<span class="text-icon-container">
+								<span class="icon"></span>
+								<span class="text"></span>
+								<span class="icon"></span>
+							</span>
+						</span>
+						
+						<span class="divider-icon" id="divider-icon" style="display:none">
+							<span></span>
+						</span>
+						
+						<hr/>
+					</div>
+				</div>
+				
+				<style type="text/css" id="divider-custom-css"></style>
+			</div>
+		
+			<?php if($exist): ?>
+				<?php 
+					echo $this->getLayout()->createBlock('Magento\Framework\View\Element\Template')
+						->setExist($exist)
+						->setBuilderChild($child)
+						->setBuilderHelper($helper)
+						->setTemplate('MGS_Fbuilder::panel/create/element/widgets/code_tab.phtml')->toHtml() ;
+				?>
+				
+			<?php endif ?>
+		</div>
+		
+		<div class="line">
+			<div class="form-group">
+				<div class="col-des-12 builder-action">
+					<div class="buttons">
+						<?php if(!$exist): ?>
+							<button type="button" class="action" onclick="history.go(-1)"><span><?php echo __('Back') ?></span></button>
+						<?php endif ?>
+						<button type="submit" class="action primary"><span><?php echo __('Submit') ?></span></button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+
+<?php 
+	echo $this->getLayout()->createBlock('Magento\Framework\View\Element\Template')
+		->setExist($exist)
+		->setBuilderChild($child)
+		->setBuilderHelper($helper)
+		->setTemplate('MGS_Fbuilder::panel/create/element/widgets/font_list.phtml')->toHtml() ;
+?>
+	
+<script type="text/javascript">
+	require([
+		'jquery',
+	], function(jQuery){
+		(function($) {
+			$(document).ready(function(){
+				setPreview();
+				showText();
+				showIconFields();
+			});
+			
+			$("#subtitle").keypress(function( event ){
+				setPreview();
+			});
+		})(jQuery);
+	});
+	
+	function showText(){
+		require([
+			'jquery',
+		], function(jQuery){
+			(function($) {
+				if($('#show_text').prop("checked") == true){
+					$('.text-fields').show();
+				}else{
+					$('.text-fields').hide();
+				}
+			})(jQuery);
+		});
+		setPreview();
+	}
+	
+	function showIconFields(){
+		require([
+			'jquery',
+		], function(jQuery){
+			(function($) {
+				if($('#show_icon').prop("checked") == true){
+					$('.icon-fields').show();
+				}else{
+					$('.icon-fields').hide();
+				}
+			})(jQuery);
+		});
+		setPreview();
+	}
+	
+	function setPreview(){
+		require([
+			'jquery',
+		], function(jQuery){
+			(function($) {
+				style = $('#style').val();
+				border_align = $('#border_align').val();
+				subtitle = $('#subtitle').val();
+				icon = $('#icon').val();
+				width = $('#width').val();
+				
+				styleClass = 'mgs-divider mgs-divider-'+style;
+				if(width!='' && !isNaN(width) && width>0){
+					styleClass += ' divider-'+border_align;
+				}
+				
+				$('#divider-container').attr('class', styleClass);
+				
+				$('#mgs-divider-sample .text').html(subtitle);
+				
+				$('#divider-double-icon .icon').attr('class', 'icon '+icon);
+				$('#divider-icon span').attr('class', icon);
+				
+				if($('#show_text').prop("checked") == true && $('#show_icon').prop("checked") == true){
+					$('#divider-icon, #divider-text').hide();
+					$('#divider-double-icon').show();
+				}else{
+					if($('#show_text').prop("checked") == true){
+						$('#divider-double-icon, #divider-icon').hide();
+						$('#divider-text').show();
+					}else{
+						$('#divider-double-icon, #divider-text').hide();
+						$('#divider-icon').show();
+					}
+				}
+				
+				if($('#show_text').prop("checked") == false && $('#show_icon').prop("checked") == false){
+					$('#divider-icon, #divider-text, #divider-double-icon').hide();
+				}
+				
+			})(jQuery);
+		});
+		
+		changeContentStyle();
+	}
+	
+	function hexToRgb(hex) {
+		var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+		return result ? {
+			r: parseInt(result[1], 16),
+			g: parseInt(result[2], 16),
+			b: parseInt(result[3], 16)
+		} : null;
+	}
+	
+	function changeContentStyle(){
+		require([
+			'jquery',
+		], function(jQuery){
+			(function($) {
+				width = $('#width').val();
+				border_width = $('#border_width').val();
+				border_color = $('#border_color').val();
+				text_font_size = parseFloat($('#text_font_size').val());
+				text_color = $('#text_color').val();
+				text_background = $('#text_background').val();
+				text_padding = $('#text_padding').val();
+				icon_font_size = $('#icon_font_size').val();
+				icon_color = $('#icon_color').val();
+				icon_border = $('#icon_border').val();
+				icon_background = $('#icon_background').val();
+				icon_padding = $('#icon_padding').val();
+				style = $('#style').val();
+
+				$customStyle = '*{}';
+				
+				if(width!='' && !isNaN(width) && width>0){
+					//$customStyle += '#mgs-divider-sample hr, #mgs-divider-sample.mgs-divider-block .double-icon, #mgs-divider-sample.mgs-divider-block .divider-icon, #mgs-divider-sample.mgs-divider-block .divider-text{max-width:'+width+'px}';
+					
+					$customStyle += '#mgs-divider-sample .mgs-divider{max-width:'+width+'px}';
+				}
+				
+				if(border_width!=''){
+					$customStyle += '#mgs-divider-sample.mgs-divider-block .mgs-divider hr{border-width:'+border_width+'px}';
+				}
+				if(border_color!=''){
+					if(style=='shadown'){
+						rgb = hexToRgb(border_color);
+
+						$customStyle += '#mgs-divider-sample.mgs-divider-block .mgs-divider hr::after{background: -webkit-radial-gradient(50% -50% ellipse,rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',.5) 0,rgba(255,255,255,0) 65%);background: radial-gradient(ellipse at 50% -50%,rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',.5) 0,rgba(255,255,255,0) 65%);}';
+					}else{
+						$customStyle += '#mgs-divider-sample.mgs-divider-block .mgs-divider hr{border-color:'+border_color+'}';
+					}
+				}
+				
+				if($('#show_text').prop("checked") == true){
+					if(text_font_size!='' && !isNaN(text_font_size) && text_font_size>0){
+						$customStyle += '#mgs-divider-sample .mgs-divider .divider-text span{font-size:'+text_font_size+'px}';
+						
+						$marginTop = text_font_size/2;
+						$customStyle += '#mgs-divider-sample .mgs-divider .divider-text{height:'+text_font_size+'px;line-height:'+text_font_size+'px;margin-top:-'+$marginTop+'px}';
+					}
+					if(text_color!=''){
+						$customStyle += '#mgs-divider-sample .mgs-divider .divider-text span{color:'+text_color+'}';
+					}
+					if(text_background!=''){
+						$customStyle += '#mgs-divider-sample .mgs-divider .divider-text span{background-color:'+text_background+'}';
+					}
+					if(text_padding!=''){
+						$customStyle += '#mgs-divider-sample .mgs-divider .divider-text span{padding:0 '+text_padding+'px}';
+					}
+				}
+				
+				if($('#show_icon').prop("checked") == true){
+					if(icon_font_size!=''){
+						$customStyle += '#mgs-divider-sample .mgs-divider .divider-icon span, #mgs-divider-sample .mgs-divider .text-icon-container span.icon{font-size:'+icon_font_size+'px;}';
+						
+						$marginTop = icon_font_size/2;
+						$customStyle += '#mgs-divider-sample .mgs-divider .divider-icon{height:'+icon_font_size+'px;line-height:'+icon_font_size+'px;margin-top:-'+$marginTop+'px; height:'+icon_font_size+'px;}';
+						
+						$customStyle += '#mgs-divider-sample .mgs-divider .divider-icon span::before,#mgs-divider-sample .mgs-divider .text-icon-container span.icon:before{margin-top:-'+$marginTop+'px}';
+					}
+					
+					if(icon_color!=''){
+						$customStyle += '#mgs-divider-sample .mgs-divider .divider-icon span, #mgs-divider-sample .mgs-divider .text-icon-container span.icon{color:'+icon_color+'}';
+					}
+					if(icon_background!=''){
+						$customStyle += '#mgs-divider-sample .mgs-divider .divider-icon span, #mgs-divider-sample .mgs-divider .text-icon-container span.icon{background-color:'+icon_background+'}';
+					}
+					if(icon_padding!=''){
+						$customStyle += '#mgs-divider-sample .mgs-divider .divider-icon span, #mgs-divider-sample .mgs-divider .text-icon-container span.icon{width:'+icon_padding+'px; height:'+icon_padding+'px}';
+
+						$marginTop = icon_padding/2;
+						$customStyle += '#mgs-divider-sample .mgs-divider .divider-icon{height:'+icon_padding+'px; margin-top:-'+$marginTop+'px}';
+
+					}
+					if(icon_border!=''){
+						$customStyle += '#mgs-divider-sample .mgs-divider .divider-icon span, #mgs-divider-sample .mgs-divider .text-icon-container span.icon{border:1px solid '+icon_border+';}';
+					}
+				}
+				
+				if($('#show_text').prop("checked") == true && $('#show_icon').prop("checked") == true){
+					if(icon_font_size==''){
+						$customStyle += '#mgs-divider-sample .mgs-divider .text-icon-container span.icon{font-size:15px;}';
+						$customStyle += '#mgs-divider-sample .mgs-divider .text-icon-container span.icon::before{margin-top:-7.5px}';
+					}
+					
+					$textHeight = 20;
+					if(text_font_size!=''){
+						$textHeight = text_font_size;
+					}
+					$height = $textHeight;
+					$iconHeight = icon_padding;
+					if($height<$iconHeight){
+						$height = $iconHeight;
+					}
+					$marginTop = $height/2;
+					$top = $marginTop/2;
+					$customStyle += '#mgs-divider-sample .mgs-divider .divider-text{height:'+$height+'px; line-height:'+$height+'px; margin-top:-'+$marginTop+'px}';
+					
+					if(icon_padding>text_font_size){
+						$customStyle += '#mgs-divider-sample .mgs-divider .divider-text span.text{position:relative; top:-'+$top+'px; background:transparent}';
+					}
+				}
+				//alert($customStyle);
+				$('#divider-custom-css').html($customStyle);
+			})(jQuery);
+		});
+	}
+</script>

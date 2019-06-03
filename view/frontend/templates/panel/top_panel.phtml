@@ -1,0 +1,57 @@
+<?php $helper = $this->getHelper() ?>
+<?php $usePanel = $helper->acceptToUsePanel() ?>
+<?php if($helper->showButton()): ?>
+	<?php $panelStyleUrl = $helper->getMediaUrl().'mgs/fbuilder/css/panel.css'; ?>
+	<link  rel="stylesheet" type="text/css"  media="all" href="<?php echo $panelStyleUrl ?>" /> 
+<?php endif ?>
+<div class="panel wrapper top-panel" style="display:none">
+	<div class="panel header builder-panel">
+		<div class="left-content">
+			<?php if($helper->acceptToUsePanel()): ?>
+				<?php if($helper->isHomepage() || $helper->isCmsPage()): ?>
+
+					<button class="action subscribe primary btn btn-default btn-panel-confirm" type="button" onclick="setLocation('<?php echo $helper->getUrlBuilder()->getUrl('fbuilder/index/confirm',['store_id'=>$this->getStoreId(),'page_id'=>$this->getCmsPageId(), 'page'=>$this->getRequest()->getFullActionName(),'referrer'=>$helper->getCurrentBase64Url()]) ?>')"><i class="fa fa-check"></i> <span><?php echo __('Publish') ?></span></button>
+
+				<?php endif ?>
+			<?php endif ?>
+		</div>
+		<div class="right-content">
+			<div data-role="switcher" class="admin__actions-switch pull-right">
+				<?php if($usePanel): ?>
+					<input type="checkbox" class="admin__actions-switch-checkbox" value="1" id="active-fbuilder" checked="checked" onclick="setLocation('<?php echo $helper->getUrlBuilder()->getUrl('fbuilder/index/disable',['referrer'=>$helper->getCurrentBase64Url()]) ?>')"/>
+				<?php else: ?>
+					<input type="checkbox" class="admin__actions-switch-checkbox" value="0" id="active-fbuilder" onclick="setLocation('<?php echo $helper->getUrlBuilder()->getUrl('fbuilder/index/active',['referrer'=>$helper->getCurrentBase64Url()]) ?>')"/>
+				<?php endif; ?>
+				<label class="admin__actions-switch-label" for="active-fbuilder">
+					<span class="admin__actions-switch-text" data-text-on="<?php echo __('Yes') ?>" data-text-off="<?php echo __('No') ?>"></span>
+				</label>
+			</div>
+			<span class="builder-switcher-label pull-right"><?php echo __('Active CMS Builder') ?></span>
+		</div>
+	</div>
+</div>
+<?php if($usePanel): ?>
+	<script type="text/javascript">
+		require([
+			'jquery'
+		], function(jQuery){
+			(function($) {
+				$(document).ready(function(){
+					$('body').addClass('active-builder');
+				});
+			})(jQuery);
+		});
+	</script>
+<?php else: ?>
+	<script type="text/javascript">
+		require([
+			'jquery'
+		], function(jQuery){
+			(function($) {
+				$(document).ready(function(){
+					$('body').addClass('cms-page<?php echo $this->getCmsPageId() ?>');
+				});
+			})(jQuery);
+		});
+	</script>
+<?php endif ?>

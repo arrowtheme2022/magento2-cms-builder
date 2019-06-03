@@ -1,0 +1,177 @@
+<?php
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_DailyDeal
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+
+/** @var \Mageplaza\DailyDeal\Block\Widget $block */
+
+/** @var \Mageplaza\DailyDeal\Helper\Data $helperData */
+$helperData = $this->helper(\Mageplaza\DailyDeal\Helper\Data::class);
+$products      = $block->getProductCollection();
+?>
+
+<?php if (!empty($products) && $helperData->isEnabled()) : ?>
+	<?php $builderHelper = $this->helper('MGS\Fbuilder\Helper\Data'); ?>
+	<?php $blockId = rand() . time(); ?>
+	<?php $useSlider = $this->getUseSlider(); ?>
+	<?php $items = $perRowDefault = $this->getPerrow(); ?>
+	<?php $perRowTablet = $this->getPerrowTablet(); ?>
+	<?php $perRowMobile = $this->getPerrowMobile(); ?>
+	<?php if($useSlider && $this->hasData('number_row') && $this->getNumberRow()>1): ?>
+		<?php $slideMultiRow = true; ?>
+		<?php $slideBy = 1 ?>
+		<?php $columnCount = $perRowDefault * $this->getNumberRow(); ?>
+	<?php else: ?>
+		<?php $slideBy = $this->getSlideBy() ?>
+		<?php $slideMultiRow = false; ?>
+	<?php endif ?>
+
+	<?php if($useSlider): ?>
+			
+	<?php 
+		$settingMode = 'multiple'; 
+		$navPosition = $this->getNavigationPosition();
+
+		$navType = $builderHelper->getStoreConfig('fbuilder/'.$settingMode.'_slider/navigation');
+		if($navType=='image'){
+			$nextIcon = $builderHelper->getStoreConfig('fbuilder/'.$settingMode.'_slider/next_image');
+			$prevIcon = $builderHelper->getStoreConfig('fbuilder/'.$settingMode.'_slider/prev_image');
+			$navHtml = '["<span><img src=\''.$builderHelper->getMediaUrl().'mgs/fbuilder/slider/'.$prevIcon.'\'/></span>", "<span><img src=\''.$builderHelper->getMediaUrl().'mgs/fbuilder/slider/'.$nextIcon.'\'/></span>"]';
+		}else{
+			$nextIcon = $builderHelper->getStoreConfig('fbuilder/'.$settingMode.'_slider/next_font_class');
+			$prevIcon = $builderHelper->getStoreConfig('fbuilder/'.$settingMode.'_slider/prev_font_class');
+			$navHtml = '["<span><em class=\''.$prevIcon.'\'></em></span>", "<span><em class=\''.$nextIcon.'\'></em></span>"]';
+		}
+	?>
+	<?php endif ?>
+    <div class="mpdailydeal-widget-block">
+        <div class="widget-block-content">
+            <div class="products-deal-list products-grid grid">
+				<div id="mpdailydeal-list-items-<?= $blockId?>" class="items<?php if($useSlider): ?> owl-carousel mgs-owl-carousel mgs-carousel-<?php echo $settingMode ?> nav-type-<?php echo $navType ?> nav-position-<?php echo $navPosition ?> <?php if($this->getHideNav() && ((($items==1) && ($navPosition!='middle-outside')) || (($items>1) && ($navPosition=='middle-inside')))): ?> autohide-nav<?php endif ?> dot-position-<?php echo $this->getPaginationPosition()?><?php else: ?> line row-<?php echo $perRowDefault ?> row-tablet-<?php echo $perRowTablet ?> row-mobile-<?php echo $perRowMobile ?><?php endif ?>">
+					<?php $i=0; $j=0; foreach ($products as $_item) : $i++; ?>
+					
+					<?php if($slideMultiRow): ?>
+						<?php if ($j++ % $columnCount == 0): ?>
+						<div class="line">
+						<?php endif ?>
+					<?php endif ?>
+
+						<div class="widget-deal-product-item-info <?php if($slideMultiRow || !$this->hasData('number_row')): ?>col<?php endif ?>">
+							<?php $productUrl = $block->getProductUrl($block->getParentConfigurableProduct($_item->getId())); ?>
+							<a class="product photo product-item-photo"
+								<?php if ($block->label()->isLabelBottom()) : ?>
+									style=" position: relative; padding-bottom: 10px;"
+								<?php endif; ?> href="<?= $productUrl; ?>">
+								<?php if ($block->label()->getShowLabelConfig() == 3) : ?>
+									<div class="mpdailydeal-widget-label"
+										 style="background: <?= $block->label()->getBackgroundColor(); ?>;
+												 border: solid 1px <?= $block->label()->getBorderColor(); ?>;
+												 color: <?= $block->label()->getTextColor(); ?>;
+										 <?= $block->label()->getCssLabelOnImage(); ?>">
+										<?= $block->widgetLabel($_item->getId()); ?>
+									</div>
+								<?php endif; ?>
+								<?= $block->getImage($_item, 'recently_viewed_products_grid_content_widget')->toHtml(); ?>
+							</a>
+							<div class="product details deal-product-details">
+								<strong class="product name product-item-name">
+									<a title="<?= $block->escapeHtml($_item->getName()); ?>"
+									   href="<?= $productUrl ?>">
+										<?= $block->escapeHtml($_item->getName()) ?>
+									</a>
+								</strong>
+								<?php $final_price = number_format($helperData->getDealPrice($_item->getId()), 2); ?>
+								<span class="price">
+									<span class="price-box price-final_price"><?= $block->getProductPrice($_item); ?></span>
+								</span>
+								<?php if ($block->label()->getShowLabelConfig() == 2) : ?>
+									<br><span class="mpdailydeal-percent-underprice"
+											  style="background: <?= $block->label()->getBackgroundColor(); ?>;
+													  border: solid 1px <?= $block->label()->getBorderColor(); ?>;
+													  color: <?= $block->label()->getTextColor(); ?>;">
+										<span><?= $block->widgetLabel($_item->getId()); ?></span>
+									</span>
+								<?php endif; ?>
+							</div>
+						</div>
+						
+						<?php if($slideMultiRow): ?>
+							<?php if ($j % $columnCount == 0 || $j == count($products)): ?>
+							</div>
+							<?php endif ?>
+						<?php endif ?>
+					<?php endforeach ?>
+				</div>
+            </div>
+        </div>
+    </div>
+    <?php if($useSlider): ?>
+		<?php $autoPlay = $this->getAutoplay() ? 'true' : 'false'; ?>
+		<?php $stopAuto = $this->getStopAuto() ? 'true' : 'false'; ?>
+		<?php $nav = $this->getNavigation() ? 'true' : 'false'; ?>
+		<?php $dot = $this->getPagination() ? 'true' : 'false'; ?>
+		<?php $rtl = $this->getRtl() ? 'true' : 'false'; ?>
+		<?php $loop = $this->getLoop() ? 'true' : 'false'; ?>
+		<?php $slideBy = $slideBy ? $slideBy : 1; ?>
+		
+		<script type="text/javascript">
+			require([
+				'jquery',
+				'mgsowlcarousel'
+			], function ($) {
+				var owldeal<?php echo $blockId ?> = $('#mpdailydeal-list-items-<?= $blockId?>').owlCarousel({
+					<?php if($slideMultiRow): ?>
+						items: 1,
+					<?php else: ?>
+						items: <?php echo $perRowDefault; ?>,
+					<?php endif ?>
+					autoplay: <?php echo $autoPlay ?>,
+					autoplayHoverPause: <?php echo $stopAuto ?>,
+					nav: <?php echo $nav ?>,
+					dots: <?php echo $dot ?>,
+					slideBy: <?php echo $slideBy ?>,
+					rtl: <?php echo $rtl; ?>,
+					loop: <?php echo $loop; ?>,
+					<?php if(!$slideMultiRow):?>margin: <?php echo $this->getSlideMargin() ?>,<?php endif ?>
+					<?php if($navPosition=='top-left' || $navPosition=='top-right'): ?>
+						onInitialized: function(){
+							$("#mpdailydeal-list-items-<?= $blockId?> .owl-nav").attr('style', 'top:<?php echo $this->getNavTop() ?>px');
+						},
+					<?php endif ?>
+					<?php if(!$slideMultiRow): ?>
+					responsive:{
+						0:{
+							items:<?php echo $perRowMobile; ?>,
+							nav: false,
+						},
+						571:{
+							items:<?php echo $perRowTablet; ?>
+						},
+						1200:{
+							items:<?php echo $perRowDefault; ?>
+						}
+					},
+					<?php endif ?>
+					navText: <?php echo $navHtml ?>,
+					autoHeight:true
+				});
+			});
+		</script>
+	<?php endif ?>
+<?php endif; ?>

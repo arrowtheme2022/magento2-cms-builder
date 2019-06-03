@@ -1,0 +1,26 @@
+<?php $bannerImageUrl = $this->getImageUrl() ?>
+<?php if($bannerImageUrl!=''): ?>
+	<?php $builderHelper = $this->helper('MGS\Fbuilder\Helper\Data'); ?>
+	<div class="content-block promobanner-block">
+		<div class="mgs-promobanner promobanner <?php echo $this->getEffect() ?>" <?php if($this->getUrl()!=''): ?>onclick="location.href='<?php echo $this->getBannerUrl() ?>'"<?php endif ?>>
+			<a href="<?php echo $this->getBannerUrl() ?>">
+				<img alt="" src="<?php echo $bannerImageUrl ?>" class="banner-image"/>
+			</a>
+			
+			<?php if(($this->getFbuilderTextContent() != '') || ($this->getFbuilderButtonText() != '')): ?>
+				<div class="text<?php if($this->getTextAlign()!=''): ?> <?php echo $this->getTextAlign() ?><?php endif ?>">
+					<?php if($this->getFbuilderTextContent() != ''): ?>
+						<div class="banner-text"><?php echo $builderHelper->decodeHtmlTag($this->getFbuilderTextContent()) ?></div>
+					<?php endif ?>
+					<?php if($this->getFbuilderButtonText() != ''): ?>
+						<span class="banner-button">
+							<button <?php if($this->getUrl()!=''): ?>onclick="location.href='<?php echo $this->getBannerUrl() ?>'"<?php endif ?> class="btn action primary btn-promo-banner"><span><?php echo $builderHelper->decodeHtmlTag($this->getFbuilderButtonText()) ?></span></button>
+						</span>
+					<?php endif ?>
+				</div>
+			<?php endif ?>
+		</div>
+	</div>
+<?php else: ?>
+	<div class="message info empty"><div><?php echo __('Have no banner to show.') ?></div></div>
+<?php endif ?>

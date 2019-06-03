@@ -1,0 +1,77 @@
+<?php $content = $this->getContent() ?>
+<div id="buttonscms_block_form_content" class="buttons-set">
+	<button type="button" class="scalable action-show-hide btn btn-default action" style="" id="togglecms_block_form_content">
+		<span><span><span><?php echo __('Show / Hide Editor') ?></span></span></span>
+	</button>
+</div>
+
+<textarea name="content" title="" data-ui-id="form-element-content" id="cms_block_form_content" class="textarea required-entry" rows="20" cols="15" style="" aria-hidden="true"><?php echo $content ?></textarea>
+
+<script type="text/javascript">
+	//
+		openEditorPopup = function(url, name, specs, parent) {
+			if ((typeof popups == "undefined") || popups[name] == undefined || popups[name].closed) {
+				if (typeof popups == "undefined") {
+					popups = new Array();
+				}
+				var opener = (parent != undefined ? parent : window);
+				popups[name] = opener.open(url, name, specs);
+			} else {
+				popups[name].focus();
+			}
+			return popups[name];
+		}
+
+		closeEditorPopup = function(name) {
+			if ((typeof popups != "undefined") && popups[name] != undefined && !popups[name].closed) {
+				popups[name].close();
+			}
+		}
+	//    
+</script>
+
+<script type="text/javascript">
+	window.tinyMCE_GZ = window.tinyMCE_GZ || {}; 
+	window.tinyMCE_GZ.loaded = true;
+	require([
+		"jquery", 
+		"mage/translate", 
+		"mage/adminhtml/events", 
+		"mage/adminhtml/wysiwyg/tiny_mce/setup", 
+		"mage/adminhtml/wysiwyg/widget"
+	], function(jQuery){
+			var abc = 1;
+			var wysiwygcms_block_form_content = new tinyMceWysiwygSetup(
+			"cms_block_form_content", {
+				"enabled":true,
+				"hidden":false,
+				"use_container":false,
+				"add_variables":false,
+				"add_widgets":true,
+				"no_display":false,
+				"encode_directives":true,
+				"baseStaticUrl":"<?php echo str_replace('https:','',str_replace('http:','',$this->getStaticUrl())) ?>",
+				"baseStaticDefaultUrl":"<?php echo str_replace('https:','',str_replace('http:','',$this->getStaticUrl())) ?>",
+				"directives_url":"<?php echo str_replace('https:','',str_replace('http:','',$this->getUrl('fbuilder/wysiwyg/directive'))) ?>",
+				"popup_css":"",
+				"content_css":"",
+				"width":"100%",
+				"height":"500px",
+				"directives_url_quoted":"<?php echo str_replace('https:','',str_replace('http:','',$this->getUrl('fbuilder/wysiwyg/directive'))) ?>",
+				"add_images":true,
+				"files_browser_window_width":"1000",
+				"files_browser_window_height":"600",
+				"widget_plugin_src":"",
+				"widget_placeholders": <?php echo json_encode($this->getWidgetPlaceHolder()) ?>,
+				"widget_window_url":""
+			});
+			
+			
+			wysiwygcms_block_form_content.setup("exact");
+			editorFormValidationHandler = wysiwygcms_block_form_content.onFormValidation.bind(wysiwygcms_block_form_content);
+			Event.observe("togglecms_block_form_content", "click", wysiwygcms_block_form_content.toggle.bind(wysiwygcms_block_form_content));
+			varienGlobalEvents.attachEventHandler("formSubmit", editorFormValidationHandler);
+			varienGlobalEvents.clearEventHandlers("open_browser_callback");
+			varienGlobalEvents.attachEventHandler("open_browser_callback", wysiwygcms_block_form_content.openFileBrowser);
+	});
+</script>

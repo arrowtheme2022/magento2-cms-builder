@@ -1,0 +1,62 @@
+<?php $tabs = $this->getTabs() ?>
+<?php $labels = $this->getLabels() ?>
+
+<div class="content-block mgs-product-tab">
+	<?php $blockId = rand() . time(); ?>
+
+	<?php $extraClass = 'tab-'.$this->getTabStyle().' tab-align-'.$this->getTabAlign() ?>
+	<?php if($this->getTabFontBold()): ?>
+		<?php $extraClass .= ' tab-font-bold' ?>
+	<?php endif ?>
+	<?php if($this->getTabItalic()): ?>
+		<?php $extraClass .= ' tab-italic' ?>
+	<?php endif ?>
+	<?php if($this->getTabUppercase()): ?>
+		<?php $extraClass .= ' tab-uppercase' ?>
+	<?php endif ?>
+	
+	<div class="product data items mgs-tab <?php echo $extraClass?>" data-mage-init='{"tabs":{"openedState":"active"}}'>
+		<?php $k=0; foreach($tabs as $key=>$tab): $k++ ?>
+			<div class="data item title item<?php echo $k ?><?php if(count($tabs)==$k): ?> last-item<?php endif ?>" aria-labeledby="tab-label-<?php echo $tab.$blockId ?>-title" data-role="collapsible" id="tab-label-<?php echo $tab.$blockId ?>">
+				<a class="data switch" tabindex="-1" data-toggle="switch" href="#<?php echo $tab.$blockId ?>" id="tab-label-<?php echo $tab.$blockId ?>-title">
+					<?php echo $labels[$key]; ?>
+				</a>
+			</div>
+			<div class="data item content" id="<?php echo $tab.$blockId ?>" data-role="content"<?php if($k!=1): ?> style="display:none"<?php endif ?>>
+				<?php 
+					switch ($tab){
+						case "mgs_new_products_tabs":
+							$blockClass = 'MGS\Fbuilder\Block\Products\NewProducts';
+							$type = 'new';
+							$attribute = NULL;
+							break;
+						case "mgs_sale_products_tabs":
+							$blockClass = 'MGS\Fbuilder\Block\Products\Sale';
+							$type = 'sale';
+							$attribute = NULL;
+							break;
+						case "mgs_rate_products_tabs":
+							$blockClass = 'MGS\Fbuilder\Block\Products\Rate';
+							$type = 'rate';
+							$attribute = NULL;
+							break;
+						default:
+							$blockClass = 'MGS\Fbuilder\Block\Products\Attributes';
+							$type = $attribute = $tab;
+							break;
+					}
+					
+					$html = $this->getLayout()
+						->createBlock($blockClass)
+						->setData($this->getData())
+						->setAttribute($attribute)
+						->setTabAttribute($attribute)
+						->setTabType($type)
+						->setTemplate('MGS_Fbuilder::products/tabs/items.phtml')
+						->toHtml();
+					echo $html;
+				?>
+			</div>
+		<?php endforeach ?>
+	</div>
+</div>

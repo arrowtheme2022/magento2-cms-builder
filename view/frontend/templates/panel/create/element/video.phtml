@@ -1,0 +1,191 @@
+<?php $helper = $this->getHelper() ?>
+<?php $params = $this->getParams() ?>
+<?php $exist = false ?>
+<?php $child = null ?>
+<div class="edit-static-form">
+	<div class="line">
+		<div class="col-des-12 builder-title">
+			<h2><?php echo __('Video Block') ?></h2>
+		</div>
+	</div>
+	<form id="section-form" enctype="multipart/form-data" method="POST" action="<?php echo $this->getUrl('fbuilder/element/save') ?>" data-hasrequired="<?php echo __('* Required Fields') ?>" data-mage-init='{"validation":{}}'>
+		<input type="hidden" name="page_id" value="<?php echo $this->getRequest()->getParam('page_id') ?>">
+		<input id="block_type" type="hidden" name="type" value="video">
+		<input id="block_block_name" type="hidden" name="block_name" value="<?php echo $params['block'] ?>">
+		<?php if(isset($params['id'])): ?>
+			<?php 
+				$child =  $this->getModel('MGS\Fbuilder\Model\Child')->load($params['id']);
+				$exist = true;
+				$settings = json_decode($child->getSetting(), true);
+			?>
+			<input type="hidden" name="child_id" value="<?php echo $params['id'] ?>">
+		<?php endif ?>
+		
+		<div class="mgs-tab data items product" data-mage-init='{"tabs":{"openedState":"active"}}'>
+			<?php 
+				echo $this->getLayout()->createBlock('Magento\Framework\View\Element\Template')
+					->setExist($exist)
+					->setBuilderChild($child)
+					->setDisableContent(1)
+					->setBuilderHelper($helper)
+					->setTemplate('MGS_Fbuilder::panel/create/element/widgets/general_tab.phtml')->toHtml() ;
+			?>
+			
+			<div class="data item title" aria-labeledby="tab-label-video-title" data-role="collapsible" id="tab-label-video">
+				<a class="data switch" tabindex="-1" data-toggle="switch" href="#video" id="tab-label-video-title">
+					<?php echo __('Video Config') ?>
+				</a>
+			</div>
+			
+			<div class="data item content" id="video" data-role="content" style="display:none">
+
+						
+				<div class="form-group line">
+					<label for="video_url" class="col-tb-3 control-label"><?php echo __('Video Url') ?></label>
+					<div class="col-tb-9">
+						<input type="text" id="video_url" class="input-text required-entry" name="setting[video_url]"<?php if($exist): ?> value="<?php echo $settings['video_url'] ?>"<?php endif ?> />
+						<span class="note"><?php echo __('Youtube video url or Vimeo video url') ?></span>
+					</div>
+				</div>
+				
+				<div class="form-group line">
+					<label for="full_width" class="control-label col-tb-3"><?php echo __('Full Width') ?></label>
+					<div class="col-tb-9">
+						<div class="line">
+							<div class="col-tb-2">
+								<div class="admin__actions-switch" data-role="switcher">
+									<input type="checkbox"<?php if($exist && $settings['full_width']): ?> checked="checked"<?php endif ?> value="1" name="setting[full_width]" id="full_width" class="admin__actions-switch-checkbox" onclick="fullWidth()">
+									<label for="full_width" class="admin__actions-switch-label">
+										<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+									</label>
+								</div>
+							</div>
+							
+							<div class="col-tb-4 width-height">
+								<input type="text" id="video_width" class="input-text validate-number" name="setting[video_width]"<?php if($exist): ?> value="<?php echo $settings['video_width'] ?>"<?php endif ?> placeholder="<?php echo __('Width:px') ?>"/>
+							</div>
+							
+							<div class="col-tb-4 width-height">
+								<input type="text" id="video_height" class="input-text validate-number" name="setting[video_height]"<?php if($exist): ?> value="<?php echo $settings['video_height'] ?>"<?php endif ?> placeholder="<?php echo __('Height:px') ?>"/>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+				
+				<div class="form-group line">
+					<label for="autoplay" class="control-label col-tb-3"><?php echo __('Autoplay') ?></label>
+					<div class="col-tb-9">
+						<div class="admin__actions-switch" data-role="switcher">
+							<input type="checkbox"<?php if($exist && $settings['autoplay']): ?> checked="checked"<?php endif ?> value="1" name="setting[autoplay]" id="autoplay" class="admin__actions-switch-checkbox">
+							<label for="autoplay" class="admin__actions-switch-label">
+								<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+							</label>
+						</div>
+					</div>
+				</div>
+				
+				<div class="form-group line">
+					<label for="hide_info" class="control-label col-tb-3"><?php echo __('Hide video information') ?></label>
+					<div class="col-tb-9">
+						<div class="admin__actions-switch" data-role="switcher">
+							<input type="checkbox"<?php if($exist && $settings['hide_info']): ?> checked="checked"<?php endif ?> value="1" name="setting[hide_info]" id="hide_info" class="admin__actions-switch-checkbox">
+							<label for="hide_info" class="admin__actions-switch-label">
+								<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+							</label>
+						</div>
+					</div>
+				</div>
+				
+				<div class="form-group line">
+					<label for="hide_control" class="control-label col-tb-3"><?php echo __('Hide video controls') ?></label>
+					<div class="col-tb-9">
+						<div class="admin__actions-switch" data-role="switcher">
+							<input type="checkbox"<?php if($exist && $settings['hide_control']): ?> checked="checked"<?php endif ?> value="1" name="setting[hide_control]" id="hide_control" class="admin__actions-switch-checkbox">
+							<label for="hide_control" class="admin__actions-switch-label">
+								<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+							</label>
+						</div>
+					</div>
+				</div>
+				
+				<div class="form-group line">
+					<label for="loop" class="control-label col-tb-3"><?php echo __('Loop video') ?></label>
+					<div class="col-tb-9">
+						<div class="admin__actions-switch" data-role="switcher">
+							<input type="checkbox"<?php if($exist && $settings['loop']): ?> checked="checked"<?php endif ?> value="1" name="setting[loop]" id="loop" class="admin__actions-switch-checkbox">
+							<label for="loop" class="admin__actions-switch-label">
+								<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+							</label>
+						</div>
+					</div>
+				</div>
+				
+				<div class="form-group line">
+					<label for="mute" class="control-label col-tb-3"><?php echo __('Mute') ?></label>
+					<div class="col-tb-9">
+						<div class="admin__actions-switch" data-role="switcher">
+							<input type="checkbox"<?php if($exist && $settings['mute']): ?> checked="checked"<?php endif ?> value="1" name="setting[mute]" id="mute" class="admin__actions-switch-checkbox" onclick="changeAccordionStyle()">
+							<label for="mute" class="admin__actions-switch-label">
+								<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+							</label>
+						</div>
+					</div>
+				</div>
+				
+			</div>
+		
+			<?php if($exist): ?>
+				<?php 
+					echo $this->getLayout()->createBlock('Magento\Framework\View\Element\Template')
+						->setExist($exist)
+						->setBuilderChild($child)
+						->setBuilderHelper($helper)
+						->setTemplate('MGS_Fbuilder::panel/create/element/widgets/code_tab.phtml')->toHtml() ;
+				?>
+				
+			<?php endif ?>
+		</div>
+		
+		<div class="line">
+			<div class="form-group">
+				<div class="col-des-12 builder-action">
+					<div class="buttons">
+						<?php if(!$exist): ?>
+							<button type="button" class="action" onclick="history.go(-1)"><span><?php echo __('Back') ?></span></button>
+						<?php endif ?>
+						<button type="submit" class="action primary"><span><?php echo __('Submit') ?></span></button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+
+<script type="text/javascript">
+	require([
+		'jquery',
+	], function(jQuery){
+		(function($) {
+			$(document).ready(function(){
+				fullWidth();
+			});
+		})(jQuery);
+	});
+	
+	function fullWidth(){
+		require([
+			'jquery',
+		], function(jQuery){
+			(function($) {
+				if($('#full_width').length){
+					if($('#full_width').prop("checked") == true){
+						$('.width-height').hide();
+					}else{
+						$('.width-height').show();
+					}
+				}
+			})(jQuery);
+		});
+	}
+</script>

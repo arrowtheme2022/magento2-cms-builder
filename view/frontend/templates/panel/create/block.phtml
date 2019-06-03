@@ -1,0 +1,347 @@
+<?php $params = $this->getRequest()->getParams() ?>
+<div class="edit-static-form">
+	
+	<div class="line">
+		<div class="col-des-12 builder-title">
+			<h2><?php echo __('Select Block') ?></h2>
+		</div>
+	</div>
+
+	<div class="line">
+		<div class="col-des-12 no-padding-right">
+			<div class="bs-glyphicons">
+				<div class="block-group">
+					<h3><?php echo __('Static Content') ?></h3>
+					<ul class="bs-glyphicons-list">
+						<li id="heading-item" onclick="setLocation('<?php echo $this->getUrl('fbuilder/create/element', ['page_id'=>$this->getRequest()->getParam('page_id'), 'block'=>$params['name'], 'type'=>'heading']) ?>')">
+							<span class="glyphicon glyphicon-font"></span>
+							<span class="glyphicon-class"><?php echo __('Heading') ?></span>
+						</li>
+						<li id="static-item" onclick="setLocation('<?php echo $this->getUrl('fbuilder/create/element', ['page_id'=>$this->getRequest()->getParam('page_id'), 'block'=>$params['name'], 'type'=>'static']) ?>')">
+							<span class="glyphicon glyphicon-text-width"></span>
+							<span class="glyphicon-class"><?php echo __('Text content & Images') ?></span>
+						</li>
+						
+						<li id="image" class="commercial-version">
+							<span class="glyphicon glyphicon-picture"></span>
+							<span class="glyphicon-class"><?php echo __('Images') ?></span>
+						</li>
+						
+						<li id="owl-banner-item" class="commercial-version">
+							<span class="glyphicon glyphicon-picture"></span>
+							<span class="glyphicon-class"><?php echo __('OWL Carousel Slider') ?></span>
+						</li>
+						
+						<li id="masonry-item" class="commercial-version">
+							<span class="glyphicon glyphicon-picture"></span>
+							<span class="glyphicon-class"><?php echo __('Masonry Gallery') ?></span>
+						</li>
+
+						<li id="banner-item" onclick="setLocation('<?php echo $this->getUrl('fbuilder/create/element', ['page_id'=>$this->getRequest()->getParam('page_id'), 'block'=>$params['name'], 'type'=>'promo_banner']) ?>')">
+							<span class="glyphicon glyphicon-gift"></span>
+							<span class="glyphicon-class"><?php echo __('Promo Banner') ?></span>
+						</li>
+						
+						<li id="profile-item" class="commercial-version">
+							<span class="glyphicon glyphicon-user"></span>
+							<span class="glyphicon-class"><?php echo __('Profile') ?></span>
+						</li>
+						
+						<li id="accordion-item" class="commercial-version">
+							<span class="glyphicon glyphicon-align-justify"></span>
+							<span class="glyphicon-class"><?php echo __('Accordion') ?></span>
+						</li>
+						
+						<li id="video-item" onclick="setLocation('<?php echo $this->getUrl('fbuilder/create/element', ['page_id'=>$this->getRequest()->getParam('page_id'), 'block'=>$params['name'], 'type'=>'video']) ?>')">
+							<span class="fa fa-youtube-play" style="font-size:30px; margin:5px 0"></span>
+							<span class="glyphicon-class"><?php echo __('Video') ?></span>
+						</li>
+						
+						<li id="map-item" class="commercial-version">
+							<span class="glyphicon glyphicon-map-marker"></span>
+							<span class="glyphicon-class"><?php echo __('Google Map') ?></span>
+						</li>
+						
+						<li id="box-item" class="commercial-version">
+							<span class="glyphicon glyphicon-ok-sign"></span>
+							<span class="glyphicon-class"><?php echo __('Content Box') ?></span>
+						</li>
+						
+						<li id="counter-item" onclick="setLocation('<?php echo $this->getUrl('fbuilder/create/element', ['page_id'=>$this->getRequest()->getParam('page_id'), 'block'=>$params['name'], 'type'=>'counter_box']) ?>')">
+							<span class="glyphicon glyphicon-arrow-up"></span>
+							<span class="glyphicon-class"><?php echo __('Counter Box') ?></span>
+						</li>
+						
+						<li id="counter-item" class="commercial-version">
+							<span class="glyphicon glyphicon-arrow-down"></span>
+							<span class="glyphicon-class"><?php echo __('Countdown Box') ?></span>
+						</li>
+						
+						<li id="chart-item" class="commercial-version">
+							<span class="fa fa-bar-chart" style="margin:5px 0 10px; font-size:25px"></span>
+							<span class="glyphicon-class"><?php echo __('Chart') ?></span>
+						</li>
+						
+						<li id="progress-item" class="commercial-version">
+							<span class="glyphicon glyphicon-tasks"></span>
+							<span class="glyphicon-class"><?php echo __('Progress Bar') ?></span>
+						</li>
+						
+						<li id="circle-item" class="commercial-version">
+							<span class="fa fa-circle-o-notch" style="margin:5px 0 10px; font-size:23px"></span>
+							<span class="glyphicon-class"><?php echo __('Progress Circle') ?></span>
+						</li>
+						
+						<li id="divider-item" onclick="setLocation('<?php echo $this->getUrl('fbuilder/create/element', ['page_id'=>$this->getRequest()->getParam('page_id'), 'block'=>$params['name'], 'type'=>'divider']) ?>')">
+							<span class="fa fa-ellipsis-h" style="margin:5px 0 10px; font-size:23px"></span>
+							<span class="glyphicon-class"><?php echo __('Divider') ?></span>
+						</li>
+						
+						<li id="list-item" class="commercial-version">
+							<span class="glyphicon glyphicon-th-list"></span>
+							<span class="glyphicon-class"><?php echo __('List') ?></span>
+						</li>
+						
+						<li id="button-item" class="commercial-version">
+							<span class="glyphicon glyphicon-link"></span>
+							<span class="glyphicon-class"><?php echo __('Button') ?></span>
+						</li>
+						
+						<li id="table-item" class="commercial-version">
+							<span class="glyphicon glyphicon-th"></span>
+							<span class="glyphicon-class"><?php echo __('Table') ?></span>
+						</li>
+						
+						<li id="static-tabs-item" class="commercial-version">
+							<span class="fa fa-object-ungroup"></span>
+							<span class="glyphicon-class"><?php echo __('Tabs') ?></span>
+						</li>
+						
+						<li id="modal-item" class="commercial-version">
+							<span class="fa fa-window-maximize" style="font-size:22px; margin-bottom:8px"></span>
+							<span class="glyphicon-class"><?php echo __('Modal Popup') ?></span>
+						</li>
+						
+						<li id="form-item" class="commercial-version">
+							<span class="fa fa-object-group"></span>
+							<span class="glyphicon-class"><?php echo __('Form') ?></span>
+						</li>
+					</ul>
+				</div>
+				
+				<div class="block-group">
+					<h3><?php echo __('Catalog') ?></h3>
+					<ul class="bs-glyphicons-list" id="list-item">
+						<li id="snapppt-item" onclick="setLocation('<?php echo $this->getUrl('fbuilder/create/element', ['page_id'=>$this->getRequest()->getParam('page_id'), 'block'=>$params['name'], 'type'=>'category_list']) ?>')">
+							<span class="glyphicon glyphicon-list-alt"></span>
+							<span class="glyphicon-class"><?php echo __('Category List') ?></span>
+						</li>
+						
+						<li id="category-product" class="commercial-version">
+							<span class="glyphicon glyphicon-align-center"></span>
+							<span class="glyphicon-class"><?php echo __('Category Products') ?></span>
+						</li>
+
+						<li id="new-item" onclick="setLocation('<?php echo $this->getUrl('fbuilder/create/element', ['page_id'=>$this->getRequest()->getParam('page_id'), 'block'=>$params['name'], 'type'=>'new_products']) ?>')">
+							<span class="glyphicon glyphicon-fire"></span>
+							<span class="glyphicon-class"><?php echo __('New Products') ?></span>
+						</li>
+						
+						<li id="attribute-item" class="commercial-version">
+							<span class="glyphicon glyphicon-flag"></span>
+							<span class="glyphicon-class"><?php echo __('Products by Attribute') ?></span>
+						</li>
+						
+						<li id="sale-item" class="commercial-version">
+							<span class="glyphicon glyphicon-certificate"></span>
+							<span class="glyphicon-class"><?php echo __('Sale Products') ?></span>
+						</li>
+						
+						<li id="rate-item" onclick="setLocation('<?php echo $this->getUrl('fbuilder/create/element', ['page_id'=>$this->getRequest()->getParam('page_id'), 'block'=>$params['name'], 'type'=>'rate']) ?>')">
+							<span class="glyphicon glyphicon-star"></span>
+							<span class="glyphicon-class"><?php echo __('Top Rate Products') ?></span>
+						</li>
+						
+						
+						
+						<li id="deals-item" class="commercial-version">
+							<span class="glyphicon glyphicon-tag"></span>
+							<span class="glyphicon-class"><?php echo __('Deals') ?></span>
+						</li>
+						
+						<li id="tabs-item" class="commercial-version">
+							<span class="fa fa-object-ungroup"></span>
+							<span class="glyphicon-class"><?php echo __('Product Tabs') ?></span>
+						</li>
+						
+						<li id="special_product" onclick="setLocation('<?php echo $this->getUrl('fbuilder/create/element', ['page_id'=>$this->getRequest()->getParam('page_id'), 'block'=>$params['name'], 'type'=>'special_product']) ?>')">
+							<span class="glyphicon glyphicon-qrcode"></span>
+							<span class="glyphicon-class"><?php echo __('Single Product') ?></span>
+						</li>
+						
+
+					</ul>
+				</div>
+			
+				<div class="block-group">
+					<h3><?php echo __('Social') ?></h3>
+					<ul class="bs-glyphicons-list">
+						<li id="facebook-item" onclick="setLocation('<?php echo $this->getUrl('fbuilder/create/element', ['page_id'=>$this->getRequest()->getParam('page_id'), 'block'=>$params['name'], 'type'=>'facebook']) ?>')">
+							<span class="fa fa-facebook-square" style="font-size:30px"></span>
+							<span class="glyphicon-class"><?php echo __('Facebook Fanbox') ?></span>
+						</li>
+						
+						<li id="twitter-item" onclick="setLocation('<?php echo $this->getUrl('fbuilder/create/element', ['page_id'=>$this->getRequest()->getParam('page_id'), 'block'=>$params['name'], 'type'=>'twitter']) ?>')">
+							<span class="fa fa-twitter-square" style="font-size:30px"></span>
+							<span class="glyphicon-class"><?php echo __('Twitter Timeline') ?></span>
+						</li>
+						
+						<li id="instagram-item" class="commercial-version">
+							<span class="glyphicon glyphicon-camera" style="font-size:30px"></span>
+							<span class="glyphicon-class"><?php echo __('Instagram') ?></span>
+						</li>
+						<li id="snapppt-item" class="commercial-version">
+							<span class="fa fa-instagram" style="font-size:30px"></span>
+							<span class="glyphicon-class"><?php echo __('Instagram Shop') ?></span>
+						</li>
+					</ul>
+				</div>
+			
+				<?php if($this->isModuleActive('MGS_Lookbook') || $this->isModuleActive('MGS_Blog') || $this->isModuleActive('MGS_Portfolio') || $this->isModuleActive('MGS_Testimonial')): ?>
+					<div class="block-group">
+						<h3><?php echo __('Extensions') ?></h3>
+						<ul class="bs-glyphicons-list">
+							<?php if($this->isModuleActive('MGS_Lookbook')): ?>
+								<li id="lookbook-item" onclick="setLocation('<?php echo $this->getUrl('fbuilder/create/element', ['page_id'=>$this->getRequest()->getParam('page_id'), 'block'=>$params['name'], 'type'=>'lookbook']) ?>')">
+									<span class="glyphicon glyphicon-remove-circle" style="transform: rotate(45deg); -webkit-transform: rotate(45deg); -ms-transform: rotate(45deg);"></span>
+									<span class="glyphicon-class"><?php echo __('Lookbook') ?></span>
+								</li>
+								
+								<li id="lookbook-slider-item" onclick="setLocation('<?php echo $this->getUrl('fbuilder/create/element', ['page_id'=>$this->getRequest()->getParam('page_id'), 'block'=>$params['name'], 'type'=>'lookbook_slider']) ?>')">
+									<span class="glyphicon glyphicon-picture"></span>
+									<span class="glyphicon-class"><?php echo __('Lookbook Slider') ?></span>
+								</li>
+							<?php endif ?>
+							
+							<?php if($this->isModuleActive('MGS_Blog')): ?>
+								<li id="blog-item" onclick="setLocation('<?php echo $this->getUrl('fbuilder/create/element', ['page_id'=>$this->getRequest()->getParam('page_id'), 'block'=>$params['name'], 'type'=>'latest_post']) ?>')">
+									<span class="glyphicon glyphicon-comment"></span>
+									<span class="glyphicon-class"><?php echo __('Latest Post') ?></span>
+								</li>
+							<?php endif ?>
+							
+							<?php if($this->isModuleActive('MGS_Portfolio')): ?>
+								<li id="blog-item" onclick="setLocation('<?php echo $this->getUrl('fbuilder/create/element', ['page_id'=>$this->getRequest()->getParam('page_id'), 'block'=>$params['name'], 'type'=>'portfolio']) ?>')">
+									<span class="glyphicon glyphicon-folder-open"></span>
+									<span class="glyphicon-class"><?php echo __('Portfolio') ?></span>
+								</li>
+							<?php endif ?>
+							
+							<?php if($this->isModuleActive('MGS_Testimonial')): ?>
+								<li id="blog-item" onclick="setLocation('<?php echo $this->getUrl('fbuilder/create/element', ['page_id'=>$this->getRequest()->getParam('page_id'), 'block'=>$params['name'], 'type'=>'testimonial']) ?>')">
+									<span class="fa fa-quote-left"></span>&nbsp;&nbsp;<span class="fa fa-quote-right"></span>
+									<span class="glyphicon-class"><?php echo __('Testimonial') ?></span>
+								</li>
+							<?php endif ?>
+						</ul>
+					</div>
+				<?php endif ?>
+				
+				<div class="block-group">
+					<h3><?php echo __('Mageplaza Extensions') ?></h3>
+					<p class="note"><?php echo __('Here are the extensions from Mageplaza that we recommend you use:') ?></p>
+					<ul class="bs-glyphicons-list">
+						<?php if($this->isModuleActive('Mageplaza_BannerSlider')): ?>
+							<li id="mageplaza_slider-item" onclick="setLocation('<?php echo $this->getUrl('fbuilder/create/element', ['page_id'=>$this->getRequest()->getParam('page_id'), 'block'=>$params['name'], 'type'=>'mageplaza_slider']) ?>')">
+								<span class="glyphicon glyphicon-picture"></span>
+								<span class="glyphicon-class"><?php echo __('Banner Slider') ?></span>
+							</li>
+							
+						<?php else: ?>
+							<li id="mageplaza_slider-item">
+								<a href="https://www.mageplaza.com/magento-2-banner-slider-extension/" target="_blank">
+									<span class="glyphicon glyphicon-picture"></span>
+									<span class="glyphicon-class"><?php echo __('Banner Slider') ?></span>
+								</a>
+							</li>
+						<?php endif ?>
+						
+						<?php if($this->isModuleActive('Mageplaza_Blog')): ?>
+							<li id="mageplaza_blog-item" onclick="setLocation('<?php echo $this->getUrl('fbuilder/create/element', ['page_id'=>$this->getRequest()->getParam('page_id'), 'block'=>$params['name'], 'type'=>'mageplaza_blog']) ?>')">
+								<span class="glyphicon glyphicon-comment"></span>
+								<span class="glyphicon-class"><?php echo __('Blog Post') ?></span>
+							</li>
+							
+						<?php else: ?>
+							<li id="mageplaza_blog-item">
+								<a href="https://www.mageplaza.com/magento-2-blog-extension/" target="_blank">
+									<span class="glyphicon glyphicon-comment"></span>
+									<span class="glyphicon-class"><?php echo __('Blog Post') ?></span>
+								</a>
+							</li>
+						<?php endif ?>
+						<?php if($this->isModuleActive('Mageplaza_CountdownTimer')): ?>
+							<li id="mageplaza_timer-item" onclick="setLocation('<?php echo $this->getUrl('fbuilder/create/element', ['page_id'=>$this->getRequest()->getParam('page_id'), 'block'=>$params['name'], 'type'=>'mageplaza_countdown']) ?>')">
+								<span class="glyphicon glyphicon-arrow-down"></span>
+								<span class="glyphicon-class"><?php echo __('Countdown Timer') ?></span>
+							</li>
+							
+						<?php else: ?>
+							<li id="mageplaza_timer-item">
+								<a href="https://www.mageplaza.com/magento-2-countdown-timer" target="_blank">
+									<span class="glyphicon glyphicon-arrow-down"></span>
+									<span class="glyphicon-class"><?php echo __('Countdown Timer') ?></span>
+								</a>
+							</li>
+						<?php endif ?>
+						
+						<?php if($this->isModuleActive('Mageplaza_DailyDeal')): ?>
+							<li id="mageplaza_deal-item" onclick="setLocation('<?php echo $this->getUrl('fbuilder/create/element', ['page_id'=>$this->getRequest()->getParam('page_id'), 'block'=>$params['name'], 'type'=>'mageplaza_deal']) ?>')">
+								<span class="glyphicon glyphicon-tag"></span>
+								<span class="glyphicon-class"><?php echo __('Daily Deal') ?></span>
+							</li>
+							
+						<?php else: ?>
+							<li id="mageplaza_deal-item">
+								<a href="https://www.mageplaza.com/magento-2-daily-deal-extension" target="_blank">
+									<span class="glyphicon glyphicon-tag"></span>
+									<span class="glyphicon-class"><?php echo __('Daily Deal') ?></span>
+								</a>
+							</li>
+						<?php endif ?>
+						
+						<?php if($this->isModuleActive('Mageplaza_Shopbybrand')): ?>
+							<li id="mageplaza_deal-item" onclick="setLocation('<?php echo $this->getUrl('fbuilder/create/element', ['page_id'=>$this->getRequest()->getParam('page_id'), 'block'=>$params['name'], 'type'=>'mageplaza_brand']) ?>')">
+								<span class="glyphicon glyphicon-th"></span>
+								<span class="glyphicon-class"><?php echo __('Brands') ?></span>
+							</li>
+							
+						<?php else: ?>
+							<li id="mageplaza_deal-item">
+								<a href="https://www.mageplaza.com/magento-2-shop-by-brand" target="_blank">
+									<span class="glyphicon glyphicon-th"></span>
+									<span class="glyphicon-class"><?php echo __('Brands') ?></span>
+								</a>
+							</li>
+						<?php endif ?>
+						
+						<?php if($this->isModuleActive('Mageplaza_Productslider')): ?>
+							<li id="mageplaza_deal-item" onclick="setLocation('<?php echo $this->getUrl('fbuilder/create/element', ['page_id'=>$this->getRequest()->getParam('page_id'), 'block'=>$params['name'], 'type'=>'mageplaza_productslider']) ?>')">
+								<span class="glyphicon glyphicon-flag"></span>
+								<span class="glyphicon-class"><?php echo __('Product Slider') ?></span>
+							</li>
+							
+						<?php else: ?>
+							<li id="mageplaza_deal-item">
+								<a href="https://www.mageplaza.com/magento-2-product-slider-extension" target="_blank">
+									<span class="glyphicon glyphicon-flag"></span>
+									<span class="glyphicon-class"><?php echo __('Product Slider') ?></span>
+								</a>
+							</li>
+						<?php endif ?>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

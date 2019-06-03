@@ -1,0 +1,540 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © 2015 Magento. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+	<system>
+		<section id="fbuilder" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="1" showInStore="1">
+			<class>separator-top</class>
+			<label>Front-end Builder</label>
+			<tab>mgs</tab>
+			<resource>MGS_Fbuilder::config_fbuilder</resource>
+			<group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>General</label>
+				<field id="is_enabled" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Active Front-end Builder</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+				</field>
+				
+				<field id="disable_widgets" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label><![CDATA[Disabled Widgets on Homepage & CMS Pages]]></label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+					<comment><![CDATA[If you choose "Yes": all widgets for homepage and cms pages added from <b>CONTENT > Widgets</b> will not visible.]]></comment>
+				</field>
+				
+				<field id="container_width" type="text" translate="label" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="40">
+                    <label>Width of section container</label>
+					<validate>validate-number</validate>
+					<comment><![CDATA[px. Default is 1240px. <span style="color:#ff0000">Only available for commercial version.</span>]]></comment>
+                </field>
+				
+				<field id="column_padding" type="text" translate="label" showInDefault="1" showInStore="1" showInWebsite="1" sortOrder="40">
+                    <label>Columns padding</label>
+					<validate>validate-number</validate>
+					<comment><![CDATA[px. Padding left and padding right of columns (default is 15px)<br/><span style="color:#ff0000">Only available for commercial version.</span>]]></comment>
+                </field>
+			</group>
+			
+			<group id="html_structure" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>Html Structure</label>
+				<field id="product_grid" translate="label comment" type="textarea" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Grid Mode</label>
+				</field>
+				
+				<field id="product_list" translate="label comment" type="textarea" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>List Mode</label>
+				</field>
+				
+				<field id="deal_product_grid" translate="label comment" type="textarea" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Deal Product Grid Mode</label>
+				</field>
+				
+				<field id="deal_product_list" translate="label comment" type="textarea" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Deal Product List Mode</label>
+				</field>
+				
+				<field id="single_product" translate="label comment" type="textarea" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Single Product</label>
+				</field>
+			</group>
+			
+			<group id="social" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>Social</label>
+
+				<field id="instagram" translate="label" sortOrder="10" showInDefault="1" showInStore="0" showInWebsite="1">
+                    <label>Instagram</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+				
+				<field id="instagram_access_token" type="text" translate="label" sortOrder="20" showInDefault="1" showInStore="0" showInWebsite="1">
+                    <label>Access Token</label>
+					<comment><![CDATA[<a target="_blank" href="http://instagram.pixelunion.net/">Generate Access Token</a><br/><span style="color:#ff0000">Only available for commercial version.</span>]]></comment>
+                </field>
+				
+				<field id="instagram_line" translate="label" sortOrder="21" showInDefault="1" showInStore="0" showInWebsite="1">
+                    <label><![CDATA[<hr style="border:1px solid #ddd; border-bottom:none"/>]]></label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+				
+				<field id="snapppt" translate="label" sortOrder="30" showInDefault="1" showInStore="0" showInWebsite="1">
+                    <label>Snapppt</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+				
+				<field id="snapppt_script" translate="label comment" type="textarea" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Embed Code</label>
+					<comment><![CDATA[- Go to <a href="https://snapppt.com/users/sign_in" target="_blank">https://snapppt.com/users/sign_in</a><br/>- Login with your instagram account<br/>- Go to <a href="https://snapppt.com/embeds" target="_blank">https://snapppt.com/embeds</a> to configuration and get embed code<br/><span style="color:#ff0000">Only available for commercial version.</span>]]></comment>
+				</field>
+				
+				<field id="snapppt_line" translate="label" sortOrder="50" showInDefault="1" showInStore="0" showInWebsite="1">
+                    <label><![CDATA[<hr style="border:1px solid #ddd; border-bottom:none"/>]]></label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+				
+				<field id="google" translate="label" sortOrder="60" showInDefault="1" showInStore="0" showInWebsite="1">
+                    <label>Google</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+				
+				<field id="google_api_key" type="text" translate="label" sortOrder="70" showInDefault="1" showInStore="0" showInWebsite="1">
+                    <label>Google API Key</label>
+					<comment><![CDATA[Click <a target="_blank" href="https://developers.google.com/maps/documentation/javascript/get-api-key#standard-auth">here</a> to know how to get Google API Key<br/><span style="color:#ff0000">Only available for commercial version.</span>]]></comment>
+                </field>
+			</group>
+			
+			<group id="single_slider" translate="label" type="text" sortOrder="35" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>OWL Slider (Single Slide)</label>
+				
+				<field id="navigation_heading" translate="label" sortOrder="10" showInDefault="1" showInStore="0" showInWebsite="1">
+                    <label>NAVIGATION</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+				
+				<field id="navigation" translate="label comment" type="select" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="10">
+                    <label>Navigation type</label>
+                    <source_model>MGS\Fbuilder\Model\Config\Source\Navigation</source_model>
+                </field>
+				
+				<field id="next_image" translate="label comment" type="image" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="20">
+					<label>Next icon</label>
+                    <backend_model>MGS\Fbuilder\Model\Entity\Backend\Image</backend_model>
+                    <base_url type="media" scope_info="1">mgs/fbuilder/slider</base_url>
+					<depends>
+                        <field id="navigation">image</field>
+                    </depends>
+					<validate>required-entry</validate>
+				</field>
+				
+				<field id="prev_image" translate="label comment" type="image" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="30">
+					<label>Previous icon</label>
+                    <backend_model>MGS\Fbuilder\Model\Entity\Backend\Image</backend_model>
+                    <base_url type="media" scope_info="1">mgs/fbuilder/slider</base_url>
+					<depends>
+                        <field id="navigation">image</field>
+                    </depends>
+					<validate>required-entry</validate>
+				</field>
+				
+				<field id="next_font_class" type="text" translate="label" showInDefault="1" showInStore="0" showInWebsite="1" sortOrder="30">
+                    <label>Next font class</label>
+					<depends>
+                        <field id="navigation">font</field>
+                    </depends>
+                </field>
+				
+				<field id="prev_font_class" type="text" translate="label" showInDefault="1" showInStore="0" showInWebsite="1" sortOrder="31">
+                    <label>Previous font class</label>
+					<depends>
+                        <field id="navigation">font</field>
+                    </depends>
+                </field>
+				
+				<field id="nav_width" type="text" translate="label" showInDefault="1" showInStore="0" showInWebsite="1" sortOrder="40">
+                    <label>Width</label>
+					<validate>validate-number</validate>
+                </field>
+				
+				<field id="nav_height" type="text" translate="label" showInDefault="1" showInStore="0" showInWebsite="1" sortOrder="50">
+                    <label>Height</label>
+					<validate>validate-number</validate>
+                </field>
+				
+				<field id="nav_font_size" type="text" translate="label" showInDefault="1" showInStore="0" showInWebsite="1" sortOrder="60">
+                    <label>Font size</label>
+					<validate>validate-number</validate>
+					<depends>
+                        <field id="navigation">font</field>
+                    </depends>
+                </field>
+				
+				<field id="border_radius" type="text" translate="label" showInDefault="1" showInStore="0" showInWebsite="1" sortOrder="65">
+                    <label>Border radius</label>
+					<validate>validate-number</validate>
+					<depends>
+                        <field id="navigation">font</field>
+                    </depends>
+                </field>
+				
+				<field id="default_heading" translate="label" showInDefault="1" showInStore="0" showInWebsite="1" sortOrder="66">
+                    <label><![CDATA[<span style="display:block; text-align:center">DEFAULT</span>]]></label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+					<depends>
+                        <field id="navigation">font</field>
+                    </depends>
+                </field>
+				
+				<field id="color" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="70">
+					<label>Color</label>
+					<frontend_model>MGS\Fbuilder\Block\Adminhtml\Fields\Color</frontend_model>
+					<depends>
+                        <field id="navigation">font</field>
+                    </depends>
+				</field>
+				
+				<field id="border" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="80">
+					<label>Border color</label>
+					<frontend_model>MGS\Fbuilder\Block\Adminhtml\Fields\Color</frontend_model>
+					<depends>
+                        <field id="navigation">font</field>
+                    </depends>
+				</field>
+				
+				
+				
+				<field id="background" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="90">
+					<label>Background</label>
+					<frontend_model>MGS\Fbuilder\Block\Adminhtml\Fields\Color</frontend_model>
+					<depends>
+                        <field id="navigation">font</field>
+                    </depends>
+				</field>
+				
+				<field id="background_transparent" type="text" translate="label" showInDefault="1" showInStore="0" showInWebsite="1" sortOrder="100">
+                    <label>Background opacity</label>
+					<validate>validate-number</validate>
+					<depends>
+                        <field id="navigation">font</field>
+                    </depends>
+					<comment>From 0 to 1. ex: 0.6</comment>
+                </field>
+				
+				<field id="hover_heading" translate="label" showInDefault="1" showInStore="0" showInWebsite="1" sortOrder="110">
+                    <label><![CDATA[<span style="display:block; text-align:center">HOVER</span>]]></label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+					<depends>
+                        <field id="navigation">font</field>
+                    </depends>
+                </field>
+				
+				<field id="hover_color" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="120">
+					<label>Color</label>
+					<frontend_model>MGS\Fbuilder\Block\Adminhtml\Fields\Color</frontend_model>
+					<depends>
+                        <field id="navigation">font</field>
+                    </depends>
+				</field>
+				
+				<field id="hover_border" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="130">
+					<label>Border color</label>
+					<frontend_model>MGS\Fbuilder\Block\Adminhtml\Fields\Color</frontend_model>
+					<depends>
+                        <field id="navigation">font</field>
+                    </depends>
+				</field>
+				
+				<field id="hover_background" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="140">
+					<label>Background</label>
+					<frontend_model>MGS\Fbuilder\Block\Adminhtml\Fields\Color</frontend_model>
+					<depends>
+                        <field id="navigation">font</field>
+                    </depends>
+				</field>
+				
+				<field id="hover_background_transparent" type="text" translate="label" showInDefault="1" showInStore="0" showInWebsite="1" sortOrder="150">
+                    <label>Background opacity</label>
+					<validate>validate-number</validate>
+					<depends>
+                        <field id="navigation">font</field>
+                    </depends>
+					<comment>From 0 to 1. ex: 0.6</comment>
+                </field>
+				
+				<field id="navigation_line" translate="label" showInDefault="1" showInStore="0" showInWebsite="1" sortOrder="160">
+                    <label><![CDATA[<hr style="border:1px solid #ddd; border-bottom:none"/>]]></label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+				
+				<field id="pagination_heading" translate="label" showInDefault="1" showInStore="0" showInWebsite="1" sortOrder="170">
+                    <label>PAGINATION</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+				
+				<field id="dot_width" type="text" translate="label" showInDefault="1" showInStore="0" showInWebsite="1" sortOrder="180">
+                    <label>Width</label>
+					<validate>validate-number</validate>
+                </field>
+				
+				<field id="dot_height" type="text" translate="label" showInDefault="1" showInStore="0" showInWebsite="1" sortOrder="190">
+                    <label>Height</label>
+					<validate>validate-number</validate>
+                </field>
+				
+				<field id="dot_radius" type="text" translate="label" showInDefault="1" showInStore="0" showInWebsite="1" sortOrder="200">
+                    <label>Border radius</label>
+					<validate>validate-number</validate>
+                </field>
+				
+				<field id="dot_background" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="210">
+					<label>Default background</label>
+					<frontend_model>MGS\Fbuilder\Block\Adminhtml\Fields\Color</frontend_model>
+				</field>
+				
+				<field id="dot_active_background" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="220">
+					<label>Active background</label>
+					<frontend_model>MGS\Fbuilder\Block\Adminhtml\Fields\Color</frontend_model>
+				</field>
+			</group>
+			
+			<group id="multiple_slider" translate="label" type="text" sortOrder="36" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label>OWL Slider (Multiple Slides)</label>
+				<field id="navigation_heading" translate="label" sortOrder="10" showInDefault="1" showInStore="0" showInWebsite="1">
+                    <label>NAVIGATION</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+				
+				<field id="navigation" translate="label comment" type="select" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="10">
+                    <label>Navigation type</label>
+                    <source_model>MGS\Fbuilder\Model\Config\Source\Navigation</source_model>
+                </field>
+				
+				<field id="next_image" translate="label comment" type="image" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="20">
+					<label>Next icon</label>
+                    <backend_model>MGS\Fbuilder\Model\Entity\Backend\Image</backend_model>
+                    <base_url type="media" scope_info="1">mgs/fbuilder/slider</base_url>
+					<depends>
+                        <field id="navigation">image</field>
+                    </depends>
+					<validate>required-entry</validate>
+				</field>
+				
+				<field id="prev_image" translate="label comment" type="image" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="30">
+					<label>Previous icon</label>
+                    <backend_model>MGS\Fbuilder\Model\Entity\Backend\Image</backend_model>
+                    <base_url type="media" scope_info="1">mgs/fbuilder/slider</base_url>
+					<depends>
+                        <field id="navigation">image</field>
+                    </depends>
+					<validate>required-entry</validate>
+				</field>
+				
+				<field id="next_font_class" type="text" translate="label" showInDefault="1" showInStore="0" showInWebsite="1" sortOrder="30">
+                    <label>Next font class</label>
+					<depends>
+                        <field id="navigation">font</field>
+                    </depends>
+                </field>
+				
+				<field id="prev_font_class" type="text" translate="label" showInDefault="1" showInStore="0" showInWebsite="1" sortOrder="31">
+                    <label>Previous font class</label>
+					<depends>
+                        <field id="navigation">font</field>
+                    </depends>
+                </field>
+				
+				<field id="nav_width" type="text" translate="label" showInDefault="1" showInStore="0" showInWebsite="1" sortOrder="40">
+                    <label>Width</label>
+					<validate>validate-number</validate>
+                </field>
+				
+				<field id="nav_height" type="text" translate="label" showInDefault="1" showInStore="0" showInWebsite="1" sortOrder="50">
+                    <label>Height</label>
+					<validate>validate-number</validate>
+                </field>
+				
+				<field id="nav_font_size" type="text" translate="label" showInDefault="1" showInStore="0" showInWebsite="1" sortOrder="60">
+                    <label>Font size</label>
+					<validate>validate-number</validate>
+					<depends>
+                        <field id="navigation">font</field>
+                    </depends>
+                </field>
+				
+				<field id="border_radius" type="text" translate="label" showInDefault="1" showInStore="0" showInWebsite="1" sortOrder="65">
+                    <label>Border radius</label>
+					<validate>validate-number</validate>
+					<depends>
+                        <field id="navigation">font</field>
+                    </depends>
+                </field>
+				
+				<field id="default_heading" translate="label" showInDefault="1" showInStore="0" showInWebsite="1" sortOrder="66">
+                    <label><![CDATA[<span style="display:block; text-align:center">DEFAULT</span>]]></label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+					<depends>
+                        <field id="navigation">font</field>
+                    </depends>
+                </field>
+				
+				<field id="color" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="70">
+					<label>Color</label>
+					<frontend_model>MGS\Fbuilder\Block\Adminhtml\Fields\Color</frontend_model>
+					<depends>
+                        <field id="navigation">font</field>
+                    </depends>
+				</field>
+				
+				<field id="border" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="80">
+					<label>Border color</label>
+					<frontend_model>MGS\Fbuilder\Block\Adminhtml\Fields\Color</frontend_model>
+					<depends>
+                        <field id="navigation">font</field>
+                    </depends>
+				</field>
+				
+				
+				
+				<field id="background" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="90">
+					<label>Background</label>
+					<frontend_model>MGS\Fbuilder\Block\Adminhtml\Fields\Color</frontend_model>
+					<depends>
+                        <field id="navigation">font</field>
+                    </depends>
+				</field>
+				
+				<field id="background_transparent" type="text" translate="label" showInDefault="1" showInStore="0" showInWebsite="1" sortOrder="100">
+                    <label>Background opacity</label>
+					<validate>validate-number</validate>
+					<depends>
+                        <field id="navigation">font</field>
+                    </depends>
+					<comment>From 0 to 1. ex: 0.6</comment>
+                </field>
+				
+				<field id="hover_heading" translate="label" showInDefault="1" showInStore="0" showInWebsite="1" sortOrder="110">
+                    <label><![CDATA[<span style="display:block; text-align:center">HOVER</span>]]></label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+					<depends>
+                        <field id="navigation">font</field>
+                    </depends>
+                </field>
+				
+				<field id="hover_color" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="120">
+					<label>Color</label>
+					<frontend_model>MGS\Fbuilder\Block\Adminhtml\Fields\Color</frontend_model>
+					<depends>
+                        <field id="navigation">font</field>
+                    </depends>
+				</field>
+				
+				<field id="hover_border" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="130">
+					<label>Border color</label>
+					<frontend_model>MGS\Fbuilder\Block\Adminhtml\Fields\Color</frontend_model>
+					<depends>
+                        <field id="navigation">font</field>
+                    </depends>
+				</field>
+				
+				<field id="hover_background" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="140">
+					<label>Background</label>
+					<frontend_model>MGS\Fbuilder\Block\Adminhtml\Fields\Color</frontend_model>
+					<depends>
+                        <field id="navigation">font</field>
+                    </depends>
+				</field>
+				
+				<field id="hover_background_transparent" type="text" translate="label" showInDefault="1" showInStore="0" showInWebsite="1" sortOrder="150">
+                    <label>Background opacity</label>
+					<validate>validate-number</validate>
+					<depends>
+                        <field id="navigation">font</field>
+                    </depends>
+					<comment>From 0 to 1. ex: 0.6</comment>
+                </field>
+				
+				<field id="navigation_line" translate="label" showInDefault="1" showInStore="0" showInWebsite="1" sortOrder="160">
+                    <label><![CDATA[<hr style="border:1px solid #ddd; border-bottom:none"/>]]></label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+				
+				<field id="pagination_heading" translate="label" showInDefault="1" showInStore="0" showInWebsite="1" sortOrder="170">
+                    <label>PAGINATION</label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+				
+				<field id="dot_width" type="text" translate="label" showInDefault="1" showInStore="0" showInWebsite="1" sortOrder="180">
+                    <label>Width</label>
+					<validate>validate-number</validate>
+                </field>
+				
+				<field id="dot_height" type="text" translate="label" showInDefault="1" showInStore="0" showInWebsite="1" sortOrder="190">
+                    <label>Height</label>
+					<validate>validate-number</validate>
+                </field>
+				
+				<field id="dot_radius" type="text" translate="label" showInDefault="1" showInStore="0" showInWebsite="1" sortOrder="200">
+                    <label>Border radius</label>
+					<validate>validate-number</validate>
+                </field>
+				
+				<field id="dot_background" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="210">
+					<label>Default background</label>
+					<frontend_model>MGS\Fbuilder\Block\Adminhtml\Fields\Color</frontend_model>
+				</field>
+				
+				<field id="dot_active_background" translate="label" type="text" showInDefault="1" showInWebsite="1" showInStore="1" sortOrder="220">
+					<label>Active background</label>
+					<frontend_model>MGS\Fbuilder\Block\Adminhtml\Fields\Color</frontend_model>
+				</field>
+			</group>
+			
+			<group id="font_style" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+				<label><![CDATA[Font & Style]]></label>
+				<field id="fontawesome" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Include font Awesome</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+					<comment><![CDATA[If you choose <b>Yes</b>: we will insert <a href="https://fontawesome.com/v4.7.0/" target="_blank">fontawesome 4.7.0</a> style file to the &lt;head> of the document. If fontawesome already exists in your theme, please choose <b>No</b>]]></comment>
+				</field>
+				
+				<field id="custom_style" translate="label comment" type="textarea" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Custom style</label>
+					
+					<comment><![CDATA[<span style="color:#ff0000">Only available for commercial version.</span>]]></comment>
+				</field>
+				
+				<!--field id="fontawesome_bold" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+					<label>Include font Awesome bold</label>
+					<source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+					<depends>
+                        <field id="fontawesome">1</field>
+                    </depends>
+				</field-->
+			</group>
+			
+			<group id="export" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="0" showInStore="0">
+				<label><![CDATA[Export & Import]]></label>
+				<field id="export" translate="label" type="MGS\Fbuilder\Block\Adminhtml\System\Export" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Export</label>
+					<comment><![CDATA[<span style="color:#ff0000">Only available for commercial version.</span>]]></comment>
+                </field>
+				
+				<field id="related_line_above" translate="label" showInDefault="1" showInStore="0" showInWebsite="1" sortOrder="25">
+                    <label><![CDATA[<hr style="border:1px solid #ddd; border-bottom:none; width:70%"/>]]></label>
+                    <frontend_model>Magento\Config\Block\System\Config\Form\Field\Heading</frontend_model>
+                </field>
+				
+				<field id="import" translate="label" type="MGS\Fbuilder\Block\Adminhtml\System\Import" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Import</label>
+					<comment><![CDATA[<span style="color:#ff0000">Only available for commercial version.</span>]]></comment>
+                </field>
+			</group>
+			
+			<group id="license" translate="label" type="text" sortOrder="0" showInDefault="1" showInWebsite="0" showInStore="0">
+				<label><![CDATA[License]]></label>
+				<frontend_model>MGS\Fbuilder\Block\Adminhtml\System\License</frontend_model>
+			</group>
+		</section>
+	</system>
+</config>

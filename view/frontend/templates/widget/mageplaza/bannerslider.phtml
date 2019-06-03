@@ -1,0 +1,178 @@
+<?php
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_BannerSlider
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+
+use Mageplaza\BannerSlider\Model\Config\Source\Type;
+
+$banners = $block->getBannerCollection();
+
+if (count($banners)) : ?>
+    <?php
+		$sliderId      = $block->getSliderId() . uniqid('-', false);
+		$sliderOptions = $block->getBannerOptions(); 
+		$builderHelper = $this->helper('MGS\Fbuilder\Helper\Data');
+		$fullheight = $this->getFullheight();
+		$margin = 0;
+		
+		if($this->getItems()>1 && $this->getSlideMargin()!=''){
+			$margin = $this->getSlideMargin();
+		}
+
+		$navHtml = '["<span class=\'slider-nav nav-prev\'></span>","<span class=\'slider-nav nav-next\'></span>"]';
+		$settingMode = 'multiple';
+
+		$items = $this->getItems();
+		if($items==1){
+			$settingMode = 'single';
+		}
+
+		$navPosition = $this->getNavigationPosition();
+
+		$navType = $builderHelper->getStoreConfig('fbuilder/'.$settingMode.'_slider/navigation');
+		if($navType=='image'){
+			$nextIcon = $builderHelper->getStoreConfig('fbuilder/'.$settingMode.'_slider/next_image');
+			$prevIcon = $builderHelper->getStoreConfig('fbuilder/'.$settingMode.'_slider/prev_image');
+			$navHtml = '["<span><img src=\''.$builderHelper->getMediaUrl().'mgs/fbuilder/slider/'.$prevIcon.'\'/></span>", "<span><img src=\''.$builderHelper->getMediaUrl().'mgs/fbuilder/slider/'.$nextIcon.'\'/></span>"]';
+		}else{
+			$nextIcon = $builderHelper->getStoreConfig('fbuilder/'.$settingMode.'_slider/next_font_class');
+			$prevIcon = $builderHelper->getStoreConfig('fbuilder/'.$settingMode.'_slider/prev_font_class');
+			$navHtml = '["<span><em class=\''.$prevIcon.'\'></em></span>", "<span><em class=\''.$nextIcon.'\'></em></span>"]';
+		}
+	?>
+    <div class="carousel-container">
+        <div id="banner-slider-carousel"<?php if($fullheight): ?> class="fullscreen-slider"<?php endif ?>>
+            <?php $iterator = 1; ?>
+            <div id="bannerslider-list-items-<?= $sliderId; ?>"
+                 class="slider_mgs_carousel owl-carousel mgs-carousel-<?php echo $settingMode ?> mgs-owl-carousel nav-type-<?php echo $navType ?> nav-position-<?php echo $navPosition ?><?php if($this->getHideNav() && ((($items==1) && ($navPosition!='middle-outside')) || (($items>1) && ($navPosition=='middle-inside')))): ?> autohide-nav<?php endif ?> dot-position-<?php echo $this->getPaginationPosition()?>">
+                <?php foreach ($banners as $banner) : ?>
+                    <?php
+                    $bnType  = $banner->getType();
+                    $bnTitle = $banner->getTitle();
+                    $bnUrl   = $banner->getUrlBanner();
+                    $bnImg   = $banner->getImageUrl();
+                    ?>
+                    <?php if (($bnType === Type::CONTENT && empty($banner->getContent())) || ($bnType === Type::IMAGE && empty($banner->getImage()))) : continue; ?>
+                    <?php endif; ?>
+                    <?= ($iterator++ === 1) ? '<div class="banner-item banner-slider">' : '</div><div class="banner-item banner-slider">' ?>
+                    <?php if ($bnType === Type::CONTENT) : ?>
+                        <div class="item-content">
+                            <?= $block->getPageFilter($banner->getContent()); ?>
+                        </div>
+                    <?php else : #image type?>
+                        <div class="item-image">
+                            <?php if (!empty($bnUrl)) : ?>
+                                <a class="owl-image"
+                                   href="<?= $bnUrl ?>" <?= ($banner->getNewtab() === '1') ? 'target="_blank"' : '' ?>>
+                                    <?php if (!empty($bnTitle)) : ?>
+                                        <div class="banner-title"><?= $bnTitle ?></div>
+                                    <?php endif; ?>
+                                    <img class="img-responsive" src="<?= $bnImg ?>">
+                                </a>
+                            <?php else : ?>
+                                <img class="owl-image img-responsive" src="<?= $bnImg ?>"
+                                     title="<?= $bnTitle ?>">
+                            <?php endif; ?>
+                        </div>
+                    <?php endif; ?>
+                    <?= ($iterator === count($banners) + 1) ? '</div>' : '' ?>
+                <?php endforeach; ?>
+            </div>
+        </div>
+        <?= $block->getPagerHtml() ?>
+    </div>
+
+	<?php $autoPlay = $this->getAutoplay() ? 'true' : 'false'; ?>
+	<?php $stopAuto = $this->getStopAuto() ? 'true' : 'false'; ?>
+	<?php $nav = $this->getNavigation() ? 'true' : 'false'; ?>
+	<?php $dot = $this->getPagination() ? 'true' : 'false'; ?>
+	<?php $rtl = $this->getRtl() ? 'true' : 'false'; ?>
+	<?php $loop = $this->getLoop() ? 'true' : 'false'; ?>
+	<?php $autoSpeed = 3000;
+		if($this->getSpeed() != ""){
+			$autoSpeed = $this->getSpeed();
+		} 
+	?>
+	
+	<script>
+		require([
+			'jquery',
+			'mgsowlcarousel'
+		], function(jQuery){
+			(function($) {
+				<?php if($fullheight && ($this->getItems()==1)): ?>
+                    var windowHeight = $(window).height();
+					var offsetSlider = $('#banner-slider-carousel').offset();
+					var sliderHeight = windowHeight - offsetSlider.top;
+                    var offsetBottom = 0;
+                    
+					$(".fullscreen-slider").height(sliderHeight);
+					
+					$(window).resize(function() {
+						$(".fullscreen-slider").height($(window).height() - offsetSlider.top);
+					});
+				<?php endif ?>
+				
+				$(document).ready(function(){
+					$("#bannerslider-list-items-<?= $sliderId; ?>").owlCarousel({
+						items: <?php echo $items; ?>,
+						loop: <?php echo $loop; ?>,
+						nav: <?php echo $nav; ?>,
+						dots: <?php echo $dot; ?>,
+						autoplayTimeout: <?php echo $autoSpeed; ?>,
+						rtl: <?php echo $rtl; ?>,
+						autoplay: <?php echo $autoPlay; ?>,
+						autoplayHoverPause: <?php echo $stopAuto ?>,
+						<?php if($nav=='true'): ?>
+							navText: <?php echo $navHtml ?>,
+						<?php endif ?>
+						margin: <?php echo $margin ?>,
+						autoHeight:true,
+						<?php if(($items > 1) && ($navPosition=='top-left' || $navPosition=='top-right')): ?>
+							onInitialized: function(){
+								$("#bannerslider-list-items-<?= $sliderId; ?> .owl-nav").attr('style', 'top:<?php echo $this->getNavTop() ?>px');
+								$("#banner-slider-carousel").addClass('loaded');
+							},
+						<?php else: ?>
+							onInitialized: function(){
+								$("#banner-slider-carousel").addClass('loaded');
+							},
+						<?php endif ?>
+						responsive:{
+							0:{
+								items: <?php echo $this->getItemsMobile(); ?>,
+								nav: false
+							},
+							767:{
+								items: <?php echo $this->getItemsTablet(); ?>,
+								nav: false
+							},
+							992:{
+								items: <?php echo $items; ?>,
+								nav: <?php echo $nav; ?>
+							}
+						}
+					});
+				});
+                
+				
+			})(jQuery);
+		});
+	</script>
+<?php endif; ?>

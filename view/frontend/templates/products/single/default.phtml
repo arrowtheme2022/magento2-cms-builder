@@ -1,0 +1,181 @@
+<?php 
+	use Magento\Framework\App\Action\Action;
+	
+	$viewMode = 'grid';
+	$image = 'category_page_grid';
+	$templateType = \Magento\Catalog\Block\Product\ReviewRendererInterface::SHORT_VIEW;
+	$_product = $this->getProduct();
+	$_productNameStripped = $block->stripTags($_product->getName(), null, true);
+	$productImage = $block->getImage($_product, $image);
+	$_helper = $this->helper('Magento\Catalog\Helper\Output');
+	$builderHelper = $this->helper('MGS\Fbuilder\Helper\Data');
+	$hideName = $this->getData('hide_name');
+	$hideReview = $this->getData('hide_review');
+	$hidePrice = $this->getData('hide_price');
+	$hideAddCart = $this->getData('hide_addcart');
+	$hideAddWishlist = $this->getData('hide_addwishlist');
+	$hideAddCompare = $this->getData('hide_addcompare');
+	$hideDescription = $this->getData('hide_description');
+	
+	$htmlStructure = $builderHelper->getStoreConfig('fbuilder/html_structure/single_product');
+?>
+<div class="block widget mgs-product single-product products-grid product-items product-item">
+	<?php if($htmlStructure!=''): ?>
+		<?php
+			$productImage = '<a href="'.$_product->getProductUrl().'" class="product photo product-item-photo" tabindex="-1">'.$productImage->toHtml().'</a>';
+			
+			$productName = '';
+			if($hideName!=1){
+				$productName = '<strong class="product name product-item-name"><a class="product-item-link" href="'.$_product->getProductUrl().'">'.$_helper->productAttribute($_product, $_product->getName(), 'name').'</a></strong>';
+			}
+			
+			$shortDescription = '';
+			if ($hideDescription!=1){
+				$_shortDescription = $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description');
+				if($_shortDescription!=''){
+					$shortDescription .= '<div class="product description product-item-description">';
+					if($this->getData('truncate') && ($this->getData('truncate')>0)){
+						$_shortDescription = $builderHelper->truncateString(strip_tags($_shortDescription), $this->getData('truncate'));
+					}
+					$shortDescription .= $_shortDescription;
+					$shortDescription .= '</div>';
+				}
+			}
+			
+			$productReivew = '';
+			if($hideReview!=1){
+				$productReivew = $block->getReviewsSummaryHtml($_product, $templateType);
+			}
+			
+			$productPrice = '';
+			if($hidePrice!=1){
+				$productPrice = $block->getProductPrice($_product);
+			}
+			
+			$swatches = $this->getLayout()->createBlock('Magento\Swatches\Block\Product\Renderer\Listing\Configurable')->setProduct($_product)->setTemplate('Magento_Swatches::product/listing/renderer.phtml')->toHtml();
+			
+			$addToCart = '';
+			if($hideAddCart!=1){
+				$addToCart = '<div class="actions-primary">';
+				if ($_product->isSaleable()){
+					$postParams = $block->getAddToCartPostParams($_product);
+					$addToCart .= '<form data-role="tocart-form" data-product-sku="'.$_product->getSku().'" action="'.$postParams['action'].'" method="post">';
+					$addToCart .= '<input type="hidden" name="product" value="'.$postParams['data']['product'].'"><input type="hidden" name="'.Action::PARAM_NAME_URL_ENCODED.'" value="'.$postParams['data'][Action::PARAM_NAME_URL_ENCODED].'">';
+					$addToCart .= $block->getBlockHtml('formkey');
+					
+					$addToCart .= '<button type="submit" title="'.$block->escapeHtml(__('Add to Cart')).'" class="action tocart primary"><span>' . __('Add to Cart') . '</span></button></form>';
+											
+				}else{
+					if ($_product->isAvailable()){
+						$addToCart .= '<div class="stock available"><span>' . __('In stock') . '</span></div>';
+					}else{
+						$addToCart .= '<div class="stock unavailable"><span>' . __('Out of stock') . '</span></div>';
+					}
+				}
+				$addToCart .= '</div>';
+			}
+			
+			$addtoWishlist = '';
+			
+			if ($this->helper('Magento\Wishlist\Helper\Data')->isAllow() && ($hideAddWishlist!=1)){
+				$addtoWishlist = '<a href="#" class="action towishlist" title="'.$block->escapeHtmlAttr(__('Add to Wish List')).'" aria-label="'.$block->escapeHtmlAttr(__('Add to Wish List')).'" data-post="'.$block->getAddToWishlistParams($block->getProduct()).'" data-action="add-to-wishlist" role="button"><span>'.$block->escapeHtml(__('Add to Wish List')).'</span></a>';
+			}
+			
+			$addtoCompare = '';
+			if($hideAddCompare!=1){
+				$compareHelper = $this->helper('Magento\Catalog\Helper\Product\Compare');
+				$addtoCompare = '<a href="#" class="action tocompare" title="'.$block->escapeHtml(__('Add to Compare')).'" aria-label="'.$block->escapeHtml(__('Add to Compare')).'" data-post="'.$compareHelper->getPostDataParams($_product).'" role="button"><span>' . __('Add to Compare') . '</span></a>';
+			}
+			
+			$from=['{{product_image}}', '{{product_name}}', '{{product_review}}', '{{product_price}}', '{{swatches}}', '{{add_to_cart}}', '{{add_to_wishlist}}', '{{add_to_compare}}', '{{short_description}}'];
+			$to=[$productImage, $productName, $productReivew, $productPrice, $swatches, $addToCart, $addtoWishlist, $addtoCompare, $shortDescription];
+			echo str_replace($from, $to, $htmlStructure);
+		?>
+		
+		
+	<?php else: ?>
+
+		<div class="product-item-info">
+			<a href="<?= /* @escapeNotVerified */ $_product->getProductUrl() ?>" class="product photo product-item-photo" tabindex="-1">
+				<?php echo $productImage->toHtml() ?>
+			</a>
+			<div class="product details product-item-details">
+				<?php if($hideName!=1): ?>
+					<strong class="product name product-item-name">
+						<a class="product-item-link"
+						   href="<?php echo $_product->getProductUrl() ?>">
+							<?php echo $_helper->productAttribute($_product, $_product->getName(), 'name') ?>
+						</a>
+					</strong>
+				<?php endif ?>
+				
+				<?php if ($hideDescription!=1):?>
+					<div class="product description product-item-description">
+						<?php $shortDescription = $_helper->productAttribute($_product, $_product->getShortDescription(), 'short_description') ?>
+						<?php if($this->getData('truncate') && ($this->getData('truncate')>0)): ?>
+							<?php $shortDescription = $builderHelper->truncateString(strip_tags($shortDescription), $this->getData('truncate')) ?>
+						<?php endif ?>
+						<?php echo $shortDescription ?>
+					</div>
+				<?php endif; ?>
+				
+				
+				<?php if($hideReview!=1): ?>
+					<?php echo $block->getReviewsSummaryHtml($_product, $templateType) ?>
+				<?php endif ?>
+				
+				<?php if($hidePrice!=1): ?>
+					<?php echo $block->getProductPrice($_product) ?>
+				<?php endif ?>
+				
+				<?php echo $this->getLayout()->createBlock('Magento\Swatches\Block\Product\Renderer\Listing\Configurable')->setProduct($_product)->setTemplate('Magento_Swatches::product/listing/renderer.phtml')->toHtml() ?>
+				
+				<?php //echo $block->getProductDetailsHtml($_product) ?>
+				
+				<?php if(($hideAddCart!=1) || ($hideAddWishlist!=1) ||($hideAddCompare!=1)): ?>
+					<div class="product-item-inner">
+						<div class="product actions product-item-actions">
+							<?php if($hideAddCart!=1): ?>
+								<div class="actions-primary">
+									<?php if ($_product->isSaleable()): ?>
+										<?php $postParams = $block->getAddToCartPostParams($_product); ?>
+										<form data-role="tocart-form" data-product-sku="<?=  /* @NoEscape */ $_product->getSku() ?>" action="<?= /* @NoEscape */ $postParams['action'] ?>" method="post">
+											<input type="hidden" name="product" value="<?= /* @escapeNotVerified */ $postParams['data']['product'] ?>">
+											<input type="hidden" name="<?= /* @escapeNotVerified */ Action::PARAM_NAME_URL_ENCODED ?>" value="<?= /* @escapeNotVerified */ $postParams['data'][Action::PARAM_NAME_URL_ENCODED] ?>">
+											<?= $block->getBlockHtml('formkey') ?>
+											<button type="submit" title="<?= $block->escapeHtml(__('Add to Cart')) ?>" class="action tocart primary">
+												<span><?= /* @escapeNotVerified */ __('Add to Cart') ?></span>
+											</button>
+										</form>
+									<?php else: ?>
+										<?php if ($_product->isAvailable()): ?>
+											<div class="stock available"><span><?= /* @escapeNotVerified */ __('In stock') ?></span></div>
+										<?php else: ?>
+											<div class="stock unavailable"><span><?= /* @escapeNotVerified */ __('Out of stock') ?></span></div>
+										<?php endif; ?>
+									<?php endif; ?>
+								</div>
+							<?php endif ?>
+							
+							<?php if(($hideAddWishlist!=1) ||($hideAddCompare!=1)): ?>
+								<div data-role="add-to-links" class="actions-secondary">
+									<?php if ($this->helper('Magento\Wishlist\Helper\Data')->isAllow() && ($hideAddWishlist!=1)): ?>
+										<a href="#" class="action towishlist" title="<?= $block->escapeHtmlAttr(__('Add to Wish List')) ?>" aria-label="<?= $block->escapeHtmlAttr(__('Add to Wish List')) ?>" data-post='<?= /* @noEscape */ $block->getAddToWishlistParams($block->getProduct()) ?>' data-action="add-to-wishlist" role="button">
+											<span><?= $block->escapeHtml(__('Add to Wish List')) ?></span>
+										</a>
+									<?php endif; ?>
+									<?php if($hideAddCompare!=1): ?>
+										<?php $compareHelper = $this->helper('Magento\Catalog\Helper\Product\Compare'); ?>
+										<a href="#" class="action tocompare" title="<?= $block->escapeHtml(__('Add to Compare')) ?>" aria-label="<?= $block->escapeHtml(__('Add to Compare')) ?>" data-post='<?= /* @escapeNotVerified */ $compareHelper->getPostDataParams($_product) ?>' role="button">
+											<span><?= /* @escapeNotVerified */ __('Add to Compare') ?></span>
+										</a>
+									<?php endif ?>
+								</div>
+							<?php endif ?>
+						</div>
+					</div>
+				<?php endif ?>
+			</div>
+		</div>
+	<?php endif ?>
+</div>

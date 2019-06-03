@@ -1,0 +1,109 @@
+<?php $builderHelper = $this->helper('MGS\Fbuilder\Helper\Data'); ?>
+<?php $blogHelper = $this->helper('MGS\Blog\Helper\Data'); ?>
+<?php $posts = $this->getPostCollection() ?>
+<div class="content-block latest-post-list-block">
+	<?php if (count($posts)>0): ?>
+		<?php $blockId = rand() . time(); ?>
+		<?php $useSlider = $this->getUseSlider(); ?>
+		<?php $numberCol = $this->getNumbercol(); ?>
+		<?php $numberOfCol = $this->getPercol(); ?>
+		<?php $onRow = $numberCol * $numberOfCol; ?>
+		<div class="block widget blog-post-list">
+			<div class="block-content line">
+			
+				<?php if($useSlider): ?>
+				<div class="owl-carousel mgs-owl-carousel" id="post-list-carousel-<?php echo $blockId; ?>">
+				<?php endif ?>
+				
+					<?php $i=0; foreach($posts as $_post): $i++; ?>
+						<?php if($i % $numberOfCol == 1): ?>
+							<div class="list-product-col">
+						<?php endif ?>
+								<div class="post-item">
+									<?php if(!$this->getHideThumbnail()): ?>
+										<div class="thumbnail-post">
+											<a href="<?php echo $_post->getPostUrlWithNoCategory(); ?>" title="<?php echo strip_tags($_post->getTitle()) ?>"><img src="<?php echo $_post->getThumbnailUrl() ?>" alt="<?php echo strip_tags($_post->getTitle()) ?>"/></a>
+										</div>
+									<?php endif ?>
+									<div class="post-item-detail">
+										<div class="post-content">
+											<h3 class="title-blog">
+												<a href="<?php echo $_post->getPostUrlWithNoCategory(); ?>" title="<?php echo strip_tags($_post->getTitle()); ?>"><?php echo $_post->getTitle() ?></a>
+											</h3>
+											<?php if(!$this->getHideCreate()): ?>
+												<div class="post-create-date">
+													<?php echo __('By <span class="color-theme">%1</span> on %2', $_post->getUser(), date('M d, Y', strtotime($_post->getCreatedAt()))) ?>
+												</div>
+											<?php endif ?>
+										</div>
+										<?php if(!$this->getHideDescription()): ?>
+											<div class="short-content">
+												<?php echo $blogHelper->truncateString(strip_tags($_post->getShortContent()), $this->getCharacterCount()); ?>
+											</div>
+										<?php endif ?>
+									</div>
+								</div>
+								
+						<?php if($i % $numberOfCol == 0 || $i == count($posts)): ?>
+							</div>
+						<?php endif ?>
+						<?php // Clearfix ?>
+							<?php if(!$useSlider && ($i % $onRow == 0)): ?>
+								<div class="clearfix visible-lg visible-md"></div>
+							<?php endif ?>
+							
+							<?php if(!$useSlider && ($i % (2 * $numberOfCol) == 0)): ?>
+								<div class="clearfix visible-sm"></div>
+							<?php endif ?>
+						<?php // End Clearfix ?>
+					<?php endforeach ?>
+				
+				<?php if($useSlider): ?>
+				</div>
+				<?php endif ?>
+				
+			</div>
+		</div>
+		<?php if($useSlider): ?>
+			<?php $autoPlay = $this->getAutoplay() ? 'true' : 'false'; ?>
+			<?php $stopAuto = $this->getStopAuto() ? 'true' : 'false'; ?>
+			<?php $nav = $this->getNavigation() ? 'true' : 'false'; ?>
+			<?php $dot = $this->getPagination() ? 'true' : 'false'; ?>
+			<?php $rtl = $this->getRtl() ? 'true' : 'false'; ?>
+			<?php $loop = $this->getLoop() ? 'true' : 'false'; ?>
+			<script type="text/javascript">
+				require([
+					'jquery',
+					'owlcarousel'
+				], function ($) {
+					$('#post-list-carousel-<?php echo $blockId; ?>').owlCarousel({
+						items: <?php echo $numberCol ?>,
+						autoplay: <?php echo $autoPlay ?>,
+						autoplayHoverPause: <?php echo $stopAuto ?>,
+						nav: <?php echo $nav ?>,
+						dots: <?php echo $dot ?>,
+						navText: ["<span class='slider-nav nav-prev'></span>","<span class='slider-nav nav-next'></span>"],
+						autoHeight:true,
+						slideBy: 1,
+						rtl: <?php echo $rtl; ?>,
+						loop: <?php echo $loop; ?>,
+						responsive:{
+							0:{
+								items:1,
+								nav: false,
+							},
+							768:{
+								items:2
+							},
+							992:{
+								items:<?php echo $numberCol; ?>
+							}
+						}
+					});
+				});
+			</script>
+		<?php endif ?>
+	<?php else: ?>
+		<div class="message info empty"><div><?= /* @escapeNotVerified */ __('We can\'t find post matching the selection.') ?></div></div>
+	<?php endif ?>
+</div>

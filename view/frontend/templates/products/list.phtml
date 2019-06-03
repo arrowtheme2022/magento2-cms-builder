@@ -1,0 +1,98 @@
+<?php $attribute = NULL ?>
+<?php if($this->getData('attribute')!=''): ?>
+	<?php $attribute = $this->getData('attribute') ?>
+<?php endif ?>
+<?php $_productCollection = $this->getProductByCategories($this->getCategoryIds()) ?>
+<?php $builderHelper = $this->helper('MGS\Fbuilder\Helper\Data'); ?>
+<?php $blockType = $this->getData('block_type'); ?>
+<?php $template = 'MGS_Fbuilder::products/list_item.phtml'; ?>
+
+<div class="content-block <?php echo $blockType ?>-products-block <?php echo $blockType ?>-products-list-block">
+	<?php if (count($_productCollection)): ?>
+		<?php $blockId = rand() . time(); ?>
+		<?php $useSlider = $this->getUseSlider(); ?>
+		<?php $numberCol = $this->getNumbercol(); ?>
+		<?php $numberOfCol = $this->getPercol(); ?>
+		<?php $onRow = $numberCol * $numberOfCol; ?>
+
+		<div class="block widget list-products mgs-<?php echo $blockType ?>-products <?php echo $blockType ?>-products-list <?php if($useSlider): ?>product-list-carousel<?php endif ?>">
+			<div class="block-content line">
+			
+				<?php if($useSlider): ?>
+				<div class="owl-carousel mgs-owl-carousel" id="<?php echo $blockType ?>-products-list-carousel-<?php echo $blockId; ?>">
+				<?php endif ?>
+				
+					<?php $i=0; foreach($_productCollection as $_product): $i++; ?>
+						<?php if($i % $numberOfCol == 1): ?>
+							<div class="list-product-col <?php if(!$useSlider): ?><?php echo $builderHelper->convertColClass($numberCol) ?> col-tb-6 col-mb-12<?php endif ?>">
+						<?php endif ?>
+								
+								<?php echo $this->getLayout()
+									->createBlock('MGS\Fbuilder\Block\Products\ProductItem')
+									->setProductId($_product->getId())
+									->setBlockData($this->getData())
+									->setTemplate($template)
+									->toHtml(); ?>
+						<?php if($i % $numberOfCol == 0 || $i == count($_productCollection)): ?>
+							</div>
+						<?php endif ?>
+						<?php // Clearfix ?>
+							<?php if(!$useSlider && ($i % $onRow == 0)): ?>
+								<div class="clearfix visible-lg visible-md"></div>
+							<?php endif ?>
+							
+							<?php if(!$useSlider && ($i % (2 * $numberOfCol) == 0)): ?>
+								<div class="clearfix visible-sm"></div>
+							<?php endif ?>
+						<?php // End Clearfix ?>
+					<?php endforeach ?>
+				
+				<?php if($useSlider): ?>
+				</div>
+				<?php endif ?>
+				
+			</div>
+		</div>
+		<?php if($useSlider): ?>
+			<?php $autoPlay = $this->getAutoplay() ? 'true' : 'false'; ?>
+			<?php $stopAuto = $this->getStopAuto() ? 'true' : 'false'; ?>
+			<?php $nav = $this->getNavigation() ? 'true' : 'false'; ?>
+			<?php $dot = $this->getPagination() ? 'true' : 'false'; ?>
+			<?php $rtl = $this->getRtl() ? 'true' : 'false'; ?>
+			<?php $loop = $this->getLoop() ? 'true' : 'false'; ?>
+			<script type="text/javascript">
+				require([
+					'jquery',
+					'owlcarousel'
+				], function ($) {
+					$('#<?php echo $blockType ?>-products-list-carousel-<?php echo $blockId; ?>').owlCarousel({
+						items: <?php echo $numberCol ?>,
+						autoplay: <?php echo $autoPlay ?>,
+						autoplayHoverPause: <?php echo $stopAuto ?>,
+						nav: <?php echo $nav ?>,
+						dots: <?php echo $dot ?>,
+						navText: ["<span class='slider-nav nav-prev'></span>","<span class='slider-nav nav-next'></span>"],
+						autoHeight:true,
+						slideBy: 1,
+						rtl: <?php echo $rtl; ?>,
+						loop: <?php echo $loop; ?>,
+						responsive:{
+							0:{
+								items:1,
+								nav: false,
+							},
+							768:{
+								items:2
+							},
+							992:{
+								items:<?php echo $numberCol; ?>
+							}
+						}
+					});
+				});
+			</script>
+		<?php endif ?>
+	<?php else: ?>
+		<div class="message info empty"><div><?= /* @escapeNotVerified */ __('We can\'t find products matching the selection.') ?></div></div>
+	<?php endif ?>
+</div>

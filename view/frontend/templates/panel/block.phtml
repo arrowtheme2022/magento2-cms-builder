@@ -1,0 +1,29 @@
+<?php $canUsePanel = $this->getCanUsePanel() ?>
+<?php $blocks = $this->getBlocks() ?>
+<?php $blockName = $this->getBlockName() ?>
+<?php $pageId = $this->getPageId() ?>
+<?php if(count($blocks)>0): ?>
+	<?php foreach($blocks as $_block): ?>
+		<?php $setting = json_decode($_block->getSetting(), true) ?>
+			<div class="panel-block-row <?php echo $this->getBlockClass($_block, $setting, $canUsePanel) ?>"<?php if(isset($setting['animation']) && $setting['animation']!=''): ?> data-appear-animation="<?php echo $setting['animation'] ?>"<?php endif ?><?php if(isset($setting['animation_delay']) && $setting['animation_delay']!=''): ?> data-appear-animation-delay="<?php echo $setting['animation_delay'] ?>"<?php endif ?> <?php if($canUsePanel): ?> id="block-<?php echo $_block->getId() ?>"<?php endif ?>>
+				
+				<?php if($canUsePanel): ?>
+					<?php echo $this->getEditChildHtml($blockName, $_block) ?>
+				<?php endif ?>
+				<div style="<?php echo $this->getInlineSetting($_block) ?>">
+					<?php echo $this->getContentOfBlock($_block) ?>
+				</div>
+			</div>
+	<?php endforeach ?>
+<?php endif ?>
+<?php if($canUsePanel): ?>
+
+	<div class="content-panel empty-block">
+		<div class="add-new-block col-des-12">
+			<button class="action btn btn-default btn-addnewblock" data-page-id="<?php echo $pageId ?>" data-block-name="<?php echo $blockName ?>" type="button" onclick="openPopup('<?php echo $this->getUrl('fbuilder/create/block',['name'=>$blockName, 'page_id'=>$pageId]) ?>')"><em class="fa fa-plus-circle"></em>&nbsp;<?php echo __('Add New Block') ?></button>
+			<?php if($this->checkCopiedBlock()): ?>
+				<button class="action btn btn-default btn-dulicate" type="button" onclick="pasteBlock(<?php echo $pageId ?>, '<?php echo $blockName ?>')"><em class="fa fa-plus-circle"></em>&nbsp;<?php echo __('Paste Copied Block') ?></button>
+			<?php endif ?>
+		</div>
+	</div>
+<?php endif ?>

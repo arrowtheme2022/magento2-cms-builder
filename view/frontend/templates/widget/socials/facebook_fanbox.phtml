@@ -1,0 +1,9 @@
+<div class="content-block facebook-fanbox-block">
+	<?php if($this->getFacebookFanBox()): ?>
+		<div class="block-content">
+			<?php echo $this->getFacebookFanBox(); ?>
+		</div>
+	<?php else: ?>
+		<div class="message info empty"><div><?php echo __('Can not get Facebook Fanbox data.') ?></div></div>
+	<?php endif ?>
+</div>

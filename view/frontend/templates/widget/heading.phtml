@@ -1,0 +1,18 @@
+<?php $builderHelper = $this->helper('MGS\Fbuilder\Helper\Data'); ?>
+<div class="content-block heading-block">
+	<div class="mgs-heading heading-<?php echo $this->getHeadingAlign() ?><?php if($this->getShowBorder()): ?> has-border heading-<?php echo $this->getBorderStyle()?> heading-<?php echo $this->getBorderPosition()?><?php endif ?>">
+		<?php 
+			$headingClass= 'heading';
+			if($this->getHeadingFontweight()){
+				$headingClass .= ' font-bold';
+			}
+			if($this->getHeadingItalic()){
+				$headingClass .= ' font-italic';
+			}
+			if($this->getHeadingUppercase()){
+				$headingClass .= ' font-uppercase';
+			}
+		?>
+		<<?php echo $this->getHeading() ?> class="<?php echo $headingClass ?>"><span><?php echo $builderHelper->decodeHtmlTag($this->getFbuilderSubtitle()) ?></span></<?php echo $this->getHeading() ?>>
+	</div>
+</div>

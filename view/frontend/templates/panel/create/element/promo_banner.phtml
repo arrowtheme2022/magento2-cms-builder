@@ -1,0 +1,320 @@
+<?php $helper = $this->getHelper() ?>
+<?php $params = $this->getParams() ?>
+<?php $exist = false ?>
+<?php $child = null ?>
+<?php $oldTextAlign = 'top-left' ?>
+<?php $oldEffect = '' ?>
+<div class="edit-static-form">
+	<div class="line">
+		<div class="col-des-12 builder-title">
+			<h2><?php echo __('Promo Banner Block') ?></h2>
+		</div>
+	</div>
+	<form id="section-form" enctype="multipart/form-data" method="POST" action="<?php echo $this->getUrl('fbuilder/element/save') ?>" data-hasrequired="<?php echo __('* Required Fields') ?>" data-mage-init='{"validation":{}}'>
+		<input type="hidden" name="page_id" value="<?php echo $this->getRequest()->getParam('page_id') ?>">
+		<input id="block_type" type="hidden" name="type" value="promo_banner">
+		<input id="block_block_name" type="hidden" name="block_name" value="<?php echo $params['block'] ?>">
+		<?php if(isset($params['id'])): ?>
+			<?php 
+				$child =  $this->getModel('MGS\Fbuilder\Model\Child')->load($params['id']);
+				$exist = true;
+				$settings = json_decode($child->getSetting(), true);
+				$oldTextAlign = $settings['text_align'];
+				$oldEffect = $settings['effect'];
+			?>
+			<input type="hidden" name="child_id" value="<?php echo $params['id'] ?>">
+		<?php endif ?>
+		
+		<div class="mgs-tab data items product" data-mage-init='{"tabs":{"openedState":"active"}}'>
+			<?php 
+				echo $this->getLayout()->createBlock('Magento\Framework\View\Element\Template')
+					->setExist($exist)
+					->setDisableContent(1)
+					->setBuilderChild($child)
+					->setBuilderHelper($helper)
+					->setTemplate('MGS_Fbuilder::panel/create/element/widgets/general_tab.phtml')->toHtml() ;
+			?>
+			
+			<div class="data item title" aria-labeledby="tab-label-banner-title" data-role="collapsible" id="tab-label-banner">
+				<a class="data switch" tabindex="-1" data-toggle="switch" href="#banner" id="tab-label-banner-title">
+					<?php echo __('Banner Config') ?>
+				</a>
+			</div>
+			
+			<div class="data item content" id="banner" data-role="content" style="display:none">
+				<div class="line form-group">
+					<div class="col-tb-7">
+						<div class="line form-group">
+							<label for="image" class="col-tb-3 control-label"><?php echo __('Image') ?></label>
+							<div class="col-tb-9">
+								<input type="file" id="image" name="image" onchange="setPreview()">
+								<input type="hidden" name="setting[banner_image]" <?php if($exist && isset($settings['banner_image'])): ?> value="<?php echo $settings['banner_image'] ?>"<?php endif ?>>
+							</div>
+						</div>
+						
+						<div class="line form-group">
+							<label for="url" class="col-tb-3 control-label"><?php echo __('Url') ?></label>
+							<div class="col-tb-9">
+								<input type="text" class="input-text" id="url" name="setting[url]"<?php if($exist && $settings['url']): ?> value="<?php echo $settings['url'] ?>"<?php endif ?>/>
+							</div>
+						</div>
+						
+						<div class="line form-group">
+							<label for="text_content" class="col-tb-3 control-label"><?php echo __('Text content') ?></label>
+							<div class="col-tb-9">
+								<textarea class="input-text" id="text_content" name="setting[text_content]" onchange="setPreview()"><?php if($exist && $settings['text_content']): ?><?php echo $settings['text_content'] ?><?php endif ?></textarea>
+							</div>
+						</div>
+						
+						<div class="line form-group">
+							<label for="button_text" class="col-tb-3 control-label"><?php echo __('Button text') ?></label>
+							<div class="col-tb-9">
+								<input type="text" class="input-text" id="button_text" name="setting[button_text]"<?php if($exist && $settings['button_text']): ?> value="<?php echo $settings['button_text'] ?>"<?php endif ?> onchange="setPreview()"/>
+							</div>
+						</div>
+					</div>
+					<div class="col-tb-5">
+						<div id="banner-temp">
+							<div class="mgs-promobanner promobanner <?php echo $oldEffect ?>" id="banner-container" style="display:block !important">
+								<a href="">
+									<?php if($exist && ($settings['banner_image']!='')): ?>
+										<img src="<?php echo $helper->getMediaUrl() ?>mgs/fbuilder/promobanners<?php echo $settings['banner_image'] ?>" class="banner-image" id="image-temp"/>
+										
+									<?php else: ?>
+										<img src="" class="banner-image" id="image-temp" style="display:none"/>
+									<?php endif ?>
+								</a>
+								<div class="text <?php echo $oldTextAlign ?>" id="text-container">
+									<div class="banner-text"></div>
+									<span class="banner-button">
+										<button class="btn action primary btn-promo-banner" id="button-temp"><span></span></button>
+									</span>
+								</div>
+							</div>
+						</div>
+						
+						<style type="text/css" id="banner-custom-css"></style>
+					</div>
+				</div>
+				
+				<div class="line form-group">
+					
+					<div class="col-tb-4">
+						<label for="text_align" class="control-label"><?php echo __('Text align') ?></label><br/>
+						<select id="text_align" class="input-text" name="setting[text_align]" onchange="setPreview()">
+							<option value="top-left"<?php if($exist && ($settings['text_align']=='top-left')): ?> selected="selected"<?php endif ?>><?php echo __('Top Left') ?></option>
+							<option value="top-middle"<?php if($exist && ($settings['text_align']=='top-middle')): ?> selected="selected"<?php endif ?>><?php echo __('Top Center') ?></option>
+							<option value="top-right"<?php if($exist && ($settings['text_align']=='top-right')): ?> selected="selected"<?php endif ?>><?php echo __('Top Right') ?></option>
+							<option value="middle-left"<?php if($exist && ($settings['text_align']=='middle-left')): ?> selected="selected"<?php endif ?>><?php echo __('Middle Left') ?></option>
+							<option value="middle-center"<?php if($exist && ($settings['text_align']=='middle-center')): ?> selected="selected"<?php endif ?>><?php echo __('Middle Center') ?></option>
+							<option value="middle-right"<?php if($exist && ($settings['text_align']=='middle-right')): ?> selected="selected"<?php endif ?>><?php echo __('Middle Right') ?></option>
+							<option value="bottom-left"<?php if($exist && ($settings['text_align']=='bottom-left')): ?> selected="selected"<?php endif ?>><?php echo __('Bottom Left') ?></option>
+							<option value="bottom-center"<?php if($exist && ($settings['text_align']=='bottom-center')): ?> selected="selected"<?php endif ?>><?php echo __('Bottom Center') ?></option>
+							<option value="bottom-right"<?php if($exist && ($settings['text_align']=='bottom-right')): ?> selected="selected"<?php endif ?>><?php echo __('Bottom Right') ?></option>
+						</select>
+					</div>
+					
+					
+					<div class="col-tb-4">
+						<label for="effect" class="control-label"><?php echo __('Effect') ?></label><br/>
+						<select id="effect" class="input-text" name="setting[effect]" onchange="setPreview()">
+							<option value=""><?php echo __('No Effect') ?></option>
+							<option value="zoom"<?php if($exist && ($settings['effect']=='zoom')): ?> selected="selected"<?php endif ?>><?php echo __('Zoom') ?></option>
+							<option value="border-zoom"<?php if($exist && ($settings['effect']=='border-zoom')): ?> selected="selected"<?php endif ?>><?php echo __('Border Zoom') ?></option>
+							<option value="flashed"<?php if($exist && ($settings['effect']=='flashed')): ?> selected="selected"<?php endif ?>><?php echo __('Flashed') ?></option>
+							<option value="zoom-flashed"<?php if($exist && ($settings['effect']=='zoom-flashed')): ?> selected="selected"<?php endif ?>><?php echo __('Zoom Flashed') ?></option>
+							<option value="shadow-corner"<?php if($exist && ($settings['effect']=='shadow-corner')): ?> selected="selected"<?php endif ?>><?php echo __('Shadow Corner') ?></option>
+							<option value="zoom-shadow"<?php if($exist && ($settings['effect']=='zoom-shadow')): ?> selected="selected"<?php endif ?>><?php echo __('Zoom Shadow') ?></option>
+							<option value="cup-border"<?php if($exist && ($settings['effect']=='cup-border')): ?> selected="selected"<?php endif ?>><?php echo __('Cup Border') ?></option>
+							<option value="flashed-zoom"<?php if($exist && ($settings['effect']=='flashed-zoom')): ?> selected="selected"<?php endif ?>><?php echo __('Flashed Zoom') ?></option>
+							<option value="zoom-out-shadow"<?php if($exist && ($settings['effect']=='zoom-out-shadow')): ?> selected="selected"<?php endif ?>><?php echo __('Zoom Out Shadow') ?></option>
+							<option value="mist"<?php if($exist && ($settings['effect']=='mist')): ?> selected="selected"<?php endif ?>><?php echo __('Mist') ?></option>
+							<option value="mist-text"<?php if($exist && ($settings['effect']=='mist-text')): ?> selected="selected"<?php endif ?>><?php echo __('Mist Text') ?></option>
+						</select>
+					</div>
+					
+
+					
+					<div class="col-tb-4">
+						<label for="text_color" class="control-label"><?php echo __('Text color') ?></label><br/>
+						<input type="text" class="input-text color-input" id="text_color" name="setting[text_color]"<?php if($exist && $settings['text_color']): ?> value="<?php echo $settings['text_color'] ?>"<?php endif ?> onchange="changeBannerStyle()"//>
+					</div>
+
+				</div>
+				
+				<div class="line form-group">
+					<div class="col-tb-4">
+						<label for="button_background" class="control-label"><?php echo __('Button background') ?></label><br/>
+						<input type="text" class="input-text color-input" id="button_background" name="setting[button_background]"<?php if($exist && $settings['button_background']): ?> value="<?php echo $settings['button_background'] ?>"<?php endif ?> onchange="changeBannerStyle()"//>
+					</div>
+					
+					<div class="col-tb-4">
+						<label for="button_color" class="control-label"><?php echo __('Button text') ?></label><br/>
+						<input type="text" class="input-text color-input" id="button_color" name="setting[button_color]"<?php if($exist && $settings['button_color']): ?> value="<?php echo $settings['button_color'] ?>"<?php endif ?> onchange="changeBannerStyle()"//>
+					</div>
+					
+					<div class="col-tb-4">
+						<label for="button_border" class="control-label"><?php echo __('Button border') ?></label><br/>
+						<input type="text" class="input-text color-input" id="button_border" name="setting[button_border]"<?php if($exist && $settings['button_border']): ?> value="<?php echo $settings['button_border'] ?>"<?php endif ?> onchange="changeBannerStyle()"//>
+					</div>
+				</div>
+				
+				<div class="line form-group">
+					<div class="col-tb-4">
+						<label for="button_hover_background" class="control-label"><?php echo __('Button hover background') ?></label><br/>
+						<input type="text" class="input-text color-input" id="button_hover_background" name="setting[button_hover_background]"<?php if($exist && $settings['button_hover_background']): ?> value="<?php echo $settings['button_hover_background'] ?>"<?php endif ?> onchange="changeBannerStyle()"//>
+					</div>
+					
+					<div class="col-tb-4">
+						<label for="button_hover_color" class="control-label"><?php echo __('Button hover text') ?></label><br/>
+						<input type="text" class="input-text color-input" id="button_hover_color" name="setting[button_hover_color]"<?php if($exist && $settings['button_hover_color']): ?> value="<?php echo $settings['button_hover_color'] ?>"<?php endif ?> onchange="changeBannerStyle()"//>
+					</div>
+					
+					<div class="col-tb-4">
+						<label for="button_hover_border" class="control-label"><?php echo __('Button hover border') ?></label><br/>
+						<input type="text" class="input-text color-input" id="button_hover_border" name="setting[button_hover_border]"<?php if($exist && $settings['button_hover_border']): ?> value="<?php echo $settings['button_hover_border'] ?>"<?php endif ?> onchange="changeBannerStyle()"/>
+					</div>
+				</div>
+				
+				
+			</div>
+		
+			<?php if($exist): ?>
+				<?php 
+					echo $this->getLayout()->createBlock('Magento\Framework\View\Element\Template')
+						->setExist($exist)
+						->setBuilderChild($child)
+						->setBuilderHelper($helper)
+						->setTemplate('MGS_Fbuilder::panel/create/element/widgets/code_tab.phtml')->toHtml() ;
+				?>
+				
+			<?php endif ?>
+		</div>
+		
+		<div class="line">
+			<div class="form-group">
+				<div class="col-des-12 builder-action">
+					<div class="buttons">
+						<?php if(!$exist): ?>
+							<button type="button" class="action" onclick="history.go(-1)"><span><?php echo __('Back') ?></span></button>
+						<?php endif ?>
+						<button type="submit" class="action primary"><span><?php echo __('Submit') ?></span></button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+
+<script type="text/javascript">
+	var oldTextAlign = '<?php echo $oldTextAlign ?>';
+	var oldEffect = '<?php echo $oldEffect ?>';
+
+	require([
+		'jquery',
+	], function(jQuery){
+		(function($) {
+			$(document).ready(function(){
+				$('#image').change( function(event) {		
+					var tmppath = URL.createObjectURL(event.target.files[0]);
+					$("#image-temp").attr('src',URL.createObjectURL(event.target.files[0])).show();
+				});
+				
+				setPreview();
+			});
+			
+			$("#button_text, #text_content").keypress(function( event ){
+				setPreview();
+			});
+		})(jQuery);
+	});
+	
+	function setPreview(){
+		require([
+			'jquery',
+		], function(jQuery){
+			(function($) {
+				textContent = $('#text_content').val();
+				buttonContent = $('#button_text').val();
+				
+				textAlign = $('#text_align').val();
+				effect = $('#effect').val();
+				
+				if(textContent!=''){
+					$('#text-container .banner-text').html(textContent);
+				}
+				
+				if(buttonContent!=''){
+					$('#button-temp').show();
+					$('#button-temp span').html(buttonContent);
+				}else{
+					$('#button-temp').hide();
+				}
+				
+				if(textAlign != oldTextAlign){
+					$('#text-container').removeClass(oldTextAlign);
+					$('#text-container').addClass(textAlign);
+					oldTextAlign = textAlign;
+				}
+				
+				if(effect != oldEffect){
+					$('#banner-container').removeClass(oldEffect);
+					$('#banner-container').addClass(effect);
+					oldEffect = effect;
+				}
+			})(jQuery);
+		});
+		
+		changeBannerStyle();
+	}
+	
+	function changeBannerStyle(){
+		require([
+			'jquery',
+		], function(jQuery){
+			(function($) {
+				textColor = $('#text_color').val();
+				buttonBackground = $('#button_background').val();
+				buttonText = $('#button_color').val();
+				buttonBorder = $('#button_border').val();
+				buttonHoverBackground = $('#button_hover_background').val();
+				buttonHoverColor = $('#button_hover_color').val();
+				buttonHoverBorder = $('#button_hover_border').val();
+				
+				customStyle = '*{}';
+
+				if(textColor!=''){
+					customStyle += '#banner-temp .mgs-promobanner .banner-text{color:'+textColor+'}';
+				}
+				
+				if(buttonBackground!=''){
+					customStyle += '#banner-temp .mgs-promobanner .banner-button button.btn-promo-banner{background-color:'+buttonBackground+'}';
+				}
+				
+				if(buttonText!=''){
+					customStyle += '#banner-temp .mgs-promobanner .banner-button button.btn-promo-banner span{color:'+buttonText+'}';
+				}
+				
+				if(buttonBorder!=''){
+					customStyle += '#banner-temp .mgs-promobanner .banner-button button.btn-promo-banner{border-color:'+buttonBorder+'}';
+				}
+				
+				if(buttonHoverBackground!=''){
+					customStyle += '#banner-temp .mgs-promobanner .banner-button button.btn-promo-banner:hover{background-color:'+buttonHoverBackground+'}';
+				}
+				
+				if(buttonHoverColor!=''){
+					customStyle += '#banner-temp .mgs-promobanner .banner-button button.btn-promo-banner:hover span{color:'+buttonHoverColor+'}';
+				}
+				
+				if(buttonHoverBorder!=''){
+					customStyle += '#banner-temp .mgs-promobanner .banner-button button.btn-promo-banner:hover{border-color:'+buttonHoverBorder+'}';
+				}
+				
+				$('#banner-custom-css').html(customStyle);
+				
+				
+			})(jQuery);
+		});
+	}
+</script>

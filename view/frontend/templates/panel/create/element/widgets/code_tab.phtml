@@ -1,0 +1,39 @@
+<?php $helper = $this->getBuilderHelper() ?>
+<?php $child = $this->getBuilderChild() ?>
+<div class="data item title" aria-labeledby="tab-label-code-title" data-role="collapsible" id="tab-label-code">
+	<a class="data switch" tabindex="-1" data-toggle="switch" href="#code" id="tab-label-code-title">
+		<?php echo __('Embed Code') ?>
+	</a>
+</div>
+
+<div class="data item content" id="code" data-role="content" style="display:none">
+	<div class="form-group line">
+		<div class="col-tb-12">
+			<style type="text/css">
+			.container {
+				padding: 0;
+			}
+			.page.messages .message {
+				padding: 15px;
+				font-family: "Lato",arial,tahoma;
+				font-size: 14px;
+			}
+			.page.messages .message-success {
+				background-color: #dff0d8;
+			}
+			.page.messages .message-danger {
+				background-color: #f2dede;
+			}
+		</style>
+			<main class="page-main container">
+			<div class="page messages"><div data-placeholder="messages"></div><div>
+				<div class="messages">
+					<div class="message-danger danger message" data-ui-id="message-danger">
+						<div>Only available for commercial version.</div>
+					</div>
+				</div>
+			</div>
+		</div></main>
+		</div>
+	</div>
+</div>

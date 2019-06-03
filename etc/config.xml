@@ -1,0 +1,141 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <fbuilder>
+			<general>
+				<container_width>1240</container_width>
+				<column_padding>15</column_padding>
+			</general>
+			<html_structure>
+                <product_grid><![CDATA[<div class="product-item-info" data-container="product-grid">
+	{{product_image}}
+	<div class="product details product-item-details">
+		{{product_name}}
+		{{product_review}}
+		{{product_price}}
+		{{swatches}}
+		<div class="product-item-inner">
+			<div class="product actions product-item-actions">
+				<div class="actions-primary">
+					{{add_to_cart}}
+				</div>
+				<div data-role="add-to-links" class="actions-secondary">
+					{{add_to_wishlist}}
+					{{add_to_compare}}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>]]></product_grid>
+				<product_list><![CDATA[<div class="product-item-info" data-container="product-list">
+	<div class="product-image">{{product_image}}</div>
+	<div class="product details product-item-details">
+		{{product_name}}
+		{{product_review}}
+		{{product_price}}
+		{{swatches}}
+		<div class="product-item-inner">
+			<div class="product actions product-item-actions">
+				<div class="actions-primary">
+					{{add_to_cart}}
+				</div>
+				<div data-role="add-to-links" class="actions-secondary">
+					{{add_to_wishlist}}
+					{{add_to_compare}}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>]]></product_list>
+				<deal_product_grid><![CDATA[<div class="product-item-info" data-container="product-grid">
+	{{product_image}}
+	<div class="product details product-item-details">
+		{{percent_discount}}
+		{{product_name}}
+		{{product_review}}
+		{{product_price}}
+		{{saved_price}}
+		{{swatches}}
+		<div class="product-item-inner">
+			<div class="product actions product-item-actions">
+				<div class="actions-primary">
+					{{add_to_cart}}
+				</div>
+				<div data-role="add-to-links" class="actions-secondary">
+					{{add_to_wishlist}}
+					{{add_to_compare}}
+				</div>
+			</div>
+		</div>
+		{{countdown_time}}
+	</div>
+</div>]]></deal_product_grid>
+				<deal_product_list><![CDATA[<div class="product-item-info" data-container="product-list">
+	<div class="product-image">{{product_image}}{{percent_discount}}</div>
+	<div class="product details product-item-details">
+		{{product_name}}
+		{{product_review}}
+		{{product_price}}
+		{{saved_price}}
+		{{swatches}}
+		<div class="product-item-inner">
+			<div class="product actions product-item-actions">
+				<div class="actions-primary">
+					{{add_to_cart}}
+				</div>
+				<div data-role="add-to-links" class="actions-secondary">
+					{{add_to_wishlist}}
+					{{add_to_compare}}
+				</div>
+			</div>
+		</div>
+		{{countdown_time}}
+	</div>
+</div>]]></deal_product_list>
+				<single_product><![CDATA[<div class="product-item-info" data-container="product-grid">
+	{{product_image}}
+	<div class="product details product-item-details">
+		{{product_name}}
+        {{short_description}}
+		{{product_review}}
+		{{product_price}}
+		{{swatches}}
+		<div class="product-item-inner">
+			<div class="product actions product-item-actions">
+				<div class="actions-primary">
+					{{add_to_cart}}
+				</div>
+				<div data-role="add-to-links" class="actions-secondary">
+					{{add_to_wishlist}}
+					{{add_to_compare}}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>]]></single_product>
+            </html_structure>
+        
+			<font_style>
+				<fontawesome>1</fontawesome>
+			</font_style>
+			
+			<single_slider>
+				<navigation>font</navigation>
+				<next_font_class>fa fa-angle-right</next_font_class>
+				<prev_font_class>fa fa-angle-left</prev_font_class>
+				<nav_width>40</nav_width>
+				<nav_height>80</nav_height>
+				<nav_font_size>80</nav_font_size>
+			</single_slider>
+			
+			<multiple_slider>
+				<navigation>font</navigation>
+				<next_font_class>fa fa-angle-right</next_font_class>
+				<prev_font_class>fa fa-angle-left</prev_font_class>
+				<nav_width>40</nav_width>
+				<nav_height>40</nav_height>
+				<nav_font_size>30</nav_font_size>
+			</multiple_slider>
+		</fbuilder>
+    </default>
+</config>

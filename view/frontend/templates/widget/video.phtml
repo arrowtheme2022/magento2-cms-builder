@@ -1,0 +1,43 @@
+<?php $builderHelper = $this->helper('MGS\Fbuilder\Helper\Data'); ?>
+<?php $videoEmbedUrl = $this->getUrlEmbed($this->getVideoUrl()); ?>
+<?php $blockId = rand() . time(); ?>
+<?php $videoType = $this->identifyService($this->getVideoUrl()); ?>
+<div class="content-block video-block">
+	<?php if($this->getData('fbuilder_title') != "" || $this->getData('fbuilder_note') != ""): ?>
+		<div class="content-heading">
+			<?php if($this->getData('fbuilder_title')): ?>
+				<h3 class="title"><?php echo $builderHelper->decodeHtmlTag($this->getData('fbuilder_title')) ?></h3>
+			<?php endif ?>
+		</div>
+		<?php if($this->getData('fbuilder_note')): ?>
+			<div class="block-note"><?php echo $builderHelper->decodeHtmlTag($this->getData('fbuilder_note')) ?></div>
+		<?php endif ?>
+	<?php endif ?>
+	<?php if($videoEmbedUrl!=''): ?>
+		<div<?php if(!$this->getFullWidth() && ($videoType=='vimeo')): ?> style="width:<?php echo $this->getVideoWidth()?>px; height:<?php echo $this->getVideoHeight()?>px; overflow:hidden"<?php endif ?>>
+			<div class="mgs-video <?php echo $videoType ?>-video<?php if($this->getHideControl()): ?> video-hide-controls<?php endif ?><?php if($this->getFullWidth()): ?> video-fullwidth<?php endif ?>">
+				<div class="top"<?php if(!$this->getFullWidth() && ($videoType=='vimeo')): ?> style="width:<?php echo $this->getVideoWidth()?>px; height:<?php echo $this->getVideoHeight()?>px; overflow:hidden"<?php endif ?>>
+					<div class="wrapper">
+						<iframe id="player_<?php echo $blockId ?>" src="<?php echo $videoEmbedUrl ?>"<?php if(!$this->getFullWidth()): ?> width="<?php echo $this->getVideoWidth()?>" height="<?php echo $this->getVideoHeight()?>"<?php endif ?> frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+					</div>
+				</div>
+			</div>
+		</div>
+		<?php if($videoType=='vimeo' && $this->getMute()): ?>
+			<script>
+			require([
+				'jquery',
+			], function(jQuery){
+				(function($) {
+					$(document).ready(function(){
+						setTimeout(function(){  var iframe = document.getElementById('player_<?php echo $blockId ?>'); iframe.contentWindow.postMessage('{"method":"setVolume", "value":0}', '*'); }, 1500);
+					});
+				})(jQuery);
+			});
+
+			</script>
+		<?php endif ?>
+	<?php else: ?>
+		<div class="message info empty"><div><?php echo __('Have no video to show.') ?></div></div>
+	<?php endif ?>
+</div>

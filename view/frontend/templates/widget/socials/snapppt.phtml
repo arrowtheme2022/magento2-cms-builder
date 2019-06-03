@@ -1,0 +1,9 @@
+<div class="content-block instagram-shop-block">
+	<?php if($this->getInstagramShopContent()): ?>
+		<div class="instagram-shop-content">
+			<?php echo $this->getInstagramShopContent() ?>
+		</div>
+	<?php else: ?>
+		<div class="message info empty"><div><?php echo __('Can not get Instagram shop data.') ?></div></div>
+	<?php endif ?>
+</div>

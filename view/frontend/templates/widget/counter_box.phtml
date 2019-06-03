@@ -1,0 +1,109 @@
+<?php 
+	$builderHelper = $this->helper('MGS\Fbuilder\Helper\Data');
+	$iconClass = $this->getFbuilderIcon();
+	$title = $this->getFbuilderSubtitle();
+	$description = $this->getFbuilderTextContent();
+	$style = $this->getStyle();
+	$iconWidth = $this->getWidth();
+	$lineHeight = $height = 0;
+	$width = 'auto';
+	$borderRaudius = 'unset';
+	$marginright = '5px';
+	
+	$icon_background = $this->getIconBackground();
+	
+	$icon_font_size = 55;
+	if($this->getIconFontSize()!=''){
+		$icon_font_size = $this->getIconFontSize();
+	}
+	
+	$lineHeight = $height = $icon_font_size;
+	
+	$border = $this->getBorder();
+	$border_width = $this->getBorderWidth();
+	
+	if($icon_background!=''){
+		$height = $lineHeight = $icon_font_size + 30;
+		$borderRaudius = '50%';
+		$width = $height.'px';
+		$marginright = '10px';
+	}
+	
+	if($border!='' && $border_width!=''){
+		$height = $icon_font_size + 30 + $border_width + $border_width;
+		$lineHeight = $height - $border_width - $border_width;
+		$borderRaudius = '50%';
+		$width = $height.'px';
+		$marginright = '10px';
+	}
+	
+	if($iconWidth!=''){
+		$height = $iconWidth;
+		$width = $height.'px';
+		if($border!='' && $border_width!=''){
+			$lineHeight = $height - $border_width - $border_width;
+		}else{
+			$lineHeight = $height;
+		}
+	}
+	
+	$icon_color = $this->getIconColor();
+	
+	$subtitle_font_size = $this->getSubtitleFontSize();
+	$subtitle_font_color = $this->getSubtitleFontColor();
+	$desc_font_size = $this->getDescFontSize();
+	$box_border = $this->getBoxBorder();
+	$number_color = $this->getNumberColor();
+	$number_font_size = $this->getNumberFontSize();
+	$number_from = $this->getNumberFrom();
+	$number_to = $this->getNumberTo();
+	$duration = $this->getDuration();
+	$separators = $this->getSeparators();
+	$blockId = 'count'.rand() . time();
+?>
+
+<div class="counter-block">
+	<div class="mgs-counter-box box-<?php echo $this->getStyle() ?>" style="<?php if($box_border!=''): ?>border:1px solid <?php echo $box_border ?>; padding:20px<?php endif ?>">
+		<?php if($iconClass!=''): ?>
+			<div class="icon-wrapper" style="<?php if($icon_font_size!=''):?>font-size:<?php echo $icon_font_size ?>px;<?php endif ?><?php if($icon_color!=''):?>color:<?php echo $icon_color ?>;<?php endif ?><?php if($icon_background!=''):?>background:<?php echo $icon_background ?>;<?php endif ?><?php if($border!='' && $border_width!=''): ?>border:<?php echo $border_width ?>px solid <?php echo $border ?>;<?php endif ?>width:<?php echo $width ?>;<?php if($height!=0): ?>height:<?php echo $height ?>px;<?php endif ?><?php if($lineHeight!=0): ?>line-height:<?php echo $lineHeight ?>px;<?php endif ?>border-radius:<?php echo $borderRaudius ?>;<?php if($this->getStyle()=='horizontal'): ?>margin-right:<?php echo $marginright ?>;<?php endif ?><?php if(($this->getStyle()!='horizontal') && (($icon_background!='') || ($border!='' && $border_width!=''))): ?>margin-bottom:15px;<?php endif ?>">
+				<span class="<?php echo $builderHelper->decodeHtmlTag($iconClass) ?>"></span>
+			</div>
+		<?php endif ?>
+		<div class="counter-box" style="<?php if($this->getStyle()=='horizontal'): ?>line-height:<?php echo $lineHeight ?>px<?php endif ?>">
+			<span class="number" id="<?php echo $blockId ?>" style="<?php if($number_font_size!=''):?>font-size:<?php echo $number_font_size ?>px;<?php endif ?><?php if($number_color!=''):?>color:<?php echo $number_color ?>;<?php endif ?>"><?php echo $number_to ?></span>
+			
+			<?php if($title!=''): ?>
+				<span class="subtitle" style="<?php if($subtitle_font_size!=''):?>font-size:<?php echo $subtitle_font_size ?>px;<?php endif ?><?php if($subtitle_font_color!=''):?>color:<?php echo $subtitle_font_color ?>;<?php endif ?>"><?php echo $builderHelper->decodeHtmlTag($title) ?></span>
+			<?php endif ?>
+		</div>
+		
+		<?php if($description!=''): ?>
+			<div class="content"<?php if($desc_font_size!=''): ?> style="font-size:<?php echo $desc_font_size ?>px"<?php endif ?>><?php echo $builderHelper->decodeHtmlTag($description) ?></div>
+		<?php endif ?>
+	</div>
+	
+	
+</div>
+<script type="text/javascript">
+	require([
+		'jquery',
+	], function(jQuery){
+		(function($) {
+			$(document).ready(function(){
+				$('#<?php echo $blockId ?>').prop('Counter',<?php echo $number_from ?>).animate({
+					Counter: $('#<?php echo $blockId ?>').text()
+				}, {
+					duration: <?php echo $duration ?>,
+					easing: 'swing',
+					step: function (now) {
+						<?php if($separators!=''): ?>
+						$('#<?php echo $blockId ?>').text(Math.ceil(now).toString().replace(/\B(?=(\d{3})+(?!\d))/g, "<?php echo $separators ?>"));
+						<?php else: ?>
+							$('#<?php echo $blockId ?>').text(Math.ceil(now));
+						<?php endif ?>
+					}
+				});
+			});
+		})(jQuery);
+	});
+</script>

@@ -1,0 +1,349 @@
+<?php $helper = $this->getHelper() ?>
+<?php $params = $this->getParams() ?>
+<?php $exist = false ?>
+<?php $child = null ?>
+<?php $settings = null ?>
+<?php $categories = $helper->getModel('MGS\Portfolio\Model\Category')->getCollection() ?>
+
+<div class="edit-static-form">
+	
+	<div class="line">
+		<div class="col-des-12 builder-title">
+			<h2><?php echo __('Testimonial Block') ?></h2>
+		</div>
+	</div>
+	<form id="section-form" enctype="multipart/form-data" method="POST" action="<?php echo $this->getUrl('fbuilder/element/save') ?>" data-hasrequired="<?php echo __('* Required Fields') ?>" data-mage-init='{"validation":{}}'>
+		<input type="hidden" name="page_id" value="<?php echo $this->getRequest()->getParam('page_id') ?>">
+		<input id="block_type" type="hidden" name="type" value="testimonial">
+		<input id="block_block_name" type="hidden" name="block_name" value="<?php echo $params['block'] ?>">
+		<?php if(isset($params['id'])): ?>
+			<?php 
+				$child =  $this->getModel('MGS\Fbuilder\Model\Child')->load($params['id']);
+				$exist = true;
+				$settings = json_decode($child->getSetting(), true);
+			?>
+			<input type="hidden" name="child_id" value="<?php echo $params['id'] ?>">
+		<?php endif ?>
+		
+		<div class="mgs-tab data items product" data-mage-init='{"tabs":{"openedState":"active"}}'>
+			
+			<?php 
+				echo $this->getLayout()->createBlock('Magento\Framework\View\Element\Template')
+					->setExist($exist)
+					->setBuilderChild($child)
+					->setDisableContent(1)
+					->setBuilderHelper($helper)
+					->setTemplate('MGS_Fbuilder::panel/create/element/widgets/general_tab.phtml')->toHtml() ;
+			?>
+			
+			<div class="data item title" aria-labeledby="tab-label-additional-title" data-role="collapsible" id="tab-label-additional">
+				<a class="data switch" tabindex="-1" data-toggle="switch" href="#additional" id="tab-label-additional-title">
+					<?php echo __('Testimonial Config') ?>
+				</a>
+			</div>
+			
+			<div class="data item content" id="additional" data-role="content" style="display:none">
+				
+				<div class="form-group line">
+					<label for="number_of_posts" class="col-tb-4 control-label"><?php echo __('Number of testimonial to display') ?></label>
+					<div class="col-tb-8">
+						<input type="text" id="limit" class="input-text required-entry validate-number" name="setting[limit]"<?php if($exist): ?> value="<?php echo $settings['limit'] ?>"<?php endif ?> />
+					</div>
+				</div>
+				
+				<div class="form-group line grid-perrow">
+					<label for="perrow" class="col-tb-4 control-label"><?php echo __('Items per row (default)') ?></label>
+					<div class="col-tb-8">
+						<select id="perrow" class="input-text" name="setting[perrow]">
+							<option value="1"<?php if($exist && ($settings['perrow']==1)): ?> selected="selected"<?php endif ?>>1</option>
+							<option value="2"<?php if($exist && ($settings['perrow']==2)): ?> selected="selected"<?php endif ?>>2</option>
+							<option value="3"<?php if($exist && ($settings['perrow']==3)): ?> selected="selected"<?php endif ?>>3</option>
+							<option value="4"<?php if($exist && ($settings['perrow']==4)): ?> selected="selected"<?php endif ?>>4</option>
+							<option value="5"<?php if($exist && ($settings['perrow']==5)): ?> selected="selected"<?php endif ?>>5</option>
+							<option value="6"<?php if($exist && ($settings['perrow']==6)): ?> selected="selected"<?php endif ?>>6</option>
+							<option value="7"<?php if($exist && ($settings['perrow']==7)): ?> selected="selected"<?php endif ?>>7</option>
+							<option value="8"<?php if($exist && ($settings['perrow']==8)): ?> selected="selected"<?php endif ?>>8</option>
+						</select>
+					</div>
+				</div>
+				
+				<div class="form-group line grid-perrow">
+					<label for="perrow_tablet" class="col-tb-4 control-label"><?php echo __('Items per row (tablet)') ?></label>
+					<div class="col-tb-8">
+						<select id="perrow_tablet" class="input-text" name="setting[perrow_tablet]">
+							<option value="1"<?php if($exist && ($settings['perrow_tablet']==1)): ?> selected="selected"<?php endif ?>>1</option>
+							<option value="2"<?php if($exist && ($settings['perrow_tablet']==2)): ?> selected="selected"<?php endif ?>>2</option>
+							<option value="3"<?php if($exist && ($settings['perrow_tablet']==3)): ?> selected="selected"<?php endif ?>>3</option>
+							<option value="4"<?php if($exist && ($settings['perrow_tablet']==4)): ?> selected="selected"<?php endif ?>>4</option>
+							<option value="5"<?php if($exist && ($settings['perrow_tablet']==5)): ?> selected="selected"<?php endif ?>>5</option>
+							<option value="6"<?php if($exist && ($settings['perrow_tablet']==6)): ?> selected="selected"<?php endif ?>>6</option>
+							<option value="7"<?php if($exist && ($settings['perrow_tablet']==7)): ?> selected="selected"<?php endif ?>>7</option>
+							<option value="8"<?php if($exist && ($settings['perrow_tablet']==8)): ?> selected="selected"<?php endif ?>>8</option>
+						</select>
+					</div>
+				</div>
+				
+				<div class="form-group line grid-perrow">
+					<label for="perrow_mobile" class="col-tb-4 control-label"><?php echo __('Items per row (mobile)') ?></label>
+					<div class="col-tb-8">
+						<select id="perrow_mobile" class="input-text" name="setting[perrow_mobile]">
+							<option value="1"<?php if($exist && ($settings['perrow_mobile']==1)): ?> selected="selected"<?php endif ?>>1</option>
+							<option value="2"<?php if($exist && ($settings['perrow_mobile']==2)): ?> selected="selected"<?php endif ?>>2</option>
+							<option value="3"<?php if($exist && ($settings['perrow_mobile']==3)): ?> selected="selected"<?php endif ?>>3</option>
+							<option value="4"<?php if($exist && ($settings['perrow_mobile']==4)): ?> selected="selected"<?php endif ?>>4</option>
+							<option value="5"<?php if($exist && ($settings['perrow_mobile']==5)): ?> selected="selected"<?php endif ?>>5</option>
+							<option value="6"<?php if($exist && ($settings['perrow_mobile']==6)): ?> selected="selected"<?php endif ?>>6</option>
+							<option value="7"<?php if($exist && ($settings['perrow_mobile']==7)): ?> selected="selected"<?php endif ?>>7</option>
+							<option value="8"<?php if($exist && ($settings['perrow_mobile']==8)): ?> selected="selected"<?php endif ?>>8</option>
+						</select>
+					</div>
+				</div>
+				
+				<div class="form-group line" id="use-slider">
+					<label for="use_slider" class="col-tb-4 control-label"><?php echo __('Use slider') ?></label>
+					<div class="col-tb-8">
+						<div class="admin__actions-switch" data-role="switcher">
+							<input type="checkbox"<?php if($exist && $settings['use_slider']): ?> checked="checked"<?php endif ?> value="1" name="setting[use_slider]" id="use_slider" class="admin__actions-switch-checkbox" onclick="useSlider()">
+							<label for="use_slider" class="admin__actions-switch-label">
+								<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+							</label>
+						</div>
+					</div>
+				</div>
+				
+				<?php 
+					echo $this->getLayout()->createBlock('Magento\Framework\View\Element\Template')
+						->setExist($exist)
+						->setSettings($settings)
+						->setDisableSliderMargin(1)
+						->setTemplate('MGS_Fbuilder::panel/create/element/widgets/slider_setting.phtml')->toHtml() ;
+				?>
+			</div>
+			
+			<div class="data item title" aria-labeledby="tab-label-content-title" data-role="collapsible" id="tab-label-content">
+				<a class="data switch" tabindex="-1" data-toggle="switch" href="#content" id="tab-label-content-title">
+					<?php echo __('View Config') ?>
+				</a>
+			</div>
+			
+			<div class="data item content" id="content" data-role="content" style="display:none">
+				<div class="form-group line">
+					<label for="hide_photo" class="col-tb-3 control-label"><?php echo __('Hide Photo') ?></label>
+					<div class="col-tb-2">
+						<div class="admin__actions-switch" data-role="switcher">
+							<input type="checkbox"<?php if($exist && $settings['hide_photo']): ?> checked="checked"<?php endif ?> value="1" name="setting[hide_photo]" id="hide_photo" class="admin__actions-switch-checkbox" onclick="setPreview()">
+							<label for="hide_photo" class="admin__actions-switch-label">
+								<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+							</label>
+						</div>
+					</div>
+				</div>
+				<hr/>
+				<div class="form-group line">
+					<label for="hide_name" class="col-tb-3 control-label"><?php echo __('Hide Name') ?></label>
+					<div class="col-tb-2">
+						<div class="admin__actions-switch" data-role="switcher">
+							<input type="checkbox"<?php if($exist && $settings['hide_name']): ?> checked="checked"<?php endif ?> value="1" name="setting[hide_name]" id="hide_name" class="admin__actions-switch-checkbox" onclick="setPreview()">
+							<label for="hide_name" class="admin__actions-switch-label">
+								<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+							</label>
+						</div>
+					</div>
+					
+					<div class="col-tb-7" id="name-info">
+						<div class="line">
+							<div class="col-tb-6">
+								<input type="text" class="input-text validate-number" id="name_font_size" name="setting[name_font_size]" placeholder="<?php echo __('Font size') ?>: px" <?php if($exist && $settings['name_font_size']): ?> value="<?php echo $settings['name_font_size'] ?>"<?php endif ?> onchange="changeContentStyle()"/>
+							</div>
+							<div class="col-tb-6">
+								<input type="text" class="input-text color-input" id="name_color" name="setting[name_color]" placeholder="<?php echo __('Color') ?>" <?php if($exist && $settings['name_color']): ?> value="<?php echo $settings['name_color'] ?>"<?php endif ?> onchange="changeContentStyle()"/>
+							</div>
+						</div>
+					</div>
+				</div>
+				<hr/>
+				<div class="form-group line">
+					<label for="hide_info" class="col-tb-3 control-label"><?php echo __('Hide Information') ?></label>
+					<div class="col-tb-2">
+						<div class="admin__actions-switch" data-role="switcher">
+							<input type="checkbox"<?php if($exist && $settings['hide_info']): ?> checked="checked"<?php endif ?> value="1" name="setting[hide_info]" id="hide_info" class="admin__actions-switch-checkbox" onclick="setPreview()">
+							<label for="hide_info" class="admin__actions-switch-label">
+								<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+							</label>
+						</div>
+					</div>
+					
+					<div class="col-tb-7" id="info-info">
+						<div class="line">
+							<div class="col-tb-6">
+								<input type="text" class="input-text validate-number" id="info_font_size" name="setting[info_font_size]" placeholder="<?php echo __('Font size') ?>: px" <?php if($exist && $settings['info_font_size']): ?> value="<?php echo $settings['info_font_size'] ?>"<?php endif ?> onchange="changeContentStyle()"/>
+							</div>
+							<div class="col-tb-6">
+								<input type="text" class="input-text color-input" id="info_color" name="setting[info_color]" placeholder="<?php echo __('Color') ?>" <?php if($exist && $settings['info_color']): ?> value="<?php echo $settings['info_color'] ?>"<?php endif ?> onchange="changeContentStyle()"/>
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<hr/>
+				
+				<div class="form-group line">
+					<label for="content" class="col-tb-3 control-label"><?php echo __('Content') ?></label>
+					
+					<div class="col-tb-3">
+						<input type="text" class="input-text validate-number" id="content_font_size" name="setting[content_font_size]" placeholder="<?php echo __('Font size') ?>: px" <?php if($exist && $settings['content_font_size']): ?> value="<?php echo $settings['content_font_size'] ?>"<?php endif ?> onchange="changeContentStyle()"/>
+					</div>
+					<div class="col-tb-3">
+						<input type="text" class="input-text color-input" id="content_color" name="setting[content_color]" placeholder="<?php echo __('Color') ?>" <?php if($exist && $settings['content_color']): ?> value="<?php echo $settings['content_color'] ?>"<?php endif ?> onchange="changeContentStyle()"/>
+					</div>
+					
+					<div class="col-tb-3">
+						<label style="margin-right:7px">
+							<?php echo __('Text Italic') ?>
+						</label>
+						<div class="admin__actions-switch" data-role="switcher">
+							<input type="checkbox"<?php if($exist && $settings['content_italic']): ?> checked="checked"<?php endif ?> value="1" name="setting[content_italic]" id="content_italic" class="admin__actions-switch-checkbox" onclick="setPreview()">
+							<label for="content_italic" class="admin__actions-switch-label">
+								<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+							</label>
+						</div>
+					</div>
+				</div>
+				
+				<hr/>
+				
+				<div class="mgs-testimonial" id="testimonial-box-sample" style="padding-top:15px">
+					<div class="testimonial-item">
+						<div class="testimonial-content">
+							<div class="author-thumbnail">							
+								<img class="img-responsive" src="<?php echo $this->getViewFileUrl('MGS_Fbuilder::images/panel/sample-testimonial.jpg') ?>" alt="">
+							</div>
+							<div class="content">
+								<blockquote>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur. Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla.</blockquote>
+
+								<div class="author-info">
+									<div class="name">David Miller</div>
+									<div class="infomation">CEO & Founder</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+				</div>
+				
+				<style type="text/css" id="content-box-custom-css"></style>
+			</div>
+			
+			<?php if($exist): ?>
+				<?php 
+					echo $this->getLayout()->createBlock('Magento\Framework\View\Element\Template')
+						->setExist($exist)
+						->setBuilderChild($child)
+						->setBuilderHelper($helper)
+						->setTemplate('MGS_Fbuilder::panel/create/element/widgets/code_tab.phtml')->toHtml() ;
+				?>
+				
+			<?php endif ?>
+		</div>
+		
+		
+		<div class="line">
+			<div class="form-group">
+				<div class="col-des-12 builder-action">
+					<div class="buttons">
+						<?php if(!$exist): ?>
+							<button type="button" class="action" onclick="history.go(-1)"><span><?php echo __('Back') ?></span></button>
+						<?php endif ?>
+						<button type="submit" class="action primary"><span><?php echo __('Submit') ?></span></button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+
+<script type="text/javascript">
+	require([
+		'jquery',
+	], function(jQuery){
+		(function($) {
+			$(document).ready(function(){
+				setPreview();
+			});
+		})(jQuery);
+	});
+	
+	function setPreview(){
+		require([
+			'jquery',
+		], function(jQuery){
+			(function($) {
+				if($('#hide_info').prop("checked") == true){
+					$('#info-info').hide();
+					$('#testimonial-box-sample .infomation').hide();
+				}else{
+					$('#info-info').show();
+					$('#testimonial-box-sample .infomation').show();
+				}
+				
+				if($('#hide_name').prop("checked") == true){
+					$('#name-info').hide();
+					$('#testimonial-box-sample .name').hide();
+				}else{
+					$('#name-info').show();
+					$('#testimonial-box-sample .name').show();
+				}
+				
+				if($('#hide_photo').prop("checked") == true){
+					$('#testimonial-box-sample .author-thumbnail').hide();
+				}else{
+					$('#testimonial-box-sample .author-thumbnail').show();
+				}
+			})(jQuery);
+		});
+		
+		changeContentStyle();
+	}
+	
+	function changeContentStyle(){
+		require([
+			'jquery',
+		], function(jQuery){
+			(function($) {
+				name_font_size = $('#name_font_size').val();
+				name_color = $('#name_color').val();
+				info_font_size = $('#info_font_size').val();
+				info_color = $('#info_color').val();
+				content_font_size = $('#content_font_size').val();
+				content_color = $('#content_color').val();
+				
+				$customStyle = '';
+				
+				if(name_font_size!='' && !isNaN(name_font_size) && name_font_size>0){
+					$customStyle += '#testimonial-box-sample .testimonial-content .content .name{font-size:'+name_font_size+'px}';
+				}
+				if(name_color!=''){
+					$customStyle += '#testimonial-box-sample .testimonial-content .content .name{color:'+name_color+'}';
+				}
+				if(info_font_size!='' && !isNaN(info_font_size) && info_font_size>0){
+					$customStyle += '#testimonial-box-sample .testimonial-content .content .infomation{font-size:'+info_font_size+'px}';
+				}
+				if(info_color!=''){
+					$customStyle += '#testimonial-box-sample .testimonial-content .content .infomation{color:'+info_color+'}';
+				}
+				if(content_font_size!='' && !isNaN(content_font_size) && content_font_size>0){
+					$customStyle += '#testimonial-box-sample .testimonial-content .content blockquote{font-size:'+content_font_size+'px}';
+				}
+				if(content_color!=''){
+					$customStyle += '#testimonial-box-sample .testimonial-content .content blockquote{color:'+content_color+'}';
+				}
+				
+				if($('#content_italic').prop("checked") == true){
+					$customStyle += '#testimonial-box-sample .testimonial-content .content blockquote{font-style:italic}';
+				}
+				
+				$('#content-box-custom-css').html($customStyle);
+			})(jQuery);
+		});
+	}
+</script>

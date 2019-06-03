@@ -1,0 +1,172 @@
+<?php $helper = $this->getHelper() ?>
+<?php $params = $this->getParams() ?>
+<?php $exist = false ?>
+<?php $child = null ?>
+<?php $settings = null ?>
+<div class="edit-static-form">
+	<div class="line">
+		<div class="col-des-12 builder-title">
+			<h2><?php echo __('Twitter Timeline Block') ?></h2>
+		</div>
+	</div>
+	<form id="section-form" enctype="multipart/form-data" method="POST" action="<?php echo $this->getUrl('fbuilder/element/save') ?>" data-hasrequired="<?php echo __('* Required Fields') ?>" data-mage-init='{"validation":{}}'>
+		<input type="hidden" name="page_id" value="<?php echo $this->getRequest()->getParam('page_id') ?>">
+		<input id="block_type" type="hidden" name="type" value="twitter">
+		<input id="block_block_name" type="hidden" name="block_name" value="<?php echo $params['block'] ?>">
+		<?php if(isset($params['id'])): ?>
+			<?php 
+				$child =  $this->getModel('MGS\Fbuilder\Model\Child')->load($params['id']);
+				$exist = true;
+				$settings = json_decode($child->getSetting(), true);
+			?>
+			<input type="hidden" name="child_id" value="<?php echo $params['id'] ?>">
+		<?php endif ?>
+		
+		<div class="mgs-tab data items product" data-mage-init='{"tabs":{"openedState":"active"}}'>
+			<?php 
+				echo $this->getLayout()->createBlock('Magento\Framework\View\Element\Template')
+					->setExist($exist)
+					->setBuilderChild($child)
+					->setDisableContent(1)
+					->setBuilderHelper($helper)
+					->setTemplate('MGS_Fbuilder::panel/create/element/widgets/general_tab.phtml')->toHtml() ;
+			?>
+			
+			<div class="data item title" aria-labeledby="tab-label-twitter-title" data-role="collapsible" id="tab-label-twitter">
+				<a class="data switch" tabindex="-1" data-toggle="switch" href="#twitter" id="tab-label-twitter-title">
+					<?php echo __('Twitter Config') ?>
+				</a>
+			</div>
+			
+			<div class="data item content" id="twitter" data-role="content" style="display:none">
+				
+				<div class="form-group line">
+					<label for="page_url" class="col-tb-4 control-label"><?php echo __('Timeline URL') ?></label>
+					<div class="col-tb-8">
+						<input type="text" id="page_url" class="input-text required-entry" name="setting[page_url]" <?php if($exist): ?> value="<?php echo $settings['page_url'] ?>"<?php endif ?>>
+					</div>
+				</div>
+				
+				<div class="form-group line">
+					<label for="width" class="col-tb-4 control-label"><?php echo __('Width') ?></label>
+					<div class="col-tb-8">
+						<input type="text" id="width" class="input-text required-entry validate-number" name="setting[width]" <?php if($exist): ?> value="<?php echo $settings['width'] ?>"<?php endif ?>>
+					</div>
+				</div>
+				
+				<div class="form-group line">
+					<label for="height" class="col-tb-4 control-label"><?php echo __('Height') ?></label>
+					<div class="col-tb-8">
+						<input type="text" id="height" class="input-text required-entry validate-number" name="setting[height]" <?php if($exist): ?> value="<?php echo $settings['height'] ?>"<?php endif ?>>
+					</div>
+				</div>
+				
+				<div class="form-group line">
+					<label for="theme" class="col-tb-4 control-label"><?php echo __('Theme') ?></label>
+					<div class="col-tb-8">
+						<select id="theme" class="input-text" name="setting[theme]">
+							<option value="light"<?php if($exist && ($settings['theme']=='light')): ?> selected="selected"<?php endif ?>><?php echo __('Light') ?></option>
+							<option value="dark"<?php if($exist && ($settings['theme']=='dark')): ?> selected="selected"<?php endif ?>><?php echo __('Dark') ?></option>
+						</select>
+					</div>
+				</div>
+				
+				<div class="form-group line">
+					<label for="default_link_color" class="col-tb-4 control-label"><?php echo __('Link color') ?></label>
+					<div class="col-tb-8">
+						<input type="text" id="default_link_color" class="input-text color-input" name="setting[default_link_color]" <?php if($exist): ?> value="<?php echo $settings['default_link_color'] ?>"<?php endif ?>>
+					</div>
+				</div>
+				
+				<div class="form-group line">
+					<label for="language" class="col-tb-4 control-label"><?php echo __('Language') ?></label>
+					<div class="col-tb-8">
+						<select id="language" class="input-text" name="setting[language]">
+							<option value=""><?php echo __('Automatic') ?></option>
+							<option value="en"<?php if($exist && ($settings['language']=='en')): ?> selected="selected"<?php endif ?>><?php echo __('English (default)') ?></option>
+							<option value="ar"<?php if($exist && ($settings['language']=='ar')): ?> selected="selected"<?php endif ?>><?php echo __('Arabic') ?></option>
+							<option value="bn"<?php if($exist && ($settings['language']=='bn')): ?> selected="selected"<?php endif ?>><?php echo __('Bengali') ?></option>
+							<option value="cs"<?php if($exist && ($settings['language']=='cs')): ?> selected="selected"<?php endif ?>><?php echo __('Czech') ?></option>
+							<option value="da"<?php if($exist && ($settings['language']=='da')): ?> selected="selected"<?php endif ?>><?php echo __('Danish') ?></option>
+							<option value="de"<?php if($exist && ($settings['language']=='de')): ?> selected="selected"<?php endif ?>><?php echo __('German') ?></option>
+							<option value="el"<?php if($exist && ($settings['language']=='el')): ?> selected="selected"<?php endif ?>><?php echo __('Greek') ?></option>
+							<option value="es"<?php if($exist && ($settings['language']=='es')): ?> selected="selected"<?php endif ?>><?php echo __('Spanish') ?></option>
+							<option value="fa"<?php if($exist && ($settings['language']=='fa')): ?> selected="selected"<?php endif ?>><?php echo __('Persian') ?></option>
+							<option value="fi"<?php if($exist && ($settings['language']=='fi')): ?> selected="selected"<?php endif ?>><?php echo __('Finnish') ?></option>
+							<option value="fil"<?php if($exist && ($settings['language']=='fil')): ?> selected="selected"<?php endif ?>><?php echo __('Filipino') ?></option>
+							<option value="fr"<?php if($exist && ($settings['language']=='fr')): ?> selected="selected"<?php endif ?>><?php echo __('French') ?></option>
+							<option value="he"<?php if($exist && ($settings['language']=='he')): ?> selected="selected"<?php endif ?>><?php echo __('Hebrew') ?></option>
+							<option value="hi"<?php if($exist && ($settings['language']=='hi')): ?> selected="selected"<?php endif ?>><?php echo __('Hindi') ?></option>
+							<option value="hu"<?php if($exist && ($settings['language']=='hu')): ?> selected="selected"<?php endif ?>><?php echo __('Hungarian') ?></option>
+							<option value="id"<?php if($exist && ($settings['language']=='id')): ?> selected="selected"<?php endif ?>><?php echo __('Indonesian') ?></option>
+							<option value="it"<?php if($exist && ($settings['language']=='it')): ?> selected="selected"<?php endif ?>><?php echo __('Italian') ?></option>
+							<option value="ja"<?php if($exist && ($settings['language']=='ja')): ?> selected="selected"<?php endif ?>><?php echo __('Japanese') ?></option>
+							<option value="ko"<?php if($exist && ($settings['language']=='ko')): ?> selected="selected"<?php endif ?>><?php echo __('Korean') ?></option>
+							<option value="msa"<?php if($exist && ($settings['language']=='msa')): ?> selected="selected"<?php endif ?>><?php echo __('Malay') ?></option>
+							<option value="nl"<?php if($exist && ($settings['language']=='nl')): ?> selected="selected"<?php endif ?>><?php echo __('Dutch') ?></option>
+							<option value="no"<?php if($exist && ($settings['language']=='no')): ?> selected="selected"<?php endif ?>><?php echo __('Norwegian') ?></option>
+							<option value="pl"<?php if($exist && ($settings['language']=='pl')): ?> selected="selected"<?php endif ?>><?php echo __('Polish') ?></option>
+							<option value="pt"<?php if($exist && ($settings['language']=='pt')): ?> selected="selected"<?php endif ?>><?php echo __('Portuguese') ?></option>
+							<option value="ro"<?php if($exist && ($settings['language']=='ro')): ?> selected="selected"<?php endif ?>><?php echo __('Romanian') ?></option>
+							<option value="ru"<?php if($exist && ($settings['language']=='ru')): ?> selected="selected"<?php endif ?>><?php echo __('Russian') ?></option>
+							<option value="sv"<?php if($exist && ($settings['language']=='sv')): ?> selected="selected"<?php endif ?>><?php echo __('Swedish') ?></option>
+							<option value="th"<?php if($exist && ($settings['language']=='th')): ?> selected="selected"<?php endif ?>><?php echo __('Thai') ?></option>
+							<option value="tr"<?php if($exist && ($settings['language']=='tr')): ?> selected="selected"<?php endif ?>><?php echo __('Turkish') ?></option>
+							<option value="uk"<?php if($exist && ($settings['language']=='uk')): ?> selected="selected"<?php endif ?>><?php echo __('Ukrainian') ?></option>
+							<option value="ur"<?php if($exist && ($settings['language']=='ur')): ?> selected="selected"<?php endif ?>><?php echo __('Urdu') ?></option>
+							<option value="vi"<?php if($exist && ($settings['language']=='vi')): ?> selected="selected"<?php endif ?>><?php echo __('Vietnamese') ?></option>
+							<option value="zh-cn"<?php if($exist && ($settings['language']=='zh-cn')): ?> selected="selected"<?php endif ?>><?php echo __('Chinese (Simplified)') ?></option>
+							<option value="zh-tw"<?php if($exist && ($settings['language']=='zh-tw')): ?> selected="selected"<?php endif ?>><?php echo __('Chinese (Traditional)') ?></option>
+						</select>
+					</div>
+				</div>
+			</div>
+		
+			<?php if($exist): ?>
+				<?php 
+					echo $this->getLayout()->createBlock('Magento\Framework\View\Element\Template')
+						->setExist($exist)
+						->setBuilderChild($child)
+						->setBuilderHelper($helper)
+						->setTemplate('MGS_Fbuilder::panel/create/element/widgets/code_tab.phtml')->toHtml() ;
+				?>
+				
+			<?php endif ?>
+		</div>
+		
+		<div class="line">
+			<div class="form-group">
+				<div class="col-des-12 builder-action">
+					<div class="buttons">
+						<?php if(!$exist): ?>
+							<button type="button" class="action" onclick="history.go(-1)"><span><?php echo __('Back') ?></span></button>
+						<?php endif ?>
+						<button type="submit" class="action primary"><span><?php echo __('Submit') ?></span></button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+
+<script type="text/javascript">
+	var currentAnimate = '';
+	<?php if($exist): ?>
+		currentAnimate = '<?php echo $settings['animation'] ?>';
+	<?php endif ?>
+	
+	function changeAnimationClass(animate){
+		require([
+			'jquery',
+		], function(jQuery){
+			(function($) {
+				if(currentAnimate!=''){
+					$('#animation-test').removeClass(currentAnimate);
+				}
+				$('#animation-test').addClass(animate);
+				currentAnimate = animate;
+			})(jQuery);
+		});
+	}
+	
+</script>

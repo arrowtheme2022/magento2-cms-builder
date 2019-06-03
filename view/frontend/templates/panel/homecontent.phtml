@@ -1,0 +1,59 @@
+<?php $helper = $this->helper('MGS\Fbuilder\Helper\Data') ?>
+<?php $canUsePanel = $helper->acceptToUsePanel() ?>
+<?php $sections = $this->getSections() ?>
+<?php if($canUsePanel): ?>
+	<div class="sort-block" id="sortable_home">
+	<?php endif ?>
+<?php if(count($sections)>0): ?>
+		<?php foreach($sections as $section): ?>
+			<section<?php echo $this->getSectionSetting($section, $canUsePanel) ?>>
+				<div class="frame<?php if($canUsePanel): ?> container-panel<?php endif ?> no-padding">
+					<?php if($canUsePanel): ?>
+						<?php echo $this->getEditPanel() ?>
+					<?php endif ?>
+					<?php 
+						$cols = $this->getBlockCols();
+						$class = $section->getBlockClass();
+						if($class!=''){
+							$class = json_decode($class, true);
+						}
+					?>
+					
+					<?php if(count($cols)>1): ?>
+						<div class="line">
+							<?php foreach($cols as $key=>$col): ?>
+								<?php $blockClass = $this->getBlockClass($section, $col, $class, $key, $canUsePanel) ?>
+								<div class="<?php echo $blockClass ?>">
+									<div <?php if($canUsePanel): ?>id="sort-block-<?php echo $section->getName().'-'.$key ?>" class="line sort-block-container"<?php else: ?>class="line"<?php endif ?>>
+										<?php echo $this->getLayout()->createBlock('MGS\Fbuilder\Block\Panel\Block')->setBlockName($section->getName().'-'.$key)->setCanUsePanel($canUsePanel)->setTemplate('panel/block.phtml')->toHtml() ?>
+									</div>
+								</div>
+							<?php endforeach ?>
+						</div>
+					<?php else: ?>
+						<div class="line">
+							<div class="col-des-12 <?php if($canUsePanel): ?> col-builder<?php endif ?>">
+								<div <?php if($canUsePanel): ?>id="sort-block-<?php echo $section->getName().'-0' ?>" class="line sort-block-container"<?php else: ?>class="line"<?php endif ?>>
+									<?php echo $this->getLayout()->createBlock('MGS\Fbuilder\Block\Panel\Block')->setBlockName($section->getName().'-0')->setCanUsePanel($canUsePanel)->setTemplate('panel/block.phtml')->toHtml() ?>
+								</div>
+							</div>
+						</div>
+					<?php endif ?>
+				</div>
+			</section>
+		<?php endforeach ?>
+<?php endif ?>
+<?php if($canUsePanel): ?>
+	</div>
+	<?php endif ?>
+<?php if($canUsePanel): ?>
+	<section>
+		<div class="frame no-padding">
+			<div class="add-new-section col-des-12">
+				<button class="action primary btn btn-default" type="button" onclick="addNewSection(<?php echo $this->getPageId() ?>)"><span id="new-section-load"><em class="fa fa-plus-circle"></span></em>&nbsp;<?php echo __('Add New Section') ?></button>
+			</div>
+		</div>
+	</section>
+	
+	<script  type="text/javascript" src="<?php echo $this->getViewFileUrl('MGS_Fbuilder::js/panel.js') ?>"></script>
+<?php endif ?>

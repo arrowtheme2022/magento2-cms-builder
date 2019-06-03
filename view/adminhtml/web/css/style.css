@@ -1,0 +1,18 @@
+#mColorPicker{overflow:hidden}
+#fbuilder_single_slider_color,
+#fbuilder_single_slider_border,
+#fbuilder_single_slider_background,
+#fbuilder_single_slider_hover_color,
+#fbuilder_single_slider_hover_border,
+#fbuilder_single_slider_hover_background,
+#fbuilder_single_slider_dot_background,
+#fbuilder_single_slider_dot_active_background,
+#fbuilder_multiple_slider_color,
+#fbuilder_multiple_slider_border,
+#fbuilder_multiple_slider_background,
+#fbuilder_multiple_slider_hover_color,
+#fbuilder_multiple_slider_hover_border,
+#fbuilder_multiple_slider_hover_background,
+#fbuilder_multiple_slider_dot_background,
+#fbuilder_multiple_slider_dot_active_background{width:93% !important}
+#mColorPickerFooter a{display:none !important}

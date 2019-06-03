@@ -1,0 +1,9 @@
+<div class="content-block twitter-timeline-block">
+	<?php if($this->getTwitterTimeline()): ?>
+		<div class="block-content">
+			<?php echo $this->getTwitterTimeline(); ?>
+		</div>
+	<?php else: ?>
+		<div class="message info empty"><div><?php echo __('Can not get Twitter Timeline data.') ?></div></div>
+	<?php endif ?>
+</div>

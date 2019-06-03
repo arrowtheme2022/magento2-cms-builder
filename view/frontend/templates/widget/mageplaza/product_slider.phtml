@@ -1,0 +1,183 @@
+<?php
+/**
+ * Mageplaza
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Mageplaza.com license that is
+ * available through the world-wide-web at this URL:
+ * https://www.mageplaza.com/LICENSE.txt
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade this extension to newer
+ * version in the future.
+ *
+ * @category    Mageplaza
+ * @package     Mageplaza_Productslider
+ * @copyright   Copyright (c) Mageplaza (https://www.mageplaza.com/)
+ * @license     https://www.mageplaza.com/LICENSE.txt
+ */
+
+use Mageplaza\Productslider\Block\AbstractSlider;
+
+/** @var AbstractSlider $block */
+
+$mode = 'grid';
+$title = $block->getTitle();
+if ($products = $block->getProductCollection()) : ?>
+	<?php $builderHelper = $this->helper('MGS\Fbuilder\Helper\Data'); ?>
+	<?php $blockId = rand() . time(); ?>
+	<?php $useSlider = $this->getUseSlider(); ?>
+	<?php $items = $perRowDefault = $this->getPerrow(); ?>
+	<?php $perRowTablet = $this->getPerrowTablet(); ?>
+	<?php $perRowMobile = $this->getPerrowMobile(); ?>
+	<?php if($useSlider && $this->hasData('number_row') && $this->getNumberRow()>1): ?>
+		<?php $slideMultiRow = true; ?>
+		<?php $slideBy = 1 ?>
+		<?php $columnCount = $perRowDefault * $this->getNumberRow(); ?>
+	<?php else: ?>
+		<?php $slideBy = $this->getSlideBy() ?>
+		<?php $slideMultiRow = false; ?>
+	<?php endif ?>
+
+	<?php if($useSlider): ?>
+			
+	<?php 
+		$settingMode = 'multiple'; 
+		$navPosition = $this->getNavigationPosition();
+
+		$navType = $builderHelper->getStoreConfig('fbuilder/'.$settingMode.'_slider/navigation');
+		if($navType=='image'){
+			$nextIcon = $builderHelper->getStoreConfig('fbuilder/'.$settingMode.'_slider/next_image');
+			$prevIcon = $builderHelper->getStoreConfig('fbuilder/'.$settingMode.'_slider/prev_image');
+			$navHtml = '["<span><img src=\''.$builderHelper->getMediaUrl().'mgs/fbuilder/slider/'.$prevIcon.'\'/></span>", "<span><img src=\''.$builderHelper->getMediaUrl().'mgs/fbuilder/slider/'.$nextIcon.'\'/></span>"]';
+		}else{
+			$nextIcon = $builderHelper->getStoreConfig('fbuilder/'.$settingMode.'_slider/next_font_class');
+			$prevIcon = $builderHelper->getStoreConfig('fbuilder/'.$settingMode.'_slider/prev_font_class');
+			$navHtml = '["<span><em class=\''.$prevIcon.'\'></em></span>", "<span><em class=\''.$nextIcon.'\'></em></span>"]';
+		}
+	?>
+	<?php endif ?>
+    <div class="block-content">
+        <div class="products-<?= $mode; ?> <?= $mode; ?>">
+                <?php $iterator = 1; ?>
+                <div id="mp-list-items-<?= $blockId ?>" class="items<?php if($useSlider): ?> owl-carousel mgs-owl-carousel mgs-carousel-<?php echo $settingMode ?> nav-type-<?php echo $navType ?> nav-position-<?php echo $navPosition ?> <?php if($this->getHideNav() && ((($items==1) && ($navPosition!='middle-outside')) || (($items>1) && ($navPosition=='middle-inside')))): ?> autohide-nav<?php endif ?> dot-position-<?php echo $this->getPaginationPosition()?><?php else: ?> line row-<?php echo $perRowDefault ?> row-tablet-<?php echo $perRowTablet ?> row-mobile-<?php echo $perRowMobile ?><?php endif ?>">
+                    <?php $i=0; $j=0; foreach ($products as $_item) : $i++; ?>
+					
+						<?php if($slideMultiRow): ?>
+							<?php if ($j++ % $columnCount == 0): ?>
+							<div class="line">
+							<?php endif ?>
+						<?php endif ?>
+                       
+                        <div class="slider-product-item-info">
+                            <a href="<?= $block->getProductUrl($_item) ?>"
+                               class="product photo slider-product-item-photo">
+                                <?= $block->getImage($_item, 'recently_viewed_products_grid_content_widget')->toHtml(); ?>
+                            </a>
+                            <div class="product details slider-product-item-details">
+                                <strong class="product name product-item-name">
+                                    <a title="<?= $block->escapeHtml($_item->getName()) ?>"
+                                       href="<?= $block->getProductUrl($_item) ?>">
+                                        <?= $block->escapeHtml($_item->getName()) ?>
+                                    </a>
+                                </strong>
+                                <?= $block->getProductPrice($_item); ?>
+                                <div class="product actions slider-product-item-actions">
+                                    <div class="actions-primary">
+                                        <?php if ($_item->isSaleable()) : ?>
+                                            <?php if ($_item->getTypeInstance()->hasRequiredOptions($_item)) : ?>
+                                                <button class="action tocart primary mageplaza-product-slider-button"
+                                                        data-mage-init='{"redirectUrl": {"url": "<?= $block->getAddToCartUrl($_item) ?>"}}'
+                                                        type="button" title="<?= __('Add to Cart') ?>">
+                                                    <span><?= __('Add to Cart') ?></span>
+                                                </button>
+                                            <?php else : ?>
+                                                <?php
+                                                $postDataHelper = $this->helper('Magento\Framework\Data\Helper\PostHelper');
+                                                $postData = $postDataHelper->getPostData($block->getAddToCartUrl($_item), ['product' => $_item->getEntityId()])
+                                                ?>
+                                                <button class="action tocart primary mageplaza-product-slider-button"
+                                                        data-post='<?= $postData; ?>'
+                                                        type="button" title="<?= __('Add to Cart') ?>">
+                                                    <span><?= __('Add to Cart') ?></span>
+                                                </button>
+                                            <?php endif; ?>
+                                        <?php else : ?>
+                                            <?php if ($_item->getIsSalable()) : ?>
+                                                <div class="stock available"><span><?= __('In stock') ?></span>
+                                                </div>
+                                            <?php else : ?>
+                                                <div class="stock unavailable">
+                                                    <span><?= __('Out of stock') ?></span></div>
+                                            <?php endif; ?>
+                                        <?php endif; ?>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <?php if($slideMultiRow): ?>
+							<?php if ($j % $columnCount == 0 || $j == count($products)): ?>
+							</div>
+							<?php endif ?>
+						<?php endif ?>
+                    <?php endforeach ?>
+                </div>
+            </ol>
+        </div>
+    </div>
+	<?php if($useSlider): ?>
+		<?php $autoPlay = $this->getAutoplay() ? 'true' : 'false'; ?>
+		<?php $stopAuto = $this->getStopAuto() ? 'true' : 'false'; ?>
+		<?php $nav = $this->getNavigation() ? 'true' : 'false'; ?>
+		<?php $dot = $this->getPagination() ? 'true' : 'false'; ?>
+		<?php $rtl = $this->getRtl() ? 'true' : 'false'; ?>
+		<?php $loop = $this->getLoop() ? 'true' : 'false'; ?>
+		<?php $slideBy = $slideBy ? $slideBy : 1; ?>
+		
+		<script type="text/javascript">
+			require([
+				'jquery',
+				'mgsowlcarousel'
+			], function ($) {
+				var owlproductSlider<?php echo $blockId ?> = $('#mp-list-items-<?= $blockId ?>').owlCarousel({
+					<?php if($slideMultiRow): ?>
+						items: 1,
+					<?php else: ?>
+						items: <?php echo $perRowDefault; ?>,
+					<?php endif ?>
+					autoplay: <?php echo $autoPlay ?>,
+					autoplayHoverPause: <?php echo $stopAuto ?>,
+					nav: <?php echo $nav ?>,
+					dots: <?php echo $dot ?>,
+					slideBy: <?php echo $slideBy ?>,
+					rtl: <?php echo $rtl; ?>,
+					loop: <?php echo $loop; ?>,
+					<?php if(!$slideMultiRow):?>margin: <?php echo $this->getSlideMargin() ? $this->getSlideMargin() : 0 ?>,<?php endif ?>
+					<?php if($navPosition=='top-left' || $navPosition=='top-right'): ?>
+						onInitialized: function(){
+							$("#mp-list-items-<?= $blockId ?> .owl-nav").attr('style', 'top:<?php echo $this->getNavTop() ?>px');
+						},
+					<?php endif ?>
+					<?php if(!$slideMultiRow): ?>
+					responsive:{
+						0:{
+							items:<?php echo $perRowMobile; ?>,
+							nav: false,
+						},
+						571:{
+							items:<?php echo $perRowTablet; ?>
+						},
+						1200:{
+							items:<?php echo $perRowDefault; ?>
+						}
+					},
+					<?php endif ?>
+					navText: <?php echo $navHtml ?>,
+					autoHeight:true
+				});
+			});
+		</script>
+	<?php endif ?>
+<?php endif; ?>

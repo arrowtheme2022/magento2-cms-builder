@@ -1,0 +1,32 @@
+{
+  "name": "mgs/magento-2-fbuilder-free",
+  "description": "Magento 2 CMS Builder is an extension allowing you to edit CMS pages effortlessly and visually at front-end.",
+  "require": {
+    "mgs/module-core": "^0.1.0"
+  },
+  "type": "magento2-module",
+  "version": "1.0.0",
+  "license": "proprietary",
+  "authors": [
+    {
+      "name": "Magesolution",
+      "email": "info@magesolution.com",
+      "homepage": "https://www.magesolution.com",
+      "role": "Technical Support"
+    }
+  ],
+  "keywords": [
+    "magento 2",
+    "front-end builder",
+	"cms builder",
+	"landing builder"
+  ],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "MGS\\Fbuilder\\": ""
+    }
+  }
+}

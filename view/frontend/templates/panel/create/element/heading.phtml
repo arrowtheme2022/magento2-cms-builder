@@ -1,0 +1,327 @@
+<?php $helper = $this->getHelper() ?>
+<?php $params = $this->getParams() ?>
+<?php $exist = false ?>
+<?php $child = null ?>
+<div class="edit-static-form">
+	<div class="line">
+		<div class="col-des-12 builder-title">
+			<h2><?php echo __('Heading Block') ?></h2>
+		</div>
+	</div>
+	<form id="section-form" enctype="multipart/form-data" method="POST" action="<?php echo $this->getUrl('fbuilder/element/save') ?>" data-hasrequired="<?php echo __('* Required Fields') ?>" data-mage-init='{"validation":{}}'>
+		<input type="hidden" name="page_id" value="<?php echo $this->getRequest()->getParam('page_id') ?>">
+		<input id="block_type" type="hidden" name="type" value="heading">
+		<input id="block_block_name" type="hidden" name="block_name" value="<?php echo $params['block'] ?>">
+		<?php if(isset($params['id'])): ?>
+			<?php 
+				$child =  $this->getModel('MGS\Fbuilder\Model\Child')->load($params['id']);
+				$exist = true;
+				$settings = json_decode($child->getSetting(), true);
+			?>
+			<input type="hidden" name="child_id" value="<?php echo $params['id'] ?>">
+		<?php endif ?>
+		
+		<div class="mgs-tab data items product" data-mage-init='{"tabs":{"openedState":"active"}}'>
+			<?php 
+				echo $this->getLayout()->createBlock('Magento\Framework\View\Element\Template')
+					->setExist($exist)
+					->setDisableContent(1)
+					->setDisableBackground(1)
+					->setBuilderChild($child)
+					->setBuilderHelper($helper)
+					->setTemplate('MGS_Fbuilder::panel/create/element/widgets/general_tab.phtml')->toHtml() ;
+			?>
+			
+			<div class="data item title" aria-labeledby="tab-label-content-title" data-role="collapsible" id="tab-label-content">
+				<a class="data switch" tabindex="-1" data-toggle="switch" href="#content" id="tab-label-content-title">
+					<?php echo __('Content Config') ?>
+				</a>
+			</div>
+			
+			<div class="data item content" id="content" data-role="content" style="display:none">
+				<div class="line form-group">
+					<div class="col-tb-3">
+						<label class="control-label" for="heading"><?php echo __('Heading') ?></label><br/>
+						<select name="setting[heading]" id="heading" onchange="setPreview()">
+							<option value="h1"<?php if($exist && ($settings['heading']=='h1')): ?> selected="selected"<?php endif ?>><?php echo __('H1'); ?></option>
+							<option value="h2"<?php if($exist && ($settings['heading']=='h2')): ?> selected="selected"<?php endif ?>><?php echo __('H2'); ?></option>
+							<option value="h3"<?php if($exist && ($settings['heading']=='h3')): ?> selected="selected"<?php endif ?>><?php echo __('H3'); ?></option>
+							<option value="h4"<?php if($exist && ($settings['heading']=='h4')): ?> selected="selected"<?php endif ?>><?php echo __('H4'); ?></option>
+							<option value="h5"<?php if($exist && ($settings['heading']=='h5')): ?> selected="selected"<?php endif ?>><?php echo __('H5'); ?></option>
+							<option value="h6"<?php if($exist && ($settings['heading']=='h6')): ?> selected="selected"<?php endif ?>><?php echo __('H6'); ?></option>
+						</select>
+					</div>
+					<div class="col-tb-6">
+						<label for="subtitle" class="control-label"><?php echo __('Heading text') ?></label><br/>
+						<input type="text" class="input-text required-entry" id="subtitle" name="setting[subtitle]"<?php if($exist && $settings['subtitle']): ?> value="<?php echo $settings['subtitle'] ?>"<?php endif ?> onchange="setPreview()" />
+					</div>
+					
+					<div class="col-tb-3">
+						<label class="control-label" for="heading_align"><?php echo __('Text align') ?></label><br/>
+						<select name="setting[heading_align]" id="heading_align" onchange="setPreview()">
+							<option value="left"<?php if($exist && ($settings['heading_align']=='left')): ?> selected="selected"<?php endif ?>><?php echo __('Left'); ?></option>
+							<option value="center"<?php if($exist && ($settings['heading_align']=='center')): ?> selected="selected"<?php endif ?>><?php echo __('Center'); ?></option>
+							<option value="right"<?php if($exist && ($settings['heading_align']=='right')): ?> selected="selected"<?php endif ?>><?php echo __('Right'); ?></option>
+						</select>
+					</div>
+				</div>
+				<div class="line form-group">
+					
+					
+					<div class="col">
+						<label for="heading_font_size" class="control-label"><?php echo __('Font size') ?></label><br/>
+						<input type="text" class="input-text validate-number" id="heading_font_size" name="setting[heading_font_size]"<?php if($exist && $settings['heading_font_size']): ?> value="<?php echo $settings['heading_font_size'] ?>"<?php endif ?> onchange="changeContentStyle()" placeholder="px"/>
+					</div>
+					
+					<div class="col">
+						<label for="heading_color" class="control-label"><?php echo __('Color') ?></label><br/>
+						<input type="text" class="input-text color-input" id="heading_color" name="setting[heading_color]"<?php if($exist && $settings['heading_color']): ?> value="<?php echo $settings['heading_color'] ?>"<?php endif ?> onchange="changeContentStyle()"/>
+					</div>
+					
+					<div class="col">
+						<label for="heading_fontweight" class="control-label"><?php echo __('Font bold') ?></label><br/>
+						<div class="admin__actions-switch" data-role="switcher">
+							<input type="checkbox"<?php if($exist && $settings['heading_fontweight']): ?> checked="checked"<?php endif ?> value="1" name="setting[heading_fontweight]" id="heading_fontweight" class="admin__actions-switch-checkbox" onclick="setPreview()">
+							<label for="heading_fontweight" class="admin__actions-switch-label">
+								<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+							</label>
+						</div>
+					</div>
+					
+					<div class="col">
+						<label for="heading_italic" class="control-label"><?php echo __('Font Italic') ?></label><br/>
+						<div class="admin__actions-switch" data-role="switcher">
+							<input type="checkbox"<?php if($exist && $settings['heading_italic']): ?> checked="checked"<?php endif ?> value="1" name="setting[heading_italic]" id="heading_italic" class="admin__actions-switch-checkbox" onclick="setPreview()">
+							<label for="heading_italic" class="admin__actions-switch-label">
+								<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+							</label>
+						</div>
+					</div>
+					
+					<div class="col">
+						<label for="heading_uppercase" class="control-label"><?php echo __('Uppercase') ?></label><br/>
+						<div class="admin__actions-switch" data-role="switcher">
+							<input type="checkbox"<?php if($exist && $settings['heading_uppercase']): ?> checked="checked"<?php endif ?> value="1" name="setting[heading_uppercase]" id="heading_uppercase" class="admin__actions-switch-checkbox" onclick="setPreview()">
+							<label for="heading_uppercase" class="admin__actions-switch-label">
+								<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+							</label>
+						</div>
+					</div>
+					
+					<div class="col head-background">
+						<label for="heading_background" class="control-label"><?php echo __('Background') ?></label><br/>
+						<input type="text" class="input-text color-input" id="heading_background" name="setting[heading_background]"<?php if($exist && $settings['heading_background']): ?> value="<?php echo $settings['heading_background'] ?>"<?php endif ?> onchange="changeContentStyle()"/>
+					</div>
+				</div>
+				
+				<hr/>
+				
+				<div class="line form-group">
+					<div class="col">
+						<label for="show_border" class="control-label"><?php echo __('Show border') ?></label><br/>
+						<div class="admin__actions-switch" data-role="switcher">
+							<input type="checkbox"<?php if($exist && $settings['show_border']): ?> checked="checked"<?php endif ?> value="1" name="setting[show_border]" id="show_border" class="admin__actions-switch-checkbox" onclick="showBorder()">
+							<label for="show_border" class="admin__actions-switch-label">
+								<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+							</label>
+						</div>
+					</div>
+					
+					<div class="col border-fields">
+						<label class="control-label" for="border_style"><?php echo __('Style') ?></label><br/>
+						<select name="setting[border_style]" id="border_style" onchange="setPreview()">
+							<option value="solid"<?php if($exist && ($settings['border_style']=='solid')): ?> selected="selected"<?php endif ?>><?php echo __('Solid'); ?></option>
+							<option value="dotted"<?php if($exist && ($settings['border_style']=='dotted')): ?> selected="selected"<?php endif ?>><?php echo __('Dotted'); ?></option>
+							<option value="dashed"<?php if($exist && ($settings['border_style']=='dashed')): ?> selected="selected"<?php endif ?>><?php echo __('Dashed'); ?></option>
+						</select>
+					</div>
+					
+					<div class="col border-fields">
+						<label class="control-label" for="border_position"><?php echo __('Position') ?></label><br/>
+						<select name="setting[border_position]" id="border_position" onchange="showBorder(); setPreview()">
+							<option value="bottom"<?php if($exist && ($settings['border_position']=='bottom')): ?> selected="selected"<?php endif ?>><?php echo __('Bottom'); ?></option>
+							<option value="middle"<?php if($exist && ($settings['border_position']=='middle')): ?> selected="selected"<?php endif ?>><?php echo __('Middle'); ?></option>
+						</select>
+					</div>
+					
+					<div class="col border-fields">
+						<label for="border_color" class="control-label"><?php echo __('Border color') ?></label><br/>
+						<input type="text" class="input-text color-input" id="border_color" name="setting[border_color]"<?php if($exist && $settings['border_color']): ?> value="<?php echo $settings['border_color'] ?>"<?php endif ?> onchange="changeContentStyle()"/>
+					</div>
+					
+					<div class="col border-fields">
+						<label for="border_width" class="control-label"><?php echo __('Border width') ?></label><br/>
+						<input type="text" class="input-text validate-number" id="border_width" name="setting[border_width]"<?php if($exist && $settings['border_width']): ?> value="<?php echo $settings['border_width'] ?>"<?php endif ?> onchange="changeContentStyle()" placeholder="px"/>
+					</div>
+					
+					<div class="col border-margin">
+						<label for="border_margin" class="control-label"><?php echo __('Margin top') ?></label><br/>
+						<input type="text" class="input-text validate-number" id="border_margin" name="setting[border_margin]"<?php if($exist && $settings['border_margin']): ?> value="<?php echo $settings['border_margin'] ?>"<?php endif ?> onchange="changeContentStyle()" placeholder="px"/>
+					</div>
+				</div>
+				
+				<hr/>
+				
+				<div class="content-block heading-block" id="heading-temp">
+					<div class="mgs-heading" id="mgs-heading">
+						<h1 class="heading"><span></span></h1>
+					</div>
+				</div>
+				
+				<style type="text/css" id="heading-custom-css"></style>
+			</div>
+		
+			<?php if($exist): ?>
+				<?php 
+					echo $this->getLayout()->createBlock('Magento\Framework\View\Element\Template')
+						->setExist($exist)
+						->setBuilderChild($child)
+						->setBuilderHelper($helper)
+						->setTemplate('MGS_Fbuilder::panel/create/element/widgets/code_tab.phtml')->toHtml() ;
+				?>
+				
+			<?php endif ?>
+		</div>
+		
+		<div class="line">
+			<div class="form-group">
+				<div class="col-des-12 builder-action">
+					<div class="buttons">
+						<?php if(!$exist): ?>
+							<button type="button" class="action" onclick="history.go(-1)"><span><?php echo __('Back') ?></span></button>
+						<?php endif ?>
+						<button type="submit" class="action primary"><span><?php echo __('Submit') ?></span></button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>	
+</div>
+
+<script type="text/javascript">
+	require([
+		'jquery',
+	], function(jQuery){
+		(function($) {
+			$(document).ready(function(){
+				setPreview();
+				showBorder();
+			});
+			
+			$("#subtitle").keypress(function( event ){
+				setPreview();
+			});
+		})(jQuery);
+	});
+	
+	function showBorder(){
+		require([
+			'jquery',
+		], function(jQuery){
+			(function($) {
+				if($('#show_border').prop("checked") == true){
+					$('.border-fields').show();
+					if($('#border_position').val()=='middle'){
+						$('.head-background').show();
+						$('.border-margin').hide();
+					}else{
+						$('.border-margin').show();
+						$('.head-background').hide();
+					}
+				}else{
+					$('.border-margin').hide();
+					$('.border-fields').hide();
+					$('.head-background').hide();
+				}
+			})(jQuery);
+		});
+		
+		setPreview();
+	}
+	
+	function setPreview(){
+		require([
+			'jquery',
+		], function(jQuery){
+			(function($) {
+				heading = $('#heading').val();
+				subtitle = $('#subtitle').val();
+				heading_align = $('#heading_align').val();
+				show_border = $('#show_border').val();
+				border_style = $('#border_style').val();
+				border_position = $('#border_position').val();
+				
+				headingClass = 'mgs-heading heading-'+heading_align;
+				if($('#show_border').prop("checked") == true){
+					headingClass += ' has-border heading-'+border_style+' heading-'+border_position;
+				}
+				$('#mgs-heading').attr('class', headingClass);
+				
+				hClass = 'heading';
+				
+				if($('#heading_fontweight').prop("checked") == true){
+					hClass += ' font-bold';
+				}
+				if($('#heading_italic').prop("checked") == true){
+					hClass += ' font-italic';
+				}
+				if($('#heading_uppercase').prop("checked") == true){
+					hClass += ' font-uppercase';
+				}
+				
+				headingHtml = '<'+heading+' class="'+hClass+'"><span>'+subtitle+'</span></'+heading+'>';
+				$('#heading-temp .mgs-heading').html(headingHtml);
+			})(jQuery);
+		});
+		
+		changeContentStyle();
+	}
+	
+	function changeContentStyle(){
+		require([
+			'jquery',
+		], function(jQuery){
+			(function($) {
+				
+				heading_font_size = parseFloat($('#heading_font_size').val());
+				heading_color = $('#heading_color').val();
+				heading_background = $('#heading_background').val();
+
+				border_position = $('#border_position').val();
+				border_color = $('#border_color').val();
+				border_width = parseFloat($('#border_width').val());
+				border_margin = parseFloat($('#border_margin').val());
+				
+				customStyle = '';
+				if(heading_font_size!='' && !isNaN(heading_font_size) && heading_font_size>0){
+					customStyle += '#heading-temp .mgs-heading .heading{font-size:'+heading_font_size+'px}';
+				}
+				if(heading_color!=''){
+					customStyle += '#heading-temp .mgs-heading .heading{color:'+heading_color+'}';
+				}
+				
+				if($('#show_border').prop("checked") == true){
+					if((border_position=='middle') && (heading_background!='')){
+						customStyle += '#heading-temp .mgs-heading.has-border.heading-middle .heading span{background:'+heading_background+'}';
+					}
+					if(border_color!=''){
+						customStyle += '#heading-temp .mgs-heading.has-border .heading::after{border-color:'+border_color+'}';
+					}
+					if(border_width!='' && !isNaN(border_width) && border_width>0){
+						customStyle += '#heading-temp .mgs-heading.has-border .heading::after{border-width:'+border_width+'px}';
+						
+						if(border_position=='middle'){
+							margin = border_width/2;
+							customStyle += '#heading-temp .mgs-heading.has-border .heading::after{margin-top:-'+margin+'px}';
+						}else{
+							if(border_margin!='' && !isNaN(border_margin) && border_margin>0){
+								customStyle += '#heading-temp .mgs-heading.has-border .heading::after{bottom:-'+border_margin+'px}';
+							}
+						}
+					}
+				}
+				$('#heading-custom-css').html(customStyle);
+			})(jQuery);
+		});
+	}
+</script>

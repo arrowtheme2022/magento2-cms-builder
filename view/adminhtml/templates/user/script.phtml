@@ -1,0 +1,14 @@
+<?php if($block->isNew()): ?>
+	<script type="text/javascript">
+		require([
+			"jquery"
+		], function($){
+			$(document).ready(function(){
+				if(!$('#create_panel_account').length){
+					var html = '<div class="admin__field field field-create_panel_account" data-ui-id="user-edit-tab-main-0-fieldset-element-form-field-create-panel-account"><label class="label admin__field-label" for="create_panel_account" data-ui-id="user-edit-tab-main-0-fieldset-element-select-create-panel-account-label"><span>Create Front-end <br/>Builder account</span></label><div class="admin__field-control control"><input type="checkbox" id="create_panel_account" name="create_panel_account"/><br/><p class="note"><?php echo __('Use this user information to create Front-end Builder account.') ?></p></div></div>';
+					$('#user_base_fieldset').append(html);
+				}
+			});
+		});
+	</script>
+<?php endif ?>

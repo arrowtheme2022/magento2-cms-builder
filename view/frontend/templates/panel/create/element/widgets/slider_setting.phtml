@@ -1,0 +1,154 @@
+<?php $settings = $this->getSettings() ?>
+<?php $exist = $this->getExist() ?>
+<?php $top = -45 ?>
+<?php $margin = 30 ?>
+<?php if($exist): ?>
+	<?php $top = $settings['nav_top']; ?>
+	<?php //$margin = $settings['slide_margin']; ?>
+<?php endif ?>
+
+<div id="slider-setting">
+	<hr/>
+
+	<div class="form-group line">
+		<label for="rtl" class="col-tb-4 control-label"><?php echo __('RTL') ?></label>
+		<div class="col-tb-8">
+			<div class="admin__actions-switch" data-role="switcher">
+				<input type="checkbox"<?php if($exist && $settings['rtl']): ?> checked="checked"<?php endif ?> value="1" name="setting[rtl]" id="rtl" class="admin__actions-switch-checkbox">
+				<label for="rtl" class="admin__actions-switch-label">
+					<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+				</label>
+			</div>
+		</div>
+	</div>
+
+	<div class="form-group line" id="number-row-container">
+		<label for="number_row" class="col-tb-4 control-label"><?php echo __('Number of row') ?></label>
+		<div class="col-tb-8">
+			<select id="number_row" class="required-entry input-text" name="setting[number_row]" onchange="changeNumberRow()">
+				<?php for($i=1; $i<=4; $i++): ?>
+					<option value="<?php echo $i ?>"<?php if($exist && ($settings['number_row']==$i)): ?> selected="selected"<?php endif ?>><?php echo $i ?></option>
+				<?php endfor ?>
+			</select>
+		</div>
+	</div>
+
+	<div class="form-group line">
+		<label for="autoplay" class="col-tb-4 control-label"><?php echo __('Auto play') ?></label>
+		<div class="col-tb-8">
+			<div class="admin__actions-switch" data-role="switcher">
+				<input type="checkbox"<?php if($exist && $settings['autoplay']): ?> checked="checked"<?php endif ?> value="1" name="setting[autoplay]" id="autoplay" class="admin__actions-switch-checkbox">
+				<label for="autoplay" class="admin__actions-switch-label">
+					<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+				</label>
+			</div>
+		</div>
+	</div>
+
+	<div class="form-group line">
+		<label for="stop_auto" class="col-tb-4 control-label"><?php echo __('Stop autoplay on mouse hover') ?></label>
+		<div class="col-tb-8">
+			<div class="admin__actions-switch" data-role="switcher">
+				<input type="checkbox"<?php if($exist && $settings['stop_auto']): ?> checked="checked"<?php endif ?> value="1" name="setting[stop_auto]" id="stop_auto" class="admin__actions-switch-checkbox">
+				<label for="stop_auto" class="admin__actions-switch-label">
+					<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+				</label>
+			</div>
+		</div>
+	</div>
+	
+	<div class="form-group line">
+		<label for="loop" class="col-tb-4 control-label"><?php echo __('Loop') ?></label>
+		<div class="col-tb-8">
+			<div class="admin__actions-switch" data-role="switcher">
+				<input type="checkbox"<?php if($exist && $settings['loop']): ?> checked="checked"<?php endif ?> value="1" name="setting[loop]" id="loop" class="admin__actions-switch-checkbox">
+				<label for="loop" class="admin__actions-switch-label">
+					<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+				</label>
+			</div>
+		</div>
+	</div>
+
+	<div class="form-group line">
+		<label for="navigation" class="col-tb-4 control-label"><?php echo __('Display navigation') ?></label>
+		<div class="col-tb-8">
+			<div class="admin__actions-switch" data-role="switcher">
+				<input type="checkbox"<?php if($exist && $settings['navigation']): ?> checked="checked"<?php endif ?> value="1" name="setting[navigation]" id="navigation" class="admin__actions-switch-checkbox" onclick="displayNav()">
+				<label for="navigation" class="admin__actions-switch-label">
+					<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+				</label>
+			</div>
+		</div>
+	</div>
+	
+	<div class="form-group line nav-fields">
+		<label for="navigation_position" class="col-tb-4 control-label"><?php echo __('Navigation position') ?></label>
+		<div class="col-tb-8">
+			<select name="setting[navigation_position]" id="navigation_position" onchange="displayNav()">
+				<option value="middle-inside"<?php if($exist && ($settings['navigation_position']=='middle-inside')): ?> selected="selected"<?php endif ?>><?php echo __('Middle Inside'); ?></option>
+				<option value="top-left"<?php if($exist && ($settings['navigation_position']=='top-left')): ?> selected="selected"<?php endif ?>><?php echo __('Top Left'); ?></option>
+				<option value="top-right"<?php if($exist && ($settings['navigation_position']=='top-right')): ?> selected="selected"<?php endif ?>><?php echo __('Top Right'); ?></option>
+				
+				<option value="middle-outside"<?php if($exist && ($settings['navigation_position']=='middle-outside')): ?> selected="selected"<?php endif ?>><?php echo __('Middle Outside'); ?></option>
+				<option value="bottom-left"<?php if($exist && ($settings['navigation_position']=='bottom-left')): ?> selected="selected"<?php endif ?>><?php echo __('Bottom Left'); ?></option>
+				<option value="bottom-right"<?php if($exist && ($settings['navigation_position']=='bottom-right')): ?> selected="selected"<?php endif ?>><?php echo __('Bottom Right'); ?></option>
+			</select>
+		</div>
+	</div>
+	
+	<div class="form-group line nav-top-position">
+		<label for="nav_top" class="col-tb-4 control-label"><?php echo __('Navigation top position') ?></label>
+		<div class="col-tb-8">
+			<input type="text" id="nav_top" class="input-text validate-number" name="setting[nav_top]" value="<?php echo $top ?>" placeholder="px"/>
+		</div>
+	</div>
+	
+	<div class="form-group line auto-hide-nav">
+		<label for="hide_nav" class="col-tb-4 control-label"><?php echo __('Auto hide navigation') ?></label>
+		<div class="col-tb-8">
+			<div class="admin__actions-switch" data-role="switcher">
+				<input type="checkbox"<?php if($exist && $settings['hide_nav']): ?> checked="checked"<?php endif ?> value="1" name="setting[hide_nav]" id="hide_nav" class="admin__actions-switch-checkbox">
+				<label for="hide_nav" class="admin__actions-switch-label">
+					<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+				</label>
+			</div>
+		</div>
+	</div>
+
+	<div class="form-group line">
+		<label for="pagination" class="col-tb-4 control-label"><?php echo __('Display pagination') ?></label>
+		<div class="col-tb-8">
+			<div class="admin__actions-switch" data-role="switcher">
+				<input type="checkbox"<?php if($exist && $settings['pagination']): ?> checked="checked"<?php endif ?> value="1" name="setting[pagination]" id="pagination" class="admin__actions-switch-checkbox" onclick="displayDot()">
+				<label for="pagination" class="admin__actions-switch-label">
+					<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+				</label>
+			</div>
+		</div>
+	</div>
+	
+	<div class="form-group line dot-fields">
+		<label for="pagination_position" class="col-tb-4 control-label"><?php echo __('Pagination position') ?></label>
+		<div class="col-tb-8">
+			<select name="setting[pagination_position]" id="pagination_position">
+				<option value="center"<?php if($exist && ($settings['pagination_position']=='center')): ?> selected="selected"<?php endif ?>><?php echo __('Center'); ?></option>
+				<option value="left"<?php if($exist && ($settings['pagination_position']=='left')): ?> selected="selected"<?php endif ?>><?php echo __('Left'); ?></option>
+				<option value="right"<?php if($exist && ($settings['pagination_position']=='right')): ?> selected="selected"<?php endif ?>><?php echo __('Right'); ?></option>
+			</select>
+		</div>
+	</div>
+
+	<div class="form-group line" id="slide_by_container">
+		<label for="slide_by" class="col-tb-4 control-label"><?php echo __('Navigation slide by') ?></label>
+		<div class="col-tb-8">
+			<input type="text" id="slide_by" class="input-text required-entry validate-number" name="setting[slide_by]"<?php if($exist): ?> value="<?php echo $settings['slide_by'] ?>"<?php endif ?> />
+		</div>
+	</div>
+	
+	<div class="form-group line">
+		<label for="slide_margin" class="col-tb-4 control-label"><?php echo __('Margin right (on item)') ?></label>
+		<div class="col-tb-8">
+			<input type="text" id="slide_margin" class="input-text validate-number" name="setting[slide_margin]" value="<?php echo $margin ?>" />
+		</div>
+	</div>
+</div>

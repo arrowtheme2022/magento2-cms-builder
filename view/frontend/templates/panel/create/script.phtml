@@ -1,0 +1,199 @@
+<script type="text/javascript">
+	require([
+		'jquery',
+	], function(jQuery){
+		(function($) {
+			$(document).ready(function(){
+				useSlider();
+				setTemplate();
+				changeNumberRow();
+				displayDot();
+				
+				if($('#navigation').length){
+					displayNav();
+				}
+				
+				if($('.color-input').length){
+					$('.color-input').attr('data-hex', true).mColorPicker();
+				}
+				
+				if($('.input-icon-choose').length){
+					$('.input-icon-choose').each(function() {
+						inputId = $(this).attr('id');
+						$('<span class="iconPicker" onclick="openIconList(\''+ inputId +'\')"><span class="fa fa-gear"></span></span>').insertAfter(this);
+					});
+					
+				}
+				
+				if($('#perrow').length){
+					$('#perrow').change(function(){
+						displayNav();
+					});
+				}
+			});
+		})(jQuery);
+	});
+	
+	function openIconList(elId){
+		require([
+			'jquery',
+		], function(jQuery){
+			(function($) {
+				$('html').addClass('open-list');
+				$('#font-list').show();
+				
+				$('#font-list .fa-hover').click(function(){
+					fontClass = $(this).find('i').attr('class');
+					$('#'+elId).val(fontClass);
+					closeIconList();
+					setPreview();
+					return false;
+				});
+
+			})(jQuery);
+		});
+		
+	}
+	
+	function closeIconList(){
+		require([
+			'jquery',
+		], function(jQuery){
+			(function($) {
+				$('html').removeClass('open-list');
+				$('#font-list').hide();
+			})(jQuery);
+		});
+	}
+	
+	function useSlider(){
+		require([
+			'jquery',
+		], function(jQuery){
+			(function($) {
+				if($('#use_slider').length){
+					if($('#use_slider').prop("checked") == true){
+						$('#slider-setting').show();
+					}else{
+						$('#slider-setting').hide();
+					}
+				}
+			})(jQuery);
+		});
+	}
+	
+	var currentAnimate = '';
+	<?php if(isset($params['id'])): ?>
+		currentAnimate = '<?php echo $settings['animation'] ?>';
+	<?php endif ?>
+	
+	function changeAnimationClass(animate){
+		require([
+			'jquery',
+		], function(jQuery){
+			(function($) {
+				if(currentAnimate!=''){
+					$('#animation-test').removeClass(currentAnimate);
+				}
+				$('#animation-test').addClass(animate);
+				currentAnimate = animate;
+			})(jQuery);
+		});
+	}
+	
+	function setTemplate(){
+		require([
+			'jquery',
+		], function(jQuery){
+			(function($) {
+				if($('#template').length){
+					if($('#template').val() == 'grid.phtml'){
+						$('.category-tab-config').show();
+						$('#number-row-container').show();
+						$('#slide_by_container').show();
+						$('.grid-perrow').show();
+						$('#list_number_col').hide();
+						$('#item_per_col').hide();
+						
+					}else{
+						$('.grid-perrow').hide();
+						$('#list_number_col').show();
+						$('#item_per_col').show();
+						$('#slide_by_container').hide();
+						$('.category-tab-config').hide();
+						$('#number-row-container').hide();
+					}
+				}
+			})(jQuery);
+		});
+	}
+	
+	function changeNumberRow(){
+		require([
+			'jquery',
+		], function(jQuery){
+			(function($) {
+				if($('#number_row').length){
+					if($('#number_row').val() == 1){
+						$('#slide_by_container').show();
+					}else{
+						$('#slide_by_container').hide();
+					}
+				}
+			})(jQuery);
+		});
+	}
+	
+	function displayNav(){
+		require([
+			'jquery',
+		], function(jQuery){
+			(function($) {
+				if($('#items').length){
+					items = $('#items').val();
+				}
+				if($('#perrow').length){
+					items = $('#perrow').val();
+				}
+				navigation_position = $('#navigation_position').val();
+				
+				if($('#navigation').prop("checked") == true){
+					$('.nav-fields').show();
+					
+					if((items>1) && (navigation_position=='top-left' || navigation_position=='top-right')){
+						$('.nav-top-position').show();
+					}else{
+						$('.nav-top-position').hide();
+					}
+					
+					if(((items==1) && (navigation_position!='middle-outside')) || ((items>1) && (navigation_position=='middle-inside'))){
+						$('.auto-hide-nav').show();
+					}else{
+						$('.auto-hide-nav').hide();
+					}
+				}else{
+					$('.nav-fields').hide();
+					$('.nav-top-position').hide();
+					$('.auto-hide-nav').hide();
+				}
+				
+			})(jQuery);
+		});
+		
+	}
+	
+	function displayDot(){
+		require([
+			'jquery',
+		], function(jQuery){
+			(function($) {
+				if($('#pagination').prop("checked") == true){
+					$('.dot-fields').show();
+				}else{
+					$('.dot-fields').hide();
+				}
+			})(jQuery);
+		});
+		
+	}
+</script>

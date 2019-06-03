@@ -1,0 +1,50 @@
+<?php $categories = $this->getCategoryByIds() ?>
+<?php $builderHelper = $this->helper('MGS\Fbuilder\Helper\Data'); ?>
+<?php $nameExtraClass = 'category-name' ?>
+<?php if($this->getFontBold()): ?>
+	<?php $nameExtraClass .= ' font-bold' ?>
+<?php endif ?>
+<?php if($this->getFontItalic()): ?>
+	<?php $nameExtraClass .= ' font-italic' ?>
+<?php endif ?>
+<?php if($this->getUppercase()): ?>
+	<?php $nameExtraClass .= ' font-uppercase' ?>
+<?php endif ?>
+
+<?php $otherExtraClass = 'title' ?>
+<?php if($this->getOtherFontBold()): ?>
+	<?php $otherExtraClass .= ' font-bold' ?>
+<?php endif ?>
+<?php if($this->getOtherFontItalic()): ?>
+	<?php $otherExtraClass .= ' font-italic' ?>
+<?php endif ?>
+<?php if($this->getOtherUppercase()): ?>
+	<?php $otherExtraClass .= ' font-uppercase' ?>
+<?php endif ?>
+
+<div class="content-block category-list-block">
+	<?php if($this->getData('fbuilder_title') != ""): ?>
+		<div class="list-heading">
+			<h3 class="<?php echo $otherExtraClass ?>"><?php echo $builderHelper->decodeHtmlTag($this->getData('fbuilder_title')) ?></h3>
+		</div>
+	<?php endif ?>
+	<div class="list">
+		<?php if (count($categories)>0): ?>
+			<ul>
+			
+			<?php $i=0; foreach ($categories as $_category): $i++; ?>
+				<li>
+					<a href="<?php echo $this->getCategoryUrl($_category) ?>" class="<?php echo $nameExtraClass ?>">
+						<?php if($this->getShowIcon()): ?>
+							<?php echo $this->getCategoryIconHtml($_category) ?>
+						<?php endif ?>
+						<span><?php echo $_category->getName() ?></span>
+					</a>
+				</li>
+			<?php endforeach; ?>
+			</ul>
+		<?php else: ?>
+			<div class="empty"><?= __('We can\'t find categories matching the selection.') ?></div>
+		<?php endif ?>
+	</div>
+</div>

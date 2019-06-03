@@ -1,0 +1,730 @@
+<?php $helper = $this->getHelper() ?>
+<?php $params = $this->getParams() ?>
+<?php $exist = false ?>
+<?php $child = null ?>
+<?php $settings = null ?>
+<div class="edit-static-form">
+	<div class="line">
+		<div class="col-des-12 builder-title">
+			<h2><?php echo __('Category List Block') ?></h2>
+		</div>
+	</div>
+	<form id="section-form" enctype="multipart/form-data" method="POST" action="<?php echo $this->getUrl('fbuilder/element/save') ?>" data-hasrequired="<?php echo __('* Required Fields') ?>" data-mage-init='{"validation":{}}'>
+		<input type="hidden" name="page_id" value="<?php echo $this->getRequest()->getParam('page_id') ?>">
+		<input id="block_type" type="hidden" name="type" value="category_list">
+		<input id="block_block_name" type="hidden" name="block_name" value="<?php echo $params['block'] ?>">
+		<?php if(isset($params['id'])): ?>
+			<?php 
+				$child =  $this->getModel('MGS\Fbuilder\Model\Child')->load($params['id']);
+				$exist = true;
+				$settings = json_decode($child->getSetting(), true);
+			?>
+			<input type="hidden" name="child_id" value="<?php echo $params['id'] ?>">
+		<?php endif ?>
+		
+		<div class="mgs-tab data items product" data-mage-init='{"tabs":{"openedState":"active"}}'>
+			<?php 
+				echo $this->getLayout()->createBlock('Magento\Framework\View\Element\Template')
+					->setExist($exist)
+					->setBuilderChild($child)
+					->setBuilderHelper($helper)
+					->setDisableContent(1)
+					->setTemplate('MGS_Fbuilder::panel/create/element/widgets/general_tab.phtml')->toHtml() ;
+			?>
+			
+			<?php 
+				echo $this->getLayout()->createBlock('Magento\Framework\View\Element\Template')
+					->setExist($exist)
+					->setBuilderChild($child)
+					->setBuilderHelper($helper)
+					->setDisableCategoryTab(1)
+					->setTemplate('MGS_Fbuilder::panel/create/element/widgets/category_tab.phtml')->toHtml() ;
+			?>
+			
+			<div class="data item title" aria-labeledby="tab-label-additional-title" data-role="collapsible" id="tab-label-additional">
+				<a class="data switch" tabindex="-1" data-toggle="switch" href="#additional" id="tab-label-additional-title">
+					<?php echo __('View Config') ?>
+				</a>
+			</div>
+			
+			<div class="data item content" id="additional" data-role="content" style="display:none">
+				<div class="form-group line">
+					<label for="template" class="col-tb-4 control-label"><?php echo __('View mode') ?></label>
+					<div class="col-tb-8">
+						<select id="template" class="input-text" name="setting[template]" onchange="setTemplateCategoryList()">
+							<option value="grid.phtml"<?php if($exist && ($settings['template']=='grid.phtml')): ?> selected="selected"<?php endif ?>><?php echo __('Grid width Category Thumbnail Image') ?></option>
+							<option value="list.phtml"<?php if($exist && ($settings['template']=='list.phtml')): ?> selected="selected"<?php endif ?>><?php echo __('List') ?></option>
+						</select>
+						
+						<span class="note grid-perrow"><?php echo __('Go to admin > edit categories and upload thumbnail image.') ?></span>
+					</div>
+				</div>
+				
+				<div class="form-group line title-field">
+					<label for="title" class="col-tb-4 control-label"><?php echo __('Title') ?></label>
+					<div class="col-tb-8">
+						<input type="text" id="title" class="input-text" name="setting[title]"<?php if($exist): ?> value="<?php echo htmlspecialchars($settings['title']) ?>"<?php else: ?> value="<?php echo __('Top Categories') ?>"<?php endif ?> onchange="changeTitle()"/>
+					</div>
+				</div>
+				
+				<div class="form-group line" id="list_number_col">
+					<label for="show_icon" class="col-tb-4 control-label"><?php echo __('Show Icon') ?></label>
+					<div class="col-tb-8">
+						<div class="admin__actions-switch" data-role="switcher">
+							<input type="checkbox"<?php if($exist && $settings['show_icon']): ?> checked="checked"<?php endif ?> value="1" name="setting[show_icon]" id="show_icon" class="admin__actions-switch-checkbox" onclick="showIcon()">
+							<label for="show_icon" class="admin__actions-switch-label">
+								<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+							</label>
+							<span class="note"><?php echo __('You need to go to admin > edit categories and set icon.') ?></span>
+						</div>
+					</div>
+				</div>
+				
+				<div class="form-group line grid-perrow">
+					<label for="perrow" class="col-tb-4 control-label"><?php echo __('Items per row (default)') ?></label>
+					<div class="col-tb-8">
+						<select id="perrow" class="input-text" name="setting[perrow]">
+							<option value="1"<?php if($exist && ($settings['perrow']==1)): ?> selected="selected"<?php endif ?>>1</option>
+							<option value="2"<?php if($exist && ($settings['perrow']==2)): ?> selected="selected"<?php endif ?>>2</option>
+							<option value="3"<?php if($exist && ($settings['perrow']==3)): ?> selected="selected"<?php endif ?>>3</option>
+							<option value="4"<?php if($exist && ($settings['perrow']==4)): ?> selected="selected"<?php endif ?>>4</option>
+							<option value="5"<?php if($exist && ($settings['perrow']==5)): ?> selected="selected"<?php endif ?>>5</option>
+							<option value="6"<?php if($exist && ($settings['perrow']==6)): ?> selected="selected"<?php endif ?>>6</option>
+							<option value="7"<?php if($exist && ($settings['perrow']==7)): ?> selected="selected"<?php endif ?>>7</option>
+							<option value="8"<?php if($exist && ($settings['perrow']==8)): ?> selected="selected"<?php endif ?>>8</option>
+						</select>
+					</div>
+				</div>
+				
+				<div class="form-group line grid-perrow">
+					<label for="perrow_tablet" class="col-tb-4 control-label"><?php echo __('Items per row (tablet)') ?></label>
+					<div class="col-tb-8">
+						<select id="perrow_tablet" class="input-text" name="setting[perrow_tablet]">
+							<option value="1"<?php if($exist && ($settings['perrow_tablet']==1)): ?> selected="selected"<?php endif ?>>1</option>
+							<option value="2"<?php if($exist && ($settings['perrow_tablet']==2)): ?> selected="selected"<?php endif ?>>2</option>
+							<option value="3"<?php if($exist && ($settings['perrow_tablet']==3)): ?> selected="selected"<?php endif ?>>3</option>
+							<option value="4"<?php if($exist && ($settings['perrow_tablet']==4)): ?> selected="selected"<?php endif ?>>4</option>
+							<option value="5"<?php if($exist && ($settings['perrow_tablet']==5)): ?> selected="selected"<?php endif ?>>5</option>
+							<option value="6"<?php if($exist && ($settings['perrow_tablet']==6)): ?> selected="selected"<?php endif ?>>6</option>
+							<option value="7"<?php if($exist && ($settings['perrow_tablet']==7)): ?> selected="selected"<?php endif ?>>7</option>
+							<option value="8"<?php if($exist && ($settings['perrow_tablet']==8)): ?> selected="selected"<?php endif ?>>8</option>
+						</select>
+					</div>
+				</div>
+				
+				<div class="form-group line grid-perrow">
+					<label for="perrow_mobile" class="col-tb-4 control-label"><?php echo __('Items per row (mobile)') ?></label>
+					<div class="col-tb-8">
+						<select id="perrow_mobile" class="input-text" name="setting[perrow_mobile]">
+							<option value="1"<?php if($exist && ($settings['perrow_mobile']==1)): ?> selected="selected"<?php endif ?>>1</option>
+							<option value="2"<?php if($exist && ($settings['perrow_mobile']==2)): ?> selected="selected"<?php endif ?>>2</option>
+							<option value="3"<?php if($exist && ($settings['perrow_mobile']==3)): ?> selected="selected"<?php endif ?>>3</option>
+							<option value="4"<?php if($exist && ($settings['perrow_mobile']==4)): ?> selected="selected"<?php endif ?>>4</option>
+							<option value="5"<?php if($exist && ($settings['perrow_mobile']==5)): ?> selected="selected"<?php endif ?>>5</option>
+							<option value="6"<?php if($exist && ($settings['perrow_mobile']==6)): ?> selected="selected"<?php endif ?>>6</option>
+							<option value="7"<?php if($exist && ($settings['perrow_mobile']==7)): ?> selected="selected"<?php endif ?>>7</option>
+							<option value="8"<?php if($exist && ($settings['perrow_mobile']==8)): ?> selected="selected"<?php endif ?>>8</option>
+						</select>
+					</div>
+				</div>
+				
+				<div class="form-group line grid-perrow">
+					<label for="show_category_name" class="col-tb-4 control-label"><?php echo __('Show Category Name') ?></label>
+					<div class="col-tb-8">
+						<div class="admin__actions-switch" data-role="switcher">
+							<input type="checkbox"<?php if($exist && $settings['show_category_name']): ?> checked="checked"<?php endif ?> value="1" name="setting[show_category_name]" id="show_category_name" class="admin__actions-switch-checkbox" onclick="showCategoryName()">
+							<label for="show_category_name" class="admin__actions-switch-label">
+								<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+							</label>
+							
+						</div>
+					</div>
+				</div>
+				
+				<div class="form-group line grid-perrow">
+					<label for="show_product" class="col-tb-4 control-label"><?php echo __('Show Product count') ?></label>
+					<div class="col-tb-8">
+						<div class="admin__actions-switch" data-role="switcher">
+							<input type="checkbox"<?php if($exist && $settings['show_product']): ?> checked="checked"<?php endif ?> value="1" name="setting[show_product]" id="show_product" class="admin__actions-switch-checkbox" onchange="showCount()">
+							<label for="show_product" class="admin__actions-switch-label">
+								<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+							</label>
+						</div>
+					</div>
+				</div>
+				
+				<div class="form-group line grid-perrow" id="use-slider">
+					<label for="use_slider" class="col-tb-4 control-label"><?php echo __('Use slider') ?></label>
+					<div class="col-tb-8">
+						<div class="admin__actions-switch" data-role="switcher">
+							<input type="checkbox"<?php if($exist && $settings['use_slider']): ?> checked="checked"<?php endif ?> value="1" name="setting[use_slider]" id="use_slider" class="admin__actions-switch-checkbox" onclick="useSlider()">
+							<label for="use_slider" class="admin__actions-switch-label">
+								<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+							</label>
+						</div>
+					</div>
+				</div>
+				
+				<?php 
+					echo $this->getLayout()->createBlock('Magento\Framework\View\Element\Template')
+						->setExist($exist)
+						->setSettings($settings)
+						->setTemplate('MGS_Fbuilder::panel/create/element/widgets/slider_setting.phtml')->toHtml() ;
+				?>
+				
+				<hr/>
+				
+				<div class="form-group line">
+					<div class="col-tb-8">
+						<div class="line">
+							<div class="col-tb-3">
+								<h4><?php echo __('Category Name') ?></h4>
+							</div>
+							<div class="col-tb-9">
+								<div class="line">
+									<div class="col-tb-3">
+										<label for="font_size" class="control-label"><?php echo __('Font size') ?></label><br/>
+										<div>
+											<input type="text" id="font_size" class="input-text validate-number" name="setting[font_size]"<?php if($exist): ?> value="<?php echo $settings['font_size'] ?>"<?php endif ?> placeholder="px" onchange="changeStyleColor()"/>
+										</div>
+									</div>
+									<div class="col-tb-3">
+										<label for="font_bold" class="control-label"><?php echo __('Font Bold') ?></label><br/>
+										<div class="admin__actions-switch" data-role="switcher">
+											<input type="checkbox"<?php if($exist && $settings['font_bold']): ?> checked="checked"<?php endif ?> value="1" name="setting[font_bold]" id="font_bold" class="admin__actions-switch-checkbox" onclick="changeCatNameFontWeight()">
+											<label for="font_bold" class="admin__actions-switch-label">
+												<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+											</label>
+										</div>
+									</div>
+									
+									<div class="col-tb-3">
+										<label for="font_italic" class="control-label"><?php echo __('Font Italic') ?></label><br/>
+										<div class="admin__actions-switch" data-role="switcher">
+											<input type="checkbox"<?php if($exist && $settings['font_italic']): ?> checked="checked"<?php endif ?> value="1" name="setting[font_italic]" id="font_italic" class="admin__actions-switch-checkbox" onclick="changeCatNameFontStyle()">
+											<label for="font_italic" class="admin__actions-switch-label">
+												<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+											</label>
+										</div>
+									</div>
+									
+									<div class="col-tb-3">
+										<label for="uppercase" class="control-label"><?php echo __('Uppercase') ?></label><br/>
+										<div class="admin__actions-switch" data-role="switcher">
+											<input type="checkbox"<?php if($exist && $settings['uppercase']): ?> checked="checked"<?php endif ?> value="1" name="setting[uppercase]" id="uppercase" class="admin__actions-switch-checkbox" onclick="changeCatNameTextTransform()">
+											<label for="uppercase" class="admin__actions-switch-label">
+												<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+											</label>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<hr/>
+				
+						<div class="form-group line">
+							<div class="col-tb-3">
+								<h4><?php echo __('Other text') ?></h4>
+							</div>
+							<div class="col-tb-9">
+								<div class="line">
+									<div class="col-tb-3">
+										<label for="other_font_size" class="control-label"><?php echo __('Font size') ?></label><br/>
+										<div>
+											<input type="text" id="other_font_size" class="input-text validate-number" name="setting[other_font_size]"<?php if($exist): ?> value="<?php echo $settings['other_font_size'] ?>"<?php endif ?> placeholder="px" onchange="changeStyleColor()"/>
+										</div>
+									</div>
+									<div class="col-tb-3">
+										<label for="other_font_bold" class="control-label"><?php echo __('Font Bold') ?></label><br/>
+										<div class="admin__actions-switch" data-role="switcher">
+											<input type="checkbox"<?php if($exist && $settings['other_font_bold']): ?> checked="checked"<?php endif ?> value="1" name="setting[other_font_bold]" id="other_font_bold" class="admin__actions-switch-checkbox" onclick="changeOtherFontWeight()">
+											<label for="other_font_bold" class="admin__actions-switch-label">
+												<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+											</label>
+										</div>
+									</div>
+									
+									<div class="col-tb-3">
+										<label for="other_font_italic" class="control-label"><?php echo __('Font Italic') ?></label><br/>
+										<div class="admin__actions-switch" data-role="switcher">
+											<input type="checkbox"<?php if($exist && $settings['other_font_italic']): ?> checked="checked"<?php endif ?> value="1" name="setting[other_font_italic]" id="other_font_italic" class="admin__actions-switch-checkbox" onclick="changeOtherFontStyle()">
+											<label for="other_font_italic" class="admin__actions-switch-label">
+												<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+											</label>
+										</div>
+									</div>
+									
+									<div class="col-tb-3">
+										<label for="other_uppercase" class="control-label"><?php echo __('Uppercase') ?></label><br/>
+										<div class="admin__actions-switch" data-role="switcher">
+											<input type="checkbox"<?php if($exist && $settings['other_uppercase']): ?> checked="checked"<?php endif ?> value="1" name="setting[other_uppercase]" id="other_uppercase" class="admin__actions-switch-checkbox" onclick="changeOtherTextTransform()">
+											<label for="other_uppercase" class="admin__actions-switch-label">
+												<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+											</label>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<hr/>
+						
+						<div class="form-group line fieldss">
+							<div class="col-tb-4">
+								<label for="primary_color" class="control-label"><?php echo __('Primary Color') ?></label><br/>
+								<div>
+									<input type="text" id="primary_color" class="input-text color-input" name="setting[primary_color]"<?php if($exist): ?> value="<?php echo $settings['primary_color'] ?>"<?php endif ?> onchange="changeStyleColor()" />
+								</div>
+							</div>
+							
+							<div class="col-tb-4">
+								<label for="secondary_color" class="control-label"><?php echo __('Secondary Color') ?></label><br/>
+								<div>
+									<input type="text" id="secondary_color" class="input-text color-input" name="setting[secondary_color]"<?php if($exist): ?> value="<?php echo $settings['secondary_color'] ?>"<?php endif ?> onchange="changeStyleColor()" />
+								</div>
+							</div>
+							
+							<div class="col-tb-4">
+								<label for="third_color" class="control-label"><?php echo __('Third Color') ?></label><br/>
+								<div>
+									<input type="text" id="third_color" class="input-text color-input" name="setting[third_color]"<?php if($exist): ?> value="<?php echo $settings['third_color'] ?>"<?php endif ?> onchange="changeStyleColor()" />
+								</div>
+							</div>
+							
+							
+						</div>
+						
+						<div class="form-group line fieldss">
+							<div class="col-tb-4">
+								<label for="fourth_color" class="control-label"><?php echo __('Fourth Color') ?></label><br/>
+								<div>
+									<input type="text" id="fourth_color" class="input-text color-input" name="setting[fourth_color]"<?php if($exist): ?> value="<?php echo $settings['fourth_color'] ?>"<?php endif ?> onchange="changeStyleColor()" />
+								</div>
+							</div>
+							
+							<div class="col-tb-4">
+								<label for="fifth_color" class="control-label"><?php echo __('Fifth Color') ?></label><br/>
+								<div>
+									<input type="text" id="fifth_color" class="input-text color-input" name="setting[fifth_color]"<?php if($exist && isset($settings['fifth_color'])): ?> value="<?php echo $settings['fifth_color'] ?>"<?php endif ?> onchange="changeStyleColor()" />
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="col-tb-4" id="category-list-temp" >
+						<div class="grid-perrow">
+							<div class="content-block category-grid-block">
+								<div class="block widget category-grid-widget">
+									<div class="items line">
+										<div class="item category-item">
+											<a href="#">
+												<img src="<?php echo $this->getViewFileUrl('MGS_Fbuilder::images/panel/sample-banner.jpg') ?>" alt="">
+												<span class="widget-category-infor">
+													<span class="category-name">Category Name</span>
+													<span class="category-product-count">
+														<span class="number">68</span> Products
+													</span>
+												</span>
+											</a>
+										</div>	
+									</div>
+								</div>
+							</div>
+						</div>
+						
+						<div id="list-temp">
+							<div class="content-block category-list-block" style="margin-top:15px">
+								<div class="list-heading"><h3 class="title"><?php echo __('Top Categories') ?></h3></div>
+								<div class="list">
+									<ul>
+										<li>
+											<a href="#" class="category-name">
+												<span class="category-icon font-icon fa fa-tv"></span>
+												<span>Category Name 1</span>
+											</a>
+										</li>
+										<li>
+											<a href="#" class="category-name">
+												<span class="category-icon font-icon fa fa-futbol-o"></span>
+												<span>Category Name 2</span>
+											</a>
+										</li>
+										<li>
+											<a href="#" class="category-name">
+												<span class="category-icon font-icon fa fa-bicycle"></span>
+												<span>Category Name 3</span>
+											</a>
+										</li>
+										<li>
+											<a href="#" class="category-name">
+												<span class="category-icon font-icon fa fa-video-camera"></span>
+												<span>Category Name 4</span>
+											</a>
+										</li>
+										<li>
+											<a href="#" class="category-name">
+												<a href="#" class="category-name">
+												<span class="category-icon font-icon fa fa-gift"></span>
+												<span>Category Name 5</span>
+											</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<style type="text/css" id="list-custom-css"></style>
+				</div>
+			
+				
+			</div>
+		
+			<?php if($exist): ?>
+				<?php 
+					echo $this->getLayout()->createBlock('Magento\Framework\View\Element\Template')
+						->setExist($exist)
+						->setBuilderChild($child)
+						->setBuilderHelper($helper)
+						->setTemplate('MGS_Fbuilder::panel/create/element/widgets/code_tab.phtml')->toHtml() ;
+				?>
+				
+			<?php endif ?>
+		</div>
+		
+		<div class="line">
+			<div class="form-group">
+				<div class="col-des-12 builder-action">
+					<div class="buttons">
+						<?php if(!$exist): ?>
+							<button type="button" class="action" onclick="history.go(-1)"><span><?php echo __('Back') ?></span></button>
+						<?php endif ?>
+						<button type="submit" class="action primary"><span><?php echo __('Submit') ?></span></button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+
+<script type="text/javascript">
+	var currentAnimate = '';
+	<?php if($exist): ?>
+		currentAnimate = '<?php echo $settings['animation'] ?>';
+	<?php endif ?>
+	require([
+		'jquery',
+	], function(jQuery){
+		(function($) {
+			$(document).ready(function(){
+				setTemplateCategoryList();
+				showCategoryName();
+				changeCatNameFontWeight();
+				changeCatNameFontStyle();
+				changeCatNameTextTransform();
+				changeOtherFontWeight();
+				changeOtherFontStyle();
+				changeOtherTextTransform();
+				showCount();
+				showIcon();
+				changeTitle();
+				
+				$('#title').change(function(){
+					var titleText = $('#title').val();
+					if(titleText!=''){
+						$('#list-temp .list-heading').show();
+						$('#list-temp .list-heading h3').html(titleText);
+					}else{
+						$('#list-temp .list-heading').hide();
+					}
+				});
+			});
+			$("#title").keypress(function( event ){
+				changeTitle();
+			});
+		})(jQuery);
+	});
+	
+	function changeTitle(){
+		require([
+			'jquery',
+		], function(jQuery){
+			(function($) {
+				title = $('#title').val();
+				$('#list-temp .list-heading h3').html(title);
+			})(jQuery);
+		});
+	}
+	
+	function changeAnimationClass(animate){
+		require([
+			'jquery',
+		], function(jQuery){
+			(function($) {
+				if(currentAnimate!=''){
+					$('#animation-test').removeClass(currentAnimate);
+				}
+				$('#animation-test').addClass(animate);
+				currentAnimate = animate;
+			})(jQuery);
+		});
+	}
+	
+	function showCategoryName(){
+		require([
+			'jquery',
+		], function(jQuery){
+			(function($) {
+				if($('#show_category_name').length){
+					if($('#show_category_name').prop("checked") == true){
+						$('.category-item .category-name').show();
+					}else{
+						$('.category-item .category-name').hide();
+					}
+				}
+			})(jQuery);
+		});
+		changeStyleColor();
+	}
+	
+	function showIcon(){
+		require([
+			'jquery',
+		], function(jQuery){
+			(function($) {
+				if($('#show_icon').length){
+					if($('#show_icon').prop("checked") == true){
+						$('.category-icon').show();
+					}else{
+						$('.category-icon').hide();
+					}
+				}
+			})(jQuery);
+		});
+		changeStyleColor();
+	}
+	
+	function showCount(){
+		require([
+			'jquery',
+		], function(jQuery){
+			(function($) {
+				if($('#show_product').length){
+					if($('#show_product').prop("checked") == true){
+						$('.category-product-count').show();
+					}else{
+						$('.category-product-count').hide();
+					}
+				}
+			})(jQuery);
+		});
+		changeStyleColor();
+	}
+	
+	function changeCatNameFontWeight(){
+		require([
+			'jquery',
+		], function(jQuery){
+			(function($) {
+				if($('#font_bold').length){
+					if($('#font_bold').prop("checked") == true){
+						$('.category-name').addClass('font-bold');
+					}else{
+						$('.category-name').removeClass('font-bold');
+					}
+				}
+			})(jQuery);
+		});
+		changeStyleColor();
+	}
+	
+	function changeCatNameFontStyle(){
+		require([
+			'jquery',
+		], function(jQuery){
+			(function($) {
+				if($('#font_italic').length){
+					if($('#font_italic').prop("checked") == true){
+						$('.category-name').addClass('font-italic');
+					}else{
+						$('.category-name').removeClass('font-italic');
+					}
+				}
+			})(jQuery);
+		});
+		changeStyleColor();
+	}
+	
+	function changeCatNameTextTransform(){
+		require([
+			'jquery',
+		], function(jQuery){
+			(function($) {
+				if($('#uppercase').length){
+					if($('#uppercase').prop("checked") == true){
+						$('.category-name').addClass('font-uppercase');
+					}else{
+						$('.category-name').removeClass('font-uppercase');
+					}
+				}
+			})(jQuery);
+		});
+		changeStyleColor();
+	}
+	
+	function changeOtherFontWeight(){
+		require([
+			'jquery',
+		], function(jQuery){
+			(function($) {
+				if($('#other_font_bold').length){
+					if($('#other_font_bold').prop("checked") == true){
+						$('.category-product-count, .list-heading .title').addClass('font-bold');
+					}else{
+						$('.category-product-count, .list-heading .title').removeClass('font-bold');
+					}
+				}
+			})(jQuery);
+		});
+		changeStyleColor();
+	}
+	
+	function changeOtherFontStyle(){
+		require([
+			'jquery',
+		], function(jQuery){
+			(function($) {
+				if($('#other_font_italic').length){
+					if($('#other_font_italic').prop("checked") == true){
+						$('.category-product-count, .list-heading .title').addClass('font-italic');
+					}else{
+						$('.category-product-count, .list-heading .title').removeClass('font-italic');
+					}
+				}
+			})(jQuery);
+		});
+		changeStyleColor();
+	}
+	
+	function changeOtherTextTransform(){
+		require([
+			'jquery',
+		], function(jQuery){
+			(function($) {
+				if($('#other_uppercase').length){
+					if($('#other_uppercase').prop("checked") == true){
+						$('.category-product-count, .list-heading .title').addClass('font-uppercase');
+					}else{
+						$('.category-product-count, .list-heading .title').removeClass('font-uppercase');
+					}
+				}
+			})(jQuery);
+		});
+		changeStyleColor();
+	}
+	
+	function setTemplateCategoryList(){
+		require([
+			'jquery',
+		], function(jQuery){
+			(function($) {
+				if($('#template').length){
+					if($('#template').val() == 'grid.phtml'){
+						$('#number-row-container').show();
+						$('#list_number_col').hide();
+						$('.grid-perrow').show();
+						$('.title-field').hide();
+						
+						if($('#use_slider').prop("checked") == true){
+							$('#slider-setting').show();
+						}else{
+							$('#slider-setting').hide();
+						}
+						$('#list-temp').hide();
+					}else{
+						$('.grid-perrow').hide();
+						$('#number-row-container').hide();
+						$('#slider-setting').hide();
+						$('#list_number_col').show();
+						$('#list-temp').show();
+						$('.title-field').show();
+					}
+				}
+			})(jQuery);
+		});
+	}
+	
+	function changeStyleColor(){
+		require([
+			'jquery',
+		], function(jQuery){
+			(function($) {
+				fontSize = $('#font_size').val();
+				otherFontSize = $('#other_font_size').val();
+				primaryColor = $('#primary_color').val();
+				secondaryColor = $('#secondary_color').val();
+				thirdColor = $('#third_color').val();
+				fourthColor = $('#fourth_color').val();
+				fifth_color = $('#fifth_color').val();
+				
+				customStyle = '*{}';
+					
+				if(otherFontSize!=''){
+					customStyle += '#category-list-temp .category-grid-block .category-item .widget-category-infor .category-product-count{font-size:'+otherFontSize+'px}';
+				}
+				
+				if(fontSize!=''){
+					customStyle += '#category-list-temp .category-grid-block .category-item .widget-category-infor .category-name{font-size:'+fontSize+'px}';
+				}
+				
+				if(primaryColor!=''){
+					customStyle += '#category-list-temp .category-grid-block .category-item .widget-category-infor .category-name{color:'+primaryColor+'}';
+				}
+				
+				if(fifth_color!=''){
+					customStyle += '#category-list-temp .category-grid-block .category-item .widget-category-infor .category-name:hover{color:'+fifth_color+'}';
+				}
+				
+				if(secondaryColor!=''){
+					customStyle += '#category-list-temp .category-grid-block .category-item .widget-category-infor .category-product-count{color:'+secondaryColor+'}';
+				}
+				
+				if(thirdColor!=''){
+					customStyle += '#category-list-temp .category-grid-block .category-item .widget-category-infor .category-product-count .number{color:'+thirdColor+'}';
+				}
+				
+				if(otherFontSize!=''){
+					customStyle += '#category-list-temp .category-list-block .list-heading h3{font-size:'+otherFontSize+'px}';
+				}
+				
+				if(fontSize!=''){
+					customStyle += '#category-list-temp .category-list-block ul li a{font-size:'+fontSize+'px}';
+				}
+				
+				if(primaryColor!=''){
+					customStyle += '#list-temp .category-list-block ul li a{color:'+primaryColor+'}';
+				}
+				
+				if(fifth_color!=''){
+					customStyle += '#list-temp .category-list-block ul li a:hover{color:'+fifth_color+'}';
+				}
+				
+				if(secondaryColor!=''){
+					customStyle += '#list-temp .category-list-block .list-heading h3{color:'+secondaryColor+'}';
+				}
+				
+				if(thirdColor!=''){
+					customStyle += '#list-temp .category-list-block .list-heading h3{background-color:'+thirdColor+'}';
+				}
+				
+				if(fourthColor!=''){
+					customStyle += '#list-temp .category-list-block .list-heading h3,#list-temp .category-list-block ul li,#list-temp .category-list-block{border-color:'+fourthColor+'}';
+				}
+				
+				$('#list-custom-css').html(customStyle);
+				
+			})(jQuery);
+		});
+	}
+</script>

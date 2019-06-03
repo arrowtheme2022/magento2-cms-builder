@@ -1,0 +1,250 @@
+<?php $helper = $this->getBuilderHelper() ?>
+<?php $exist = $this->getExist() ?>
+<?php if($exist): ?>
+	<?php $child = $this->getBuilderChild() ?>
+	<?php $settings = json_decode($child->getSetting(), true); ?>
+<?php endif ?>
+
+<div class="data item title" aria-labeledby="tab-label-general-title" data-role="collapsible" id="tab-label-general">
+	<a class="data switch" tabindex="-1" data-toggle="switch" href="#general" id="tab-label-general-title">
+		<?php echo __('General') ?>
+	</a>
+</div>
+
+<div class="data item content" id="general" data-role="content">
+	<?php if(!$this->getDisableContent()): ?>
+		<div class="form-group line">
+			<label for="title" class="col-tb-3 control-label"><?php echo __('Title') ?></label>
+			<div class="col-tb-9">
+				<input type="text" id="title" class="input-text" name="setting[title]"<?php if($exist): ?> value="<?php echo htmlspecialchars($settings['title']) ?>"<?php endif ?> />
+			</div>
+		</div>
+	<?php endif ?>
+
+	<div class="form-group line">
+		<label for="col" class="col-tb-3 control-label"><?php echo __('Block col (12 to full)') ?></label>
+		<div class="col-tb-9">
+			<select id="col" class="required-entry input-text" name="col">
+				<?php for($i=12; $i>=1; $i--): ?>
+					<option value="<?php echo $i ?>"<?php if($exist && ($child->getCol()==$i)): ?> selected="selected"<?php endif ?>><?php echo $i ?></option>
+				<?php endfor ?>
+			</select>
+		</div>
+	</div>
+	<div class="form-group line">
+		<label for="class" class="col-tb-3 control-label"><?php echo __('Custom Class') ?></label>
+		<div class="col-tb-9">
+			<input type="text" id="class" class="input-text" name="class"<?php if($exist): ?> value="<?php echo $child->getClass() ?>"<?php endif ?> />
+		</div>
+	</div>
+	
+	<?php if(!$this->getDisableBackground()): ?>
+		<div class="form-group line">
+			<label for="class" class="col-tb-3 control-label"><?php echo __('Main color') ?></label>
+			<div class="col-tb-9">
+				<input type="text" id="main_block_color" class="input-text color-input" name="setting[main_block_color]"<?php if($exist && isset($settings['main_block_color'])): ?> value="<?php echo $settings['main_block_color'] ?>"<?php endif ?> />
+			</div>
+		</div>
+	
+		<div class="form-group line">
+			<label for="background_gradient" class="col-tb-3 control-label"><?php echo __('Background gradient') ?></label>
+			<div class="col-tb-8">
+				<div class="admin__actions-switch" data-role="switcher">
+					<input type="checkbox"<?php if($exist && $child->getBackgroundGradient()): ?> checked="checked"<?php endif ?> value="1" name="background_gradient" id="background_gradient" class="admin__actions-switch-checkbox" onclick="useBackgroundGradient()">
+					<label for="background_gradient" class="admin__actions-switch-label">
+						<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+					</label>
+				</div>
+			</div>
+		</div>
+	
+		<div class="form-group line gradient-bg">
+			<label class="col-tb-3 control-label"><?php echo __('Background') ?></label>
+			<div class="col-tb-9">
+				<div class="line">
+					<div class="col-tb-4">
+						<label for="background_gradient_from" class="control-label"><?php echo __('From') ?></label><br/>
+
+						<input type="text" value="<?php if($exist && $child->getBackgroundGradientFrom()): ?><?php echo $child->getBackgroundGradientFrom() ?><?php endif ?>" class="input-text color-input" id="background_gradient_from" name="background_gradient_from">
+
+					</div>
+					
+					<div class="col-tb-4">
+						<label for="background_gradient_to" class="control-label"><?php echo __('To') ?></label><br/>
+
+						<input type="text" value="<?php if($exist && $child->getBackgroundGradientTo()): ?><?php echo $child->getBackgroundGradientTo() ?><?php endif ?>" class="input-text color-input" id="background_gradient_to" name="background_gradient_to">
+
+					</div>
+					
+					<div class="col-tb-4">
+						<label for="background_gradient_orientation" class="control-label"><?php echo __('Orientation') ?></label><br/>
+
+						<select name="background_gradient_orientation" id="background_gradient_orientation">
+							<option value="horizontal"<?php if($exist && $child->getBackgroundGradientOrientation()=='horizontal'): ?> selected="selected"<?php endif ?>><?php echo __('Horizontal  →'); ?></option>
+							<option value="vertical"<?php if($exist && $child->getBackgroundGradientOrientation()=='vertical'): ?> selected="selected"<?php endif ?>><?php echo __('Vertical  ↓'); ?></option>
+							<option value="diagonal"<?php if($exist && $child->getBackgroundGradientOrientation()=='diagonal'): ?> selected="selected"<?php endif ?>><?php echo __('Diagonal  ↘'); ?></option>
+							<option value="diagonal-bottom"<?php if($exist && $child->getBackgroundGradientOrientation()=='diagonal-bottom'): ?> selected="selected"<?php endif ?>><?php echo __('Diagonal  ↗'); ?></option>
+							<option value="radial"<?php if($exist && $child->getBackgroundGradientOrientation()=='radial'): ?> selected="selected"<?php endif ?>><?php echo __('Radial  ○'); ?></option>
+						</select>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	
+		<div class="form-group line normal-bg">
+			<label for="background" class="col-tb-3 control-label"><?php echo __('Background color') ?></label>
+			<div class="col-tb-9">
+				<input type="text" value="<?php if($exist && $child->getBackground()!=''): ?><?php echo $child->getBackground() ?><?php endif ?>" class="input-text color-input" id="background" name="background">
+			</div>
+		</div>
+	
+		<div class="form-group line normal-bg">
+			<label for="background" class="col-tb-3 control-label"><?php echo __('Background image') ?></label>
+			<div class="col-tb-9">
+				<input type="file" id="background" name="background_image">
+				<?php if($exist && $child->getBackgroundImage()!=''): ?>
+					<div class="image-temp">
+						<img src="<?php echo $helper->getBackgroundImageUrl($child->getBackgroundImage()) ?>" class="background-preview" alt="" style="max-width:100%; margin-top:10px"/>
+						<label for="remove_background">
+							<input type="checkbox" name="remove_background" value="1" id="remove_background"/> <?php echo __('Remove background') ?>
+							<input type="hidden" name="old_background" value="<?php echo $child->getBackgroundImage() ?>"/>
+						</label>
+					</div>
+				<?php endif ?>
+			</div>
+		</div>
+	
+		<div class="form-group line normal-bg">
+			<label for="background_repeat" class="col-tb-3 control-label"><?php echo __('Background repeat') ?></label>
+			<div class="col-tb-9">
+				<div class="admin__actions-switch" data-role="switcher">
+					<input type="checkbox"<?php if($exist && $child->getBackgroundRepeat()): ?> checked="checked"<?php endif ?> value="1" name="background_repeat" id="background_repeat" class="admin__actions-switch-checkbox">
+					<label for="background_repeat" class="admin__actions-switch-label">
+						<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+					</label>
+				</div>
+			</div>
+		</div>
+	
+		<div class="form-group line normal-bg">
+			<label for="cover" class="col-tb-3 control-label"><?php echo __('Background Cover') ?></label>
+			<div class="col-tb-9">
+				<div class="admin__actions-switch" data-role="switcher">
+					<input type="checkbox"<?php if($exist && $child->getBackgroundCover()): ?> checked="checked"<?php endif ?> value="1" name="background_cover" id="background_cover" class="admin__actions-switch-checkbox">
+					<label for="background_cover" class="admin__actions-switch-label">
+						<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+					</label>
+				</div>
+			</div>
+		</div>
+	<?php endif ?>
+	
+	<?php if(!$this->getDisableContent()): ?>
+		<div class="form-group line">
+			<label class="col-tb-3 control-label" for="additional_content"><?php echo __('Additional content') ?></label>
+			<div class="col-tb-9">
+				<textarea name="setting[additional_content]" id="content" class="input-text"><?php if($exist): ?><?php echo $settings['additional_content'] ?><?php endif ?></textarea>
+			</div>
+		</div>
+	<?php endif ?>
+	
+	<div class="form-group line">
+		<label for="animation" class="col-tb-3 control-label"><?php echo __('Block Animation') ?></label>
+		<div class="col-tb-5">
+			<select onchange="changeAnimationClass(this.value)" id="animation" class="input-text" name="setting[animation]">
+				<option value=""><?php echo __('Choose Animation Effect') ?></option>
+				<?php foreach($helper->getAnimationEffect() as $animation=>$label): ?>
+					<option value="<?php echo $animation ?>"<?php if($exist && ($settings['animation']==$animation)): ?> selected="selected"<?php endif ?>><?php echo $label ?></option>
+				<?php endforeach ?>
+			</select>
+		</div>
+		
+		<div class="col-tb-4 text-center animated<?php if($exist && ($settings['animation']!='')): ?> <?php echo $settings['animation'] ?><?php endif ?>" id="animation-test">Animation Preview</div>
+	</div>
+	
+	<div class="form-group line">
+		<label for="animation_delay" class="col-tb-3 control-label"><?php echo __('Animation Delay') ?></label>
+		<div class="col-tb-9">
+			<input type="text" placeholder="ms" id="animation_delay" class="input-text validate-number" name="setting[animation_delay]" <?php if($exist): ?> value="<?php echo $settings['animation_delay'] ?>"<?php endif ?>>
+		</div>
+	</div>
+	
+	<div class="form-group line">
+		<div class="col-tb-12">
+			<div class="style-inline-container">
+				<div class="border-container">
+					<span class="inline-note margin-note">Margin</span>
+					
+					<input type="text" placeholder="px" id="margin-top" class="input-text validate-number" name="setting[margin_top]" <?php if($exist && isset($settings['margin_top'])): ?> value="<?php echo $settings['margin_top'] ?>"<?php endif ?>>
+					
+					<div class="middle-content-input">
+						
+						<div class="left-margin"><input type="text" placeholder="px" id="margin-left" class="input-text validate-number" name="setting[margin_left]" <?php if($exist && isset($settings['margin_left'])): ?> value="<?php echo $settings['margin_left'] ?>"<?php endif ?>></div>
+						<div class="middle-content">
+							<span class="inline-note padding-note">Padding</span>
+							<input type="text" placeholder="px" id="padding-top" class="input-text validate-number" name="setting[padding_top]" <?php if($exist && isset($settings['padding_top'])): ?> value="<?php echo $settings['padding_top'] ?>"<?php endif ?>>
+							
+							<div class="padding-middle">
+								<input type="text" placeholder="px" id="padding-left" class="input-text validate-number" name="setting[padding_left]" <?php if($exist && isset($settings['padding_left'])): ?> value="<?php echo $settings['padding_left'] ?>"<?php endif ?>>
+								
+								<input type="text" placeholder="px" id="padding-right" class="input-text validate-number" name="setting[padding_right]" <?php if($exist && isset($settings['padding_right'])): ?> value="<?php echo $settings['padding_right'] ?>"<?php endif ?>>
+							</div>
+							
+							<input type="text" placeholder="px" id="padding-bottom" class="input-text validate-number" name="setting[padding_bottom]" <?php if($exist && isset($settings['padding_bottom'])): ?> value="<?php echo $settings['padding_bottom'] ?>"<?php endif ?>>
+						</div>
+						<div class="right-margin"><input type="text" placeholder="px" id="margin-right" class="input-text validate-number" name="setting[margin_right]" <?php if($exist && isset($settings['margin_right'])): ?> value="<?php echo $settings['margin_right'] ?>"<?php endif ?>></div>
+					</div>
+					
+					<input type="text" placeholder="px" id="margin-bottom" class="input-text validate-number" name="setting[margin_bottom]" <?php if($exist && isset($settings['margin_bottom'])): ?> value="<?php echo $settings['margin_bottom'] ?>"<?php endif ?>>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script type="text/javascript">
+		var currentAnimate = '';
+		<?php if($exist): ?>
+			currentAnimate = '<?php echo $settings['animation'] ?>';
+		<?php endif ?>
+		
+		function changeAnimationClass(animate){
+			require([
+				'jquery',
+			], function(jQuery){
+				(function($) {
+					if(currentAnimate!=''){
+						$('#animation-test').removeClass(currentAnimate);
+					}
+					$('#animation-test').addClass(animate);
+					currentAnimate = animate;
+				})(jQuery);
+			});
+		}
+		
+		<?php if(!$this->getDisableBackground()): ?>
+			require([
+				"jquery"
+			], function($){
+				$(document).ready(function(){
+					useBackgroundGradient();
+				});
+			});
+		
+			function useBackgroundGradient(){
+				require([
+					"jquery"
+				], function($){
+					if($('#background_gradient').length){
+						if($('#background_gradient').prop("checked") == true){
+							$('.normal-bg').hide();
+							$('.gradient-bg').show();
+						}else{
+							$('.normal-bg').show();
+							$('.gradient-bg').hide();
+						}
+					}
+				});
+			}
+		<?php endif ?>
+	</script>
+</div>

@@ -1,0 +1,207 @@
+<?php $helper = $this->getHelper() ?>
+<?php $params = $this->getParams() ?>
+<?php $exist = false ?>
+<?php $child = false ?>
+<?php $content = '' ?>
+<div class="edit-static-form">
+
+	<form id="section-form" enctype="multipart/form-data" method="POST" action="<?php echo $this->getUrl('fbuilder/element/save') ?>" data-hasrequired="<?php echo __('* Required Fields') ?>" data-mage-init='{"validation":{}}'>
+		<input type="hidden" name="page_id" value="<?php echo $this->getRequest()->getParam('page_id') ?>">
+		<input id="block_type" type="hidden" name="type" value="static">
+		<input id="block_block_name" type="hidden" name="block_name" value="<?php echo $params['block'] ?>">
+		<?php if(isset($params['id'])): ?>
+			<?php 
+				$child =  $this->getModel('MGS\Fbuilder\Model\Child')->load($params['id']);
+				$exist = true;
+				$settings = json_decode($child->getSetting(), true);
+				$content = $child->getBlockContent();
+			?>
+			<input type="hidden" name="child_id" value="<?php echo $params['id'] ?>">
+		<?php endif ?>
+	
+		<div class="line">
+			<div class="col-des-12 builder-title">
+				<h2><?php echo __('Text & Image Block') ?></h2>
+			</div>
+		</div>
+		
+		<div class="mgs-tab product data items" data-mage-init='{"tabs":{"openedState":"active"}}'>
+			<?php 
+				echo $this->getLayout()->createBlock('Magento\Framework\View\Element\Template')
+					->setExist($exist)
+					->setDisableContent(1)
+					->setBuilderChild($child)
+					->setBuilderHelper($helper)
+					->setTemplate('MGS_Fbuilder::panel/create/element/widgets/general_tab.phtml')->toHtml() ;
+			?>
+			
+			<div class="data item title" aria-labeledby="tab-label-additional-title" data-role="collapsible" id="tab-label-additional">
+				<a class="data switch" tabindex="-1" data-toggle="switch" href="#additional" id="tab-label-additional-title">
+					<?php echo __('Content') ?>
+				</a>
+			</div>
+			<div class="data item content" id="additional" data-role="content" style="display:none">
+				<?php echo $this->getLayout()->createBlock('MGS\Fbuilder\Block\Panel\Create\StaticContent')->setContent($content)->setTemplate('panel/create/element/static/content.phtml')->toHtml() ?>
+			</div>
+			
+			<div class="data item title" aria-labeledby="tab-label-images-title" data-role="collapsible" id="tab-label-images">
+				<a class="data switch" tabindex="-1" data-toggle="switch" href="#images" id="tab-label-images-title">
+					<?php echo __('Images') ?>
+				</a>
+			</div>
+			<div class="data item content" id="images" data-role="content" style="display:none">
+				<?php $images = $helper->getPanelUploadImages('fbuilder') ?>
+						
+				<table class="table table-bordered images-table">
+					<thead>
+						<tr>
+							<th class="td-image"><?php echo __('Image') ?></th>
+							<th class="td-code"><?php echo __('Code') ?></th>
+							<th class="td-remove"><?php echo __('Remove') ?></th>
+						</tr>
+					</thead>
+				</table>
+				<div class="panel-image-list">
+					<table class="table table-bordered" id="panel-images">
+						<tbody id="list-images">
+						<?php if(count($images)>0): ?>
+							<?php foreach($images as $_image): ?>
+								<tr>
+									<td class="a-center td-image">
+										<img src="<?php echo $this->getPanelUploadSrc('fbuilder',$_image) ?>" alt=""/>
+									</td>
+									<td class="td-code">
+										<pre><?php echo $helper->convertImageWidgetCode('fbuilder',$_image) ?></pre>
+									</td>
+									<td>
+										<input type="checkbox" name="remove[]" value="<?php echo $_image ?>"/>
+									</td>
+								</tr>
+							<?php endforeach ?>
+						<?php endif ?>
+						</tbody>
+					</table>
+				</div>
+				
+				<table class="table table-bordered" id="image-foot"<?php if(count($images)==0): ?> style="display:none"<?php endif ?>>
+					<tfoot>
+						<tr><td colspan="3"><?php echo __('If you want to insert image to content, please copy code and paste to content in HTML mode.') ?></td></tr>
+					</tfoot>
+				</table>
+			
+				<div id="upload-container">
+					<div id="list-upload"></div>
+					<button class="btn btn-default" onclick="newImageUpload()" type="button"><span class="fa fa-plus"></span> <?php echo __('Upload new Image') ?></button>
+				</div>
+			</div>
+		</div>
+		
+		<div class="line">
+			<div class="form-group">
+				<div class="col-des-12 builder-action">
+					<div class="buttons">
+						<?php if(!$exist): ?>
+							<button type="button" class="action" onclick="history.go(-1)"><span><?php echo __('Back') ?></span></button>
+						<?php endif ?>
+						<button type="submit" class="action primary"><span><?php echo __('Submit') ?></span></button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+<script type="text/javascript">
+
+	var currentAnimate = '';
+	<?php if($exist): ?>
+		currentAnimate = '<?php echo $settings['animation'] ?>';
+	<?php endif ?>
+	
+	function changeAnimationClass(animate){
+		require([
+			'jquery',
+		], function(jQuery){
+			(function($) {
+				if(currentAnimate!=''){
+					$('#animation-test').removeClass(currentAnimate);
+				}
+				$('#animation-test').addClass(animate);
+				currentAnimate = animate;
+			})(jQuery);
+		});
+	}
+	
+	function newImageUpload(){
+		require([
+			'jquery',
+		], function(jQuery){
+			(function($) {
+				if($('#file_upload').length){
+					if($('#upload_button').length){
+						alert('<?php echo __('Please upload selected image first.') ?>');
+					}else{
+						alert('<?php echo __('Please choose file to upload.') ?>');
+					}
+				}else{
+					html = '<div class="form-group line"><div class="col-tb-3 choose-file-upload"><input id="file_upload" name="file_upload" type="file" onchange="chooseFileAction(this.id)"><span class="choose-label"><span class="fa fa-folder-o"> </span> &nbsp;<?php echo __('Choose File to Upload') ?></span></div><div class="col-tb-9" id="upload_action"></div></div>';
+					$('#list-upload').html(html);
+				}
+				
+			})(jQuery);
+		});
+	}
+	
+	function chooseFileAction(elId){
+		require([
+			'jquery',
+		], function(jQuery){
+			(function($) {
+				fileName = $('#'+elId).val();
+				arrName = fileName.split(".");
+				extensionName = arrName[arrName.length - 1];
+				extensionName = extensionName.toLowerCase();
+				if((extensionName=='jpg') || (extensionName=='jpeg') || (extensionName=='png') || (extensionName=='gif')){
+					html = fileName + ' <button type="button" class="btn btn-default" id="upload_button" onclick="uploadImage()"><img src="<?php echo $this->getViewFileUrl('MGS_Fbuilder::images/small-ajax-loader.gif') ?>" id="upload-loading" style="display:none"/> <span class="fa fa-upload" id="upload-icon"></span> <?php echo __('Upload') ?></button>';
+					$('#upload_action').html(html);
+				}
+			})(jQuery);
+		});
+	}
+	
+	function uploadImage(){
+		require([
+			'jquery',
+		], function(jQuery){
+			(function($) {
+				if($('.alert-image-success').length){
+					$('.alert-image-success').remove();
+				}
+				$('#upload-loading').show();
+				$('#upload-icon').hide();
+				var formData = new FormData();
+				formData.append('file', $('#file_upload')[0].files[0]);
+				$.ajax({
+					url: "<?php echo $this->getUrl('fbuilder/post/upload', ['type'=>'fbuilder']) ?>",
+					type: "POST",
+					data: formData,
+					contentType: false,
+					cache: false,
+					processData:false,
+					success: function(data){
+						var result = jQuery.parseJSON(data);
+						if(result.result=='success'){
+							html = '<tr ><td class="a-center td-image"><img src="<?php echo $this->getPanelUploadFolder('fbuilder') ?>'+result.data+'" alt=""></td><td class="td-code"><pre>&lt;img src="{{media url="wysiwyg/fbuilder/'+result.data+'"}}" alt=""/&gt;</pre><div class="alert alert-success alert-image-success"><?php echo __('The image was successfully uploaded.') ?></div></td><td><input name="remove[]" value="'+result.data+'" type="checkbox"></td></tr>';
+							$('#list-images').append(html);
+							$(".panel-image-list").animate({ scrollTop: $('#list-images').height()}, 300);
+							$('#image-foot').show();
+						}else{
+							alert(result.data);
+						}
+						
+						$('#list-upload').html('');
+					}
+				});
+			})(jQuery);
+		});
+	}
+</script>

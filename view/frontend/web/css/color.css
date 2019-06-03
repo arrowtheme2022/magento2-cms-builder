@@ -1,0 +1,1250 @@
+.text-colour-gold,.text-colour-gold .promobanner .text{color:#FFD700 !important}
+.text-colour-yellow,.text-colour-yellow .promobanner .text{color:#FFFF00 !important}
+.text-colour-lightyellow,.text-colour-lightyellow .promobanner .text{color:#FFFFE0 !important}
+.text-colour-lemonchiffon,.text-colour-lemonchiffon .promobanner .text{color:#FFFACD !important}
+.text-colour-lightgoldenrodyellow,.text-colour-lightgoldenrodyellow .promobanner .text{color:#FAFAD2 !important}
+.text-colour-papayawhip,.text-colour-papayawhip .promobanner .text{color:#FFEFD5 !important}
+.text-colour-moccasin,.text-colour-moccasin .promobanner .text{color:#FFE4B5 !important}
+.text-colour-peachpuff,.text-colour-peachpuff .promobanner .text{color:#FFDAB9 !important}
+.text-colour-palegoldenrod,.text-colour-palegoldenrod .promobanner .text{color:#EEE8AA !important}
+.text-colour-khaki,.text-colour-khaki .promobanner .text{color:#F0E68C !important}
+.text-colour-darkkhaki,.text-colour-darkkhaki .promobanner .text{color:#BDB76B !important}
+.text-colour-lavender,.text-colour-lavender .promobanner .text{color:#E6E6FA !important}
+.text-colour-plum,.text-colour-plum .promobanner .text{color:#DDA0DD !important}
+.text-colour-violet,.text-colour-violet .promobanner .text{color:#EE82EE !important}
+.text-colour-red,.text-colour-red .promobanner .text{color:#ec0101 !important}
+.text-colour-orchid,.text-colour-orchid .promobanner .text{color:#DA70D6 !important}
+.text-colour-magenta,.text-colour-magenta .promobanner .text{color:#FF00FF !important}
+.text-colour-mediumorchid,.text-colour-mediumorchid .promobanner .text{color:#BA55D3 !important}
+.text-colour-mediumpurple,.text-colour-mediumpurple .promobanner .text{color:#9370DB !important}
+.text-colour-amethyst,.text-colour-amethyst .promobanner .text{color:#9966CC !important}
+.text-colour-blueviolet,.text-colour-blueviolet .promobanner .text{color:#8A2BE2 !important}
+.text-colour-darkorchid,.text-colour-darkorchid .promobanner .text{color:#9932CC !important}
+.text-colour-darkviolet,.text-colour-darkviolet .promobanner .text{color:#9400D3 !important}
+.text-colour-darkmagenta,.text-colour-darkmagenta .promobanner .text{color:#8B008B !important}
+.text-colour-purple,.text-colour-purple .promobanner .text{color:#800080 !important}
+.text-colour-slateblue,.text-colour-slateblue .promobanner .text{color:#6A5ACD !important}
+.text-colour-mediumslateblue,.text-colour-mediumslateblue .promobanner .text{color:#7B68EE !important}
+.text-colour-darkslateblue,.text-colour-darkslateblue .promobanner .text{color:#483D8B !important}
+.text-colour-indigo,.text-colour-indigo .promobanner .text{color:#4B0082 !important}
+.text-colour-greenyellow,.text-colour-greenyellow .promobanner .text{color:#ADFF2F !important}
+.text-colour-chartreuse,.text-colour-chartreuse .promobanner .text{color:#7FFF00 !important}
+.text-colour-lime,.text-colour-lime .promobanner .text{color:#00FF00 !important}
+.text-colour-limegreen,.text-colour-limegreen .promobanner .text{color:#32CD32 !important}
+.text-colour-palegreen,.text-colour-palegreen .promobanner .text{color:#98FB98 !important}
+.text-colour-lightgreen,.text-colour-lightgreen .promobanner .text{color:#90EE90 !important}
+.text-colour-mediumspringgreen,.text-colour-mediumspringgreen .promobanner .text{color:#00FA9A !important}
+.text-colour-springgreen,.text-colour-springgreen .promobanner .text{color:#00FF7F !important}
+.text-colour-mediumseagreen,.text-colour-mediumseagreen .promobanner .text{color:#3CB371 !important}
+.text-colour-seagreen,.text-colour-seagreen .promobanner .text{color:#2E8B57 !important}
+.text-colour-green,.text-colour-green .promobanner .text{color:#008000 !important}
+.text-colour-darkgreen,.text-colour-darkgreen .promobanner .text{color:#006400 !important}
+.text-colour-yellowgreen,.text-colour-yellowgreen .promobanner .text{color:#9ACD32 !important}
+.text-colour-olivedrab,.text-colour-olivedrab .promobanner .text{color:#6B8E23 !important}
+.text-colour-olive,.text-colour-olivedrab .promobanner .text{color:#808000 !important}
+.text-colour-darkolivegreen,.text-colour-darkolivegreen .promobanner .text{color:#556B2F !important}
+.text-colour-mediumaquamarine,.text-colour-mediumaquamarine .promobanner .text{color:#66CDAA !important}
+.text-colour-darkseagreen,.text-colour-darkseagreen .promobanner .text{color:#8FBC8F !important}
+.text-colour-lightseagreen,.text-colour-lightseagreen .promobanner .text{color:#20B2AA !important}
+.text-colour-darkcyan,.text-colour-lightseagreen .promobanner .text{color:#008B8B !important}
+.text-colour-teal,.text-colour-teal .promobanner .text{color:#008080 !important}
+.text-colour-cyan,.text-colour-cyan .promobanner .text{color:#00FFFF !important}
+.text-colour-lightcyan,.text-colour-cyan .promobanner .text{color:#E0FFFF !important}
+.text-colour-paleturquoise,.text-colour-paleturquoise .promobanner .text{color:#AFEEEE !important}
+.text-colour-aquamarine,.text-colour-aquamarine .promobanner .text{color:#7FFFD4 !important}
+.text-colour-turquoise,.text-colour-turquoise .promobanner .text{color:#40E0D0 !important}
+.text-colour-darkturquoise,.text-colour-darkturquoise .promobanner .text{color:#00CED1 !important}
+.text-colour-cadetblue,.text-colour-cadetblue .promobanner .text{color:#5F9EA0 !important}
+.text-colour-steelblue,.text-colour-steelblue .promobanner .text{color:#4682B4 !important}
+.text-colour-lightsteelblue,.text-colour-lightsteelblue .promobanner .text{color:#B0C4DE !important}
+.text-colour-powderblue,.text-colour-powderblue .promobanner .text{color:#B0E0E6 !important}
+.text-colour-lightblue,.text-colour-lightblue .promobanner .text{color:#ADD8E6 !important}
+.text-colour-skyblue,.text-colour-skyblue .promobanner .text{color:#87CEEB !important}
+.text-colour-dodgerblue,.text-colour-dodgerblue .promobanner .text{color:#1E90FF !important}
+.text-colour-cornflowerblue,.text-colour-cornflowerblue .promobanner .text{color:#6495ED !important}
+.text-colour-royalblue,.text-colour-royalblue .promobanner .text{color:#4169E1 !important}
+.text-colour-blue,.text-colour-blue .promobanner .text{color:#0000FF !important}
+.text-colour-mediumblue,.text-colour-mediumblue .promobanner .text{color:#0000CD !important}
+.text-colour-navy,.text-colour-navy .promobanner .text{color:#000080 !important}
+.text-colour-midnightblue,.text-colour-midnightblue .promobanner .text{color:#191970 !important}
+.text-colour-burlywood,.text-colour-burlywood .promobanner .text{color:#DEB887 !important}
+.text-colour-tan,.text-colour-tan .promobanner .text{color:#D2B48C !important}
+.text-colour-rosybrown,.text-colour-rosybrown .promobanner .text{color:#BC8F8F !important}
+.text-colour-sandybrown,.text-colour-sandybrown .promobanner .text{color:#F4A460 !important}
+.text-colour-goldenrod,.text-colour-goldenrod .promobanner .text{color:#DAA520 !important}
+.text-colour-darkgoldenrod,.text-colour-darkgoldenrod .promobanner .text{color:#B8860B !important}
+.text-colour-peru,.text-colour-peru .promobanner .text{color:#CD853F !important}
+.text-colour-chocolate,.text-colour-chocolate .promobanner .text{color:#D2691E !important}
+.text-colour-saddlebrown,.text-colour-saddlebrown .promobanner .text{color:#8B4513 !important}
+.text-colour-sienna,.text-colour-sienna .promobanner .text{color:#A0522D !important}
+.text-colour-brown,.text-colour-brown .promobanner .text{color:#A52A2A !important}
+.text-colour-maroon,.text-colour-maroon .promobanner .text{color:#800000 !important}
+.text-colour-white,.text-colour-white .promobanner .text{color:#FFFFFF !important}
+.text-colour-honeydew,.text-colour-honeydew .promobanner .text{color:#F0FFF0 !important}
+.text-colour-azure,.text-colour-azure .promobanner .text{color:#F0FFFF !important}
+.text-colour-ghostwhite,.text-colour-ghostwhite .promobanner .text{color:#F8F8FF !important}
+.text-colour-whitesmoke,.text-colour-whitesmoke .promobanner .text{color:#F5F5F5 !important}
+.text-colour-beige,.text-colour-beige .promobanner .text{color:#F5F5DC !important}
+.text-colour-gainsboro,.text-colour-gainsboro .promobanner .text{color:#DCDCDC !important}
+.text-colour-lightgrey,.text-colour-lightgrey .promobanner .text{color:#D3D3D3 !important}
+.text-colour-silver,.text-colour-silver .promobanner .text{color:#C0C0C0 !important}
+.text-colour-lightpink4,.text-colour-lightpink4 .promobanner .text{color:#8B5F65 !important}
+.text-colour-lightpink3,.text-colour-lightpink3 .promobanner .text{color:#CD8C95 !important}
+.text-colour-palevioletred4,.text-colour-palevioletred4 .promobanner .text{color:#8B475D !important}
+.text-colour-lavenderblush,.text-colour-lavenderblush .promobanner .text{color:#FFF0F5 !important}
+.text-colour-darkgray,.text-colour-darkgray .promobanner .text, .text-colour-black .content-heading .title{color:#A9A9A9 !important}
+.text-colour-gray,.text-colour-gray .promobanner .text, .text-colour-black .content-heading .title{color:#808080 !important}
+.text-colour-dimgray,.text-colour-dimgray .promobanner .text, .text-colour-dimgray .content-heading .title{color:#696969 !important}
+.text-colour-lightslategray,.text-colour-lightslategray .promobanner .text, .text-colour-lightslategray .content-heading .title{color:#778899 !important}
+.text-colour-slategray,.text-colour-slategray .promobanner .text, .text-colour-slategray .content-heading .title{color:#708090 !important}
+.text-colour-darkslategray,.text-colour-darkslategray .promobanner .text, .text-colour-darkslategray .content-heading .title{color:#2F4F4F !important}
+.text-colour-black,.text-colour-black .promobanner .text, .text-colour-black .content-heading .title{color:#000000 !important}
+
+
+/* Link */
+.link-colour-indianred a{color:#CD5C5C !important}
+.link-colour-lightcoral a{color:#F08080 !important}
+.link-colour-salmon a{color:#FA8072 !important}
+.link-colour-darksalmon a{color:#E9967A !important}
+.link-colour-lightsalmon a{color:#FFA07A !important}
+.link-colour-crimson a{color:#DC143C !important}
+.link-colour-red a{color:#FF0000 !important}
+.link-colour-pink a{color:#FFC0CB !important}
+.link-colour-lightpink a{color:#FFB6C1 !important}
+.link-colour-hotpink a{color:#FF69B4 !important}
+.link-colour-deeppink a{color:#FF1493 !important}
+.link-colour-mediumvioletred a{color:#C71585 !important}
+.link-colour-palevioletred a{color:#DB7093 !important}
+.link-colour-coral a{color:#FF7F50 !important}
+.link-colour-tomato a{color:#FF6347 !important}
+.link-colour-orangered a{color:#FF4500 !important}
+.link-colour-darkorange a{color:#FF8C00 !important}
+.link-colour-orange a{color:#FFA500 !important}
+.link-colour-gold a{color:#FFD700 !important}
+.link-colour-yellow a{color:#FFFF00 !important}
+.link-colour-lightyellow a{color:#FFFFE0 !important}
+.link-colour-lemonchiffon a{color:#FFFACD !important}
+.link-colour-lightgoldenrodyellow a{color:#FAFAD2 !important}
+.link-colour-papayawhip a{color:#FFEFD5 !important}
+.link-colour-moccasin a{color:#FFE4B5 !important}
+.link-colour-peachpuff a{color:#FFDAB9 !important}
+.link-colour-palegoldenrod a{color:#EEE8AA !important}
+.link-colour-khaki a{color:#F0E68C !important}
+.link-colour-darkkhaki a{color:#BDB76B !important}
+.link-colour-lavender a{color:#E6E6FA !important}
+.link-colour-plum a{color:#DDA0DD !important}
+.link-colour-violet a{color:#EE82EE !important}
+.link-colour-orchid a{color:#DA70D6 !important}
+.link-colour-magenta a{color:#FF00FF !important}
+.link-colour-mediumorchid a{color:#BA55D3 !important}
+.link-colour-mediumpurple a{color:#9370DB !important}
+.link-colour-amethyst a{color:#9966CC !important}
+.link-colour-blueviolet a{color:#8A2BE2 !important}
+.link-colour-darkorchid a{color:#9932CC !important}
+.link-colour-darkviolet a{color:#9400D3 !important}
+.link-colour-darkmagenta a{color:#8B008B !important}
+.link-colour-purple a{color:#800080 !important}
+.link-colour-slateblue a{color:#6A5ACD !important}
+.link-colour-mediumslateblue a{color:#7B68EE !important}
+.link-colour-darkslateblue a{color:#483D8B !important}
+.link-colour-indigo a{color:#4B0082 !important}
+.link-colour-greenyellow a{color:#ADFF2F !important}
+.link-colour-chartreuse a{color:#7FFF00 !important}
+.link-colour-lime a{color:#00FF00 !important}
+.link-colour-limegreen a{color:#32CD32 !important}
+.link-colour-palegreen a{color:#98FB98 !important}
+.link-colour-lightgreen a{color:#90EE90 !important}
+.link-colour-mediumspringgreen a{color:#00FA9A !important}
+.link-colour-springgreen a{color:#00FF7F !important}
+.link-colour-mediumseagreen a{color:#3CB371 !important}
+.link-colour-seagreen a{color:#2E8B57 !important}
+.link-colour-green a{color:#008000 !important}
+.link-colour-darkgreen a{color:#006400 !important}
+.link-colour-yellowgreen a{color:#9ACD32 !important}
+.link-colour-olivedrab a{color:#6B8E23 !important}
+.link-colour-olive a{color:#808000 !important}
+.link-colour-darkolivegreen a{color:#556B2F !important}
+.link-colour-mediumaquamarine a{color:#66CDAA !important}
+.link-colour-darkseagreen a{color:#8FBC8F !important}
+.link-colour-lightseagreen a{color:#20B2AA !important}
+.link-colour-darkcyan a{color:#008B8B !important}
+.link-colour-teal a{color:#008080 !important}
+.link-colour-cyan a{color:#00FFFF !important}
+.link-colour-lightcyan a{color:#E0FFFF !important}
+.link-colour-paleturquoise a{color:#AFEEEE !important}
+.link-colour-aquamarine a{color:#7FFFD4 !important}
+.link-colour-turquoise a{color:#40E0D0 !important}
+.link-colour-darkturquoise a{color:#00CED1 !important}
+.link-colour-cadetblue a{color:#5F9EA0 !important}
+.link-colour-steelblue a{color:#4682B4 !important}
+.link-colour-lightsteelblue a{color:#B0C4DE !important}
+.link-colour-powderblue a{color:#B0E0E6 !important}
+.link-colour-lightblue a{color:#ADD8E6 !important}
+.link-colour-skyblue a{color:#87CEEB !important}
+.link-colour-dodgerblue a{color:#1E90FF !important}
+.link-colour-cornflowerblue a{color:#6495ED !important}
+.link-colour-royalblue a{color:#4169E1 !important}
+.link-colour-blue a{color:#0000FF !important}
+.link-colour-mediumblue a{color:#0000CD !important}
+.link-colour-navy a{color:#000080 !important}
+.link-colour-midnightblue a{color:#191970 !important}
+.link-colour-burlywood a{color:#DEB887 !important}
+.link-colour-tan a{color:#D2B48C !important}
+.link-colour-rosybrown a{color:#BC8F8F !important}
+.link-colour-sandybrown a{color:#F4A460 !important}
+.link-colour-goldenrod a{color:#DAA520 !important}
+.link-colour-darkgoldenrod a{color:#B8860B !important}
+.link-colour-peru a{color:#CD853F !important}
+.link-colour-chocolate a{color:#D2691E !important}
+.link-colour-saddlebrown a{color:#8B4513 !important}
+.link-colour-sienna a{color:#A0522D !important}
+.link-colour-brown a{color:#A52A2A !important}
+.link-colour-maroon a{color:#800000 !important}
+.link-colour-white a{color:#FFFFFF !important}
+.link-colour-honeydew a{color:#F0FFF0 !important}
+.link-colour-azure a{color:#F0FFFF !important}
+.link-colour-ghostwhite a{color:#F8F8FF !important}
+.link-colour-whitesmoke a{color:#F5F5F5 !important}
+.link-colour-beige a{color:#F5F5DC !important}
+.link-colour-gainsboro a{color:#DCDCDC !important}
+.link-colour-lightgrey a{color:#D3D3D3 !important}
+.link-colour-silver a{color:#C0C0C0 !important}
+.link-colour-darkgray a{color:#A9A9A9 !important}
+.link-colour-gray a{color:#808080 !important}
+.link-colour-dimgray a{color:#696969 !important}
+.link-colour-lightslategray a{color:#778899 !important}
+.link-colour-slategray a{color:#708090 !important}
+.link-colour-darkslategray a{color:#2F4F4F !important}
+.link-colour-black a{color:#000000 !important}
+.link-colour-lightpink4{color:#8B5F65 !important}
+.link-colour-lightpink3{color:#CD8C95 !important}
+.link-colour-palevioletred4{color:#8B475D !important}
+.link-colour-lavenderblush{color:#FFF0F5 !important}
+
+/* Link Hover*/
+.link-hover-colour-indianred a:hover{color:#CD5C5C !important}
+.link-hover-colour-lightcoral a:hover{color:#F08080 !important}
+.link-hover-colour-salmon a:hover{color:#FA8072 !important}
+.link-hover-colour-darksalmon a:hover{color:#E9967A !important}
+.link-hover-colour-lightsalmon a:hover{color:#FFA07A !important}
+.link-hover-colour-crimson a:hover{color:#DC143C !important}
+.link-hover-colour-red a:hover{color:#FF0000 !important}
+.link-hover-colour-pink a:hover{color:#FFC0CB !important}
+.link-hover-colour-lightpink a:hover{color:#FFB6C1 !important}
+.link-hover-colour-hotpink a:hover{color:#FF69B4 !important}
+.link-hover-colour-deeppink a:hover{color:#FF1493 !important}
+.link-hover-colour-mediumvioletred a:hover{color:#C71585 !important}
+.link-hover-colour-palevioletred a:hover{color:#DB7093 !important}
+.link-hover-colour-coral a:hover{color:#FF7F50 !important}
+.link-hover-colour-tomato a:hover{color:#FF6347 !important}
+.link-hover-colour-orangered a:hover{color:#FF4500 !important}
+.link-hover-colour-darkorange a:hover{color:#FF8C00 !important}
+.link-hover-colour-orange a:hover{color:#FFA500 !important}
+.link-hover-colour-gold a:hover{color:#FFD700 !important}
+.link-hover-colour-yellow a:hover{color:#FFFF00 !important}
+.link-hover-colour-lightyellow a:hover{color:#FFFFE0 !important}
+.link-hover-colour-lemonchiffon a:hover{color:#FFFACD !important}
+.link-hover-colour-lightgoldenrodyellow a:hover{color:#FAFAD2 !important}
+.link-hover-colour-papayawhip a:hover{color:#FFEFD5 !important}
+.link-hover-colour-moccasin a:hover{color:#FFE4B5 !important}
+.link-hover-colour-peachpuff a:hover{color:#FFDAB9 !important}
+.link-hover-colour-palegoldenrod a:hover{color:#EEE8AA !important}
+.link-hover-colour-khaki a:hover{color:#F0E68C !important}
+.link-hover-colour-darkkhaki a:hover{color:#BDB76B !important}
+.link-hover-colour-lavender a:hover{color:#E6E6FA !important}
+.link-hover-colour-plum a:hover{color:#DDA0DD !important}
+.link-hover-colour-violet a:hover{color:#EE82EE !important}
+.link-hover-colour-orchid a:hover{color:#DA70D6 !important}
+.link-hover-colour-magenta a:hover{color:#FF00FF !important}
+.link-hover-colour-mediumorchid a:hover{color:#BA55D3 !important}
+.link-hover-colour-mediumpurple a:hover{color:#9370DB !important}
+.link-hover-colour-amethyst a:hover{color:#9966CC !important}
+.link-hover-colour-blueviolet a:hover{color:#8A2BE2 !important}
+.link-hover-colour-darkorchid a:hover{color:#9932CC !important}
+.link-hover-colour-darkviolet a:hover{color:#9400D3 !important}
+.link-hover-colour-darkmagenta a:hover{color:#8B008B !important}
+.link-hover-colour-purple a:hover{color:#800080 !important}
+.link-hover-colour-slateblue a:hover{color:#6A5ACD !important}
+.link-hover-colour-mediumslateblue a:hover{color:#7B68EE !important}
+.link-hover-colour-darkslateblue a:hover{color:#483D8B !important}
+.link-hover-colour-indigo a:hover{color:#4B0082 !important}
+.link-hover-colour-greenyellow a:hover{color:#ADFF2F !important}
+.link-hover-colour-chartreuse a:hover{color:#7FFF00 !important}
+.link-hover-colour-lime a:hover{color:#00FF00 !important}
+.link-hover-colour-limegreen a:hover{color:#32CD32 !important}
+.link-hover-colour-palegreen a:hover{color:#98FB98 !important}
+.link-hover-colour-lightgreen a:hover{color:#90EE90 !important}
+.link-hover-colour-mediumspringgreen a:hover{color:#00FA9A !important}
+.link-hover-colour-springgreen a:hover{color:#00FF7F !important}
+.link-hover-colour-mediumseagreen a:hover{color:#3CB371 !important}
+.link-hover-colour-seagreen a:hover{color:#2E8B57 !important}
+.link-hover-colour-green a:hover{color:#008000 !important}
+.link-hover-colour-darkgreen a:hover{color:#006400 !important}
+.link-hover-colour-yellowgreen a:hover{color:#9ACD32 !important}
+.link-hover-colour-olivedrab a:hover{color:#6B8E23 !important}
+.link-hover-colour-olive a:hover{color:#808000 !important}
+.link-hover-colour-darkolivegreen a:hover{color:#556B2F !important}
+.link-hover-colour-mediumaquamarine a:hover{color:#66CDAA !important}
+.link-hover-colour-darkseagreen a:hover{color:#8FBC8F !important}
+.link-hover-colour-lightseagreen a:hover{color:#20B2AA !important}
+.link-hover-colour-darkcyan a:hover{color:#008B8B !important}
+.link-hover-colour-teal a:hover{color:#008080 !important}
+.link-hover-colour-cyan a:hover{color:#00FFFF !important}
+.link-hover-colour-lightcyan a:hover{color:#E0FFFF !important}
+.link-hover-colour-paleturquoise a:hover{color:#AFEEEE !important}
+.link-hover-colour-aquamarine a:hover{color:#7FFFD4 !important}
+.link-hover-colour-turquoise a:hover{color:#40E0D0 !important}
+.link-hover-colour-darkturquoise a:hover{color:#00CED1 !important}
+.link-hover-colour-cadetblue a:hover{color:#5F9EA0 !important}
+.link-hover-colour-steelblue a:hover{color:#4682B4 !important}
+.link-hover-colour-lightsteelblue a:hover{color:#B0C4DE !important}
+.link-hover-colour-powderblue a:hover{color:#B0E0E6 !important}
+.link-hover-colour-lightblue a:hover{color:#ADD8E6 !important}
+.link-hover-colour-skyblue a:hover{color:#87CEEB !important}
+.link-hover-colour-dodgerblue a:hover{color:#1E90FF !important}
+.link-hover-colour-cornflowerblue a:hover{color:#6495ED !important}
+.link-hover-colour-royalblue a:hover{color:#4169E1 !important}
+.link-hover-colour-blue a:hover{color:#0000FF !important}
+.link-hover-colour-mediumblue a:hover{color:#0000CD !important}
+.link-hover-colour-navy a:hover{color:#000080 !important}
+.link-hover-colour-midnightblue a:hover{color:#191970 !important}
+.link-hover-colour-burlywood a:hover{color:#DEB887 !important}
+.link-hover-colour-tan a:hover{color:#D2B48C !important}
+.link-hover-colour-rosybrown a:hover{color:#BC8F8F !important}
+.link-hover-colour-sandybrown a:hover{color:#F4A460 !important}
+.link-hover-colour-goldenrod a:hover{color:#DAA520 !important}
+.link-hover-colour-darkgoldenrod a:hover{color:#B8860B !important}
+.link-hover-colour-peru a:hover{color:#CD853F !important}
+.link-hover-colour-chocolate a:hover{color:#D2691E !important}
+.link-hover-colour-saddlebrown a:hover{color:#8B4513 !important}
+.link-hover-colour-sienna a:hover{color:#A0522D !important}
+.link-hover-colour-brown a:hover{color:#A52A2A !important}
+.link-hover-colour-maroon a:hover{color:#800000 !important}
+.link-hover-colour-white a:hover{color:#FFFFFF !important}
+.link-hover-colour-honeydew a:hover{color:#F0FFF0 !important}
+.link-hover-colour-azure a:hover{color:#F0FFFF !important}
+.link-hover-colour-ghostwhite a:hover{color:#F8F8FF !important}
+.link-hover-colour-whitesmoke a:hover{color:#F5F5F5 !important}
+.link-hover-colour-beige a:hover{color:#F5F5DC !important}
+.link-hover-colour-gainsboro a:hover{color:#DCDCDC !important}
+.link-hover-colour-lightgrey a:hover{color:#D3D3D3 !important}
+.link-hover-colour-silver a:hover{color:#C0C0C0 !important}
+.link-hover-colour-darkgray a:hover{color:#A9A9A9 !important}
+.link-hover-colour-gray a:hover{color:#808080 !important}
+.link-hover-colour-dimgray a:hover{color:#696969 !important}
+.link-hover-colour-lightslategray a:hover{color:#778899 !important}
+.link-hover-colour-slategray a:hover{color:#708090 !important}
+.link-hover-colour-darkslategray a:hover{color:#2F4F4F !important}
+.link-hover-colour-black a:hover{color:#000000 !important}
+.link-hover-colour-lightpink4 a:hover{color:#8B5F65 !important}
+.link-hover-colour-lightpink3 a:hover{color:#CD8C95 !important}
+.link-hover-colour-palevioletred4 a:hover{color:#8B475D !important}
+.link-hover-colour-lavenderblush a:hover{color:#FFF0F5 !important}
+
+/* Button*/
+.button-colour-transparent button{background-color:transparent !important}
+.button-colour-indianred button{background-color:#CD5C5C !important}
+.button-colour-lightcoral button{background-color:#F08080 !important}
+.button-colour-salmon button{background-color:#FA8072 !important}
+.button-colour-darksalmon button{background-color:#E9967A !important}
+.button-colour-lightsalmon button{background-color:#FFA07A !important}
+.button-colour-crimson button{background-color:#DC143C !important}
+.button-colour-red button{background-color:#FF0000 !important}
+.button-colour-pink button{background-color:#FFC0CB !important}
+.button-colour-lightpink button{background-color:#FFB6C1 !important}
+.button-colour-hotpink button{background-color:#FF69B4 !important}
+.button-colour-deeppink button{background-color:#FF1493 !important}
+.button-colour-mediumvioletred button{background-color:#C71585 !important}
+.button-colour-palevioletred button{background-color:#DB7093 !important}
+.button-colour-coral button{background-color:#FF7F50 !important}
+.button-colour-tomato button{background-color:#FF6347 !important}
+.button-colour-orangered button{background-color:#FF4500 !important}
+.button-colour-darkorange button{background-color:#FF8C00 !important}
+.button-colour-orange button{background-color:#FFA500 !important}
+.button-colour-gold button{background-color:#FFD700 !important}
+.button-colour-yellow button{background-color:#FFFF00 !important}
+.button-colour-lightyellow button{background-color:#FFFFE0 !important}
+.button-colour-lemonchiffon button{background-color:#FFFACD !important}
+.button-colour-lightgoldenrodyellow button{background-color:#FAFAD2 !important}
+.button-colour-papayawhip button{background-color:#FFEFD5 !important}
+.button-colour-moccasin button{background-color:#FFE4B5 !important}
+.button-colour-peachpuff button{background-color:#FFDAB9 !important}
+.button-colour-palegoldenrod button{background-color:#EEE8AA !important}
+.button-colour-khaki button{background-color:#F0E68C !important}
+.button-colour-darkkhaki button{background-color:#BDB76B !important}
+.button-colour-lavender button{background-color:#E6E6FA !important}
+.button-colour-plum button{background-color:#DDA0DD !important}
+.button-colour-violet button{background-color:#EE82EE !important}
+.button-colour-orchid button{background-color:#DA70D6 !important}
+.button-colour-magenta button{background-color:#FF00FF !important}
+.button-colour-mediumorchid button{background-color:#BA55D3 !important}
+.button-colour-mediumpurple button{background-color:#9370DB !important}
+.button-colour-amethyst button{background-color:#9966CC !important}
+.button-colour-blueviolet button{background-color:#8A2BE2 !important}
+.button-colour-darkorchid button{background-color:#9932CC !important}
+.button-colour-darkviolet button{background-color:#9400D3 !important}
+.button-colour-darkmagenta button{background-color:#8B008B !important}
+.button-colour-purple button{background-color:#800080 !important}
+.button-colour-slateblue button{background-color:#6A5ACD !important}
+.button-colour-mediumslateblue button{background-color:#7B68EE !important}
+.button-colour-darkslateblue button{background-color:#483D8B !important}
+.button-colour-indigo button{background-color:#4B0082 !important}
+.button-colour-greenyellow button{background-color:#ADFF2F !important}
+.button-colour-chartreuse button{background-color:#7FFF00 !important}
+.button-colour-lime button{background-color:#00FF00 !important}
+.button-colour-limegreen button{background-color:#32CD32 !important}
+.button-colour-palegreen button{background-color:#98FB98 !important}
+.button-colour-lightgreen button{background-color:#90EE90 !important}
+.button-colour-mediumspringgreen button{background-color:#00FA9A !important}
+.button-colour-springgreen button{background-color:#00FF7F !important}
+.button-colour-mediumseagreen button{background-color:#3CB371 !important}
+.button-colour-seagreen button{background-color:#2E8B57 !important}
+.button-colour-green button{background-color:#008000 !important}
+.button-colour-darkgreen button{background-color:#006400 !important}
+.button-colour-yellowgreen button{background-color:#9ACD32 !important}
+.button-colour-olivedrab button{background-color:#6B8E23 !important}
+.button-colour-olive button{background-color:#808000 !important}
+.button-colour-darkolivegreen button{background-color:#556B2F !important}
+.button-colour-mediumaquamarine button{background-color:#66CDAA !important}
+.button-colour-darkseagreen button{background-color:#8FBC8F !important}
+.button-colour-lightseagreen button{background-color:#20B2AA !important}
+.button-colour-darkcyan button{background-color:#008B8B !important}
+.button-colour-teal button{background-color:#008080 !important}
+.button-colour-cyan button{background-color:#00FFFF !important}
+.button-colour-lightcyan button{background-color:#E0FFFF !important}
+.button-colour-paleturquoise button{background-color:#AFEEEE !important}
+.button-colour-aquamarine button{background-color:#7FFFD4 !important}
+.button-colour-turquoise button{background-color:#40E0D0 !important}
+.button-colour-darkturquoise button{background-color:#00CED1 !important}
+.button-colour-cadetblue button{background-color:#5F9EA0 !important}
+.button-colour-steelblue button{background-color:#4682B4 !important}
+.button-colour-lightsteelblue button{background-color:#B0C4DE !important}
+.button-colour-powderblue button{background-color:#B0E0E6 !important}
+.button-colour-lightblue button{background-color:#ADD8E6 !important}
+.button-colour-skyblue button{background-color:#87CEEB !important}
+.button-colour-dodgerblue button{background-color:#1E90FF !important}
+.button-colour-cornflowerblue button{background-color:#6495ED !important}
+.button-colour-royalblue button{background-color:#4169E1 !important}
+.button-colour-blue button{background-color:#0000FF !important}
+.button-colour-mediumblue button{background-color:#0000CD !important}
+.button-colour-navy button{background-color:#000080 !important}
+.button-colour-midnightblue button{background-color:#191970 !important}
+.button-colour-burlywood button{background-color:#DEB887 !important}
+.button-colour-tan button{background-color:#D2B48C !important}
+.button-colour-rosybrown button{background-color:#BC8F8F !important}
+.button-colour-sandybrown button{background-color:#F4A460 !important}
+.button-colour-goldenrod button{background-color:#DAA520 !important}
+.button-colour-darkgoldenrod button{background-color:#B8860B !important}
+.button-colour-peru button{background-color:#CD853F !important}
+.button-colour-chocolate button{background-color:#D2691E !important}
+.button-colour-saddlebrown button{background-color:#8B4513 !important}
+.button-colour-sienna button{background-color:#A0522D !important}
+.button-colour-brown button{background-color:#A52A2A !important}
+.button-colour-maroon button{background-color:#800000 !important}
+.button-colour-white button{background-color:#FFFFFF !important}
+.button-colour-honeydew button{background-color:#F0FFF0 !important}
+.button-colour-azure button{background-color:#F0FFFF !important}
+.button-colour-ghostwhite button{background-color:#F8F8FF !important}
+.button-colour-whitesmoke button{background-color:#F5F5F5 !important}
+.button-colour-beige button{background-color:#F5F5DC !important}
+.button-colour-gainsboro button{background-color:#DCDCDC !important}
+.button-colour-lightgrey button{background-color:#D3D3D3 !important}
+.button-colour-silver button{background-color:#C0C0C0 !important}
+.button-colour-darkgray button{background-color:#A9A9A9 !important}
+.button-colour-gray button{background-color:#808080 !important}
+.button-colour-dimgray button{background-color:#696969 !important}
+.button-colour-lightslategray button{background-color:#778899 !important}
+.button-colour-slategray button{background-color:#708090 !important}
+.button-colour-darkslategray button{background-color:#2F4F4F !important}
+.button-colour-black button{background-color:#000000 !important}
+.button-colour-lightpink4 button{background-color:#8B5F65 !important}
+.button-colour-lightpink3 button{background-color:#CD8C95 !important}
+.button-colour-palevioletred4 button{background-color:#8B475D !important}
+.button-colour-lavenderblush button{background-color:#FFF0F5 !important}
+
+/* Button Hover*/
+.button-hover-colour-transparent button:hover{background-color:transparent !important}
+.button-hover-colour-indianred button:hover{background-color:#CD5C5C !important}
+.button-hover-colour-lightcoral button:hover{background-color:#F08080 !important}
+.button-hover-colour-salmon button:hover{background-color:#FA8072 !important}
+.button-hover-colour-darksalmon button:hover{background-color:#E9967A !important}
+.button-hover-colour-lightsalmon button:hover{background-color:#FFA07A !important}
+.button-hover-colour-crimson button:hover{background-color:#DC143C !important}
+.button-hover-colour-red button:hover{background-color:#FF0000 !important}
+.button-hover-colour-pink button:hover{background-color:#FFC0CB !important}
+.button-hover-colour-lightpink button:hover{background-color:#FFB6C1 !important}
+.button-hover-colour-hotpink button:hover{background-color:#FF69B4 !important}
+.button-hover-colour-deeppink button:hover{background-color:#FF1493 !important}
+.button-hover-colour-mediumvioletred button:hover{background-color:#C71585 !important}
+.button-hover-colour-palevioletred button:hover{background-color:#DB7093 !important}
+.button-hover-colour-coral button:hover{background-color:#FF7F50 !important}
+.button-hover-colour-tomato button:hover{background-color:#FF6347 !important}
+.button-hover-colour-orangered button:hover{background-color:#FF4500 !important}
+.button-hover-colour-darkorange button:hover{background-color:#FF8C00 !important}
+.button-hover-colour-orange button:hover{background-color:#FFA500 !important}
+.button-hover-colour-gold button:hover{background-color:#FFD700 !important}
+.button-hover-colour-yellow button:hover{background-color:#FFFF00 !important}
+.button-hover-colour-lightyellow button:hover{background-color:#FFFFE0 !important}
+.button-hover-colour-lemonchiffon button:hover{background-color:#FFFACD !important}
+.button-hover-colour-lightgoldenrodyellow button:hover{background-color:#FAFAD2 !important}
+.button-hover-colour-papayawhip button:hover{background-color:#FFEFD5 !important}
+.button-hover-colour-moccasin button:hover{background-color:#FFE4B5 !important}
+.button-hover-colour-peachpuff button:hover{background-color:#FFDAB9 !important}
+.button-hover-colour-palegoldenrod button:hover{background-color:#EEE8AA !important}
+.button-hover-colour-khaki button:hover{background-color:#F0E68C !important}
+.button-hover-colour-darkkhaki button:hover{background-color:#BDB76B !important}
+.button-hover-colour-lavender button:hover{background-color:#E6E6FA !important}
+.button-hover-colour-plum button:hover{background-color:#DDA0DD !important}
+.button-hover-colour-violet button:hover{background-color:#EE82EE !important}
+.button-hover-colour-orchid button:hover{background-color:#DA70D6 !important}
+.button-hover-colour-magenta button:hover{background-color:#FF00FF !important}
+.button-hover-colour-mediumorchid button:hover{background-color:#BA55D3 !important}
+.button-hover-colour-mediumpurple button:hover{background-color:#9370DB !important}
+.button-hover-colour-amethyst button:hover{background-color:#9966CC !important}
+.button-hover-colour-blueviolet button:hover{background-color:#8A2BE2 !important}
+.button-hover-colour-darkorchid button:hover{background-color:#9932CC !important}
+.button-hover-colour-darkviolet button:hover{background-color:#9400D3 !important}
+.button-hover-colour-darkmagenta button:hover{background-color:#8B008B !important}
+.button-hover-colour-purple button:hover{background-color:#800080 !important}
+.button-hover-colour-slateblue button:hover{background-color:#6A5ACD !important}
+.button-hover-colour-mediumslateblue button:hover{background-color:#7B68EE !important}
+.button-hover-colour-darkslateblue button:hover{background-color:#483D8B !important}
+.button-hover-colour-indigo button:hover{background-color:#4B0082 !important}
+.button-hover-colour-greenyellow button:hover{background-color:#ADFF2F !important}
+.button-hover-colour-chartreuse button:hover{background-color:#7FFF00 !important}
+.button-hover-colour-lime button:hover{background-color:#00FF00 !important}
+.button-hover-colour-limegreen button:hover{background-color:#32CD32 !important}
+.button-hover-colour-palegreen button:hover{background-color:#98FB98 !important}
+.button-hover-colour-lightgreen button:hover{background-color:#90EE90 !important}
+.button-hover-colour-mediumspringgreen button:hover{background-color:#00FA9A !important}
+.button-hover-colour-springgreen button:hover{background-color:#00FF7F !important}
+.button-hover-colour-mediumseagreen button:hover{background-color:#3CB371 !important}
+.button-hover-colour-seagreen button:hover{background-color:#2E8B57 !important}
+.button-hover-colour-green button:hover{background-color:#008000 !important}
+.button-hover-colour-darkgreen button:hover{background-color:#006400 !important}
+.button-hover-colour-yellowgreen button:hover{background-color:#9ACD32 !important}
+.button-hover-colour-olivedrab button:hover{background-color:#6B8E23 !important}
+.button-hover-colour-olive button:hover{background-color:#808000 !important}
+.button-hover-colour-darkolivegreen button:hover{background-color:#556B2F !important}
+.button-hover-colour-mediumaquamarine button:hover{background-color:#66CDAA !important}
+.button-hover-colour-darkseagreen button:hover{background-color:#8FBC8F !important}
+.button-hover-colour-lightseagreen button:hover{background-color:#20B2AA !important}
+.button-hover-colour-darkcyan button:hover{background-color:#008B8B !important}
+.button-hover-colour-teal button:hover{background-color:#008080 !important}
+.button-hover-colour-cyan button:hover{background-color:#00FFFF !important}
+.button-hover-colour-lightcyan button:hover{background-color:#E0FFFF !important}
+.button-hover-colour-paleturquoise button:hover{background-color:#AFEEEE !important}
+.button-hover-colour-aquamarine button:hover{background-color:#7FFFD4 !important}
+.button-hover-colour-turquoise button:hover{background-color:#40E0D0 !important}
+.button-hover-colour-darkturquoise button:hover{background-color:#00CED1 !important}
+.button-hover-colour-cadetblue button:hover{background-color:#5F9EA0 !important}
+.button-hover-colour-steelblue button:hover{background-color:#4682B4 !important}
+.button-hover-colour-lightsteelblue button:hover{background-color:#B0C4DE !important}
+.button-hover-colour-powderblue button:hover{background-color:#B0E0E6 !important}
+.button-hover-colour-lightblue button:hover{background-color:#ADD8E6 !important}
+.button-hover-colour-skyblue button:hover{background-color:#87CEEB !important}
+.button-hover-colour-dodgerblue button:hover{background-color:#1E90FF !important}
+.button-hover-colour-cornflowerblue button:hover{background-color:#6495ED !important}
+.button-hover-colour-royalblue button:hover{background-color:#4169E1 !important}
+.button-hover-colour-blue button:hover{background-color:#0000FF !important}
+.button-hover-colour-mediumblue button:hover{background-color:#0000CD !important}
+.button-hover-colour-navy button:hover{background-color:#000080 !important}
+.button-hover-colour-midnightblue button:hover{background-color:#191970 !important}
+.button-hover-colour-burlywood button:hover{background-color:#DEB887 !important}
+.button-hover-colour-tan button:hover{background-color:#D2B48C !important}
+.button-hover-colour-rosybrown button:hover{background-color:#BC8F8F !important}
+.button-hover-colour-sandybrown button:hover{background-color:#F4A460 !important}
+.button-hover-colour-goldenrod button:hover{background-color:#DAA520 !important}
+.button-hover-colour-darkgoldenrod button:hover{background-color:#B8860B !important}
+.button-hover-colour-peru button:hover{background-color:#CD853F !important}
+.button-hover-colour-chocolate button:hover{background-color:#D2691E !important}
+.button-hover-colour-saddlebrown button:hover{background-color:#8B4513 !important}
+.button-hover-colour-sienna button:hover{background-color:#A0522D !important}
+.button-hover-colour-brown button:hover{background-color:#A52A2A !important}
+.button-hover-colour-maroon button:hover{background-color:#800000 !important}
+.button-hover-colour-white button:hover{background-color:#FFFFFF !important}
+.button-hover-colour-honeydew button:hover{background-color:#F0FFF0 !important}
+.button-hover-colour-azure button:hover{background-color:#F0FFFF !important}
+.button-hover-colour-ghostwhite button:hover{background-color:#F8F8FF !important}
+.button-hover-colour-whitesmoke button:hover{background-color:#F5F5F5 !important}
+.button-hover-colour-beige button:hover{background-color:#F5F5DC !important}
+.button-hover-colour-gainsboro button:hover{background-color:#DCDCDC !important}
+.button-hover-colour-lightgrey button:hover{background-color:#D3D3D3 !important}
+.button-hover-colour-silver button:hover{background-color:#C0C0C0 !important}
+.button-hover-colour-darkgray button:hover{background-color:#A9A9A9 !important}
+.button-hover-colour-gray button:hover{background-color:#808080 !important}
+.button-hover-colour-dimgray button:hover{background-color:#696969 !important}
+.button-hover-colour-lightslategray button:hover{background-color:#778899 !important}
+.button-hover-colour-slategray button:hover{background-color:#708090 !important}
+.button-hover-colour-darkslategray button:hover{background-color:#2F4F4F !important}
+.button-hover-colour-black button:hover{background-color:#000000 !important}
+.button-hover-colour-lightpink4 button:hover{background-color:#8B5F65 !important}
+.button-hover-colour-lightpink3 button:hover{background-color:#CD8C95 !important}
+.button-hover-colour-palevioletred4 button:hover{background-color:#8B475D !important}
+.button-hover-colour-lavenderblush button:hover{background-color:#FFF0F5 !important}
+
+/* Button Text*/
+.button-text-colour-indianred button{color:#CD5C5C !important}
+.button-text-colour-lightcoral button{color:#F08080 !important}
+.button-text-colour-salmon button{color:#FA8072 !important}
+.button-text-colour-darksalmon button{color:#E9967A !important}
+.button-text-colour-lightsalmon button{color:#FFA07A !important}
+.button-text-colour-crimson button{color:#DC143C !important}
+.button-text-colour-red button{color:#FF0000 !important}
+.button-text-colour-pink button{color:#FFC0CB !important}
+.button-text-colour-lightpink button{color:#FFB6C1 !important}
+.button-text-colour-hotpink button{color:#FF69B4 !important}
+.button-text-colour-deeppink button{color:#FF1493 !important}
+.button-text-colour-mediumvioletred button{color:#C71585 !important}
+.button-text-colour-palevioletred button{color:#DB7093 !important}
+.button-text-colour-coral button{color:#FF7F50 !important}
+.button-text-colour-tomato button{color:#FF6347 !important}
+.button-text-colour-orangered button{color:#FF4500 !important}
+.button-text-colour-darkorange button{color:#FF8C00 !important}
+.button-text-colour-orange button{color:#FFA500 !important}
+.button-text-colour-gold button{color:#FFD700 !important}
+.button-text-colour-yellow button{color:#FFFF00 !important}
+.button-text-colour-lightyellow button{color:#FFFFE0 !important}
+.button-text-colour-lemonchiffon button{color:#FFFACD !important}
+.button-text-colour-lightgoldenrodyellow button{color:#FAFAD2 !important}
+.button-text-colour-papayawhip button{color:#FFEFD5 !important}
+.button-text-colour-moccasin button{color:#FFE4B5 !important}
+.button-text-colour-peachpuff button{color:#FFDAB9 !important}
+.button-text-colour-palegoldenrod button{color:#EEE8AA !important}
+.button-text-colour-khaki button{color:#F0E68C !important}
+.button-text-colour-darkkhaki button{color:#BDB76B !important}
+.button-text-colour-lavender button{color:#E6E6FA !important}
+.button-text-colour-plum button{color:#DDA0DD !important}
+.button-text-colour-violet button{color:#EE82EE !important}
+.button-text-colour-orchid button{color:#DA70D6 !important}
+.button-text-colour-magenta button{color:#FF00FF !important}
+.button-text-colour-mediumorchid button{color:#BA55D3 !important}
+.button-text-colour-mediumpurple button{color:#9370DB !important}
+.button-text-colour-amethyst button{color:#9966CC !important}
+.button-text-colour-blueviolet button{color:#8A2BE2 !important}
+.button-text-colour-darkorchid button{color:#9932CC !important}
+.button-text-colour-darkviolet button{color:#9400D3 !important}
+.button-text-colour-darkmagenta button{color:#8B008B !important}
+.button-text-colour-purple button{color:#800080 !important}
+.button-text-colour-slateblue button{color:#6A5ACD !important}
+.button-text-colour-mediumslateblue button{color:#7B68EE !important}
+.button-text-colour-darkslateblue button{color:#483D8B !important}
+.button-text-colour-indigo button{color:#4B0082 !important}
+.button-text-colour-greenyellow button{color:#ADFF2F !important}
+.button-text-colour-chartreuse button{color:#7FFF00 !important}
+.button-text-colour-lime button{color:#00FF00 !important}
+.button-text-colour-limegreen button{color:#32CD32 !important}
+.button-text-colour-palegreen button{color:#98FB98 !important}
+.button-text-colour-lightgreen button{color:#90EE90 !important}
+.button-text-colour-mediumspringgreen button{color:#00FA9A !important}
+.button-text-colour-springgreen button{color:#00FF7F !important}
+.button-text-colour-mediumseagreen button{color:#3CB371 !important}
+.button-text-colour-seagreen button{color:#2E8B57 !important}
+.button-text-colour-green button{color:#008000 !important}
+.button-text-colour-darkgreen button{color:#006400 !important}
+.button-text-colour-yellowgreen button{color:#9ACD32 !important}
+.button-text-colour-olivedrab button{color:#6B8E23 !important}
+.button-text-colour-olive button{color:#808000 !important}
+.button-text-colour-darkolivegreen button{color:#556B2F !important}
+.button-text-colour-mediumaquamarine button{color:#66CDAA !important}
+.button-text-colour-darkseagreen button{color:#8FBC8F !important}
+.button-text-colour-lightseagreen button{color:#20B2AA !important}
+.button-text-colour-darkcyan button{color:#008B8B !important}
+.button-text-colour-teal button{color:#008080 !important}
+.button-text-colour-cyan button{color:#00FFFF !important}
+.button-text-colour-lightcyan button{color:#E0FFFF !important}
+.button-text-colour-paleturquoise button{color:#AFEEEE !important}
+.button-text-colour-aquamarine button{color:#7FFFD4 !important}
+.button-text-colour-turquoise button{color:#40E0D0 !important}
+.button-text-colour-darkturquoise button{color:#00CED1 !important}
+.button-text-colour-cadetblue button{color:#5F9EA0 !important}
+.button-text-colour-steelblue button{color:#4682B4 !important}
+.button-text-colour-lightsteelblue button{color:#B0C4DE !important}
+.button-text-colour-powderblue button{color:#B0E0E6 !important}
+.button-text-colour-lightblue button{color:#ADD8E6 !important}
+.button-text-colour-skyblue button{color:#87CEEB !important}
+.button-text-colour-dodgerblue button{color:#1E90FF !important}
+.button-text-colour-cornflowerblue button{color:#6495ED !important}
+.button-text-colour-royalblue button{color:#4169E1 !important}
+.button-text-colour-blue button{color:#0000FF !important}
+.button-text-colour-mediumblue button{color:#0000CD !important}
+.button-text-colour-navy button{color:#000080 !important}
+.button-text-colour-midnightblue button{color:#191970 !important}
+.button-text-colour-burlywood button{color:#DEB887 !important}
+.button-text-colour-tan button{color:#D2B48C !important}
+.button-text-colour-rosybrown button{color:#BC8F8F !important}
+.button-text-colour-sandybrown button{color:#F4A460 !important}
+.button-text-colour-goldenrod button{color:#DAA520 !important}
+.button-text-colour-darkgoldenrod button{color:#B8860B !important}
+.button-text-colour-peru button{color:#CD853F !important}
+.button-text-colour-chocolate button{color:#D2691E !important}
+.button-text-colour-saddlebrown button{color:#8B4513 !important}
+.button-text-colour-sienna button{color:#A0522D !important}
+.button-text-colour-brown button{color:#A52A2A !important}
+.button-text-colour-maroon button{color:#800000 !important}
+.button-text-colour-white button{color:#FFFFFF !important}
+.button-text-colour-honeydew button{color:#F0FFF0 !important}
+.button-text-colour-azure button{color:#F0FFFF !important}
+.button-text-colour-ghostwhite button{color:#F8F8FF !important}
+.button-text-colour-whitesmoke button{color:#F5F5F5 !important}
+.button-text-colour-beige button{color:#F5F5DC !important}
+.button-text-colour-gainsboro button{color:#DCDCDC !important}
+.button-text-colour-lightgrey button{color:#D3D3D3 !important}
+.button-text-colour-silver button{color:#C0C0C0 !important}
+.button-text-colour-darkgray button{color:#A9A9A9 !important}
+.button-text-colour-gray button{color:#808080 !important}
+.button-text-colour-dimgray button{color:#696969 !important}
+.button-text-colour-lightslategray button{color:#778899 !important}
+.button-text-colour-slategray button{color:#708090 !important}
+.button-text-colour-darkslategray button{color:#2F4F4F !important}
+.button-text-colour-black button{color:#000000 !important}
+.button-text-colour-lightpink4 button{color:#8B5F65 !important}
+.button-text-colour-lightpink3 button{color:#CD8C95 !important}
+.button-text-colour-palevioletred4 button{color:#8B475D !important}
+.button-text-colour-lavenderblush button{color:#FFF0F5 !important}
+
+/* Button Text Hover*/
+.button-text-hover-colour-indianred button:hover{color:#CD5C5C !important}
+.button-text-hover-colour-lightcoral button:hover{color:#F08080 !important}
+.button-text-hover-colour-salmon button:hover{color:#FA8072 !important}
+.button-text-hover-colour-darksalmon button:hover{color:#E9967A !important}
+.button-text-hover-colour-lightsalmon button:hover{color:#FFA07A !important}
+.button-text-hover-colour-crimson button:hover{color:#DC143C !important}
+.button-text-hover-colour-red button:hover{color:#FF0000 !important}
+.button-text-hover-colour-pink button:hover{color:#FFC0CB !important}
+.button-text-hover-colour-lightpink button:hover{color:#FFB6C1 !important}
+.button-text-hover-colour-hotpink button:hover{color:#FF69B4 !important}
+.button-text-hover-colour-deeppink button:hover{color:#FF1493 !important}
+.button-text-hover-colour-mediumvioletred button:hover{color:#C71585 !important}
+.button-text-hover-colour-palevioletred button:hover{color:#DB7093 !important}
+.button-text-hover-colour-coral button:hover{color:#FF7F50 !important}
+.button-text-hover-colour-tomato button:hover{color:#FF6347 !important}
+.button-text-hover-colour-orangered button:hover{color:#FF4500 !important}
+.button-text-hover-colour-darkorange button:hover{color:#FF8C00 !important}
+.button-text-hover-colour-orange button:hover{color:#FFA500 !important}
+.button-text-hover-colour-gold button:hover{color:#FFD700 !important}
+.button-text-hover-colour-yellow button:hover{color:#FFFF00 !important}
+.button-text-hover-colour-lightyellow button:hover{color:#FFFFE0 !important}
+.button-text-hover-colour-lemonchiffon button:hover{color:#FFFACD !important}
+.button-text-hover-colour-lightgoldenrodyellow button:hover{color:#FAFAD2 !important}
+.button-text-hover-colour-papayawhip button:hover{color:#FFEFD5 !important}
+.button-text-hover-colour-moccasin button:hover{color:#FFE4B5 !important}
+.button-text-hover-colour-peachpuff button:hover{color:#FFDAB9 !important}
+.button-text-hover-colour-palegoldenrod button:hover{color:#EEE8AA !important}
+.button-text-hover-colour-khaki button:hover{color:#F0E68C !important}
+.button-text-hover-colour-darkkhaki button:hover{color:#BDB76B !important}
+.button-text-hover-colour-lavender button:hover{color:#E6E6FA !important}
+.button-text-hover-colour-plum button:hover{color:#DDA0DD !important}
+.button-text-hover-colour-violet button:hover{color:#EE82EE !important}
+.button-text-hover-colour-orchid button:hover{color:#DA70D6 !important}
+.button-text-hover-colour-magenta button:hover{color:#FF00FF !important}
+.button-text-hover-colour-mediumorchid button:hover{color:#BA55D3 !important}
+.button-text-hover-colour-mediumpurple button:hover{color:#9370DB !important}
+.button-text-hover-colour-amethyst button:hover{color:#9966CC !important}
+.button-text-hover-colour-blueviolet button:hover{color:#8A2BE2 !important}
+.button-text-hover-colour-darkorchid button:hover{color:#9932CC !important}
+.button-text-hover-colour-darkviolet button:hover{color:#9400D3 !important}
+.button-text-hover-colour-darkmagenta button:hover{color:#8B008B !important}
+.button-text-hover-colour-purple button:hover{color:#800080 !important}
+.button-text-hover-colour-slateblue button:hover{color:#6A5ACD !important}
+.button-text-hover-colour-mediumslateblue button:hover{color:#7B68EE !important}
+.button-text-hover-colour-darkslateblue button:hover{color:#483D8B !important}
+.button-text-hover-colour-indigo button:hover{color:#4B0082 !important}
+.button-text-hover-colour-greenyellow button:hover{color:#ADFF2F !important}
+.button-text-hover-colour-chartreuse button:hover{color:#7FFF00 !important}
+.button-text-hover-colour-lime button:hover{color:#00FF00 !important}
+.button-text-hover-colour-limegreen button:hover{color:#32CD32 !important}
+.button-text-hover-colour-palegreen button:hover{color:#98FB98 !important}
+.button-text-hover-colour-lightgreen button:hover{color:#90EE90 !important}
+.button-text-hover-colour-mediumspringgreen button:hover{color:#00FA9A !important}
+.button-text-hover-colour-springgreen button:hover{color:#00FF7F !important}
+.button-text-hover-colour-mediumseagreen button:hover{color:#3CB371 !important}
+.button-text-hover-colour-seagreen button:hover{color:#2E8B57 !important}
+.button-text-hover-colour-green button:hover{color:#008000 !important}
+.button-text-hover-colour-darkgreen button:hover{color:#006400 !important}
+.button-text-hover-colour-yellowgreen button:hover{color:#9ACD32 !important}
+.button-text-hover-colour-olivedrab button:hover{color:#6B8E23 !important}
+.button-text-hover-colour-olive button:hover{color:#808000 !important}
+.button-text-hover-colour-darkolivegreen button:hover{color:#556B2F !important}
+.button-text-hover-colour-mediumaquamarine button:hover{color:#66CDAA !important}
+.button-text-hover-colour-darkseagreen button:hover{color:#8FBC8F !important}
+.button-text-hover-colour-lightseagreen button:hover{color:#20B2AA !important}
+.button-text-hover-colour-darkcyan button:hover{color:#008B8B !important}
+.button-text-hover-colour-teal button:hover{color:#008080 !important}
+.button-text-hover-colour-cyan button:hover{color:#00FFFF !important}
+.button-text-hover-colour-lightcyan button:hover{color:#E0FFFF !important}
+.button-text-hover-colour-paleturquoise button:hover{color:#AFEEEE !important}
+.button-text-hover-colour-aquamarine button:hover{color:#7FFFD4 !important}
+.button-text-hover-colour-turquoise button:hover{color:#40E0D0 !important}
+.button-text-hover-colour-darkturquoise button:hover{color:#00CED1 !important}
+.button-text-hover-colour-cadetblue button:hover{color:#5F9EA0 !important}
+.button-text-hover-colour-steelblue button:hover{color:#4682B4 !important}
+.button-text-hover-colour-lightsteelblue button:hover{color:#B0C4DE !important}
+.button-text-hover-colour-powderblue button:hover{color:#B0E0E6 !important}
+.button-text-hover-colour-lightblue button:hover{color:#ADD8E6 !important}
+.button-text-hover-colour-skyblue button:hover{color:#87CEEB !important}
+.button-text-hover-colour-dodgerblue button:hover{color:#1E90FF !important}
+.button-text-hover-colour-cornflowerblue button:hover{color:#6495ED !important}
+.button-text-hover-colour-royalblue button:hover{color:#4169E1 !important}
+.button-text-hover-colour-blue button:hover{color:#0000FF !important}
+.button-text-hover-colour-mediumblue button:hover{color:#0000CD !important}
+.button-text-hover-colour-navy button:hover{color:#000080 !important}
+.button-text-hover-colour-midnightblue button:hover{color:#191970 !important}
+.button-text-hover-colour-burlywood button:hover{color:#DEB887 !important}
+.button-text-hover-colour-tan button:hover{color:#D2B48C !important}
+.button-text-hover-colour-rosybrown button:hover{color:#BC8F8F !important}
+.button-text-hover-colour-sandybrown button:hover{color:#F4A460 !important}
+.button-text-hover-colour-goldenrod button:hover{color:#DAA520 !important}
+.button-text-hover-colour-darkgoldenrod button:hover{color:#B8860B !important}
+.button-text-hover-colour-peru button:hover{color:#CD853F !important}
+.button-text-hover-colour-chocolate button:hover{color:#D2691E !important}
+.button-text-hover-colour-saddlebrown button:hover{color:#8B4513 !important}
+.button-text-hover-colour-sienna button:hover{color:#A0522D !important}
+.button-text-hover-colour-brown button:hover{color:#A52A2A !important}
+.button-text-hover-colour-maroon button:hover{color:#800000 !important}
+.button-text-hover-colour-white button:hover{color:#FFFFFF !important}
+.button-text-hover-colour-honeydew button:hover{color:#F0FFF0 !important}
+.button-text-hover-colour-azure button:hover{color:#F0FFFF !important}
+.button-text-hover-colour-ghostwhite button:hover{color:#F8F8FF !important}
+.button-text-hover-colour-whitesmoke button:hover{color:#F5F5F5 !important}
+.button-text-hover-colour-beige button:hover{color:#F5F5DC !important}
+.button-text-hover-colour-gainsboro button:hover{color:#DCDCDC !important}
+.button-text-hover-colour-lightgrey button:hover{color:#D3D3D3 !important}
+.button-text-hover-colour-silver button:hover{color:#C0C0C0 !important}
+.button-text-hover-colour-darkgray button:hover{color:#A9A9A9 !important}
+.button-text-hover-colour-gray button:hover{color:#808080 !important}
+.button-text-hover-colour-dimgray button:hover{color:#696969 !important}
+.button-text-hover-colour-lightslategray button:hover{color:#778899 !important}
+.button-text-hover-colour-slategray button:hover{color:#708090 !important}
+.button-text-hover-colour-darkslategray button:hover{color:#2F4F4F !important}
+.button-text-hover-colour-black button:hover{color:#000000 !important}
+.button-text-hover-colour-lightpink4 button:hover{color:#8B5F65 !important}
+.button-text-hover-colour-lightpink3 button:hover{color:#CD8C95 !important}
+.button-text-hover-colour-palevioletred4 button:hover{color:#8B475D !important}
+.button-text-hover-colour-lavenderblush button:hover{color:#FFF0F5 !important}
+
+/* Button border color */
+.button-border-colour-indianred button{border-color:#CD5C5C !important}
+.button-border-colour-lightcoral button{border-color:#F08080 !important}
+.button-border-colour-salmon button{border-color:#FA8072 !important}
+.button-border-colour-darksalmon button{border-color:#E9967A !important}
+.button-border-colour-lightsalmon button{border-color:#FFA07A !important}
+.button-border-colour-crimson button{border-color:#DC143C !important}
+.button-border-colour-red button{border-color:#FF0000 !important}
+.button-border-colour-pink button{border-color:#FFC0CB !important}
+.button-border-colour-lightpink button{border-color:#FFB6C1 !important}
+.button-border-colour-hotpink button{border-color:#FF69B4 !important}
+.button-border-colour-deeppink button{border-color:#FF1493 !important}
+.button-border-colour-mediumvioletred button{border-color:#C71585 !important}
+.button-border-colour-palevioletred button{border-color:#DB7093 !important}
+.button-border-colour-coral button{border-color:#FF7F50 !important}
+.button-border-colour-tomato button{border-color:#FF6347 !important}
+.button-border-colour-orangered button{border-color:#FF4500 !important}
+.button-border-colour-darkorange button{border-color:#FF8C00 !important}
+.button-border-colour-orange button{border-color:#FFA500 !important}
+.button-border-colour-gold button{border-color:#FFD700 !important}
+.button-border-colour-yellow button{border-color:#FFFF00 !important}
+.button-border-colour-lightyellow button{border-color:#FFFFE0 !important}
+.button-border-colour-lemonchiffon button{border-color:#FFFACD !important}
+.button-border-colour-lightgoldenrodyellow button{border-color:#FAFAD2 !important}
+.button-border-colour-papayawhip button{border-color:#FFEFD5 !important}
+.button-border-colour-moccasin button{border-color:#FFE4B5 !important}
+.button-border-colour-peachpuff button{border-color:#FFDAB9 !important}
+.button-border-colour-palegoldenrod button{border-color:#EEE8AA !important}
+.button-border-colour-khaki button{border-color:#F0E68C !important}
+.button-border-colour-darkkhaki button{border-color:#BDB76B !important}
+.button-border-colour-lavender button{border-color:#E6E6FA !important}
+.button-border-colour-plum button{border-color:#DDA0DD !important}
+.button-border-colour-violet button{border-color:#EE82EE !important}
+.button-border-colour-orchid button{border-color:#DA70D6 !important}
+.button-border-colour-magenta button{border-color:#FF00FF !important}
+.button-border-colour-mediumorchid button{border-color:#BA55D3 !important}
+.button-border-colour-mediumpurple button{border-color:#9370DB !important}
+.button-border-colour-amethyst button{border-color:#9966CC !important}
+.button-border-colour-blueviolet button{border-color:#8A2BE2 !important}
+.button-border-colour-darkorchid button{border-color:#9932CC !important}
+.button-border-colour-darkviolet button{border-color:#9400D3 !important}
+.button-border-colour-darkmagenta button{border-color:#8B008B !important}
+.button-border-colour-purple button{border-color:#800080 !important}
+.button-border-colour-slateblue button{border-color:#6A5ACD !important}
+.button-border-colour-mediumslateblue button{border-color:#7B68EE !important}
+.button-border-colour-darkslateblue button{border-color:#483D8B !important}
+.button-border-colour-indigo button{border-color:#4B0082 !important}
+.button-border-colour-greenyellow button{border-color:#ADFF2F !important}
+.button-border-colour-chartreuse button{border-color:#7FFF00 !important}
+.button-border-colour-lime button{border-color:#00FF00 !important}
+.button-border-colour-limegreen button{border-color:#32CD32 !important}
+.button-border-colour-palegreen button{border-color:#98FB98 !important}
+.button-border-colour-lightgreen button{border-color:#90EE90 !important}
+.button-border-colour-mediumspringgreen button{border-color:#00FA9A !important}
+.button-border-colour-springgreen button{border-color:#00FF7F !important}
+.button-border-colour-mediumseagreen button{border-color:#3CB371 !important}
+.button-border-colour-seagreen button{border-color:#2E8B57 !important}
+.button-border-colour-green button{border-color:#008000 !important}
+.button-border-colour-darkgreen button{border-color:#006400 !important}
+.button-border-colour-yellowgreen button{border-color:#9ACD32 !important}
+.button-border-colour-olivedrab button{border-color:#6B8E23 !important}
+.button-border-colour-olive button{border-color:#808000 !important}
+.button-border-colour-darkolivegreen button{border-color:#556B2F !important}
+.button-border-colour-mediumaquamarine button{border-color:#66CDAA !important}
+.button-border-colour-darkseagreen button{border-color:#8FBC8F !important}
+.button-border-colour-lightseagreen button{border-color:#20B2AA !important}
+.button-border-colour-darkcyan button{border-color:#008B8B !important}
+.button-border-colour-teal button{border-color:#008080 !important}
+.button-border-colour-cyan button{border-color:#00FFFF !important}
+.button-border-colour-lightcyan button{border-color:#E0FFFF !important}
+.button-border-colour-paleturquoise button{border-color:#AFEEEE !important}
+.button-border-colour-aquamarine button{border-color:#7FFFD4 !important}
+.button-border-colour-turquoise button{border-color:#40E0D0 !important}
+.button-border-colour-darkturquoise button{border-color:#00CED1 !important}
+.button-border-colour-cadetblue button{border-color:#5F9EA0 !important}
+.button-border-colour-steelblue button{border-color:#4682B4 !important}
+.button-border-colour-lightsteelblue button{border-color:#B0C4DE !important}
+.button-border-colour-powderblue button{border-color:#B0E0E6 !important}
+.button-border-colour-lightblue button{border-color:#ADD8E6 !important}
+.button-border-colour-skyblue button{border-color:#87CEEB !important}
+.button-border-colour-dodgerblue button{border-color:#1E90FF !important}
+.button-border-colour-cornflowerblue button{border-color:#6495ED !important}
+.button-border-colour-royalblue button{border-color:#4169E1 !important}
+.button-border-colour-blue button{border-color:#0000FF !important}
+.button-border-colour-mediumblue button{border-color:#0000CD !important}
+.button-border-colour-navy button{border-color:#000080 !important}
+.button-border-colour-midnightblue button{border-color:#191970 !important}
+.button-border-colour-burlywood button{border-color:#DEB887 !important}
+.button-border-colour-tan button{border-color:#D2B48C !important}
+.button-border-colour-rosybrown button{border-color:#BC8F8F !important}
+.button-border-colour-sandybrown button{border-color:#F4A460 !important}
+.button-border-colour-goldenrod button{border-color:#DAA520 !important}
+.button-border-colour-darkgoldenrod button{border-color:#B8860B !important}
+.button-border-colour-peru button{border-color:#CD853F !important}
+.button-border-colour-chocolate button{border-color:#D2691E !important}
+.button-border-colour-saddlebrown button{border-color:#8B4513 !important}
+.button-border-colour-sienna button{border-color:#A0522D !important}
+.button-border-colour-brown button{border-color:#A52A2A !important}
+.button-border-colour-maroon button{border-color:#800000 !important}
+.button-border-colour-white button{border-color:#FFFFFF !important}
+.button-border-colour-honeydew button{border-color:#F0FFF0 !important}
+.button-border-colour-azure button{border-color:#F0FFFF !important}
+.button-border-colour-ghostwhite button{border-color:#F8F8FF !important}
+.button-border-colour-whitesmoke button{border-color:#F5F5F5 !important}
+.button-border-colour-beige button{border-color:#F5F5DC !important}
+.button-border-colour-gainsboro button{border-color:#DCDCDC !important}
+.button-border-colour-lightgrey button{border-color:#D3D3D3 !important}
+.button-border-colour-silver button{border-color:#C0C0C0 !important}
+.button-border-colour-darkgray button{border-color:#A9A9A9 !important}
+.button-border-colour-gray button{border-color:#808080 !important}
+.button-border-colour-dimgray button{border-color:#696969 !important}
+.button-border-colour-lightslategray button{border-color:#778899 !important}
+.button-border-colour-slategray button{border-color:#708090 !important}
+.button-border-colour-darkslategray button{border-color:#2F4F4F !important}
+.button-border-colour-black button{border-color:#000000 !important}
+.button-border-colour-lightpink4 button{border-color:#8B5F65 !important}
+.button-border-colour-lightpink3 button{border-color:#CD8C95 !important}
+.button-border-colour-palevioletred4 button{border-color:#8B475D !important}
+.button-border-colour-lavenderblush button{border-color:#FFF0F5 !important}
+
+/* Button border hover color */
+.button-border-hover-colour-indianred button:hover{border-color:#CD5C5C !important}
+.button-border-hover-colour-lightcoral button:hover{border-color:#F08080 !important}
+.button-border-hover-colour-salmon button:hover{border-color:#FA8072 !important}
+.button-border-hover-colour-darksalmon button:hover{border-color:#E9967A !important}
+.button-border-hover-colour-lightsalmon button:hover{border-color:#FFA07A !important}
+.button-border-hover-colour-crimson button:hover{border-color:#DC143C !important}
+.button-border-hover-colour-red button:hover{border-color:#FF0000 !important}
+.button-border-hover-colour-pink button:hover{border-color:#FFC0CB !important}
+.button-border-hover-colour-lightpink button:hover{border-color:#FFB6C1 !important}
+.button-border-hover-colour-hotpink button:hover{border-color:#FF69B4 !important}
+.button-border-hover-colour-deeppink button:hover{border-color:#FF1493 !important}
+.button-border-hover-colour-mediumvioletred button:hover{border-color:#C71585 !important}
+.button-border-hover-colour-palevioletred button:hover{border-color:#DB7093 !important}
+.button-border-hover-colour-coral button:hover{border-color:#FF7F50 !important}
+.button-border-hover-colour-tomato button:hover{border-color:#FF6347 !important}
+.button-border-hover-colour-orangered button:hover{border-color:#FF4500 !important}
+.button-border-hover-colour-darkorange button:hover{border-color:#FF8C00 !important}
+.button-border-hover-colour-orange button:hover{border-color:#FFA500 !important}
+.button-border-hover-colour-gold button:hover{border-color:#FFD700 !important}
+.button-border-hover-colour-yellow button:hover{border-color:#FFFF00 !important}
+.button-border-hover-colour-lightyellow button:hover{border-color:#FFFFE0 !important}
+.button-border-hover-colour-lemonchiffon button:hover{border-color:#FFFACD !important}
+.button-border-hover-colour-lightgoldenrodyellow button:hover{border-color:#FAFAD2 !important}
+.button-border-hover-colour-papayawhip button:hover{border-color:#FFEFD5 !important}
+.button-border-hover-colour-moccasin button:hover{border-color:#FFE4B5 !important}
+.button-border-hover-colour-peachpuff button:hover{border-color:#FFDAB9 !important}
+.button-border-hover-colour-palegoldenrod button:hover{border-color:#EEE8AA !important}
+.button-border-hover-colour-khaki button:hover{border-color:#F0E68C !important}
+.button-border-hover-colour-darkkhaki button:hover{border-color:#BDB76B !important}
+.button-border-hover-colour-lavender button:hover{border-color:#E6E6FA !important}
+.button-border-hover-colour-plum button:hover{border-color:#DDA0DD !important}
+.button-border-hover-colour-violet button:hover{border-color:#EE82EE !important}
+.button-border-hover-colour-orchid button:hover{border-color:#DA70D6 !important}
+.button-border-hover-colour-magenta button:hover{border-color:#FF00FF !important}
+.button-border-hover-colour-mediumorchid button:hover{border-color:#BA55D3 !important}
+.button-border-hover-colour-mediumpurple button:hover{border-color:#9370DB !important}
+.button-border-hover-colour-amethyst button:hover{border-color:#9966CC !important}
+.button-border-hover-colour-blueviolet button:hover{border-color:#8A2BE2 !important}
+.button-border-hover-colour-darkorchid button:hover{border-color:#9932CC !important}
+.button-border-hover-colour-darkviolet button:hover{border-color:#9400D3 !important}
+.button-border-hover-colour-darkmagenta button:hover{border-color:#8B008B !important}
+.button-border-hover-colour-purple button:hover{border-color:#800080 !important}
+.button-border-hover-colour-slateblue button:hover{border-color:#6A5ACD !important}
+.button-border-hover-colour-mediumslateblue button:hover{border-color:#7B68EE !important}
+.button-border-hover-colour-darkslateblue button:hover{border-color:#483D8B !important}
+.button-border-hover-colour-indigo button:hover{border-color:#4B0082 !important}
+.button-border-hover-colour-greenyellow button:hover{border-color:#ADFF2F !important}
+.button-border-hover-colour-chartreuse button:hover{border-color:#7FFF00 !important}
+.button-border-hover-colour-lime button:hover{border-color:#00FF00 !important}
+.button-border-hover-colour-limegreen button:hover{border-color:#32CD32 !important}
+.button-border-hover-colour-palegreen button:hover{border-color:#98FB98 !important}
+.button-border-hover-colour-lightgreen button:hover{border-color:#90EE90 !important}
+.button-border-hover-colour-mediumspringgreen button:hover{border-color:#00FA9A !important}
+.button-border-hover-colour-springgreen button:hover{border-color:#00FF7F !important}
+.button-border-hover-colour-mediumseagreen button:hover{border-color:#3CB371 !important}
+.button-border-hover-colour-seagreen button:hover{border-color:#2E8B57 !important}
+.button-border-hover-colour-green button:hover{border-color:#008000 !important}
+.button-border-hover-colour-darkgreen button:hover{border-color:#006400 !important}
+.button-border-hover-colour-yellowgreen button:hover{border-color:#9ACD32 !important}
+.button-border-hover-colour-olivedrab button:hover{border-color:#6B8E23 !important}
+.button-border-hover-colour-olive button:hover{border-color:#808000 !important}
+.button-border-hover-colour-darkolivegreen button:hover{border-color:#556B2F !important}
+.button-border-hover-colour-mediumaquamarine button:hover{border-color:#66CDAA !important}
+.button-border-hover-colour-darkseagreen button:hover{border-color:#8FBC8F !important}
+.button-border-hover-colour-lightseagreen button:hover{border-color:#20B2AA !important}
+.button-border-hover-colour-darkcyan button:hover{border-color:#008B8B !important}
+.button-border-hover-colour-teal button:hover{border-color:#008080 !important}
+.button-border-hover-colour-cyan button:hover{border-color:#00FFFF !important}
+.button-border-hover-colour-lightcyan button:hover{border-color:#E0FFFF !important}
+.button-border-hover-colour-paleturquoise button:hover{border-color:#AFEEEE !important}
+.button-border-hover-colour-aquamarine button:hover{border-color:#7FFFD4 !important}
+.button-border-hover-colour-turquoise button:hover{border-color:#40E0D0 !important}
+.button-border-hover-colour-darkturquoise button:hover{border-color:#00CED1 !important}
+.button-border-hover-colour-cadetblue button:hover{border-color:#5F9EA0 !important}
+.button-border-hover-colour-steelblue button:hover{border-color:#4682B4 !important}
+.button-border-hover-colour-lightsteelblue button:hover{border-color:#B0C4DE !important}
+.button-border-hover-colour-powderblue button:hover{border-color:#B0E0E6 !important}
+.button-border-hover-colour-lightblue button:hover{border-color:#ADD8E6 !important}
+.button-border-hover-colour-skyblue button:hover{border-color:#87CEEB !important}
+.button-border-hover-colour-dodgerblue button:hover{border-color:#1E90FF !important}
+.button-border-hover-colour-cornflowerblue button:hover{border-color:#6495ED !important}
+.button-border-hover-colour-royalblue button:hover{border-color:#4169E1 !important}
+.button-border-hover-colour-blue button:hover{border-color:#0000FF !important}
+.button-border-hover-colour-mediumblue button:hover{border-color:#0000CD !important}
+.button-border-hover-colour-navy button:hover{border-color:#000080 !important}
+.button-border-hover-colour-midnightblue button:hover{border-color:#191970 !important}
+.button-border-hover-colour-burlywood button:hover{border-color:#DEB887 !important}
+.button-border-hover-colour-tan button:hover{border-color:#D2B48C !important}
+.button-border-hover-colour-rosybrown button:hover{border-color:#BC8F8F !important}
+.button-border-hover-colour-sandybrown button:hover{border-color:#F4A460 !important}
+.button-border-hover-colour-goldenrod button:hover{border-color:#DAA520 !important}
+.button-border-hover-colour-darkgoldenrod button:hover{border-color:#B8860B !important}
+.button-border-hover-colour-peru button:hover{border-color:#CD853F !important}
+.button-border-hover-colour-chocolate button:hover{border-color:#D2691E !important}
+.button-border-hover-colour-saddlebrown button:hover{border-color:#8B4513 !important}
+.button-border-hover-colour-sienna button:hover{border-color:#A0522D !important}
+.button-border-hover-colour-brown button:hover{border-color:#A52A2A !important}
+.button-border-hover-colour-maroon button:hover{border-color:#800000 !important}
+.button-border-hover-colour-white button:hover{border-color:#FFFFFF !important}
+.button-border-hover-colour-honeydew button:hover{border-color:#F0FFF0 !important}
+.button-border-hover-colour-azure button:hover{border-color:#F0FFFF !important}
+.button-border-hover-colour-ghostwhite button:hover{border-color:#F8F8FF !important}
+.button-border-hover-colour-whitesmoke button:hover{border-color:#F5F5F5 !important}
+.button-border-hover-colour-beige button:hover{border-color:#F5F5DC !important}
+.button-border-hover-colour-gainsboro button:hover{border-color:#DCDCDC !important}
+.button-border-hover-colour-lightgrey button:hover{border-color:#D3D3D3 !important}
+.button-border-hover-colour-silver button:hover{border-color:#C0C0C0 !important}
+.button-border-hover-colour-darkgray button:hover{border-color:#A9A9A9 !important}
+.button-border-hover-colour-gray button:hover{border-color:#808080 !important}
+.button-border-hover-colour-dimgray button:hover{border-color:#696969 !important}
+.button-border-hover-colour-lightslategray button:hover{border-color:#778899 !important}
+.button-border-hover-colour-slategray button:hover{border-color:#708090 !important}
+.button-border-hover-colour-darkslategray button:hover{border-color:#2F4F4F !important}
+.button-border-hover-colour-black button:hover{border-color:#000000 !important}
+.button-border-hover-colour-lightpink4 button:hover{border-color:#8B5F65 !important}
+.button-border-hover-colour-lightpink3 button:hover{border-color:#CD8C95 !important}
+.button-border-hover-colour-palevioletred4 button:hover{border-color:#8B475D !important}
+.button-border-hover-colour-lavenderblush button:hover{border-color:#FFF0F5 !important}
+
+/* Price */
+.price-colour-indianred .price{color:#CD5C5C !important}
+.price-colour-lightcoral .price{color:#F08080 !important}
+.price-colour-salmon .price{color:#FA8072 !important}
+.price-colour-darksalmon .price{color:#E9967A !important}
+.price-colour-lightsalmon .price{color:#FFA07A !important}
+.price-colour-crimson .price{color:#DC143C !important}
+.price-colour-red .price{color:#FF0000 !important}
+.price-colour-pink .price{color:#FFC0CB !important}
+.price-colour-lightpink .price{color:#FFB6C1 !important}
+.price-colour-hotpink .price{color:#FF69B4 !important}
+.price-colour-deeppink .price{color:#FF1493 !important}
+.price-colour-mediumvioletred .price{color:#C71585 !important}
+.price-colour-palevioletred .price{color:#DB7093 !important}
+.price-colour-coral .price{color:#FF7F50 !important}
+.price-colour-tomato .price{color:#FF6347 !important}
+.price-colour-orangered .price{color:#FF4500 !important}
+.price-colour-darkorange .price{color:#FF8C00 !important}
+.price-colour-orange .price{color:#FFA500 !important}
+.price-colour-gold .price{color:#FFD700 !important}
+.price-colour-yellow .price{color:#FFFF00 !important}
+.price-colour-lightyellow .price{color:#FFFFE0 !important}
+.price-colour-lemonchiffon .price{color:#FFFACD !important}
+.price-colour-lightgoldenrodyellow .price{color:#FAFAD2 !important}
+.price-colour-papayawhip .price{color:#FFEFD5 !important}
+.price-colour-moccasin .price{color:#FFE4B5 !important}
+.price-colour-peachpuff .price{color:#FFDAB9 !important}
+.price-colour-palegoldenrod .price{color:#EEE8AA !important}
+.price-colour-khaki .price{color:#F0E68C !important}
+.price-colour-darkkhaki .price{color:#BDB76B !important}
+.price-colour-lavender .price{color:#E6E6FA !important}
+.price-colour-plum .price{color:#DDA0DD !important}
+.price-colour-violet .price{color:#EE82EE !important}
+.price-colour-orchid .price{color:#DA70D6 !important}
+.price-colour-magenta .price{color:#FF00FF !important}
+.price-colour-mediumorchid .price{color:#BA55D3 !important}
+.price-colour-mediumpurple .price{color:#9370DB !important}
+.price-colour-amethyst .price{color:#9966CC !important}
+.price-colour-blueviolet .price{color:#8A2BE2 !important}
+.price-colour-darkorchid .price{color:#9932CC !important}
+.price-colour-darkviolet .price{color:#9400D3 !important}
+.price-colour-darkmagenta .price{color:#8B008B !important}
+.price-colour-purple .price{color:#800080 !important}
+.price-colour-slateblue .price{color:#6A5ACD !important}
+.price-colour-mediumslateblue .price{color:#7B68EE !important}
+.price-colour-darkslateblue .price{color:#483D8B !important}
+.price-colour-indigo .price{color:#4B0082 !important}
+.price-colour-greenyellow .price{color:#ADFF2F !important}
+.price-colour-chartreuse .price{color:#7FFF00 !important}
+.price-colour-lime .price{color:#00FF00 !important}
+.price-colour-limegreen .price{color:#32CD32 !important}
+.price-colour-palegreen .price{color:#98FB98 !important}
+.price-colour-lightgreen .price{color:#90EE90 !important}
+.price-colour-mediumspringgreen .price{color:#00FA9A !important}
+.price-colour-springgreen .price{color:#00FF7F !important}
+.price-colour-mediumseagreen .price{color:#3CB371 !important}
+.price-colour-seagreen .price{color:#2E8B57 !important}
+.price-colour-green .price{color:#008000 !important}
+.price-colour-darkgreen .price{color:#006400 !important}
+.price-colour-yellowgreen .price{color:#9ACD32 !important}
+.price-colour-olivedrab .price{color:#6B8E23 !important}
+.price-colour-olive .price{color:#808000 !important}
+.price-colour-darkolivegreen .price{color:#556B2F !important}
+.price-colour-mediumaquamarine .price{color:#66CDAA !important}
+.price-colour-darkseagreen .price{color:#8FBC8F !important}
+.price-colour-lightseagreen .price{color:#20B2AA !important}
+.price-colour-darkcyan .price{color:#008B8B !important}
+.price-colour-teal .price{color:#008080 !important}
+.price-colour-cyan .price{color:#00FFFF !important}
+.price-colour-lightcyan .price{color:#E0FFFF !important}
+.price-colour-paleturquoise .price{color:#AFEEEE !important}
+.price-colour-aquamarine .price{color:#7FFFD4 !important}
+.price-colour-turquoise .price{color:#40E0D0 !important}
+.price-colour-darkturquoise .price{color:#00CED1 !important}
+.price-colour-cadetblue .price{color:#5F9EA0 !important}
+.price-colour-steelblue .price{color:#4682B4 !important}
+.price-colour-lightsteelblue .price{color:#B0C4DE !important}
+.price-colour-powderblue .price{color:#B0E0E6 !important}
+.price-colour-lightblue .price{color:#ADD8E6 !important}
+.price-colour-skyblue .price{color:#87CEEB !important}
+.price-colour-dodgerblue .price{color:#1E90FF !important}
+.price-colour-cornflowerblue .price{color:#6495ED !important}
+.price-colour-royalblue .price{color:#4169E1 !important}
+.price-colour-blue .price{color:#0000FF !important}
+.price-colour-mediumblue .price{color:#0000CD !important}
+.price-colour-navy .price{color:#000080 !important}
+.price-colour-midnightblue .price{color:#191970 !important}
+.price-colour-burlywood .price{color:#DEB887 !important}
+.price-colour-tan .price{color:#D2B48C !important}
+.price-colour-rosybrown .price{color:#BC8F8F !important}
+.price-colour-sandybrown .price{color:#F4A460 !important}
+.price-colour-goldenrod .price{color:#DAA520 !important}
+.price-colour-darkgoldenrod .price{color:#B8860B !important}
+.price-colour-peru .price{color:#CD853F !important}
+.price-colour-chocolate .price{color:#D2691E !important}
+.price-colour-saddlebrown .price{color:#8B4513 !important}
+.price-colour-sienna .price{color:#A0522D !important}
+.price-colour-brown .price{color:#A52A2A !important}
+.price-colour-maroon .price{color:#800000 !important}
+.price-colour-white .price{color:#FFFFFF !important}
+.price-colour-honeydew .price{color:#F0FFF0 !important}
+.price-colour-azure .price{color:#F0FFFF !important}
+.price-colour-ghostwhite .price{color:#F8F8FF !important}
+.price-colour-whitesmoke .price{color:#F5F5F5 !important}
+.price-colour-beige .price{color:#F5F5DC !important}
+.price-colour-gainsboro .price{color:#DCDCDC !important}
+.price-colour-lightgrey .price{color:#D3D3D3 !important}
+.price-colour-silver .price{color:#C0C0C0 !important}
+.price-colour-darkgray .price{color:#A9A9A9 !important}
+.price-colour-gray .price{color:#808080 !important}
+.price-colour-dimgray .price{color:#696969 !important}
+.price-colour-lightslategray .price{color:#778899 !important}
+.price-colour-slategray .price{color:#708090 !important}
+.price-colour-darkslategray .price{color:#2F4F4F !important}
+.price-colour-black .price{color:#000000 !important}
+.price-colour-lightpink4 .price{color:#8B5F65 !important}
+.price-colour-lightpink3 .price{color:#CD8C95 !important}
+.price-colour-palevioletred4 .price{color:#8B475D !important}
+.price-colour-lavenderblush .price{color:#FFF0F5 !important}
+
+.text-colour-lavenderblush2,.text-colour-lavenderblush2 .promobanner .text{color:#EEE0E5 !important}
+.link-colour-lavenderblush2{color:#EEE0E5 !important}
+.link-hover-colour-lavenderblush2 a:hover{color:#EEE0E5 !important}
+.button-colour-lavenderblush2 button{background-color:#EEE0E5 !important}
+.button-hover-colour-lavenderblush2 button:hover{background-color:#EEE0E5 !important}
+.button-text-colour-lavenderblush2 button{color:#EEE0E5 !important}
+.button-text-hover-colour-lavenderblush2 button:hover{color:#EEE0E5 !important}
+.button-border-colour-lavenderblush2 button{border-color:#EEE0E5 !important}
+.button-border-hover-colour-lavenderblush2 button:hover{border-color:#EEE0E5 !important}
+.price-colour-lavenderblush2 .price{color:#EEE0E5 !important}
+
+.text-colour-lavenderblush3,.text-colour-lavenderblush3 .promobanner .text{color:#CDC1C5 !important}
+.link-colour-lavenderblush3{color:#CDC1C5 !important}
+.link-hover-colour-lavenderblush3 a:hover{color:#CDC1C5 !important}
+.button-colour-lavenderblush3 button{background-color:#CDC1C5 !important}
+.button-hover-colour-lavenderblush3 button:hover{background-color:#CDC1C5 !important}
+.button-text-colour-lavenderblush3 button{color:#CDC1C5 !important}
+.button-text-hover-colour-lavenderblush3 button:hover{color:#CDC1C5 !important}
+.button-border-colour-lavenderblush3 button{border-color:#CDC1C5 !important}
+.button-border-hover-colour-lavenderblush3 button:hover{border-color:#CDC1C5 !important}
+.price-colour-lavenderblush3 .price{color:#CDC1C5 !important}
+
+.text-colour-lavenderblush3,.text-colour-lavenderblush3 .promobanner .text{color:#8B8386 !important}
+.link-colour-lavenderblush3{color:#8B8386 !important}
+.link-hover-colour-lavenderblush3 a:hover{color:#8B8386 !important}
+.button-colour-lavenderblush3 button{background-color:#8B8386 !important}
+.button-hover-colour-lavenderblush3 button:hover{background-color:#8B8386 !important}
+.button-text-colour-lavenderblush3 button{color:#8B8386 !important}
+.button-text-hover-colour-lavenderblush3 button:hover{color:#8B8386 !important}
+.button-border-colour-lavenderblush3 button{border-color:#8B8386 !important}
+.button-border-hover-colour-lavenderblush3 button:hover{border-color:#8B8386 !important}
+.price-colour-lavenderblush3 .price{color:#8B8386 !important}
+
+.text-colour-deeppink2,.text-colour-deeppink2 .promobanner .text{color:#FF3E96 !important}
+.link-colour-deeppink2{color:#FF3E96 !important}
+.link-hover-colour-deeppink2 a:hover{color:#FF3E96 !important}
+.button-colour-deeppink2 button{background-color:#FF3E96 !important}
+.button-hover-colour-deeppink2 button:hover{background-color:#FF3E96 !important}
+.button-text-colour-deeppink2 button{color:#FF3E96 !important}
+.button-text-hover-colour-deeppink2 button:hover{color:#FF3E96 !important}
+.button-border-colour-deeppink2 button{border-color:#FF3E96 !important}
+.button-border-hover-colour-deeppink2 button:hover{border-color:#FF3E96 !important}
+.price-colour-deeppink2 .price{color:#FF3E96 !important}
+
+.text-colour-deeppink3,.text-colour-deeppink3 .promobanner .text{color:#CD3278 !important}
+.link-colour-deeppink3{color:#CD3278 !important}
+.link-hover-colour-deeppink3 a:hover{color:#CD3278 !important}
+.button-colour-deeppink3 button{background-color:#CD3278 !important}
+.button-hover-colour-deeppink3 button:hover{background-color:#CD3278 !important}
+.button-text-colour-deeppink3 button{color:#CD3278 !important}
+.button-text-hover-colour-deeppink3 button:hover{color:#CD3278 !important}
+.button-border-colour-deeppink3 button{border-color:#CD3278 !important}
+.button-border-hover-colour-deeppink3 button:hover{border-color:#CD3278 !important}
+.price-colour-deeppink3 .price{color:#CD3278 !important}
+
+.text-colour-palevioletred5,.text-colour-palevioletred5 .promobanner .text{color:#8B2252 !important}
+.link-colour-palevioletred5{color:#8B2252 !important}
+.link-hover-colour-palevioletred5 a:hover{color:#8B2252 !important}
+.button-colour-palevioletred5 button{background-color:#8B2252 !important}
+.button-hover-colour-palevioletred5 button:hover{background-color:#8B2252 !important}
+.button-text-colour-palevioletred5 button{color:#8B2252 !important}
+.button-text-hover-colour-palevioletred5 button:hover{color:#8B2252 !important}
+.button-border-colour-palevioletred5 button{border-color:#8B2252 !important}
+.button-border-hover-colour-palevioletred5 button:hover{border-color:#8B2252 !important}
+.price-colour-palevioletred5 .price{color:#8B2252 !important}

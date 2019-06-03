@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+		<referenceContainer name="head.additional">
+			<block class="MGS\Fbuilder\Block\Page\Head" name="fbuilder.head.init" ifconfig="fbuilder/general/is_enabled"/>
+		</referenceContainer>
+        <referenceContainer name="after.body.start">
+            <block class="MGS\Fbuilder\Block\Panel\Toppanel" name="builder_panel" template="panel/top_panel.phtml" ifconfig="fbuilder/general/is_enabled" />
+        </referenceContainer>
+    </body>
+</page>

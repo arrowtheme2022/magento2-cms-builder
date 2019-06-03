@@ -1,0 +1,399 @@
+<?php $helper = $this->getBuilderHelper() ?>
+<?php $exist = $this->getExist() ?>
+<?php if($exist): ?>
+	<?php $child = $this->getBuilderChild() ?>
+	<?php $settings = json_decode($child->getSetting(), true); ?>
+<?php endif ?>
+
+<div class="data item title" aria-labeledby="tab-label-category-title" data-role="collapsible" id="tab-label-category">
+	<a class="data switch" tabindex="-1" data-toggle="switch" href="#category" id="tab-label-category-title">
+		<?php echo __('Category Config') ?>
+	</a>
+</div>
+
+<div class="data item content" id="category" data-role="content" style="display:none">
+	<div class="line ">
+		<div class="col-tb-6">
+			<label for="categories" class="control-label category-label"><?php echo __('Choose Categories') ?></label>
+			<div>
+				<div id="product-categories" class="tree x-tree">
+					<ul id="dhtmlgoodies_tree">
+						<?php if($exist && isset($settings['category_id']) && ($settings['category_id']!='')): ?>
+							<?php echo $helper->getTreeCategory($helper->getRootCategory(), 0, [], $settings['category_id']) ?>
+						<?php else: ?>
+							<?php echo $helper->getTreeCategory($helper->getRootCategory(), 0, [], []) ?>
+						<?php endif ?>
+					</ul>
+					<div id="expandCollapse">
+						<a href="#" id="expand-all"><?php echo __('Expand all') ?></a>
+						<a href="#" id="collapse-all"><?php echo __('Collapse all') ?></a>
+					</div>
+					<div id="ajaxMessage"></div>
+				</div>
+			</div>
+		</div>
+		<div class="col-tb-6">
+			
+		</div>
+	</div>
+	
+	<?php if(!$this->hasData('disable_category_tab') && $this->hasData('disable_category_tab')!=1): ?>
+	
+		<div class="line form-group">
+			<div class="category-tab-config col-tb-12">
+				<label for="use_tabs" class="control-label category-label"><?php echo __('Use Category Tabs') ?></label>
+				<div>
+					<div class="admin__actions-switch" data-role="switcher">
+						<input type="checkbox"<?php if($exist && $settings['use_tabs']): ?> checked="checked"<?php endif ?> value="1" name="setting[use_tabs]" id="use_tabs" class="admin__actions-switch-checkbox" onclick="useCategoryTab()">
+						<label for="use_tabs" class="admin__actions-switch-label">
+							<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+						</label>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<div class="category-tab-config">
+			<div id="tab-sample">
+				<div class="builder-tab data items">
+					<div class="form-group line">
+						<label for="tab_style" class="col-tb-3 control-label"><?php echo __('Tab Style') ?></label>
+						<div class="col-tb-9">
+							<select id="tab_style" class="input-text" name="setting[tab_style]" onchange="changeTabStyle()">
+								<option value="style1"<?php if($exist && ($settings['tab_style']=='style1')): ?> selected="selected"<?php endif ?>><?php echo __('Style 1') ?></option>
+								<option value="style2"<?php if($exist && ($settings['tab_style']=='style2')): ?> selected="selected"<?php endif ?>><?php echo __('Style 2') ?></option>
+								<option value="style3"<?php if($exist && ($settings['tab_style']=='style3')): ?> selected="selected"<?php endif ?>><?php echo __('Style 3') ?></option>
+								<option value="style4"<?php if($exist && ($settings['tab_style']=='style4')): ?> selected="selected"<?php endif ?>><?php echo __('Style 4') ?></option>
+								<option value="style5"<?php if($exist && ($settings['tab_style']=='style5')): ?> selected="selected"<?php endif ?>><?php echo __('Style 5') ?></option>
+								<option value="style6"<?php if($exist && ($settings['tab_style']=='style6')): ?> selected="selected"<?php endif ?>><?php echo __('Style 6') ?></option>
+								<option value="style7"<?php if($exist && ($settings['tab_style']=='style7')): ?> selected="selected"<?php endif ?>><?php echo __('Style 7') ?></option>
+							</select>
+							
+							<div id="tab_style_image" style="margin-top:5px; height:80px; overflow:hidden" class="mgs-product-tab">
+								<div class="product data items mgs-tab" id="tab-style-container">
+									<div class="data item title item1 active"><a class="data switch">Title 1</a></div>
+									<div class="data item content"></div>
+									<div class="data item title"><a class="data switch">Title 2</a></div>
+									<div class="data item content"></div>
+									<div class="data item title last-item"><a class="data switch">Title 3</a></div>
+									<div class="data item content"></div>
+								</div>
+							</div>
+							
+							<style type="text/css" id="head-custom-css"></style>
+						</div>
+					</div>
+
+					
+					<div class="form-group line">
+						<div class="col-tb-3">
+						</div>
+						<div class="col-tb-9">
+							<div class="line">
+								<div class="col-tb-3">
+									<label for="tab_font_bold" class="control-label"><?php echo __('Font Bold') ?></label>
+									<div class="admin__actions-switch" data-role="switcher">
+										<input type="checkbox"<?php if($exist && $settings['tab_font_bold']): ?> checked="checked"<?php endif ?> value="1" name="setting[tab_font_bold]" id="tab_font_bold" class="admin__actions-switch-checkbox" onclick="changeFontWeight()">
+										<label for="tab_font_bold" class="admin__actions-switch-label">
+											<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+										</label>
+									</div>
+								</div>
+								
+								<div class="col-tb-3">
+									<label for="tab_italic" class="control-label"><?php echo __('Font Italic') ?></label>
+									<div class="admin__actions-switch" data-role="switcher">
+										<input type="checkbox"<?php if($exist && $settings['tab_italic']): ?> checked="checked"<?php endif ?> value="1" name="setting[tab_italic]" id="tab_italic" class="admin__actions-switch-checkbox" onclick="changeFontStyle()">
+										<label for="tab_italic" class="admin__actions-switch-label">
+											<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+										</label>
+									</div>
+								</div>
+								
+								<div class="col-tb-3">
+									<label for="tab_uppercase" class="control-label"><?php echo __('Uppercase') ?></label>
+									<div class="admin__actions-switch" data-role="switcher">
+										<input type="checkbox"<?php if($exist && $settings['tab_uppercase']): ?> checked="checked"<?php endif ?> value="1" name="setting[tab_uppercase]" id="tab_uppercase" class="admin__actions-switch-checkbox" onclick="changeTextTransform()">
+										<label for="tab_uppercase" class="admin__actions-switch-label">
+											<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+										</label>
+									</div>
+								</div>
+								
+								<div class="col-tb-3">
+									<label for="tab_align" class="control-label"><?php echo __('Align') ?></label><br/>
+									<div>
+										<select id="tab_align" class="input-text" name="setting[tab_align]" onchange="changeTabAlign()">
+											<option value="left"<?php if($exist && ($settings['tab_align']=='left')): ?> selected="selected"<?php endif ?>><?php echo __('Left') ?></option>
+											
+											<option value="center"<?php if($exist && ($settings['tab_align']=='center')): ?> selected="selected"<?php endif ?>><?php echo __('Center') ?></option>
+											
+											<option value="right"<?php if($exist && ($settings['tab_align']=='right')): ?> selected="selected"<?php endif ?>><?php echo __('Right') ?></option>
+										</select>
+									</div>
+								</div>
+							</div>
+						</div>
+						
+					</div>
+					
+					<div class="form-group line">
+						<label for="font_size" class="col-tb-3 control-label"><?php echo __('Font Size') ?></label>
+						<div class="col-tb-9">
+							<input type="text" id="font_size" class="input-text validate-number" name="setting[font_size]"<?php if($exist): ?> value="<?php echo $settings['font_size'] ?>"<?php endif ?> placeholder="px" onchange="changeTabColor()"/>
+						</div>
+					</div>
+					
+					<div class="form-group line">
+						<label for="tab_primary_color" class="col-tb-3 control-label"><?php echo __('Primary Color') ?></label>
+						<div class="col-tb-9">
+							<input type="text" id="tab_primary_color" class="input-text color-input" name="setting[tab_primary_color]"<?php if($exist): ?> value="<?php echo $settings['tab_primary_color'] ?>"<?php endif ?> onchange="changeTabColor()"/>
+						</div>
+					</div>
+					
+					<div class="form-group line">
+						<label for="tab_secondary_color" class="col-tb-3 control-label"><?php echo __('Secondary Color') ?></label>
+						<div class="col-tb-9">
+							<input type="text" id="tab_secondary_color" class="input-text color-input" name="setting[tab_secondary_color]"<?php if($exist): ?> value="<?php echo $settings['tab_secondary_color'] ?>"<?php endif ?> onchange="changeTabColor()"/>
+						</div>
+					</div>
+					
+					<div class="form-group line">
+						<label for="tab_third_color" class="col-tb-3 control-label"><?php echo __('Third Color') ?></label>
+						<div class="col-tb-9">
+							<input type="text" id="tab_third_color" class="input-text color-input" name="setting[tab_third_color]"<?php if($exist): ?> value="<?php echo $settings['tab_third_color'] ?>"<?php endif ?> onchange="changeTabColor()" />
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	<?php endif ?>
+	<script type="text/javascript">
+		var imageFolder = '<?php echo $this->getViewFileUrl('MGS_Fbuilder::images') ?>/';	// Path to images
+		var categoryIds = '';
+		<?php if($exist && isset($settings['category_id']) && ($settings['category_id']!='')): ?>
+			categoryIds = '<?php echo implode(',',$settings['category_id']) ?>';
+		<?php endif ?>
+	</script>
+	<script type="text/javascript" src="<?php echo $this->getViewFileUrl('MGS_Fbuilder::js/sack_js.js') ?>"></script>
+	<script type="text/javascript">
+		require([
+			'jquery',
+		], function(jQuery){
+			(function($) {
+				$(document).ready(function(){
+					useCategoryTab();
+					changeTabStyle();
+					changeTabAlign();
+					changeFontWeight();
+					changeFontStyle();
+					changeTextTransform();
+					changeTabColor();
+				});
+			})(jQuery);
+		});
+		
+		<?php if($exist && isset($settings['tab_style'])): ?>
+			var oldTabStyle = 'tab-<?php echo $settings['tab_style'] ?>';
+			var oldTabAlgin = 'tab-align-<?php echo $settings['tab_align'] ?>';
+		<?php else: ?>
+			var oldTabStyle = 'tab-style1';
+			var oldTabAlgin = 'tab-align-left';
+		<?php endif ?>
+		
+		function useCategoryTab(){
+			require([
+				'jquery',
+			], function(jQuery){
+				(function($) {
+					if($('#use_tabs').length){
+						if($('#use_tabs').prop("checked") == true){
+							$('#tab-sample').show();
+						}else{
+							$('#tab-sample').hide();
+						}
+					}
+				})(jQuery);
+			});
+		}
+		
+		function changeTabStyle(){
+			require([
+				'jquery',
+			], function(jQuery){
+				(function($) {
+					if($('#tab_style').length){
+						var tabStyle = $('#tab_style').val();
+						$('#tab-style-container').removeClass(oldTabStyle);
+						oldTabStyle = 'tab-'+tabStyle;
+						$('#tab-style-container').addClass(oldTabStyle);
+					}
+				})(jQuery);
+			});
+			changeTabColor();
+		}
+		
+		function changeTabAlign(){
+			require([
+				'jquery',
+			], function(jQuery){
+				(function($) {
+					if($('#tab_align').length){
+						var tabAlign = $('#tab_align').val();
+						$('#tab-style-container').removeClass(oldTabAlgin);
+						oldTabAlgin = 'tab-align-'+tabAlign;
+						$('#tab-style-container').addClass(oldTabAlgin);
+					}
+				})(jQuery);
+			});
+			changeTabColor();
+		}
+		
+		function changeFontWeight(){
+			require([
+				'jquery',
+			], function(jQuery){
+				(function($) {
+					if($('#tab_font_bold').length){
+						if($('#tab_font_bold').prop("checked") == true){
+							$('#tab-style-container').addClass('tab-font-bold');
+						}else{
+							$('#tab-style-container').removeClass('tab-font-bold');
+						}
+					}
+				})(jQuery);
+			});
+			changeTabColor();
+		}
+		
+		function changeFontStyle(){
+			require([
+				'jquery',
+			], function(jQuery){
+				(function($) {
+					if($('#tab_italic').length){
+						if($('#tab_italic').prop("checked") == true){
+							$('#tab-style-container').addClass('tab-italic');
+						}else{
+							$('#tab-style-container').removeClass('tab-italic');
+						}
+					}
+				})(jQuery);
+			});
+			changeTabColor();
+		}
+		
+		function changeTextTransform(){
+			require([
+				'jquery',
+			], function(jQuery){
+				(function($) {
+					if($('#tab_uppercase').length){
+						if($('#tab_uppercase').prop("checked") == true){
+							$('#tab-style-container').addClass('tab-uppercase');
+						}else{
+							$('#tab-style-container').removeClass('tab-uppercase');
+						}
+					}
+				})(jQuery);
+			});
+			changeTabColor();
+		}
+		
+		function changeTabColor(){
+			require([
+				'jquery',
+			], function(jQuery){
+				(function($) {
+					if($('#tab_primary_color').length){
+						primaryColor = $('#tab_primary_color').val();
+						secondaryColor = $('#tab_secondary_color').val();
+						thirdColor = $('#tab_third_color').val();
+						fontSize = $('#font_size').val();
+						tabStyle = 'tab-'+$('#tab_style').val();
+						
+						customStyle = '*{}';
+						if((fontSize!='') && (fontSize>0)){
+							customStyle += '#tab_style_image .mgs-tab.data.items > .item.title > .switch{font-size:'+ parseInt(fontSize) +'px;}';
+							
+							if(tabStyle=='tab-style1'){
+								height = parseInt(fontSize) + 4;
+								customStyle += '#tab_style_image .mgs-tab.data.items > .item.title > .switch{height:'+height+'px !important; line-height:'+height+'px !important}';
+								customStyle += '#tab_style_image .mgs-tab.data.items .item.title .switch::before{height: '+height+'px; top:1px}';
+							}
+							
+							if(tabStyle=='tab-style2' || tabStyle=='tab-style3'){
+								borderRadius = parseInt(fontSize) + 10;
+								customStyle += '#tab_style_image .'+tabStyle+'.data.items .item.title .switch{border-radius:' + borderRadius +'px;}';
+							}
+						}
+
+						if((tabStyle=='tab-style1') || (tabStyle=='tab-style2') || (tabStyle=='tab-style4') || (tabStyle=='tab-style5') || (tabStyle=='tab-style7')){
+
+							if(thirdColor!=''){
+								customStyle += '#tab_style_image .'+tabStyle+'.data.items .item.title .switch:before{background: '+thirdColor+';}';
+
+								
+								if(tabStyle=='tab-style2'){
+									customStyle += '#tab_style_image .'+tabStyle+'.data.items .item.title.active .switch{border-color: '+thirdColor+';}';
+								}
+								
+								if(tabStyle=='tab-style4'){
+									customStyle += '#tab_style_image .'+tabStyle+'.data.items .item.title.active .switch::after{background-color: '+thirdColor+';}';
+								}
+								
+								if(tabStyle=='tab-style5'){
+									customStyle += '#tab_style_image .tab-style5.data.items > .item.content{border-color: '+thirdColor+' !important;}';
+								}
+							}
+							
+							if(secondaryColor!=''){
+								customStyle += '#tab_style_image .'+tabStyle+'.data.items .item.title .switch{color: '+secondaryColor+' !important;}';
+							}
+							
+							if(primaryColor!=''){
+								customStyle += '#tab_style_image .'+tabStyle+'.data.items .item.title.active .switch, #tab_style_image .'+tabStyle+'.data.items .item.title .switch:hover{color: '+primaryColor+' !important}';
+								
+								if(tabStyle=='tab-style5'){
+									customStyle += '#tab_style_image .'+tabStyle+'.data.items .item.title.active .switch:after{background-color: '+primaryColor+';}';
+								}
+							}
+							
+							
+						}
+						
+						if(tabStyle=='tab-style3'){
+							if(thirdColor!=''){
+								customStyle += '#tab_style_image .'+tabStyle+'.data.items .item.title .switch{border-color: '+thirdColor+'}';
+							}
+							
+							if(secondaryColor!=''){
+								customStyle += '#tab_style_image .'+tabStyle+'.data.items .item.title .switch{color: '+secondaryColor+'}';
+							}
+							
+							if(primaryColor!=''){
+								customStyle += '#tab_style_image .'+tabStyle+'.data.items .item.title.active .switch,#tab_style_image .'+tabStyle+'.data.items .item.title .switch:hover{background-color: '+primaryColor+' !important; border-color:'+primaryColor+' !important}';
+							}
+						}
+						
+						if(tabStyle=='tab-style6'){
+							if(thirdColor!=''){
+								customStyle += '#tab_style_image .'+tabStyle+'.data.items .item.title .switch{border-color: '+thirdColor+'}';
+							}
+							
+							if(secondaryColor!=''){
+								customStyle += '#tab_style_image .'+tabStyle+'.data.items .item.title .switch{background-color: '+secondaryColor+'}';
+							}
+							
+							if(primaryColor!=''){
+								customStyle += '#tab_style_image .'+tabStyle+'.data.items .item.title.active .switch,#tab_style_image .'+tabStyle+'.data.items .item.title .switch:hover{background-color: '+primaryColor+' !important;}';
+							}
+						}
+						$('#head-custom-css').html(customStyle);
+					}
+					
+				})(jQuery);
+			});
+		}
+	</script>
+</div>

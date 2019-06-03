@@ -1,0 +1,370 @@
+<?php $section = $this->getSectionInfo() ?>
+<div class="edit-static-form">
+	<form id="section-form" enctype="multipart/form-data" method="POST" action="<?php echo $this->getUrl('fbuilder/post/section', ['id'=>$section->getId()]) ?>" data-hasrequired="<?php echo __('* Required Fields') ?>" data-mage-init='{"validation":{}}'>
+		<input type="hidden" value="<?php echo $section->getName() ?>" name="name">
+		<div class="line">
+			<div class="col-des-12 builder-title">
+				<h2><?php echo __('Section Settings') ?></h2>
+			</div>
+		</div>
+
+
+		<div class="product data items mgs-tab" data-mage-init='{"tabs":{"openedState":"active"}}'>
+			
+			<div class="data item title" aria-labeledby="tab-label-general-title" data-role="collapsible" id="tab-label-general">
+				<a class="data switch" tabindex="-1" data-toggle="switch" href="#general" id="tab-label-general-title">
+					<?php echo __('General') ?>
+				</a>
+			</div>
+			<div class="data item content" id="general" data-role="content">
+				<div class="form-group line">
+					<label for="class_name" class="col-tb-3 control-label"><?php echo __('Class name') ?></label>
+					<div class="col-tb-8">
+						<input type="text" value="<?php echo $section->getClass() ?>" class="input-text" id="class_name" name="class">
+					</div>
+				</div>
+				
+				<div class="form-group line">
+					<label for="fullwidth" class="col-tb-3 control-label"><?php echo __('Fullwidth') ?></label>
+					<div class="col-tb-8">
+						<div class="admin__actions-switch" data-role="switcher">
+							<input type="checkbox"<?php if($section->getFullwidth()): ?> checked="checked"<?php endif ?> value="1" name="fullwidth" id="fullwidth" class="admin__actions-switch-checkbox">
+							<label for="fullwidth" class="admin__actions-switch-label">
+								<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+							</label>
+						</div>
+					</div>
+				</div>
+				
+				<div class="form-group line">
+					<label for="background_gradient" class="col-tb-3 control-label"><?php echo __('Background gradient') ?></label>
+					<div class="col-tb-8">
+						<div class="admin__actions-switch" data-role="switcher">
+							<input type="checkbox"<?php if($section->getBackgroundGradient()): ?> checked="checked"<?php endif ?> value="1" name="background_gradient" id="background_gradient" class="admin__actions-switch-checkbox" onclick="useBackgroundGradient()">
+							<label for="background_gradient" class="admin__actions-switch-label">
+								<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+							</label>
+						</div>
+					</div>
+				</div>
+				
+				<div class="form-group line gradient-bg">
+					<label class="col-tb-3 control-label"><?php echo __('Background') ?></label>
+					<div class="col-tb-8">
+						<div class="line">
+							<div class="col-tb-4">
+								<label for="background_gradient_from" class="control-label"><?php echo __('From') ?></label><br/>
+
+								<input type="text" value="<?php echo $section->getBackgroundGradientFrom() ?>" class="input-text color-input" id="background_gradient_from" name="background_gradient_from">
+
+							</div>
+							
+							<div class="col-tb-4">
+								<label for="background_gradient_to" class="control-label"><?php echo __('To') ?></label><br/>
+
+								<input type="text" value="<?php echo $section->getBackgroundGradientTo() ?>" class="input-text color-input" id="background_gradient_to" name="background_gradient_to">
+
+							</div>
+							
+							<div class="col-tb-4">
+								<label for="background_gradient_orientation" class="control-label"><?php echo __('Orientation') ?></label><br/>
+
+								<select name="background_gradient_orientation" id="background_gradient_orientation">
+									<option value="horizontal"<?php if($section->getBackgroundGradientOrientation()=='horizontal'): ?> selected="selected"<?php endif ?>><?php echo __('Horizontal  →'); ?></option>
+									<option value="vertical"<?php if($section->getBackgroundGradientOrientation()=='vertical'): ?> selected="selected"<?php endif ?>><?php echo __('Vertical  ↓'); ?></option>
+									<option value="diagonal"<?php if($section->getBackgroundGradientOrientation()=='diagonal'): ?> selected="selected"<?php endif ?>><?php echo __('Diagonal  ↘'); ?></option>
+									<option value="diagonal-bottom"<?php if($section->getBackgroundGradientOrientation()=='diagonal-bottom'): ?> selected="selected"<?php endif ?>><?php echo __('Diagonal  ↗'); ?></option>
+									<option value="radial"<?php if($section->getBackgroundGradientOrientation()=='radial'): ?> selected="selected"<?php endif ?>><?php echo __('Radial  ○'); ?></option>
+								</select>
+
+							</div>
+						</div>
+					</div>
+				</div>
+				
+				<div class="form-group line normal-bg">
+					<label for="background" class="col-tb-3 control-label"><?php echo __('Background color') ?></label>
+					<div class="col-tb-8">
+						<input type="text" value="<?php echo $section->getBackground() ?>" class="input-text color-input" id="background" name="background">
+					</div>
+				</div>
+				
+				<div class="form-group line normal-bg">
+					<label for="background" class="col-tb-3 control-label"><?php echo __('Background image') ?></label>
+					<div class="col-tb-8">
+						<input type="file" id="background" name="background_image">
+						<?php if($section->getBackgroundImage()!=''): ?>
+							<div class="image-temp">
+								<img src="<?php echo $this->getImageSrc() ?>" class="background-preview" alt="" style="max-width:100%; margin-top:10px"/>
+								<label for="remove_background">
+									<input type="checkbox" name="remove_background" value="1" id="remove_background"/> <?php echo __('Remove background') ?>
+								</label>
+							</div>
+						<?php endif ?>
+					</div>
+				</div>
+				
+				<div class="form-group line normal-bg">
+					<label for="background_repeat" class="col-tb-3 control-label"><?php echo __('Background repeat') ?></label>
+					<div class="col-tb-8">
+						<div class="admin__actions-switch" data-role="switcher">
+							<input type="checkbox"<?php if($section->getBackgroundRepeat()): ?> checked="checked"<?php endif ?> value="1" name="background_repeat" id="background_repeat" class="admin__actions-switch-checkbox">
+							<label for="background_repeat" class="admin__actions-switch-label">
+								<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+							</label>
+						</div>
+					</div>
+				</div>
+				
+				<div class="form-group line normal-bg">
+					<label for="parallax" class="col-tb-3 control-label"><?php echo __('Parallax') ?></label>
+					<div class="col-tb-8">
+						<div class="admin__actions-switch" data-role="switcher">
+							<input type="checkbox"<?php if($section->getParallax()): ?> checked="checked"<?php endif ?> value="1" name="parallax" id="parallax" class="admin__actions-switch-checkbox">
+							<label for="parallax" class="admin__actions-switch-label">
+								<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+							</label>
+						</div>
+					</div>
+				</div>
+				
+				<div class="form-group line normal-bg">
+					<label for="cover" class="col-tb-3 control-label"><?php echo __('Background Cover') ?></label>
+					<div class="col-tb-8">
+						<div class="admin__actions-switch" data-role="switcher">
+							<input type="checkbox"<?php if($section->getBackgroundCover()): ?> checked="checked"<?php endif ?> value="1" name="background_cover" id="background_cover" class="admin__actions-switch-checkbox">
+							<label for="background_cover" class="admin__actions-switch-label">
+								<span data-text-off="<?php echo __('No') ?>" data-text-on="<?php echo __('Yes') ?>" class="admin__actions-switch-text"></span>
+							</label>
+						</div>
+					</div>
+				</div>
+				
+				<div class="form-group line">
+					<label for="padding_top" class="col-tb-3 control-label"><?php echo __('Padding top') ?></label>
+					<div class="col-tb-8">
+						<input type="text" value="<?php echo $section->getPaddingTop() ?>" class="input-text validate-number" id="padding_top" name="padding_top">
+					</div>
+				</div>
+				
+				<div class="form-group line">
+					<label for="padding_bottom" class="col-tb-3 control-label"><?php echo __('Padding bottom') ?></label>
+					<div class="col-tb-8">
+						<input type="text" value="<?php echo $section->getPaddingBottom() ?>" class="input-text validate-number" id="padding_bottom" name="padding_bottom">
+					</div>
+				</div>
+			</div>
+			
+			<?php $activeContainer = 'output-yourself'; ?>
+			<div class="data item title" aria-labeledby="tab-label-additional-title" data-role="collapsible" id="tab-label-additional">
+				<a class="data switch" tabindex="-1" data-toggle="switch" href="#additional" id="tab-label-additional-title">
+					<?php echo __('Column Config') ?>
+				</a>
+			</div>
+			<div class="data item content" id="additional" data-role="content" style="display:none">
+				<div>
+					<div class="vc-icon-option icon-prefix cols">
+						<div id="config-12" class="form-group line">
+							<label for="block_cols" class="col-tb-3 control-label"><?php echo __('Set columns (Desktop view)') ?></label>
+							<div class="col-tb-9">
+								<a onclick="setColValue('12', this, 'config-12'); return false" href="#"<?php if(($section->getBlockCols()==12) || (($section->getBlockCols()==''))): $activeContainer = 'config-12'; ?> class="active"<?php endif ?>><img style="max-width:100%" alt="" src="<?php echo $this->getViewFileUrl('MGS_Fbuilder::images/panel/cols/12.png') ?>"></a>
+							</div>
+						</div>
+						<div id="config-66" class="form-group line">
+							<label for="block_cols" class="col-tb-3 control-label"></label>
+							<div class="col-tb-9">
+								<a onclick="setColValue('6,6', this, 'config-66'); return false" href="#"<?php if($section->getBlockCols()=='6,6'): $activeContainer = 'config-66'; ?> class="active"<?php endif ?>><img style="max-width:100%" alt="" src="<?php echo $this->getViewFileUrl('MGS_Fbuilder::images/panel/cols/6-6.png') ?>"></a>
+							</div>
+						</div>
+						<div id="config-444" class="form-group line">
+							<label for="block_cols" class="col-tb-3 control-label"></label>
+							<div class="col-tb-9">
+								<a onclick="setColValue('4,4,4', this, 'config-444'); return false" href="#"<?php if($section->getBlockCols()=='4,4,4'): $activeContainer = 'config-444'; ?> class="active"<?php endif ?>><img style="max-width:100%" alt="" src="<?php echo $this->getViewFileUrl('MGS_Fbuilder::images/panel/cols/4-4-4.png') ?>"></a>
+							</div>
+						</div>
+						<div id="config-3333" class="form-group line">
+							<label for="block_cols" class="col-tb-3 control-label"></label>
+							<div class="col-tb-9">
+								<a onclick="setColValue('3,3,3,3', this, 'config-3333'); return false" href="#"<?php if($section->getBlockCols()=='3,3,3,3'): $activeContainer = 'config-3333'; ?> class="active"<?php endif ?>><img style="max-width:100%" alt="" src="<?php echo $this->getViewFileUrl('MGS_Fbuilder::images/panel/cols/3-3-3-3.png') ?>"></a>
+							</div>
+						</div>
+						<div id="config-39" class="form-group line">
+							<label for="block_cols" class="col-tb-3 control-label"></label>
+							<div class="col-tb-9">
+								<a onclick="setColValue('3,9', this, 'config-39'); return false" href="#"<?php if($section->getBlockCols()=='3,9'): $activeContainer = 'config-39'; ?> class="active"<?php endif ?>><img style="max-width:100%" alt="" src="<?php echo $this->getViewFileUrl('MGS_Fbuilder::images/panel/cols/3-9.png') ?>"></a>
+							</div>
+						</div>
+						<div id="config-93" class="form-group line">
+							<label for="block_cols" class="col-tb-3 control-label"></label>
+							<div class="col-tb-9">
+								<a onclick="setColValue('9,3', this, 'config-93'); return false" href="#"<?php if($section->getBlockCols()=='9,3'): $activeContainer = 'config-93'; ?> class="active"<?php endif ?>><img style="max-width:100%" alt="" src="<?php echo $this->getViewFileUrl('MGS_Fbuilder::images/panel/cols/9-3.png') ?>"></a>
+							</div>
+						</div>
+						<div id="config-48" class="form-group line">
+							<label for="block_cols" class="col-tb-3 control-label"></label>
+							<div class="col-tb-9">
+								<a onclick="setColValue('4,8', this, 'config-48'); return false" href="#"<?php if($section->getBlockCols()=='4,8'): $activeContainer = 'config-48'; ?> class="active"<?php endif ?>><img style="max-width:100%" alt="" src="<?php echo $this->getViewFileUrl('MGS_Fbuilder::images/panel/cols/4-8.png') ?>"></a>
+							</div>
+						</div>
+						<div id="config-84" class="form-group line">
+							<label for="block_cols" class="col-tb-3 control-label"></label>
+							<div class="col-tb-9">
+								<a onclick="setColValue('8,4', this, 'config-84'); return false" href="#"<?php if($section->getBlockCols()=='8,4'): $activeContainer = 'config-84'; ?> class="active"<?php endif ?>><img style="max-width:100%" alt="" src="<?php echo $this->getViewFileUrl('MGS_Fbuilder::images/panel/cols/8-4.png') ?>"></a>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="form-group line" id="output-yourself">
+					<label for="block_cols" class="col-tb-3 control-label"><?php echo __('Or input by yourself:') ?></label>
+					<div class="col-tb-9">
+						<input type="text" onchange="addBlockClass(); inputYourself()" id="block_cols" class="input-text" value="<?php echo $section->getBlockCols() ?>" name="block_cols" />
+						<span class="note"><em class="fa fa-caret-up"></em> <?php echo __('Comma-separated.') ?></span>
+					</div>
+				</div>
+				
+				<div id="columns-config">
+					<div class="form-group line" id="custom-view"><label class="col-tb-3 control-label">&nbsp;</label><div class="col-tb-3"><?php echo __('Set columns for Tablet view') ?></div><div class="col-tb-3"><?php echo __('Set columns for Mobile view') ?></div><div class="col-tb-3"><?php echo __('Custom class') ?></div></div>
+				
+					<?php 
+						$html = '';
+						if($section->getBlockClass()!=''){
+							$tabletCols = json_decode($section->getTabletCols(), true);
+							$mobileCols = json_decode($section->getMobileCols(), true);
+							$blockClass = $section->getBlockClass();
+							$blockClass = json_decode($blockClass, true);
+							foreach($blockClass as $key=>$_class){
+								$html .= '<div class="form-group line"><label class="col-tb-3 control-label">'.__('Config for column %1', $key+1).'</label><div class="col-tb-3"><select class="input-text" name="tablet_cols[]">';
+								for($i=12; $i>=1; $i--){
+									$html .= '<option value="'.$i.'"';
+									if($tabletCols[$key] == $i){
+										$html .= ' selected="selected"';
+									}
+									$html .= '>'.$i.'</option>';
+								}
+								
+								$html .= '</select></div><div class="col-tb-3"><select class="input-text" name="mobile_cols[]">';
+								
+								for($i=12; $i>=1; $i--){
+									$html .= '<option value="'.$i.'"';
+									if($mobileCols[$key] == $i){
+										$html .= ' selected="selected"';
+									}
+									$html .= '>'.$i.'</option>';
+								}
+								
+								$html .= '</select></div><div class="col-tb-3"><input type="text" name="block_class[]" class="input-text" value="'.$_class.'"/></div></div>';
+							}
+						}else{
+							$html .= '<div class="form-group line"><label class="col-tb-3 control-label">'.__('Config for column').'</label><div class="col-tb-3"><select class="input-text" name="tablet_cols[]">';
+							
+							for($i=12; $i>=1; $i--){
+								$html .= '<option value="'.$i.'">'.$i.'</option>';
+							}
+							
+							$html .= '</select></div><div class="col-tb-3"><select class="input-text" name="mobile_cols[]">';
+							
+							for($i=12; $i>=1; $i--){
+								$html .= '<option value="'.$i.'">'.$i.'</option>';
+							}
+							
+							$html .= '</select></div><div class="col-tb-3"><input type="text" name="block_class[]" class="input-text" value=""/></div></div>';
+						}
+					?>
+				
+					<div id="blocks-class"><?php echo $html ?></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="line">
+			<div class="form-group">
+				<div class="col-tb-12 builder-action">
+					<div class="buttons">
+						<!--input type="submit" value="<?php echo __('Submit') ?>" class="btn btn-primary"/-->
+						<button type="submit" class="action primary"><span><?php echo __('Submit') ?></span></button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</div>
+<script>
+	require([
+		"jquery"
+	], function($){
+		$(document).ready(function(){
+			$("#columns-config").insertAfter($('#<?php echo $activeContainer ?>'));
+			useBackgroundGradient();
+		});
+	});
+
+	function setColValue(val, el, container){
+		require([
+			"jquery"
+		], function($){
+			$('.vc-icon-option a').removeClass('active');
+			$(el).addClass('active');
+			$('#block_cols').val(val);
+			addBlockClass();
+			
+			$("#columns-config").insertAfter($('#'+container));
+		});
+	}
+	
+	function addBlockClass(){
+		require([
+			"jquery"
+		], function($){
+			columns = $('#block_cols').val();
+			if(columns==''){
+				columns = '12';
+			}
+			var htmlInput = '';
+			var divide = columns.split(",");
+
+			if(columns=='<?php echo $section->getBlockCols() ?>'){
+				htmlInput = '<?php echo $html ?>';
+			}
+			
+			if(htmlInput==''){
+				for (var i=0; i < divide.length; i++) {
+					htmlInput += '<div class="form-group line"><label class="col-tb-3 control-label"><?php echo __('Config for column ') ?>'+ parseInt(i+1) +'</label><div class="col-tb-3"><select class="input-text" name="tablet_cols[]">';
+					for(j=12; j>=1; j--){
+						htmlInput += '<option value="' + j + '">' + j + '</option>';
+					}
+					htmlInput += '</select></div><div class="col-tb-3"><select class="input-text" name="mobile_cols[]">';
+					for(j=12; j>=1; j--){
+						htmlInput += '<option value="' + j + '">' + j + '</option>';
+					}
+					htmlInput += '</select></div><div class="col-tb-3"><input type="text" name="block_class[]" class="input-text" value=""/></div></div>';
+				}
+			}
+			$('#blocks-class').html(htmlInput);
+		});
+		
+	}
+	
+	function inputYourself(){
+		require([
+			"jquery"
+		], function($){
+			$("#columns-config").insertAfter($('#output-yourself'));
+		});
+	}
+	
+	function useBackgroundGradient(){
+		require([
+			"jquery"
+		], function($){
+			if($('#background_gradient').length){
+				if($('#background_gradient').prop("checked") == true){
+					$('.normal-bg').hide();
+					$('.gradient-bg').show();
+				}else{
+					$('.normal-bg').show();
+					$('.gradient-bg').hide();
+				}
+			}
+		});
+	}
+</script>

@@ -1,0 +1,34 @@
+<?php $builderHelper = $this->helper('MGS\Fbuilder\Helper\Data'); ?>
+<?php $iconClass = $this->getFbuilderIcon(); ?>
+<?php $title = $this->getFbuilderSubtitle(); ?>
+<?php $showIcon = $this->getShowIcon(); ?>
+<?php $showText = $this->getShowText(); ?>
+<?php $textFontweight = $this->getTextFontweight(); ?>
+<?php $style = $this->getStyle(); ?>
+<?php $width = $this->getWidth(); ?>
+<?php $borderAlign = $this->getBorderAlign(); ?>
+<div class="content-block mgs-divider-block">
+	<div class="mgs-divider mgs-divider-<?php echo $style ?><?php if($width!='' && $width>0): ?> divider-<?php echo $borderAlign ?><?php endif ?>"<?php if($width!='' && $width>0): ?> style="max-width:<?php echo $width ?>px"<?php endif ?>>
+		<?php if($showText && $title!=''): ?>
+			<span class="divider-text<?php if($textFontweight):?> font-bold<?php endif ?><?php if($showIcon && $iconClass!=''): ?> double-icon<?php endif ?>">
+				<?php if($showIcon && $iconClass!=''): ?>
+					<span class="text-icon-container">
+						<span class="icon <?php echo $builderHelper->decodeHtmlTag($iconClass) ?>"></span>
+				<?php endif ?>
+				
+				<span class="text"><?php echo $builderHelper->decodeHtmlTag($title) ?></span>
+				
+				<?php if($showIcon && $iconClass!=''): ?>
+						<span class="icon <?php echo $builderHelper->decodeHtmlTag($iconClass) ?>"></span>
+					</span>
+				<?php endif ?>
+			</span>
+		<?php endif ?>
+		
+		<?php if(($showIcon && $iconClass!='') && (!$showText || $title =='')): ?>
+			<span class="divider-icon"><span class="<?php echo $builderHelper->decodeHtmlTag($iconClass) ?>"></span></span>
+		<?php endif ?>
+		
+		<hr/>
+	</div>
+</div>
