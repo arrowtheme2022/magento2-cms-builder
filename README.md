@@ -21,6 +21,7 @@ Fully compatible with **Magento 2.1.x, Magento 2.2.x, Magento 2.3.x**
 - [Builder Blocks](http://themes.magesolution.com/fbuilder/blocks/)
 
 
+
 ## Builder Elements
 ## Static Content
 - [Heading](http://themes.magesolution.com/fbuilder/headings/)
