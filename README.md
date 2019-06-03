@@ -12,3 +12,10 @@ Fully compatible with **Magento 2.1.x, Magento 2.2.x, Magento 2.3.x**
 - Empower you to create as many CMS Pages as possible (Suitable For All CMS Pages)
 - 36+ block elements (commercial version, 16+ for free)
 - Visual & Friendly (You can see directly what you want to build and change)
+
+## Magesolution CMS Builder Documentation
+
+- [Installation guide](http://themes.magesolution.com/fbuilder/installation)
+- [Builder Account](http://themes.magesolution.com/fbuilder/builder-account)
+- [Download from our Live site](https://www.magesolution.com/front-end-cms-page-builder.html)
+- [Get Free Support](https://github.com/arrowhitech-gp/fbuilder/issues)
