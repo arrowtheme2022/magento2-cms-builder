@@ -10,7 +10,7 @@ Fully compatible with **Magento 2.1.x, Magento 2.2.x, Magento 2.3.x**
 
 - Compatible with any Magento 2 themes
 - Empower you to create as many CMS Pages as possible (Suitable For All CMS Pages)
-- 36+ block elements (commercial version, 16+ for free)
+- 36+ block elements
 - Visual & Friendly (You can see directly what you want to build and change)
 
 ## Magesolution CMS Builder Documentation
