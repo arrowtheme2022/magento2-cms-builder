@@ -14,7 +14,8 @@ Fully compatible with **Magento 2.1.x, Magento 2.2.x, Magento 2.3.x**
 - Visual & Friendly (You can see directly what you want to build and change)
 
 ## Demo
-[http://themes.magesolution.com/fbuilder/](http://themes.magesolution.com/fbuilder/)
+[Review main demo](http://themes.magesolution.com/fbuilder/)
+[Review Supro theme: A theme is built on extensions](https://themeforest.net/item/supro-minimalist-ajax-magento-2-theme/23476627?ref=ArrowHiTech)
 
 ## Magesolution CMS Builder Documentation
 
