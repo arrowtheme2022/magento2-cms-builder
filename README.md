@@ -19,7 +19,7 @@ Fully compatible with **Magento 2.1.x, Magento 2.2.x, Magento 2.3.x**
 
 ## Magesolution CMS Builder Documentation
 
-- [Installation guide](http://themes.magesolution.com/fbuilder/installation)
+- [Installation guide](http://themes.magesolution.com/fbuilder/installation). Before you install the extension, you need to install MGS_Core. Please download here: [https://github.com/arrowhitech-gp/core](https://github.com/arrowhitech-gp/core)
 - [Builder Account](http://themes.magesolution.com/fbuilder/builder-account)
 - [Builder Sections](http://themes.magesolution.com/fbuilder/sections)
 - [Builder Blocks](http://themes.magesolution.com/fbuilder/blocks/)
