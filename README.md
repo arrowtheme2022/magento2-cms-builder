@@ -78,3 +78,17 @@ Fully compatible with **Magento 2.1.x, Magento 2.2.x, Magento 2.3.x**
 ## Free Support
 - [On Github](https://github.com/arrowhitech-gp/fbuilder/issues)
 - [Contact form](https://www.magesolution.com/contact-us/)
+
+## Our other extensions
+- [Layered Navigation](https://www.magesolution.com/magento2-layered-navigation.html)
+- [Store Locator](https://www.magesolution.com/store-locator-magento-2.html)
+- [Shop by Brand](https://www.magesolution.com/shop-by-brands2.html)
+- [GDPR](https://www.magesolution.com/magento2-gdpr.html)
+- [Lookbook](https://www.magesolution.com/lookbook-for-magento-2.html)
+- [Advanced Form](https://www.magesolution.com/advanced-form-for-magento-2.html)
+- [Google Rich Snippets](https://www.magesolution.com/google-rich-snippets-for-magento-2.html)
+- [Megamenu](https://www.magesolution.com/mega-menu-magento-2.html)
+- [Delivery Date Time](https://www.magesolution.com/delivery-date-time-for-magento-2.html)
+- [Configurable Product Purchase Variables](https://www.magesolution.com/configurable-product-purchase-variables.html)
+- [Real Review](https://www.magesolution.com/real-review-for-magento-2.html)
+- [Product Tabs](https://www.magesolution.com/product-tabs-for-magento-2.html)
