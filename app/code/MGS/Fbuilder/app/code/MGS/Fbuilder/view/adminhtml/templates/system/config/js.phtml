@@ -1,0 +1,116 @@
+<?php $helper = $this->helper('MGS\Fbuilder\Helper\Generate') ?>
+<script>
+	require([
+		'jquery',
+		'mage/validation'
+	], function(jQuery){
+		(function($) {
+			$.fn.mColorPicker.defaults.imageFolder="<?php echo $this->getViewFileUrl('MGS_Fbuilder::images') ?>/";
+			
+			var arrInput = ['general_container_width', 'general_column_padding', 'social_instagram_access_token', 'social_snapppt_script', 'social_google_api_key', 'font_style_custom_style', 'export_page_id', 'import_page_id', 'import_file', 'general_is_enabled','license_key_license'];
+			$.each( arrInput, function( i, val ) {
+				if($('#fbuilder_'+val).length){
+					$('#fbuilder_'+val).attr('disabled', 'disabled');
+				}
+				if($('#fbuilder_'+val+'_inherit').length){
+					$('#fbuilder_'+val+'_inherit').click(function(){
+						setTimeout(function(){
+							$('#fbuilder_'+val).attr('disabled', 'disabled');
+						}, 5);
+					});
+				}
+			});
+			
+			var localhostKey = '<?php echo $helper->testCaseForEncription() ?>';
+			var domainName = window.location.hostname;
+			
+			<?php if($helper->getStoreConfig('fbuilder/license_key/license')!=''): ?>
+				$('#row_fbuilder_license_key_license').show();
+				$('#row_fbuilder_license_key_name, #row_fbuilder_license_key_mail, #row_fbuilder_license_key_active').hide();
+				$('#fbuilder_general_is_enabled').removeAttr('disabled');
+				
+				if((domainName!='127.0.0.1') && (domainName!='localhost') && (localhostKey=='<?php echo $helper->getStoreConfig('fbuilder/license_key/license')?>')){
+					$('#row_fbuilder_license_key_license').hide();
+					$('#row_fbuilder_license_key_name, #row_fbuilder_license_key_mail, #row_fbuilder_license_key_active').show();
+					$('#fbuilder_general_is_enabled').val('0');
+					$('#fbuilder_general_is_enabled').attr('disabled', 'disabled');
+					
+					$.ajax({url:'<?php echo $this->getUrl('adminhtml/fbuilder/resetkey') ?>'});
+				}
+			<?php else: ?>
+				$('#row_fbuilder_license_key_license').hide();
+				$('#row_fbuilder_license_key_name, #row_fbuilder_license_key_mail, #row_fbuilder_license_key_active').show();
+				$('#fbuilder_general_is_enabled').attr('disabled', 'disabled');
+			<?php endif ?>
+			
+			
+			
+			
+			
+			var builderDataForm = $('#config-edit-form');
+			var ignore = null;
+
+			builderDataForm.mage('validation', {}).find('input:text');
+
+			$('button#fbuilder_active_button').click( function() {
+				validate = builderDataForm.validation('isValid');
+				
+				var name = $('#fbuilder_license_key_name').val();
+				var mail = $('#fbuilder_license_key_mail').val();
+					
+				if((validate != false) && (name!='') && (mail!='')){
+					var url = '<?php echo $helper->getCheckLicenseUrl() ?>';
+					var data = {
+						ex: 'mgs_cms_builder',
+						domain: domainName,
+						name: name,
+						mail:mail
+					};
+					
+					if($('.magento-version').length){
+						var versionText = $('.magento-version').html();
+						versionText = versionText.replace('<strong>Magento</strong>','');
+						var version = versionText.replace('ver. ','');
+						data.version = version;
+					}
+					
+					$.ajax({
+						url:url,
+						data: data,
+						dataType: 'jsonp',
+						accepts: 'application/json',
+						callback: 'setLicenseKey'
+					});
+				}
+			});
+		})(jQuery);
+	});
+	
+	function setLicenseKey(json){
+		require([
+			'jquery'
+		], function(jQuery){
+			(function($) {
+				var licenseKey = json.rs;
+				if(licenseKey!=''){
+					$('#messages .messages .message').removeClass('message-error');
+					$('#messages .messages .message').removeClass('error');
+					$('#messages .messages .message').addClass('message-success success');
+					$('#messages .messages .message div').attr('data-ui-id', 'messages-message-success');
+					$('#messages .messages .message div').html('<?php echo __('The license has been successfully updated.') ?>');
+					$.ajax({
+						url:'<?php echo $this->getUrl('adminhtml/fbuilder/savekey') ?>',
+						data: {key : licenseKey, name : $('#fbuilder_license_key_name').val(), mail : $('#fbuilder_license_key_mail').val()},
+						success: function(){
+							$('#fbuilder_license_key_license').val(licenseKey);
+							$('#row_fbuilder_license_key_license').show();
+							$('#fbuilder_general_is_enabled').removeAttr('disabled');
+							$('#row_fbuilder_license_key_name, #row_fbuilder_license_key_mail, #row_fbuilder_license_key_active').hide();
+						}
+					});
+				}
+				
+			})(jQuery);
+		});
+	}
+</script>
