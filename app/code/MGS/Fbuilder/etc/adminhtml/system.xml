@@ -546,7 +546,7 @@
 				<field id="mail" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
 					<label>Registered Email</label>
 					<validate>required-entry validate-email</validate>
-					<comment><![CDATA[This is the email you used to register your account on <a href="https://www.magesolution.com/" target="_blank">https://www.magesolution.com/</a>]]></comment>
+					<!--comment><![CDATA[This is the email you used to register your account on <a href="https://www.magesolution.com/" target="_blank">https://www.magesolution.com/</a>]]></comment-->
 				</field>
 				<field id="license" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
 					<label>License Key</label>
