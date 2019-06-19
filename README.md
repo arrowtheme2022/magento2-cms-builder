@@ -20,6 +20,9 @@ Fully compatible with **Magento 2.1.x, Magento 2.2.x, Magento 2.3.x**
 - [Builder Sections](http://themes.magesolution.com/fbuilder/sections)
 - [Builder Blocks](http://themes.magesolution.com/fbuilder/blocks/)
 
+## Active Free License
+After you installed the extension, please go to backend > MGS > Page Builder Setting. Enter your name, your email and click "Active" button
+![Active CMS Builder License](https://magesolution.com/about/images/active.png)
 
 
 ## Builder Elements
