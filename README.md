@@ -26,7 +26,7 @@ After you installed the extension, please go to backend > MGS > Page Builder Set
 
 
 ## Builder Elements
-## 1. Static Content
+# 1. Static Content
 - [Heading](http://themes.magesolution.com/fbuilder/headings/)
 - [Images](http://themes.magesolution.com/fbuilder/images/)
 - [OWL Carousel](http://themes.magesolution.com/fbuilder/owl-carousel/)
@@ -50,7 +50,7 @@ After you installed the extension, please go to backend > MGS > Page Builder Set
 - [Modal Popup](http://themes.magesolution.com/fbuilder/modal-popup/)
 - [Form](http://themes.magesolution.com/fbuilder/form/)
 
-## 2. Catalog
+# 2. Catalog
 - [Category List](http://themes.magesolution.com/fbuilder/category-list/)
 - [Category Products](http://themes.magesolution.com/fbuilder/category-products/)
 - [New Products](http://themes.magesolution.com/fbuilder/new-products/)
@@ -60,13 +60,13 @@ After you installed the extension, please go to backend > MGS > Page Builder Set
 - [Deal Products](http://themes.magesolution.com/fbuilder/deal-products/)
 - [Product Tabs](http://themes.magesolution.com/fbuilder/product-tabs/)
 
-## 3. Social
+# 3. Social
 - [Facebook Fanbox](http://themes.magesolution.com/fbuilder/facebook-fanbox/)
 - [Twitter Timeline](http://themes.magesolution.com/fbuilder/twitter-timeline/)
 - [Instagram](http://themes.magesolution.com/fbuilder/instagram/)
 - [Instagram Shop](http://themes.magesolution.com/fbuilder/instagram-shop/)
 
-## 4. Compatible with Mageplaza Extensions
+# 4. Compatible with Mageplaza Extensions
 - [Banner Slider](https://www.mageplaza.com/magento-2-banner-slider-extension/)
 - [Blog](https://www.mageplaza.com/magento-2-blog-extension/)
 - [Countdown Timer](https://www.mageplaza.com/magento-2-countdown-timer)
