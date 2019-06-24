@@ -13,6 +13,10 @@ Fully compatible with **Magento 2.1.x, Magento 2.2.x, Magento 2.3.x**
 - 36+ block elements (commercial version, 16+ for free)
 - Visual & Friendly (You can see directly what you want to build and change)
 
+## Required
+Before you install the extension, you need to install the MGS_Core extension:
+[MGS_Core](https://github.com/arrowhitech-gp/core)
+
 ## Magesolution CMS Builder Documentation
 - [Demo](http://themes.magesolution.com/fbuilder)
 - [Installation guide](http://themes.magesolution.com/fbuilder/installation)
