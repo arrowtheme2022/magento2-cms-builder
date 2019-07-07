@@ -13,17 +13,24 @@ Fully compatible with **Magento 2.1.x, Magento 2.2.x, Magento 2.3.x**
 - 36+ block elements (commercial version, 16+ for free)
 - Visual & Friendly (You can see directly what you want to build and change)
 
-## Magesolution CMS Builder Documentation
+## Required
+Before you install the extension, you need to install the MGS_Core extension:
+[MGS_Core](https://github.com/arrowhitech-gp/core)
 
+## Magesolution CMS Builder Documentation
+- [Demo](http://themes.magesolution.com/fbuilder)
 - [Installation guide](http://themes.magesolution.com/fbuilder/installation)
 - [Builder Account](http://themes.magesolution.com/fbuilder/builder-account)
 - [Builder Sections](http://themes.magesolution.com/fbuilder/sections)
 - [Builder Blocks](http://themes.magesolution.com/fbuilder/blocks/)
 
+## Active Free License
+After you installed the extension, please go to backend > MGS > Page Builder Setting. Enter your name, your email and click "Active" button
+![Active CMS Builder License](https://magesolution.com/about/images/active.png)
 
 
 ## Builder Elements
-## 1. Static Content
+### 1. Static Content
 - [Heading](http://themes.magesolution.com/fbuilder/headings/)
 - [Images](http://themes.magesolution.com/fbuilder/images/)
 - [OWL Carousel](http://themes.magesolution.com/fbuilder/owl-carousel/)
@@ -47,7 +54,7 @@ Fully compatible with **Magento 2.1.x, Magento 2.2.x, Magento 2.3.x**
 - [Modal Popup](http://themes.magesolution.com/fbuilder/modal-popup/)
 - [Form](http://themes.magesolution.com/fbuilder/form/)
 
-## 2. Catalog
+### 2. Catalog
 - [Category List](http://themes.magesolution.com/fbuilder/category-list/)
 - [Category Products](http://themes.magesolution.com/fbuilder/category-products/)
 - [New Products](http://themes.magesolution.com/fbuilder/new-products/)
@@ -57,13 +64,13 @@ Fully compatible with **Magento 2.1.x, Magento 2.2.x, Magento 2.3.x**
 - [Deal Products](http://themes.magesolution.com/fbuilder/deal-products/)
 - [Product Tabs](http://themes.magesolution.com/fbuilder/product-tabs/)
 
-## 3. Social
+### 3. Social
 - [Facebook Fanbox](http://themes.magesolution.com/fbuilder/facebook-fanbox/)
 - [Twitter Timeline](http://themes.magesolution.com/fbuilder/twitter-timeline/)
 - [Instagram](http://themes.magesolution.com/fbuilder/instagram/)
 - [Instagram Shop](http://themes.magesolution.com/fbuilder/instagram-shop/)
 
-## 4. Compatible with Mageplaza Extensions
+### 4. Compatible with Mageplaza Extensions
 - [Banner Slider](https://www.mageplaza.com/magento-2-banner-slider-extension/)
 - [Blog](https://www.mageplaza.com/magento-2-blog-extension/)
 - [Countdown Timer](https://www.mageplaza.com/magento-2-countdown-timer)
@@ -71,3 +78,5 @@ Fully compatible with **Magento 2.1.x, Magento 2.2.x, Magento 2.3.x**
 - [Shop by Brand](https://www.mageplaza.com/magento-2-shop-by-brand)
 - [Product Slider](https://www.mageplaza.com/magento-2-product-slider-extension)
 
+## Ecommerce Version
+[https://www.magesolution.com/front-end-cms-page-builder.html](https://www.magesolution.com/front-end-cms-page-builder.html)
