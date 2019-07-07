@@ -43,13 +43,6 @@ class Head extends Template
 		$this->pageConfig->addPageAsset('MGS_Fbuilder::css/magnific-popup.css');
 		$this->pageConfig->addPageAsset('MGS_Fbuilder::css/pbanner.css');
 		$this->pageConfig->addPageAsset('MGS_Fbuilder::css/styles.css');
-		if($this->getStoreConfig('dev/static/sign')){
-			$this->pageConfig->addPageAsset('../../../../../../media/mgs/fbuilder/css/blocks.css');
-			$this->pageConfig->addPageAsset('../../../../../../media/mgs/fbuilder/css/'.$this->_storeManager->getStore()->getId().'/fbuilder_config.css');
-		}else{
-			$this->pageConfig->addPageAsset('../../../../../media/mgs/fbuilder/css/blocks.css');
-			$this->pageConfig->addPageAsset('../../../../../media/mgs/fbuilder/css/'.$this->_storeManager->getStore()->getId().'/fbuilder_config.css');
-		}
 		
 		$this->pageConfig->addPageAsset('MGS_Fbuilder::js/timer.js');
 		return parent::_prepareLayout();
