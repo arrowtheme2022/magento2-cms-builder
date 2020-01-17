@@ -26,10 +26,15 @@ class Head extends Template
     }
 	
 	public function getStoreConfig($node, $storeId = NULL){
-		if($storeId != NULL){
-			return $this->_scopeConfig->getValue($node, \Magento\Store\Model\ScopeInterface::SCOPE_STORE, $storeId);
-		}
-		return $this->_scopeConfig->getValue($node, \Magento\Store\Model\ScopeInterface::SCOPE_STORE, $this->_storeManager->getStore()->getId());
+		return $this->_generateHelper->getStoreConfig($node);
+	}
+	
+	public function getMediaUrl(){
+		return $this ->_storeManager->getStore()->getBaseUrl(\Magento\Framework\UrlInterface::URL_TYPE_MEDIA );
+	}
+	
+	public function getStoreId(){
+		return $this ->_storeManager->getStore()->getId();
 	}
 	
 	protected function _prepareLayout(){
