@@ -1,7 +1,7 @@
 var config = {
 	"map": {
 		"*": {
-			"owlcarousel": "MGS_Fbuilder/js/owl.carousel.min",
+			"mgsowlcarousel": "MGS_Fbuilder/js/owl.carousel.min",
 			"magnificPopup": "MGS_Fbuilder/js/jquery.magnific-popup.min",
 			"lazyload": "MGS_Fbuilder/js/jquery.lazyload",
 			"waypoints": "MGS_Fbuilder/js/waypoints.min",
@@ -11,7 +11,7 @@ var config = {
 	},
 
 	"paths": {  
-		"owlcarousel": "MGS_Fbuilder/js/owl.carousel.min",
+		"mgsowlcarousel": "MGS_Fbuilder/js/owl.carousel.min",
 		"magnificPopup": "MGS_Fbuilder/js/jquery.magnific-popup.min",
 		"lazyload": "MGS_Fbuilder/js/jquery.lazyload",
 		"waypoints": "MGS_Fbuilder/js/waypoints.min",
