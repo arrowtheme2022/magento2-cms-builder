@@ -26,7 +26,7 @@ class Head extends Template
     }
 	
 	public function getStoreConfig($node, $storeId = NULL){
-		return $this->_generateHelper->getStoreConfig($node);
+		return $this->_scopeConfig->getValue($node, \Magento\Store\Model\ScopeInterface::SCOPE_STORE, $this->getStoreId());
 	}
 	
 	public function getMediaUrl(){
