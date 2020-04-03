@@ -78,5 +78,5 @@ After you installed the extension, please go to backend > MGS > Page Builder Set
 - [Shop by Brand](https://www.mageplaza.com/magento-2-shop-by-brand)
 - [Product Slider](https://www.mageplaza.com/magento-2-product-slider-extension)
 
-## Ecommerce Version
+## Commercial Version
 [https://www.magesolution.com/front-end-cms-page-builder.html](https://www.magesolution.com/front-end-cms-page-builder.html)
